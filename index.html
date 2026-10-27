@@ -106,60 +106,24 @@
     color: var(--ink);
   }
   h1 .mark { color: #FFE14A; }
-  .luogo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
   .coords {
-    margin: 0;
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 12px;
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    color: #fff;
+    letter-spacing: 0.12em;
+    color: #F4A4C8;
+    white-space: nowrap;
   }
-  .dove {
-    position: relative;
-    width: min(300px, 86vw);
-    height: 132px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-  }
-  .dove iframe {
-    width: calc(100% + 52px);
-    height: 210px;
-    margin-top: -18px;
-    border: 0;
-    pointer-events: none;
-  }
-  .dove a {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 10px 12px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent 55%);
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  .dove a:hover { color: #FFE14A; }
-  .credito {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    z-index: 1;
-    pointer-events: none;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.8);
-  }
+  .coords:hover { color: #FFD0E4; }
 
   .dock {
     position: fixed;
@@ -247,15 +211,8 @@
 <main class="stage">
   <p class="who">Nicola Valigi</p>
   <h1>Costruiamo<br><span class="mark">adesso.</span></h1>
-  <div class="luogo">
-    <p class="coords">45.6983° N, 9.6773° E</p>
-    <div class="dove">
-      <iframe aria-hidden="true" tabindex="-1" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=9.52%2C45.64%2C9.84%2C45.76&amp;layer=mapnik&amp;marker=45.6983%2C9.6773"></iframe>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">Dove sono</a>
-      <span class="credito">© OpenStreetMap</span>
-    </div>
-  </div>
 </main>
+<a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
 
 <script>
 (function () {
