@@ -7,7 +7,15 @@
 <meta name="description" content="Leggo il problema prima di costruire lo strumento. Nicola Valigi progetta e rilascia sistemi digitali: sentinelle sui dati, interfacce, messa in produzione. Bergamo.">
 <meta name="author" content="Nicola Valigi">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Valigi">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icona-180.png">
+<link rel="stylesheet" href="shell.css">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Nicola Valigi">
@@ -40,16 +48,17 @@
   :root { --ink: #EDEBE6; --blue: #2E56FF; --quiet: #B9B5AC; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  html, body { overscroll-behavior: none; }
   body {
     margin: 0;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     background: #000;
     color: var(--ink);
     font-family: Archivo, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow: hidden;
   }
   ::selection { background: #1F43D8; color: #fff; }
   a { color: inherit; text-decoration: none; }
@@ -204,6 +213,25 @@
   }
   .links a:hover { background: var(--blue); border-color: var(--blue); }
 
+  @media (max-width: 700px), (max-height: 500px) {
+    .dock { display: none; }
+    .stage {
+      gap: 18px;
+      padding:
+        max(16px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        calc(var(--app-bar-size) + env(safe-area-inset-bottom) + 48px)
+        max(20px, env(safe-area-inset-left));
+    }
+    .who {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+    }
+    h1 { font-size: 2rem; }
+    .coords { bottom: calc(var(--app-bar-size) + env(safe-area-inset-bottom)); }
+    .trovato { bottom: calc(var(--app-bar-size) + env(safe-area-inset-bottom) + 46px); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .dock, .links, .dock button span { transition: none; }
@@ -230,6 +258,25 @@
 </main>
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
 <p class="trovato" id="trovato" hidden>Trovato. Costruito a Bergamo.</p>
+<nav class="appbar" aria-label="Sezioni">
+  <a href="index.html" aria-current="page">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.25" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.75v14.5M4.75 12h14.5M7 8.2c1.5.9 3.2 1.35 5 1.35s3.5-.45 5-1.35M7 15.8c1.5-.9 3.2-1.35 5-1.35s3.5.45 5 1.35" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+    <span>Adesso</span>
+  </a>
+  <a href="competenze.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7h10M9 12h10M9 17h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5.5" cy="7" r="1.1" fill="currentColor"/><circle cx="5.5" cy="12" r="1.1" fill="currentColor"/><circle cx="5.5" cy="17" r="1.1" fill="currentColor"/></svg>
+    <span>Competenze</span>
+  </a>
+  <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.2 12 13l8-5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Scrivimi</span>
+  </a>
+  <a href="https://github.com/nicolavaligi/nicola-valigi" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 8v8M8 6h5.2A2.8 2.8 0 0 1 16 8.8V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>GitHub</span>
+  </a>
+</nav>
+<button type="button" id="installa" hidden>Installa</button>
 
 <script>
 (function () {
@@ -288,9 +335,19 @@
     canvas.width = Math.max(1, Math.floor(width * ratio));
     canvas.height = Math.max(1, Math.floor(height * ratio));
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    var stage = document.querySelector(".stage");
+    var box = stage.getBoundingClientRect();
+    var style = getComputedStyle(stage);
+    var padTop = parseFloat(style.paddingTop) || 0;
+    var padBottom = parseFloat(style.paddingBottom) || 0;
+    var contentH = Math.max(1, box.height - padTop - padBottom);
     centerX = width / 2;
-    centerY = height * 0.5;
+    centerY = box.top + padTop + contentH / 2;
     radius = Math.min(width, height) * 0.4;
+    if (window.matchMedia("(max-width: 700px), (max-height: 500px)").matches) {
+      var cap = contentH * 0.42;
+      if (radius > cap) radius = cap;
+    }
   }
 
   function draw() {
@@ -347,7 +404,7 @@
         alpha = 1;
         eggHit.x = projected[index * 2];
         eggHit.y = projected[index * 2 + 1];
-        eggHit.r = Math.max(size * 2.2, 16);
+        eggHit.r = Math.max(size * 2.2, window.matchMedia("(pointer: coarse)").matches ? 28 : 16);
       }
       drawCube(
         projected[index * 2],
@@ -396,6 +453,16 @@
     fit();
     if (reduce) draw();
   });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", function () {
+      fit();
+      if (reduce) draw();
+    });
+  }
+  window.matchMedia("(max-width: 700px), (max-height: 500px)").addEventListener("change", function () {
+    fit();
+    if (reduce) draw();
+  });
   document.addEventListener("visibilitychange", function () {
     running = document.visibilityState !== "hidden";
     if (running && !reduce) tick();
@@ -439,5 +506,6 @@
   });
 })();
 </script>
+<script src="app.js"></script>
 </body>
 </html>
