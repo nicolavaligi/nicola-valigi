@@ -182,61 +182,61 @@
 <main class="pagina">
   <a class="torna" href="index.html">← Nicola Valigi</a>
   <h1>Competenze</h1>
-  <p class="lead">A Bergamo. Porto un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Indico il problema vero. Da lì la macchina costruisce lo strumento e lo consegna a chi lo usa ogni giorno. Senza quel giudizio, esegue in fretta e amplifica il vuoto.</p>
-  <p class="lead">Dodici anni dentro i documenti di una grande commessa infrastrutturale mi hanno insegnato a riconoscere il collo di bottiglia vero, che di solito non è quello segnalato. La formazione è artistica, Accademia di Brera e liceo artistico di Novara: per questo uno strumento ha un'interfaccia pensata, e non l'aspetto di un prototipo.</p>
+  <p class="lead">A Bergamo. Porto un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Prendo in mano le idee, le sviluppo dirigendo un agente e le consegno come strumenti che qualcuno usa davvero, tutti i giorni.</p>
+  <p class="lead">Ho passato dodici anni dentro i documenti di una grande commessa infrastrutturale. Lì ho imparato a riconoscere il collo di bottiglia vero, che di solito non è quello che viene segnalato. Vengo da una formazione artistica, Accademia di Brera e liceo artistico di Novara. Per questo i miei strumenti hanno un'interfaccia pensata e non sembrano un prototipo.</p>
 
   <article>
     <h2>Vibe coding</h2>
-    <p>Costruisco dirigendo Claude Code. Il grosso del lavoro viene prima della scrittura: fisso le regole del progetto e l'agente è obbligato a seguirle. Ogni scelta di architettura resta scritta e numerata, così si ritrova il perché. Il ciclo è breve. Si chiude sempre con qualcosa di pubblicato e con una misura che decide il ciclo successivo.</p>
-    <p>L'intelligenza artificiale esegue in fretta, e amplifica anche il vuoto. Il valore sta nel sapere cosa chiederle e cosa rifiutare.</p>
-    <ul><li>Claude Code</li><li>Git</li><li>GitHub</li><li>CLI</li><li>ADR</li></ul>
+    <p>Costruisco dirigendo Claude Code. Il grosso del lavoro viene prima della generazione. Scrivo le regole del progetto e l'agente è obbligato a seguirle. Ogni decisione di architettura diventa un ADR numerato, una nota che resta e si ritrova. Il ciclo è breve, si chiude sempre con qualcosa pubblicato e con una misura che decide il ciclo successivo.</p>
+    <p>L'AI esegue in fretta, ma amplifica anche il vuoto. Il valore sta nel sapere cosa chiederle e cosa rifiutare.</p>
+    <ul><li>Claude Code</li><li>Git</li><li>GitHub</li><li>CLI</li><li>ADR</li><li>Skill</li></ul>
   </article>
 
   <article>
     <h2>Agenti</h2>
-    <p>Con MCP collego il modello agli strumenti veri: file, memoria, servizi. I collegamenti li scrivo io. L'agente propone, cerca e prepara le bozze.</p>
-    <p>Le azioni che toccano CRM, mail o calendario non le fa il modello. Le fa il codice, attraverso le API ufficiali. Niente parte senza un sì esplicito.</p>
-    <ul><li>MCP</li><li>Claude</li><li>Agenti</li></ul>
+    <p>Con MCP collego il modello agli strumenti veri: file, memoria, servizi. I server MCP li scrivo io. L'agente propone, cerca e prepara le bozze.</p>
+    <p>Le azioni che toccano CRM, mail o calendario non le fa il modello: le fa il codice, attraverso le API ufficiali. Niente parte senza un «ok» esplicito.</p>
+    <ul><li>MCP</li><li>Claude</li><li>Agenti</li><li>Skill</li></ul>
   </article>
 
   <article>
     <h2>Memoria e conoscenza</h2>
-    <p>Ho costruito una base di conoscenza condivisa fra progetti diversi. Sta su PostgreSQL e si interroga in due modi insieme: per le parole e per il significato. Una domanda in italiano ritrova una decisione presa mesi prima, in un altro progetto.</p>
-    <p>Ci entrano note vocali, mail, Drive e Notion. Il materiale riservato si ferma alla porta. Se c'è un dubbio, resta fuori.</p>
-    <ul><li>Supabase</li><li>PostgreSQL</li><li>pgvector</li></ul>
+    <p>Ho costruito una base di conoscenza condivisa fra progetti diversi. Gira su PostgreSQL con ricerca ibrida: per parole e per significato, con pgvector e un indice HNSW. Una domanda in italiano trova la decisione presa mesi prima in un altro progetto.</p>
+    <p>Ci entrano note vocali, mail, Drive e Notion. Un filtro fail-closed blocca alla porta il materiale riservato: nel dubbio non entra.</p>
+    <ul><li>Supabase</li><li>PostgreSQL</li><li>pgvector</li><li>Embedding</li><li>RLS</li></ul>
   </article>
 
   <article>
     <h2>Automazione</h2>
     <p>I flussi che si ripetono girano su n8n e su funzioni che partono da sole. Una nota vocale diventa un'azione: il modello la interpreta, il codice la smista verso CRM, mail, Notion o calendario. Un messaggio WhatsApp entra nello stesso flusso.</p>
-    <p>I controlli prima del rilascio partono da soli. Un controllo lasciato solo alla memoria, prima o poi, non scatta.</p>
+    <p>I controlli prima del rilascio sono automatici. Quello che non è automatico non viene controllato.</p>
     <ul><li>n8n</li><li>Edge Functions</li><li>HubSpot</li><li>Notion</li><li>WhatsApp</li><li>Plaud</li></ul>
   </article>
 
   <article>
     <h2>Dati</h2>
-    <p>Smonto i portali pubblici che non hanno un'API. Trovo l'indirizzo che restituisce i dati veri, scrivo programmi di lettura che non si rompono se cambia una colonna, estraggo il contenuto dei PDF.</p>
-    <p>L'archivio sta in SQLite o in PostgreSQL. Sul tavolo arriva il segnale, non l'elenco intero.</p>
+    <p>Smonto i portali pubblici che non hanno un'API. Trovo l'indirizzo che restituisce i dati veri, scrivo parser che non si rompono se cambia una colonna, estraggo il contenuto dei PDF.</p>
+    <p>L'archivio sta in SQLite o in Postgres. Sul tavolo arriva il segnale, non l'elenco intero.</p>
     <ul><li>Python</li><li>SQLite</li><li>Web scraping</li><li>Estrazione PDF</li></ul>
   </article>
 
   <article>
     <h2>Rilascio</h2>
-    <p>Dal prototipo alla produzione. Le API sono in FastAPI. Le funzioni senza un server sempre acceso stanno su Netlify e su Supabase. Le chiavi restano sul server, mai nel browser. I passaggi accettano solo domini autorizzati e hanno un limite di richieste. Gli accessi sono separati per cliente.</p>
-    <p>Il sito pubblico si genera dai dati, così vetrina e archivio non divergono. Ogni funzione si usa dalla schermata, dalla riga di comando e da un'API.</p>
+    <p>Dal prototipo alla produzione: API REST in FastAPI, funzioni serverless su Netlify e Supabase, accese solo quando servono, chiavi sempre lato server e mai nel browser. I proxy, la porta davanti al servizio, accettano solo domini autorizzati e hanno un limite di richieste. Gli accessi sono separati per cliente.</p>
+    <p>Il sito pubblico si genera dai dati, così vetrina e archivio non divergono. Ogni funzione si usa da interfaccia, da riga di comando e via API.</p>
     <ul><li>FastAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
   </article>
 
   <article>
     <h2>Mappe</h2>
-    <p>Elenchi di siti, punteggi e mappe confrontabili. Una giornata di controlli a tavolino diventa una mappa, con sotto i dati territoriali e i calcoli geometrici: aree, punti centrali, distanze. Le stime di produzione solare arrivano da PVGIS.</p>
+    <p>Elenchi di siti, punteggi e mappe confrontabili. Una giornata di controlli a tavolino diventa una mappa, con sotto i dati territoriali e i calcoli geometrici: aree, centroidi, distanze. Le stime di produzione solare vengono da PVGIS.</p>
     <ul><li>MapLibre</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
   </article>
 
   <article>
     <h2>Interfaccia</h2>
-    <p>Cosa si guarda per primo, come si legge un numero, perché una schermata viene riaperta anche domani. La formazione artistica la uso come una competenza tecnica.</p>
-    <p>Contrasto, gerarchia, telefono. Le pagine si installano sul telefono come un'app. Prima di pubblicare parte un controllo automatico.</p>
+    <p>Cosa si guarda per primo, come si legge un numero, perché una schermata viene riaperta anche domani. Uso la formazione artistica come una competenza tecnica.</p>
+    <p>Contrasto, gerarchia, telefono. Le pagine si installano sul telefono come un'app. Prima di pubblicare parte un audit automatico.</p>
     <ul><li>UI</li><li>HTML e CSS</li><li>PWA</li><li>Accessibilità</li></ul>
   </article>
 
