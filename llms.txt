@@ -1,6 +1,6 @@
 # Nicola Valigi
 
-A Bergamo. Porta un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Il claim del sito è «Costruiamo adesso.»
+A Bergamo. Porta un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.»
 
 Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, automazione, dati, mappe e interfacce.
 
