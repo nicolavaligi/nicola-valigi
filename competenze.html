@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Competenze — Nicola Valigi</title>
+<meta name="description" content="Vibe coding e strumenti concreti: Claude Code, MCP, n8n, Python, FastAPI, MapLibre. Nicola Valigi, Bergamo.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='ui-monospace,monospace' font-size='11' fill='%232E56FF'%3ENV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #EDEBE6; --blue: #2E56FF; --quiet: #B9B5AC; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #000;
+    color: var(--ink);
+    font-family: Archivo, "Helvetica Neue", sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+  .pagina {
+    width: min(680px, 100%);
+    margin: 0 auto;
+    padding: max(28px, env(safe-area-inset-top)) 22px max(48px, env(safe-area-inset-bottom));
+  }
+  .torna {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+  }
+  h1 {
+    margin: 28px 0 12px;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .lead { margin: 0 0 8px; color: var(--quiet); }
+  .lead + .lead { margin-bottom: 28px; }
+  article { padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  article h2 {
+    margin: 0 0 10px;
+    font-size: 1.45rem;
+    letter-spacing: -0.03em;
+  }
+  article p { margin: 0 0 10px; }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 225, 74, 0.45);
+    color: #FFE14A;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+  }
+  .fondo {
+    margin-top: 8px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main class="pagina">
+  <a class="torna" href="index.html">← Nicola Valigi</a>
+  <h1>Competenze</h1>
+  <p class="lead">Consulente AI e automazione, Bergamo. Le idee le prendo in mano: le dirigo con un agente e le rilascio come strumenti che qualcuno usa.</p>
+  <p class="lead">Dodici anni dentro i documenti di una grande commessa infrastrutturale. Da lì so distinguere il collo di bottiglia vero. La formazione è artistica, Accademia di Brera e liceo artistico di Novara: è il motivo per cui gli strumenti hanno un'interfaccia, e non l'aspetto di un prototipo.</p>
+
+  <article>
+    <h2>Vibe coding</h2>
+    <p>Costruisco dirigendo Claude Code. Il lavoro sta prima della generazione: regole del progetto scritte e vincolanti per l'agente, un ciclo breve che finisce sempre con qualcosa pubblicato e con una misura che decide il ciclo dopo.</p>
+    <p>L'AI esegue in fretta e amplifica anche il vuoto. Il valore è sapere cosa chiederle e cosa rifiutare.</p>
+    <ul><li>Claude Code</li><li>Git</li><li>CLI</li></ul>
+  </article>
+
+  <article>
+    <h2>Agenti</h2>
+    <p>Collego il modello agli strumenti veri con MCP: file, memoria, servizi. L'agente propone e recupera.</p>
+    <p>Le azioni che toccano CRM, mail o calendario non le esegue il modello. Le esegue il codice, con le API ufficiali.</p>
+    <ul><li>MCP</li><li>Claude</li><li>Agenti</li></ul>
+  </article>
+
+  <article>
+    <h2>Automazione</h2>
+    <p>I flussi ripetuti stanno su n8n e su funzioni che partono da sole. Una nota vocale diventa un'azione: il modello la interpreta, il codice la instrada verso CRM, mail, Notion o calendario.</p>
+    <p>I controlli prima del rilascio partono da soli. Ciò che non è automatico non viene controllato.</p>
+    <ul><li>n8n</li><li>Notion</li><li>HubSpot</li></ul>
+  </article>
+
+  <article>
+    <h2>Dati</h2>
+    <p>Smonta i portali pubblici che non hanno un'API: trovo l'indirizzo che restituisce i dati veri, scrivo parser che reggono un cambio di colonna, estraggo i PDF.</p>
+    <p>L'archivio sta in SQLite. Sul tavolo resta il segnale, non l'elenco intero.</p>
+    <ul><li>Python</li><li>SQLite</li><li>Web scraping</li></ul>
+  </article>
+
+  <article>
+    <h2>Rilascio</h2>
+    <p>Dal prototipo alla produzione: API REST in FastAPI, funzioni serverless su Netlify, chiave mai nel browser.</p>
+    <p>Il sito pubblico si genera dai dati. Vetrina e archivio non divergono.</p>
+    <ul><li>FastAPI</li><li>Netlify Functions</li><li>JavaScript</li></ul>
+  </article>
+
+  <article>
+    <h2>Mappe</h2>
+    <p>Liste di siti, punteggi e mappe confrontabili. Quello che era una giornata di controlli a tavolino diventa una mappa, con i dati territoriali sotto.</p>
+    <ul><li>MapLibre</li><li>OpenStreetMap</li></ul>
+  </article>
+
+  <article>
+    <h2>Interfaccia</h2>
+    <p>Cosa si guarda per primo, come si legge un numero, perché una schermata viene riaperta anche domani. La formazione artistica la uso come competenza tecnica.</p>
+    <p>Contrasto, gerarchia, telefono. Un audit automatico prima di pubblicare.</p>
+    <ul><li>UI</li><li>HTML e CSS</li><li>Accessibilità</li></ul>
+  </article>
+
+  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p>
+</main>
+</body>
+</html>
