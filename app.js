@@ -1,4 +1,21 @@
 (function () {
+  function syncViewport() {
+    var vv = window.visualViewport;
+    var top = vv ? vv.offsetTop : 0;
+    var height = vv ? vv.height : window.innerHeight;
+    var bottom = Math.max(0, window.innerHeight - top - height);
+    var root = document.documentElement.style;
+    root.setProperty("--vv-top", top + "px");
+    root.setProperty("--vv-height", height + "px");
+    root.setProperty("--vv-bottom", bottom + "px");
+  }
+  syncViewport();
+  window.addEventListener("resize", syncViewport);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", syncViewport);
+    window.visualViewport.addEventListener("scroll", syncViewport);
+  }
+
   var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
   if (!standalone && location.protocol === "https:" && "serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
