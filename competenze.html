@@ -8,8 +8,12 @@
 <meta name="author" content="Nicola Valigi">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.nicvaligi.com/competenze.html">
+<link rel="alternate" hreflang="it" href="https://www.nicvaligi.com/competenze.html">
+<link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/skills.html">
+<link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/competenze.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="Nicola Valigi">
 <meta property="og:url" content="https://www.nicvaligi.com/competenze.html">
 <meta property="og:title" content="Competenze — Nicola Valigi">
@@ -108,6 +112,22 @@
       calc(var(--app-bar-size, 0px) + max(48px, env(safe-area-inset-bottom)))
       max(22px, env(safe-area-inset-left));
   }
+  .testa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .lingua {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    color: #fff;
+  }
   .torna {
     display: inline-flex;
     align-items: center;
@@ -120,7 +140,7 @@
     color: #fff;
   }
   @media (max-width: 700px), (max-height: 500px) {
-    .torna {
+    .testa {
       position: sticky;
       top: 0;
       z-index: 4;
@@ -181,7 +201,10 @@
 </head>
 <body>
 <main class="pagina">
-  <a class="torna" href="index.html">← Nicola Valigi</a>
+  <div class="testa">
+    <a class="torna" href="index.html">← Nicola Valigi</a>
+    <a class="lingua" href="en/skills.html" hreflang="en" lang="en" aria-label="English">EN</a>
+  </div>
   <h1>Competenze</h1>
   <p class="lead">Porto un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Prendo in mano le idee, le sviluppo dirigendo un agente e le consegno come strumenti che qualcuno usa davvero, tutti i giorni.</p>
   <p class="lead">Mi trovo a mio agio da subito con le applicazioni nuove, e mi appassiona studiarle.</p>

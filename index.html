@@ -10,6 +10,9 @@
 <meta name="google-site-verification" content="zXXyI5crlDnXxVP3Pjfpka0cY0ZRrG_DolbOVxaXhik">
 <meta name="google-site-verification" content="2FqvcDyMFmD_TnM98l8A1d3zDDv297yth8tazaw8H9k">
 <link rel="canonical" href="https://www.nicvaligi.com/">
+<link rel="alternate" hreflang="it" href="https://www.nicvaligi.com/">
+<link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/">
 <link rel="me" href="https://github.com/nicolavaligi">
 <link rel="me" href="https://www.linkedin.com/in/nicola-valigi-288418447/">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
@@ -23,6 +26,7 @@
 <link rel="stylesheet" href="shell.css">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="Nicola Valigi">
 <meta property="og:url" content="https://www.nicvaligi.com/">
 <meta property="og:title" content="Nicola Valigi — Consulente AI e automazione">
@@ -63,7 +67,7 @@
         "latitude": 45.6983,
         "longitude": 9.6773
       },
-      "knowsLanguage": "it",
+      "knowsLanguage": ["it", "en"],
       "sameAs": [
         "https://github.com/nicolavaligi",
         "https://www.linkedin.com/in/nicola-valigi-288418447/"
@@ -232,6 +236,23 @@
     white-space: nowrap;
   }
 
+  .lingua {
+    position: fixed;
+    z-index: 7;
+    top: max(20px, env(safe-area-inset-top));
+    right: calc(max(16px, env(safe-area-inset-right)) + 60px);
+    min-width: 44px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    color: #fff;
+  }
+  .lingua:hover { color: #FFE14A; }
+
   .dock {
     position: fixed;
     top: max(16px, env(safe-area-inset-top));
@@ -297,6 +318,11 @@
   .links a:hover { background: var(--blue); border-color: var(--blue); }
 
   @media (max-width: 700px), (max-height: 500px) {
+    .lingua {
+      right: auto;
+      left: max(16px, env(safe-area-inset-left));
+      top: max(8px, env(safe-area-inset-top));
+    }
     .dock { display: none; }
     .stage {
       padding:
@@ -322,6 +348,7 @@
 </style>
 </head>
 <body>
+<a class="lingua" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
 <canvas id="field" aria-hidden="true"></canvas>
 
 <nav class="dock" id="dock">

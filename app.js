@@ -18,7 +18,7 @@
 
   var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
   if (!standalone && location.protocol === "https:" && "serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
+    navigator.serviceWorker.register("/sw.js");
   }
 
   var button = document.getElementById("installa");

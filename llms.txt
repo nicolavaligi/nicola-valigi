@@ -1,11 +1,13 @@
 # Nicola Valigi
 
-A Bergamo. Porta un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.»
+A Bergamo. Porta un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.» In inglese è «Let's build now.», su https://www.nicvaligi.com/en/
 
 Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, automazione, dati, mappe e interfacce.
 
 - Sito: https://www.nicvaligi.com/
 - Competenze: https://www.nicvaligi.com/competenze.html
+- English: https://www.nicvaligi.com/en/
+- Skills: https://www.nicvaligi.com/en/skills.html
 - Email: n.valigi@gmail.com
 - GitHub: https://github.com/nicolavaligi
 - LinkedIn: https://www.linkedin.com/in/nicola-valigi-288418447/
