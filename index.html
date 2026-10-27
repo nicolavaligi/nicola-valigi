@@ -86,6 +86,7 @@
     text-align: center;
     gap: clamp(28px, 5vh, 48px);
     padding: clamp(88px, 12vh, 120px) clamp(20px, 5vw, 48px) clamp(32px, 6vh, 64px);
+    pointer-events: none;
   }
   .who {
     margin: 0;
@@ -124,6 +125,20 @@
     white-space: nowrap;
   }
   .coords:hover { color: #FFD0E4; }
+  .trovato {
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    bottom: max(62px, calc(env(safe-area-inset-bottom) + 48px));
+    transform: translateX(-50%);
+    margin: 0;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #FFE14A;
+    white-space: nowrap;
+  }
 
   .dock {
     position: fixed;
@@ -213,6 +228,7 @@
   <h1>Costruiamo<br><span class="mark">adesso.</span></h1>
 </main>
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
+<p class="trovato" id="trovato" hidden>Trovato. Costruito a Bergamo.</p>
 
 <script>
 (function () {
@@ -236,6 +252,7 @@
       cool: Math.random() < 0.22
     });
   }
+  nodes[73].egg = true;
 
   reach = 0.36;
   for (a = 0; a < count; a++) {
@@ -260,6 +277,8 @@
   var projected = new Float32Array(count * 2);
   var depth = new Float32Array(count);
   var fire = new Float32Array(count);
+  var eggHit = { x: 0, y: 0, r: 18 };
+  var trovato = document.getElementById("trovato");
 
   function fit() {
     ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -320,11 +339,20 @@
       glow = fire[index];
       size = (3.2 + glow * 3.4) * (0.45 + depth[index] * 0.7);
       alpha = (0.28 + glow * 0.72) * (0.35 + depth[index] * 0.65);
+      var rgb = nodes[index].cool ? [143, 166, 255] : [237, 235, 230];
+      if (nodes[index].egg) {
+        rgb = [255, 225, 74];
+        size *= 1.7;
+        alpha = 1;
+        eggHit.x = projected[index * 2];
+        eggHit.y = projected[index * 2 + 1];
+        eggHit.r = Math.max(size * 2.2, 16);
+      }
       drawCube(
         projected[index * 2],
         projected[index * 2 + 1],
         size,
-        nodes[index].cool ? [143, 166, 255] : [237, 235, 230],
+        rgb,
         alpha
       );
     }
@@ -370,6 +398,23 @@
   document.addEventListener("visibilitychange", function () {
     running = document.visibilityState !== "hidden";
     if (running && !reduce) tick();
+  });
+
+  function overEgg(clientX, clientY) {
+    var rect = canvas.getBoundingClientRect();
+    var dx = clientX - rect.left - eggHit.x;
+    var dy = clientY - rect.top - eggHit.y;
+    return dx * dx + dy * dy <= eggHit.r * eggHit.r;
+  }
+
+  window.addEventListener("mousemove", function (event) {
+    if (event.target.closest("a, button")) return;
+    canvas.style.cursor = overEgg(event.clientX, event.clientY) ? "pointer" : "default";
+  });
+  window.addEventListener("click", function (event) {
+    if (event.target.closest("a, button")) return;
+    if (!overEgg(event.clientX, event.clientY)) return;
+    trovato.hidden = !trovato.hidden;
   });
 
   fit();
