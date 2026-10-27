@@ -8,6 +8,7 @@ Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, aut
 - Competenze: https://www.nicvaligi.com/competenze.html
 - Email: n.valigi@gmail.com
 - GitHub: https://github.com/nicolavaligi
+- LinkedIn: https://www.linkedin.com/in/nicola-valigi-288418447/
 - Dove: Bergamo, 45.6983° N, 9.6773° E
 
 Competenze pubbliche: vibe coding con Claude Code, Grok e Antigravity con Gemini, agenti e MCP, una memoria condivisa fra i lavori, automazione con n8n, dati con Python e SQLite, rilascio con FastAPI, mappe con MapLibre, interfacce. Ha installato Linux negli anni in cui era più complesso, lo usa tutt'oggi e ha dimestichezza con macchine virtuali e container, su Mac con OrbStack.

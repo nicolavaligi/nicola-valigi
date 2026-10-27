@@ -68,7 +68,7 @@ body {
     color: rgba(255, 255, 255, 0.55);
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
   }
   .appbar a svg {
@@ -88,5 +88,14 @@ body {
   .appbar a:focus-visible {
     outline: 2px solid #2E56FF;
     outline-offset: -4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .appbar a {
+    font-size: 0.58rem;
+    letter-spacing: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
