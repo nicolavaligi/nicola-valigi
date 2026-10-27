@@ -311,23 +311,48 @@
       ctx.stroke();
     }
 
+    var order = [];
+    for (n = 0; n < count; n++) order.push(n);
+    order.sort(function (i0, i1) { return depth[i0] - depth[i1]; });
+
     for (n = 0; n < count; n++) {
-      glow = fire[n];
-      size = (0.7 + glow * 2) * (0.45 + depth[n]);
-      alpha = (0.18 + glow * 0.82) * (0.3 + depth[n] * 0.7);
-      ctx.fillStyle = nodes[n].cool
-        ? "rgba(143,166,255," + alpha + ")"
-        : "rgba(237,235,230," + alpha + ")";
-      ctx.beginPath();
-      ctx.arc(projected[n * 2], projected[n * 2 + 1], Math.max(size, 0.4), 0, Math.PI * 2);
-      ctx.fill();
-      if (glow > 0.88) {
-        ctx.fillStyle = "rgba(46,86,255," + (glow - 0.88) * 1.5 + ")";
-        ctx.beginPath();
-        ctx.arc(projected[n * 2], projected[n * 2 + 1], Math.max(size, 0.4) * 3, 0, Math.PI * 2);
-        ctx.fill();
-      }
+      var index = order[n];
+      glow = fire[index];
+      size = (3.2 + glow * 3.4) * (0.45 + depth[index] * 0.7);
+      alpha = (0.28 + glow * 0.72) * (0.35 + depth[index] * 0.65);
+      drawCube(
+        projected[index * 2],
+        projected[index * 2 + 1],
+        size,
+        nodes[index].cool ? [143, 166, 255] : [237, 235, 230],
+        alpha
+      );
     }
+  }
+
+  function drawCube(x, y, s, rgb, alpha) {
+    var w = s;
+    var h = s * 0.55;
+    function tone(factor) {
+      return "rgba(" +
+        Math.round(rgb[0] * factor) + "," +
+        Math.round(rgb[1] * factor) + "," +
+        Math.round(rgb[2] * factor) + "," +
+        alpha + ")";
+    }
+    function face(pts, factor) {
+      ctx.fillStyle = tone(factor);
+      ctx.beginPath();
+      ctx.moveTo(x + pts[0], y + pts[1]);
+      ctx.lineTo(x + pts[2], y + pts[3]);
+      ctx.lineTo(x + pts[4], y + pts[5]);
+      ctx.lineTo(x + pts[6], y + pts[7]);
+      ctx.closePath();
+      ctx.fill();
+    }
+    face([-w, -h, 0, 0, 0, h, -w, 0], 0.62);
+    face([w, -h, 0, 0, 0, h, w, 0], 0.8);
+    face([0, -h * 2, w, -h, 0, 0, -w, -h], 1);
   }
 
   function tick() {
