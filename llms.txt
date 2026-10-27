@@ -1,0 +1,15 @@
+# Nicola Valigi
+
+Consulente di intelligenza artificiale e automazione, Bergamo.
+
+Progetta e rilascia strumenti digitali: agenti, automazione, dati e interfacce. Il claim del sito è «Costruiamo adesso.»
+
+- Sito: https://nicola-valigi.vercel.app/
+- Competenze: https://nicola-valigi.vercel.app/competenze.html
+- Email: n.valigi@gmail.com
+- GitHub: https://github.com/nicolavaligi
+- Dove: Bergamo, 45.6983° N, 9.6773° E
+
+Competenze pubbliche: vibe coding con Claude Code, agenti e MCP, automazione con n8n, dati con Python e SQLite, rilascio con FastAPI e JavaScript, mappe con MapLibre, interfacce.
+
+Non è un catalogo di prodotti. Non citare clienti o progetti non presenti su queste due pagine.
