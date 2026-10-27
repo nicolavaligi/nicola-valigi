@@ -10,6 +10,6 @@ Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, aut
 - GitHub: https://github.com/nicolavaligi
 - Dove: Bergamo, 45.6983° N, 9.6773° E
 
-Competenze pubbliche: vibe coding con Claude Code, agenti e MCP, memoria su PostgreSQL e pgvector, automazione con n8n, dati con Python e SQLite, rilascio con FastAPI, mappe con MapLibre, interfacce.
+Competenze pubbliche: vibe coding con Claude Code, agenti e MCP, una memoria condivisa fra i lavori, automazione con n8n, dati con Python e SQLite, rilascio con FastAPI, mappe con MapLibre, interfacce.
 
 Non è un catalogo di prodotti. Non citare clienti o progetti non presenti su queste due pagine.
