@@ -70,7 +70,7 @@
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(circle at 50% 44%, rgba(46, 86, 255, 0.14), transparent 48%),
+      radial-gradient(circle at 50% 50%, rgba(46, 86, 255, 0.14), transparent 48%),
       radial-gradient(circle at 50% 50%, transparent 40%, #000 92%);
   }
 
@@ -85,7 +85,7 @@
     justify-content: center;
     text-align: center;
     gap: clamp(28px, 5vh, 48px);
-    padding: clamp(88px, 12vh, 120px) clamp(20px, 5vw, 48px) clamp(32px, 6vh, 64px);
+    padding: clamp(24px, 6vh, 64px) clamp(20px, 5vw, 48px);
     pointer-events: none;
   }
   .who {
@@ -289,7 +289,7 @@
     canvas.height = Math.max(1, Math.floor(height * ratio));
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     centerX = width / 2;
-    centerY = height * 0.46;
+    centerY = height * 0.5;
     radius = Math.min(width, height) * 0.4;
   }
 
