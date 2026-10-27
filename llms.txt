@@ -4,8 +4,8 @@ Consulente di intelligenza artificiale e automazione, Bergamo.
 
 Progetta e rilascia strumenti digitali: agenti, automazione, dati e interfacce. Il claim del sito è «Costruiamo adesso.»
 
-- Sito: https://nicola-valigi.vercel.app/
-- Competenze: https://nicola-valigi.vercel.app/competenze.html
+- Sito: https://www.nicvaligi.com/
+- Competenze: https://www.nicvaligi.com/competenze.html
 - Email: n.valigi@gmail.com
 - GitHub: https://github.com/nicolavaligi
 - Dove: Bergamo, 45.6983° N, 9.6773° E
