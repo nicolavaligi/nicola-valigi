@@ -181,8 +181,8 @@
   .who {
     margin: 0;
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: clamp(0.62rem, 1.5vw, 0.76rem);
-    letter-spacing: 0.28em;
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #fff;
   }
@@ -190,7 +190,7 @@
     margin: 0;
     max-width: 12ch;
     font-weight: 700;
-    font-size: clamp(1.7rem, 4.6vw, 3.4rem);
+    font-size: clamp(2.8rem, 6.2vw, 6rem);
     line-height: 1.12;
     letter-spacing: -0.03em;
     text-wrap: balance;
@@ -215,7 +215,7 @@
     min-height: 44px;
     padding: 0 12px;
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.72rem;
+    font-size: 0.95rem;
     letter-spacing: 0.12em;
     color: #F4A4C8;
     white-space: nowrap;
@@ -236,49 +236,38 @@
     white-space: nowrap;
   }
 
-  .lingua {
+  .barra {
     position: fixed;
     z-index: 7;
-    top: max(20px, env(safe-area-inset-top));
-    right: calc(max(16px, env(safe-area-inset-right)) + 60px);
+    top: max(18px, env(safe-area-inset-top));
+    right: max(22px, env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lingua {
     min-width: 44px;
     min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
     color: #fff;
   }
   .lingua:hover { color: #FFE14A; }
 
   .dock {
-    position: fixed;
-    top: max(16px, env(safe-area-inset-top));
-    right: max(16px, env(safe-area-inset-right));
-    z-index: 5;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
+    flex-direction: row;
+    align-items: center;
     opacity: 0;
     transition: opacity 0.8s ease;
   }
   .dock.visible { opacity: 1; }
-  .dock button {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-  }
+  .dock button { display: none; }
   .dock button:hover { background: rgba(46, 86, 255, 0.2); border-color: var(--blue); }
   .dock button span {
     display: block;
@@ -292,38 +281,35 @@
   .dock.open button span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .links {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, opacity 0.35s ease;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
   }
-  .dock.open .links { max-height: 320px; opacity: 1; }
   .links a {
     display: inline-flex;
     align-items: center;
-    min-height: 48px;
-    padding: 12px 22px;
+    min-height: 44px;
+    padding: 0 14px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.28);
     background: rgba(255, 255, 255, 0.05);
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 1rem;
+    font-size: 0.95rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    text-decoration: none;
     color: #fff;
   }
   .links a:hover { background: var(--blue); border-color: var(--blue); }
 
   @media (max-width: 700px), (max-height: 500px) {
-    .lingua {
+    .barra {
       right: auto;
       left: max(16px, env(safe-area-inset-left));
       top: max(8px, env(safe-area-inset-top));
     }
     .dock { display: none; }
+    .coords { font-size: 0.72rem; }
     .stage {
       padding:
         max(16px, env(safe-area-inset-top))
@@ -348,9 +334,10 @@
 </style>
 </head>
 <body>
-<a class="lingua" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
 <canvas id="field" aria-hidden="true"></canvas>
 
+<header class="barra">
+<a class="lingua" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
 <nav class="dock" id="dock">
   <button type="button" id="menu-btn" aria-expanded="false" aria-controls="links" aria-label="Apri il menu">
     <span></span><span></span><span></span>
@@ -362,6 +349,7 @@
     <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </div>
 </nav>
+</header>
 
 <main class="stage">
   <div class="lockup">

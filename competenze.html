@@ -139,6 +139,31 @@
     text-transform: uppercase;
     text-decoration: none;
     color: #fff;
+    white-space: nowrap;
+  }
+  .navdesk { display: none; }
+  @media (min-width: 701px) and (min-height: 501px) {
+    .pagina { width: min(1040px, calc(100% - 64px)); }
+    .navdesk {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2px 18px;
+      margin-left: auto;
+    }
+    .navdesk a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .navdesk a[aria-current="page"] { color: #FFE14A; }
+    .torna { font-size: 1rem; letter-spacing: 0.06em; }
   }
   @media (max-width: 700px), (max-height: 500px) {
     .testa {
@@ -170,6 +195,10 @@
     margin: 0 0 10px;
     font-size: 1.75rem;
     letter-spacing: -0.03em;
+  }
+  @media (min-width: 701px) and (min-height: 501px) {
+    h1 { font-size: 4.2rem; }
+    article h2 { font-size: 2.1rem; }
   }
   article p { margin: 0 0 10px; }
   ul {
@@ -203,7 +232,14 @@
 <body>
 <main class="pagina">
   <div class="testa">
-    <a class="torna" href="index.html">← Nicola Valigi</a>
+    <a class="torna" href="index.html">Nicola Valigi</a>
+    <nav class="navdesk" aria-label="Sezioni">
+      <a href="index.html">Adesso</a>
+      <a href="competenze.html" aria-current="page">Competenze</a>
+      <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">Scrivimi</a>
+      <a href="https://github.com/nicolavaligi/nicola-valigi" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </nav>
     <a class="lingua" href="en/skills.html" hreflang="en" lang="en" aria-label="English">EN</a>
   </div>
   <h1>Competenze</h1>
