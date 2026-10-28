@@ -158,6 +158,8 @@
   #field {
     z-index: 0;
     display: block;
+    touch-action: none;
+    cursor: grab;
   }
   body::before {
     content: "";
@@ -443,9 +445,16 @@
   var centerY = 0;
   var radius = 0;
   var yaw = 0.4;
+  var pitch = null;
   var time = 0;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var running = true;
+  var dragging = false;
+  var dragMoved = false;
+  var suppressClick = false;
+  var lastX = 0;
+  var lastY = 0;
+  var idleAt = 0;
   var projected = new Float32Array(count * 2);
   var depth = new Float32Array(count);
   var fire = new Float32Array(count);
@@ -497,7 +506,7 @@
     var span = radius * breath;
     var sinY = Math.sin(yaw);
     var cosY = Math.cos(yaw);
-    var tilt = -0.32 + Math.sin(yaw * 0.45) * 0.1;
+    var tilt = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
     var sinX = Math.sin(tilt);
     var cosX = Math.cos(tilt);
     var focal = 2.5;
@@ -585,9 +594,30 @@
   function tick() {
     if (!running) return;
     time += 0.016;
-    yaw += 0.0015;
+    if (!dragging && performance.now() > idleAt) yaw += 0.0015;
     draw();
     if (!reduce) requestAnimationFrame(tick);
+  }
+
+  function holdIdle() {
+    idleAt = performance.now() + 3500;
+  }
+
+  function limitPitch(value) {
+    if (value > 1.15) return 1.15;
+    if (value < -1.15) return -1.15;
+    return value;
+  }
+
+  function steer(dx, dy) {
+    var unit = Math.max(radius, 80);
+    if (Math.abs(dy) > 0.5) {
+      var base = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
+      pitch = limitPitch(base + dy / unit * 1.15);
+    }
+    yaw += dx / unit * 1.35;
+    holdIdle();
+    if (reduce) draw();
   }
 
   window.addEventListener("resize", function () {
@@ -620,11 +650,62 @@
     return dx * dx + dy * dy <= eggHit.r * eggHit.r;
   }
 
-  window.addEventListener("mousemove", function (event) {
+  window.addEventListener("pointerdown", function (event) {
     if (event.target.closest("a, button")) return;
-    canvas.style.cursor = overEgg(event.clientX, event.clientY) ? "pointer" : "default";
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    suppressClick = false;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    canvas.style.cursor = "grabbing";
   });
+  window.addEventListener("pointermove", function (event) {
+    if (event.target.closest("a, button") && !dragging) {
+      canvas.style.cursor = "";
+      return;
+    }
+    if (!dragging) {
+      canvas.style.cursor = overEgg(event.clientX, event.clientY) ? "pointer" : "grab";
+      return;
+    }
+    var dx = event.clientX - lastX;
+    var dy = event.clientY - lastY;
+    if (dx * dx + dy * dy > 9) dragMoved = true;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    if (dragMoved) steer(dx, dy);
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    if (dragMoved) suppressClick = true;
+    canvas.style.cursor = "grab";
+  }
+  window.addEventListener("pointerup", endDrag);
+  window.addEventListener("pointercancel", endDrag);
+  window.addEventListener("wheel", function (event) {
+    if (event.target.closest("a, button")) return;
+    event.preventDefault();
+    var dx = event.deltaX;
+    var dy = event.deltaY;
+    if (event.deltaMode === 1) { dx *= 16; dy *= 16; }
+    else if (event.deltaMode === 2) { dx *= window.innerWidth; dy *= window.innerHeight; }
+    if (event.shiftKey || Math.abs(dx) > Math.abs(dy)) {
+      var amount = event.shiftKey ? dy : dx;
+      var base = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
+      pitch = limitPitch(base + amount * 0.0022);
+    } else {
+      yaw += dy * 0.0022;
+    }
+    holdIdle();
+    if (reduce) draw();
+  }, { passive: false });
   window.addEventListener("click", function (event) {
+    if (suppressClick) {
+      suppressClick = false;
+      return;
+    }
     if (event.target.closest("a, button")) return;
     if (!overEgg(event.clientX, event.clientY)) return;
     trovato.hidden = !trovato.hidden;
