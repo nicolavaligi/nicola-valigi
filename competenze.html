@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Competenze — Nicola Valigi</title>
-<meta name="description" content="Nicola Valigi, Bergamo. Flussi manuali, portali e PDF diventano strumenti automatici, usabili dal telefono in pochi giorni.">
+<meta name="description" content="Nicola Valigi, Bergamo. Il problema, i documenti, il dato ufficiale. La macchina esegue. Uno strumento sul telefono, in pochi giorni.">
 <meta name="author" content="Nicola Valigi">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.nicvaligi.com/competenze.html">
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="Nicola Valigi">
 <meta property="og:url" content="https://www.nicvaligi.com/competenze.html">
 <meta property="og:title" content="Competenze — Nicola Valigi">
-<meta property="og:description" content="Flussi manuali e documenti complessi diventano strumenti automatici. Nicola Valigi, Bergamo.">
+<meta property="og:description" content="Il problema, i documenti, il dato ufficiale. La macchina esegue. Nicola Valigi, Bergamo.">
 <meta property="og:image" content="https://www.nicvaligi.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Nicola Valigi. Strumenti automatici da flussi manuali e documenti complessi.">
+<meta property="og:image:alt" content="Nicola Valigi. Il problema e il dato ufficiale. La macchina esegue.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Competenze — Nicola Valigi">
-<meta name="twitter:description" content="Flussi manuali e documenti complessi diventano strumenti automatici. Nicola Valigi, Bergamo.">
+<meta name="twitter:description" content="Il problema, i documenti, il dato ufficiale. La macchina esegue. Nicola Valigi, Bergamo.">
 <meta name="twitter:image" content="https://www.nicvaligi.com/og.png">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -75,15 +75,10 @@
       "name": "Competenze di Nicola Valigi",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Cosa faccio" },
-        { "@type": "ListItem", "position": 2, "name": "Vibe coding" },
-        { "@type": "ListItem", "position": 3, "name": "Agenti" },
-        { "@type": "ListItem", "position": 4, "name": "Memoria e conoscenza" },
-        { "@type": "ListItem", "position": 5, "name": "Automazione" },
-        { "@type": "ListItem", "position": 6, "name": "Dati" },
-        { "@type": "ListItem", "position": 7, "name": "Rilascio" },
-        { "@type": "ListItem", "position": 8, "name": "Mappe" },
-        { "@type": "ListItem", "position": 9, "name": "Interfaccia" },
-        { "@type": "ListItem", "position": 10, "name": "Sistemi operativi" }
+        { "@type": "ListItem", "position": 2, "name": "Il dato" },
+        { "@type": "ListItem", "position": 3, "name": "La mappa" },
+        { "@type": "ListItem", "position": 4, "name": "Dodici anni" },
+        { "@type": "ListItem", "position": 5, "name": "Linux" }
       ]
     }
   ]
@@ -183,39 +178,38 @@
     }
   }
   h1 {
-    margin: 28px 0 12px;
+    margin: 28px 0 18px;
     font-size: clamp(2.5rem, 8vw, 3.5rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
   }
-  .lead { margin: 0 0 8px; color: var(--quiet); }
-  .lead + .lead { margin-bottom: 28px; }
-  article { padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  article {
+    max-width: 40rem;
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  article:first-of-type { border-top: 0; padding-top: 0; }
   article h2 {
-    margin: 0 0 10px;
-    font-size: 1.75rem;
+    margin: 0 0 8px;
+    font-size: 1.35rem;
     letter-spacing: -0.03em;
+    color: var(--quiet);
   }
   @media (min-width: 701px) and (min-height: 501px) {
     h1 { font-size: 4.2rem; }
-    article h2 { font-size: 2.1rem; }
+    article h2 { font-size: 1.5rem; }
   }
-  article p { margin: 0 0 10px; }
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 14px 0 0;
+  article p { margin: 0 0 12px; }
+  article p:last-child { margin-bottom: 0; }
+  .ora { color: #FFE14A; }
+  .numeri {
+    margin: 4px 0 0;
     padding: 0;
     list-style: none;
-  }
-  li {
-    padding: 6px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 225, 74, 0.45);
-    color: #FFE14A;
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #fff;
   }
   .fondo {
     margin-top: 8px;
@@ -245,80 +239,39 @@
   <h1>Competenze</h1>
   <article>
     <h2>Cosa faccio</h2>
-    <p>Trasformo flussi manuali e documenti complessi in strumenti automatici che fanno risparmiare ore ogni giorno.</p>
-    <p>Estraggo i dati in automatico da portali e da PDF ostici, e le pipeline trasformano note vocali e messaggi WhatsApp in azioni dirette su CRM e calendari.</p>
-    <p>Costruisco micro-strumenti su misura, pronti e usabili dal telefono in pochi giorni.</p>
-    <p>Lavoro in proprio. Sugli strumenti digitali mi sono formato da solo, e cambio strumento quando il problema cambia.</p>
-    <p>Parto dal dato ufficiale e arrivo allo strumento con cui si decide.</p>
-  </article>
-  <p class="lead">Mi trovo a mio agio da subito con le applicazioni nuove, e mi appassiona studiarle.</p>
-  <p class="lead">Ho passato dodici anni dentro i documenti di una grande commessa infrastrutturale. Lì ho imparato a riconoscere il collo di bottiglia vero, che di solito non è quello che viene segnalato. Coordino le pratiche di esproprio e faccio le perizie tecniche estimative per i clienti espropriati.</p>
-
-  <article>
-    <h2>Vibe coding</h2>
-    <p>Costruisco dirigendo Claude Code, e anche Grok e Antigravity con Gemini. Il grosso del lavoro viene prima della generazione. Scrivo le regole del progetto e l'agente è obbligato a seguirle. Ogni decisione di architettura diventa un ADR numerato, una nota che resta e si ritrova. Il ciclo è breve, si chiude sempre con qualcosa pubblicato e con una misura che decide il ciclo successivo.</p>
-    <p>L'AI esegue in fretta, ma amplifica anche il vuoto. Il valore sta nel sapere cosa chiederle e cosa rifiutare.</p>
-    <ul><li>Claude Code</li><li>Grok</li><li>Antigravity</li><li>Gemini</li><li>Git</li><li>GitHub</li><li>CLI</li><li>ADR</li><li>Skill</li></ul>
+    <p>Porto il problema, i documenti e il dato ufficiale. La macchina esegue. <span class="ora">Io decido cosa chiederle e cosa rifiutare.</span></p>
+    <p>Dal flusso che oggi si fa a mano esce uno strumento. Sul telefono, in pochi giorni.</p>
+    <p>Il modello legge la richiesta. Il prezzo di un preventivo lo calcola il codice. Niente esce senza un ok.</p>
+    <p>Lavoro in proprio. Mi sono formato da solo, e cambio strumento quando cambia il problema.</p>
   </article>
 
   <article>
-    <h2>Agenti</h2>
-    <p>Con MCP collego il modello agli strumenti veri: file, memoria, servizi. I server MCP li scrivo io. L'agente propone, cerca e prepara le bozze.</p>
-    <p>Le azioni che toccano CRM, mail o calendario non le fa il modello: le fa il codice, attraverso le API ufficiali. Niente parte senza un «ok» esplicito.</p>
-    <ul><li>MCP</li><li>Claude</li><li>Agenti</li><li>Skill</li></ul>
+    <h2>Il dato</h2>
+    <p>Se c'è una fonte ufficiale, uso quella. Sul tavolo non arriva l'elenco. Arriva un punteggio da 0 a 100.</p>
+    <ul class="numeri">
+      <li>Oltre 21.900 particelle catastali</li>
+      <li>116 lotti, 709,7 ettari, 591,4 MWp</li>
+      <li>60 poli, 1.166,2 ettari, 971,8 MWp</li>
+      <li>2.107 cabine primarie</li>
+      <li>277 piazzali, 54,3 MWp, su 7.904 comuni</li>
+    </ul>
   </article>
 
   <article>
-    <h2>Memoria e conoscenza</h2>
-    <p>Ho costruito una memoria condivisa fra i lavori. Una domanda in italiano ritrova una decisione presa mesi prima, anche in un altro progetto.</p>
-    <p>Ci entrano note, mail e documenti. Le note stanno in Obsidian. Quello che è riservato resta fuori: nel dubbio, non entra.</p>
-    <p>Quello che ho risolto una volta lo tengo, testato, pronto per la prossima.</p>
-    <ul><li>Obsidian</li></ul>
+    <h2>La mappa</h2>
+    <p>Distanza dalle linee e dalle cabine, allaccio, irraggiamento, valore agricolo, vincolo. Campagna aperta e periurbano non sono la stessa cosa.</p>
+    <p>Una giornata di controlli diventa una mappa su cui si decide.</p>
   </article>
 
   <article>
-    <h2>Automazione</h2>
-    <p>I flussi che si ripetono partono da soli. Una nota vocale diventa un'azione: il modello la interpreta, il codice la smista verso CRM, mail o calendario. Un messaggio WhatsApp entra nello stesso flusso.</p>
-    <p>I controlli prima del rilascio sono automatici. Quello che non è automatico non viene controllato.</p>
-    <ul><li>Edge Functions</li><li>HubSpot</li><li>WhatsApp</li><li>Plaud</li></ul>
+    <h2>Dodici anni</h2>
+    <p>Li ho passati dentro i documenti di una grande commessa infrastrutturale. Il collo di bottiglia vero di solito non è quello segnalato.</p>
+    <p>Coordino le pratiche di esproprio e faccio le perizie tecniche estimative per i clienti espropriati.</p>
   </article>
 
   <article>
-    <h2>Dati</h2>
-    <p>Smonto i portali pubblici che non hanno un'API. Trovo l'indirizzo che restituisce i dati veri, scrivo parser che non si rompono se cambia una colonna, estraggo il contenuto dei PDF. Se la chiamata fallisce, riprovo. I duplicati si scartano. Le date italiane restano date.</p>
-    <p>Se la fonte ufficiale c'è, uso quella. Niente dato sintetico al posto di una particella, di una cabina, di un comune.</p>
-    <p>Sul tavolo sono arrivati oltre 21.900 particelle catastali, qualificate per il fotovoltaico. Poi 116 lotti, 709,7 ettari e 591,4 MWp, e 60 poli, 1.166,2 ettari e 971,8 MWp: verificati sul catasto e incrociati con 2.107 cabine primarie. E 277 piazzali per le pensiline, 54,3 MWp, sui 7.904 comuni.</p>
-    <p>L'archivio sta in SQLite o in Postgres. Sul tavolo arriva il segnale, non l'elenco intero. Un punteggio da 0 a 100 mette in ordine quello che va visto prima.</p>
-    <ul><li>Python</li><li>uv</li><li>SQLite</li><li>Web scraping</li><li>Estrazione PDF</li></ul>
-  </article>
-
-  <article>
-    <h2>Rilascio</h2>
-    <p>Dal prototipo alla produzione: API REST in FastAPI, funzioni serverless su Netlify e Supabase, accese solo quando servono, chiavi sempre lato server e mai nel browser. I proxy, la porta davanti al servizio, accettano solo domini autorizzati e hanno un limite di richieste. Gli accessi sono separati per cliente.</p>
-    <p>Il sito pubblico si genera dai dati, così vetrina e archivio non divergono. Ogni funzione si usa da interfaccia, da riga di comando e via API.</p>
-    <p>Undici progetti, ognuno col suo ambiente e il suo repository. Nove sono già pubblicati: API, mappe, siti, un SDK Python. Il prezzo di un preventivo lo calcola il codice, non il modello: il modello legge la richiesta, il numero non si inventa.</p>
-    <ul><li>FastAPI</li><li>Railway</li><li>RapidAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
-  </article>
-
-  <article>
-    <h2>Mappe</h2>
-    <p>Elenchi di siti, punteggi e mappe confrontabili. Una giornata di controlli a tavolino diventa una mappa, con sotto i dati territoriali e i calcoli geometrici: aree, centroidi, distanze.</p>
-    <p>Interrogo il catasto, le mappe aperte, le linee e le cabine. La distanza conta per l'allaccio. L'irraggiamento viene da PVGIS, a impianto fisso o a tracker.</p>
-    <p>Accanto al terreno metto il valore agricolo, la regola sull'esproprio e il vincolo dell'area idonea. Campagna aperta e periurbano non sono la stessa cosa.</p>
-    <ul><li>MapLibre</li><li>Leaflet</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
-  </article>
-
-  <article>
-    <h2>Interfaccia</h2>
-    <p>Cosa si guarda per primo, come si legge un numero, perché una schermata viene riaperta anche domani.</p>
-    <p>Contrasto, gerarchia, telefono. Le pagine si installano sul telefono come un'app. Prima di pubblicare parte un audit automatico. La schermata serve a decidere in pochi secondi. Quando serve privacy, il sito sta in casa, senza pezzi caricati da fuori.</p>
-    <ul><li>UI</li><li>HTML e CSS</li><li>PWA</li><li>Accessibilità</li></ul>
-  </article>
-
-  <article>
-    <h2>Sistemi operativi</h2>
-    <p>Ho installato Linux negli anni in cui era più complesso, e lo uso tutt'oggi. Ho dimestichezza con le macchine virtuali: su Mac le faccio girare con OrbStack e con VirtualBox.</p>
-    <ul><li>Linux</li><li>OrbStack</li><li>VirtualBox</li><li>Macchine virtuali</li></ul>
+    <h2>Linux</h2>
+    <p>L'ho installato quando era più complicato, e lo uso ancora. Sul Mac le macchine virtuali girano con OrbStack e con VirtualBox.</p>
   </article>
 
   <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi/nicola-valigi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
