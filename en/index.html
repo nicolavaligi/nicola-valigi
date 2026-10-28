@@ -164,14 +164,16 @@
     pointer-events: none;
   }
   #sphere {
-    width: min(84vmin, 980px);
-    height: min(84vmin, 980px);
-    object-fit: cover;
-    border-radius: 50%;
-    background: #000;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
     pointer-events: auto;
     cursor: grab;
     touch-action: none;
+    filter:
+      drop-shadow(0 22px 28px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 42px rgba(31, 67, 216, 0.4));
   }
   body::before {
     content: "";
@@ -339,7 +341,6 @@
     }
     .dock { display: none; }
     .coords { font-size: 0.72rem; }
-    #sphere { width: min(74vmin, 460px); height: min(74vmin, 460px); }
     .stage {
       padding:
         max(16px, env(safe-area-inset-top))
@@ -366,9 +367,7 @@
 </head>
 <body>
 <div class="orb">
-<video id="sphere" autoplay muted loop playsinline poster="../sphere.jpg" aria-hidden="true">
-  <source src="../sphere.mp4" type="video/mp4">
-</video>
+<canvas id="sphere" aria-hidden="true"></canvas>
 </div>
 
 <header class="barra">
@@ -394,7 +393,7 @@
 </main>
 <div class="piede">
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
-<p class="powered">powered: HTML · CSS · video</p>
+<p class="powered">powered: HTML · CSS · WebGL</p>
 </div>
 <p class="trovato" id="trovato" hidden>Found. Built in Bergamo.</p>
 <nav class="appbar" aria-label="Sections">
@@ -423,29 +422,256 @@
 
 <script>
 (function () {
-  var sphere = document.getElementById("sphere");
+  var canvas = document.getElementById("sphere");
   var trovato = document.getElementById("trovato");
+  var gl = canvas.getContext("webgl", { alpha: true, antialias: true, premultipliedAlpha: false });
+  if (!gl) return;
+
+  var vsSrc = [
+    "attribute vec3 aPos;",
+    "attribute vec3 aNrm;",
+    "uniform mat4 uMvp;",
+    "uniform mat3 uN;",
+    "varying vec3 vN;",
+    "varying vec3 vPos;",
+    "void main() {",
+    "  vPos = aPos;",
+    "  vN = uN * aNrm;",
+    "  gl_Position = uMvp * vec4(aPos, 1.0);",
+    "}"
+  ].join("\n");
+
+  var fsSrc = [
+    "precision mediump float;",
+    "varying vec3 vN;",
+    "varying vec3 vPos;",
+    "uniform float uTime;",
+    "void main() {",
+    "  vec3 n = normalize(vN);",
+    "  vec3 p = normalize(vPos);",
+    "  float lon = atan(p.z, p.x);",
+    "  float lat = asin(clamp(p.y, -1.0, 1.0));",
+    "  vec2 cell = vec2(lon * 5.0, lat * 5.0);",
+    "  vec2 gv = fract(cell) - 0.5;",
+    "  float puck = length(gv);",
+    "  float led = smoothstep(0.46, 0.18, puck);",
+    "  float bead = led * (0.55 + 0.45 * smoothstep(0.25, -0.3, gv.y));",
+    "  float twinkle = 0.86 + 0.14 * sin(uTime * 1.3 + cell.x * 2.1 + cell.y * 1.7);",
+    "  float band = smoothstep(0.10, 0.0, abs(lat - 0.62));",
+    "  vec3 diode = mix(vec3(0.20, 0.52, 1.0), vec3(1.0, 0.88, 0.28), band);",
+    "  vec3 skin = diode * bead * twinkle;",
+    "  vec3 key = normalize(vec3(-1.05, 0.38, 0.42));",
+    "  float ndl = dot(n, key);",
+    "  float shade = smoothstep(-0.85, 0.45, ndl);",
+    "  float facing = clamp(n.z, 0.0, 1.0);",
+    "  shade *= mix(0.34, 1.0, pow(facing, 0.22));",
+    "  vec3 col = skin * shade;",
+    "  vec3 halfv = normalize(key + vec3(0.15, 0.35, 1.0));",
+    "  float broad = pow(clamp(dot(n, halfv), 0.0, 1.0), 8.0);",
+    "  float hot = pow(clamp(dot(n, halfv), 0.0, 1.0), 48.0);",
+    "  col += vec3(0.5, 0.68, 1.0) * broad * 0.75;",
+    "  col += vec3(1.0, 0.98, 0.94) * hot;",
+    "  gl_FragColor = vec4(col, 1.0);",
+    "}"
+  ].join("\n");
+
+  function shader(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, shader(gl.VERTEX_SHADER, vsSrc));
+  gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, fsSrc));
+  gl.bindAttribLocation(prog, 0, "aPos");
+  gl.bindAttribLocation(prog, 1, "aNrm");
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(prog));
+  gl.useProgram(prog);
+
+  var slices = 120;
+  var stacks = 80;
+  var positions = [];
+  var indices = [];
+  var y, x, v, u, phi, theta, px, py, pz, row;
+  for (y = 0; y <= stacks; y++) {
+    v = y / stacks;
+    phi = v * Math.PI;
+    for (x = 0; x <= slices; x++) {
+      u = x / slices;
+      theta = u * Math.PI * 2;
+      px = Math.sin(phi) * Math.cos(theta);
+      py = Math.cos(phi);
+      pz = Math.sin(phi) * Math.sin(theta);
+      positions.push(px, py, pz);
+    }
+  }
+  for (y = 0; y < stacks; y++) {
+    for (x = 0; x < slices; x++) {
+      row = y * (slices + 1) + x;
+      indices.push(row, row + slices + 1, row + 1);
+      indices.push(row + 1, row + slices + 1, row + slices + 2);
+    }
+  }
+  var posBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(1);
+  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
+  var indexBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuf);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+
+  var uMvp = gl.getUniformLocation(prog, "uMvp");
+  var uN = gl.getUniformLocation(prog, "uN");
+  var uTime = gl.getUniformLocation(prog, "uTime");
+  var yaw = 0.55;
+  var pitch = -0.22;
+  var userZoom = 1;
+  var hitR = 200;
+  var time = 0;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var rx = 0;
-  var ry = 0;
-  var scale = 1;
+  var running = true;
   var dragging = false;
   var dragMoved = false;
   var suppressClick = false;
   var lastX = 0;
   var lastY = 0;
+  var idleAt = 0;
+  var camZ = 3.25;
+  var fovy = 0.7;
 
-  function paint() {
-    sphere.style.transform = "rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) scale(" + scale.toFixed(3) + ")";
+  function perspective(fovy, aspect, near, far) {
+    var f = 1 / Math.tan(fovy / 2);
+    var nf = 1 / (near - far);
+    var o = new Float32Array(16);
+    o[0] = f / aspect;
+    o[5] = f;
+    o[10] = (far + near) * nf;
+    o[11] = -1;
+    o[14] = 2 * far * near * nf;
+    return o;
   }
 
-  if (reduce) {
-    sphere.removeAttribute("autoplay");
-    sphere.pause();
-  } else {
-    var play = sphere.play();
-    if (play && play.catch) play.catch(function () {});
+  function mul(a, b) {
+    var o = new Float32Array(16);
+    var c, r;
+    for (c = 0; c < 4; c++) {
+      for (r = 0; r < 4; r++) {
+        o[c * 4 + r] =
+          a[r] * b[c * 4] +
+          a[4 + r] * b[c * 4 + 1] +
+          a[8 + r] * b[c * 4 + 2] +
+          a[12 + r] * b[c * 4 + 3];
+      }
+    }
+    return o;
   }
+
+  function rotX(a) {
+    var c = Math.cos(a);
+    var s = Math.sin(a);
+    var o = new Float32Array(16);
+    o[0] = 1;
+    o[5] = c;
+    o[6] = s;
+    o[9] = -s;
+    o[10] = c;
+    o[15] = 1;
+    return o;
+  }
+
+  function rotY(a) {
+    var c = Math.cos(a);
+    var s = Math.sin(a);
+    var o = new Float32Array(16);
+    o[0] = c;
+    o[2] = -s;
+    o[5] = 1;
+    o[8] = s;
+    o[10] = c;
+    o[15] = 1;
+    return o;
+  }
+
+  function translateZ(z) {
+    var o = new Float32Array(16);
+    o[0] = o[5] = o[10] = o[15] = 1;
+    o[14] = z;
+    return o;
+  }
+
+  function scale(s) {
+    var o = new Float32Array(16);
+    o[0] = o[5] = o[10] = s;
+    o[15] = 1;
+    return o;
+  }
+
+  function mat3(m) {
+    return new Float32Array([
+      m[0], m[1], m[2],
+      m[4], m[5], m[6],
+      m[8], m[9], m[10]
+    ]);
+  }
+
+  function desiredRadius() {
+    var w = canvas.clientWidth;
+    var h = canvas.clientHeight;
+    var narrow = window.matchMedia("(max-width: 700px), (max-height: 500px)").matches;
+    var d = narrow ? Math.min(Math.min(w, h) * 0.74, 460) : Math.min(Math.min(w, h) * 0.86, 980);
+    return d * 0.5;
+  }
+
+  function fit() {
+    var ratio = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.max(1, canvas.clientWidth);
+    var h = Math.max(1, canvas.clientHeight);
+    canvas.width = Math.floor(w * ratio);
+    canvas.height = Math.floor(h * ratio);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    hitR = desiredRadius();
+  }
+
+  function draw() {
+    var f = 1 / Math.tan(fovy / 2);
+    var zoom = (hitR * camZ) / (f * (canvas.clientHeight / 2)) * userZoom;
+    var model = mul(rotY(yaw), mul(rotX(pitch), scale(zoom)));
+    var view = translateZ(-camZ);
+    var mv = mul(view, model);
+    var proj = perspective(fovy, canvas.width / canvas.height, 0.1, 20);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.CULL_FACE);
+    gl.useProgram(prog);
+    gl.uniformMatrix4fv(uMvp, false, mul(proj, mv));
+    gl.uniformMatrix3fv(uN, false, mat3(mv));
+    gl.uniform1f(uTime, time);
+    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+  }
+
+  function tick() {
+    if (!running) return;
+    time += 0.016;
+    if (!dragging && performance.now() > idleAt && !reduce) yaw += 0.0045;
+    draw();
+    if (!reduce) requestAnimationFrame(tick);
+  }
+
+  window.addEventListener("resize", function () {
+    fit();
+    if (reduce) draw();
+  });
+  document.addEventListener("visibilitychange", function () {
+    running = document.visibilityState !== "hidden";
+    if (running && !reduce) tick();
+  });
 
   window.addEventListener("pointerdown", function (event) {
     if (event.target.closest("a, button")) return;
@@ -455,15 +681,15 @@
     suppressClick = false;
     lastX = event.clientX;
     lastY = event.clientY;
-    sphere.style.cursor = "grabbing";
+    canvas.style.cursor = "grabbing";
   });
   window.addEventListener("pointermove", function (event) {
     if (event.target.closest("a, button") && !dragging) {
-      sphere.style.cursor = "";
+      canvas.style.cursor = "";
       return;
     }
     if (!dragging) {
-      sphere.style.cursor = "grab";
+      canvas.style.cursor = "grab";
       return;
     }
     var dx = event.clientX - lastX;
@@ -471,15 +697,16 @@
     if (dx * dx + dy * dy > 9) dragMoved = true;
     lastX = event.clientX;
     lastY = event.clientY;
-    ry = Math.max(-16, Math.min(16, ry + dx * 0.06));
-    rx = Math.max(-12, Math.min(12, rx - dy * 0.05));
-    paint();
+    yaw += dx / Math.max(hitR, 80) * 1.6;
+    pitch = Math.max(-1.25, Math.min(1.25, pitch + dy / Math.max(hitR, 80) * 1.2));
+    idleAt = performance.now() + 2800;
+    if (reduce) draw();
   });
   function endDrag() {
     if (!dragging) return;
     dragging = false;
     if (dragMoved) suppressClick = true;
-    sphere.style.cursor = "grab";
+    canvas.style.cursor = "grab";
   }
   window.addEventListener("pointerup", endDrag);
   window.addEventListener("pointercancel", endDrag);
@@ -489,8 +716,9 @@
     var dy = event.deltaY;
     if (event.deltaMode === 1) dy *= 16;
     else if (event.deltaMode === 2) dy *= window.innerHeight;
-    scale = Math.max(0.84, Math.min(1.22, scale * Math.exp(-dy * 0.001)));
-    paint();
+    userZoom = Math.max(0.78, Math.min(1.35, userZoom * Math.exp(-dy * 0.001)));
+    idleAt = performance.now() + 2800;
+    if (reduce) draw();
   }, { passive: false });
   window.addEventListener("click", function (event) {
     if (suppressClick) {
@@ -498,13 +726,17 @@
       return;
     }
     if (event.target.closest("a, button")) return;
-    var rect = sphere.getBoundingClientRect();
-    var dx = event.clientX - (rect.left + rect.width / 2);
-    var dy = event.clientY - (rect.top + rect.height / 2);
-    var limit = rect.width * 0.46;
-    if (dx * dx + dy * dy > limit * limit) return;
+    var rect = canvas.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2;
+    var cy = rect.top + rect.height / 2;
+    var dx = event.clientX - cx;
+    var dy = event.clientY - cy;
+    if (dx * dx + dy * dy > hitR * hitR) return;
     trovato.hidden = !trovato.hidden;
   });
+
+  fit();
+  tick();
 })();
 
 (function () {
