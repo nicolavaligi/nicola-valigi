@@ -212,6 +212,8 @@
     <p>I turn manual flows and complex documents into automatic tools that save hours every day.</p>
     <p>I extract data automatically from portals and from difficult PDFs, and the pipelines turn voice notes and WhatsApp messages into direct actions on a CRM and on calendars.</p>
     <p>I build custom micro-tools, ready and usable from the phone within a few days.</p>
+    <p>I work on my own. I taught myself the digital tools, and I change tool when the problem changes.</p>
+    <p>I start from the official data and arrive at the tool that decides.</p>
   </article>
   <p class="lead">New applications feel familiar straight away, and I enjoy studying them.</p>
   <p class="lead">I spent twelve years inside the documents of a large infrastructure contract. There I learned to recognise the real bottleneck, which is usually not the one that gets reported. I trained as an artist, at the Brera Academy and the art school in Novara. That is why my tools have a considered interface and do not look like a prototype.</p>
@@ -234,6 +236,7 @@
     <h2>Memory and knowledge</h2>
     <p>I built a shared memory across the work. A question in Italian finds a decision made months earlier, even in another project.</p>
     <p>Notes, mail, and documents can go in. The notes live in Obsidian. What is private stays out: when in doubt, it stays out.</p>
+    <p>What I have solved once, I keep, tested, ready for the next time.</p>
     <ul><li>Obsidian</li></ul>
   </article>
 
@@ -246,28 +249,33 @@
 
   <article>
     <h2>Data</h2>
-    <p>I take apart public portals that have no API. I find the address that returns the real data, I write parsers that hold if a column changes, and I pull the text out of PDFs.</p>
-    <p>The archive sits in SQLite or in Postgres. What lands on the table is the signal, not the whole list.</p>
-    <ul><li>Python</li><li>SQLite</li><li>Web scraping</li><li>PDF extraction</li></ul>
+    <p>I take apart public portals that have no API. I find the address that returns the real data, I write parsers that hold if a column changes, and I pull the text out of PDFs. If the call fails, I try again. Duplicates are dropped. Italian dates stay dates.</p>
+    <p>If an official source exists, I use it. No synthetic stand-in for a parcel, a substation, or a municipality.</p>
+    <p>On the table: more than 21,900 cadastral parcels qualified for solar. Then 116 lots, 709.7 hectares and 591.4 MWp, and 60 hubs, 1,166.2 hectares and 971.8 MWp, checked against the land registry and matched to 2,107 primary substations. And 277 yards for canopies, 54.3 MWp, across the 7,904 municipalities.</p>
+    <p>The archive sits in SQLite or in Postgres. What lands on the table is the signal, not the whole list. A score from 0 to 100 puts first what needs to be seen first.</p>
+    <ul><li>Python</li><li>uv</li><li>SQLite</li><li>Web scraping</li><li>PDF extraction</li></ul>
   </article>
 
   <article>
     <h2>Release</h2>
     <p>From prototype to production: REST APIs in FastAPI, serverless functions on Netlify and Supabase, on only when they are needed, keys always on the server and never in the browser. The proxies, the door in front of the service, accept only authorised domains and cap the number of requests. Access is separate for each client.</p>
     <p>The public site is generated from the data, so the front and the archive do not diverge. Every function works from an interface, from the command line, and over an API.</p>
-    <ul><li>FastAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
+    <p>Eleven projects, each with its own environment and its own repository. Nine are already published: APIs, maps, sites, a Python SDK. A quote price is calculated by the code, not by the model: the model reads the request, the number is not invented.</p>
+    <ul><li>FastAPI</li><li>Railway</li><li>RapidAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
   </article>
 
   <article>
     <h2>Maps</h2>
-    <p>Lists of sites, scores, and maps you can compare. A day of desk checks becomes a map, with the land data and the geometry under it: areas, centroids, distances. Solar yield estimates come from PVGIS.</p>
-    <ul><li>MapLibre</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
+    <p>Lists of sites, scores, and maps you can compare. A day of desk checks becomes a map, with the land data and the geometry under it: areas, centroids, distances.</p>
+    <p>I query the land registry, the open maps, the lines and the substations. Distance matters for the grid connection. Irradiation comes from PVGIS, fixed tilt or tracker.</p>
+    <p>Next to the land I put the agricultural value, the expropriation rule, and the constraint on suitable areas. Open countryside and the urban edge are not the same thing.</p>
+    <ul><li>MapLibre</li><li>Leaflet</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
   </article>
 
   <article>
     <h2>Interface</h2>
     <p>What you look at first, how a number reads, why a screen is opened again tomorrow. I use the art training as a technical skill.</p>
-    <p>Contrast, hierarchy, the phone. Pages install on the phone as an app. An automatic audit runs before publishing.</p>
+    <p>Contrast, hierarchy, the phone. Pages install on the phone as an app. An automatic audit runs before publishing. The screen is there so someone can decide in a few seconds. When privacy matters, the site stays in-house, with nothing loaded from outside.</p>
     <ul><li>UI</li><li>HTML and CSS</li><li>PWA</li><li>Accessibility</li></ul>
   </article>
 

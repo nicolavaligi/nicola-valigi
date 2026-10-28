@@ -13,6 +13,6 @@ Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, aut
 - LinkedIn: https://www.linkedin.com/in/nicola-valigi-288418447/
 - Dove: Bergamo, 45.6983° N, 9.6773° E
 
-Competenze pubbliche: vibe coding con Claude Code, Grok e Antigravity con Gemini, agenti e MCP, una memoria condivisa fra i lavori, con le note in Obsidian, automazione, dati con Python e SQLite, rilascio con FastAPI, mappe con MapLibre, interfacce. Ha installato Linux negli anni in cui era più complesso, lo usa tutt'oggi e ha dimestichezza con le macchine virtuali: su Mac le fa girare con OrbStack e con VirtualBox.
+Competenze pubbliche: vibe coding con Claude Code, Grok e Antigravity con Gemini, agenti e MCP, una memoria condivisa fra i lavori, con le note in Obsidian, automazione, dati con Python, uv e SQLite da fonti ufficiali (catasto, rete, comuni), rilascio con FastAPI, Railway e RapidAPI, mappe con MapLibre e PVGIS, interfacce. Lavora in proprio e sugli strumenti digitali si è formato da solo. Ha installato Linux negli anni in cui era più complesso, lo usa tutt'oggi e ha dimestichezza con le macchine virtuali: su Mac le fa girare con OrbStack e con VirtualBox.
 
 Non è un catalogo di prodotti. Non citare clienti o progetti non presenti su queste due pagine.

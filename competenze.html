@@ -212,6 +212,8 @@
     <p>Trasformo flussi manuali e documenti complessi in strumenti automatici che fanno risparmiare ore ogni giorno.</p>
     <p>Estraggo i dati in automatico da portali e da PDF ostici, e le pipeline trasformano note vocali e messaggi WhatsApp in azioni dirette su CRM e calendari.</p>
     <p>Costruisco micro-strumenti su misura, pronti e usabili dal telefono in pochi giorni.</p>
+    <p>Lavoro in proprio. Sugli strumenti digitali mi sono formato da solo, e cambio strumento quando il problema cambia.</p>
+    <p>Parto dal dato ufficiale e arrivo allo strumento con cui si decide.</p>
   </article>
   <p class="lead">Mi trovo a mio agio da subito con le applicazioni nuove, e mi appassiona studiarle.</p>
   <p class="lead">Ho passato dodici anni dentro i documenti di una grande commessa infrastrutturale. Lì ho imparato a riconoscere il collo di bottiglia vero, che di solito non è quello che viene segnalato. Vengo da una formazione artistica, Accademia di Brera e liceo artistico di Novara. Per questo i miei strumenti hanno un'interfaccia pensata e non sembrano un prototipo.</p>
@@ -234,6 +236,7 @@
     <h2>Memoria e conoscenza</h2>
     <p>Ho costruito una memoria condivisa fra i lavori. Una domanda in italiano ritrova una decisione presa mesi prima, anche in un altro progetto.</p>
     <p>Ci entrano note, mail e documenti. Le note stanno in Obsidian. Quello che è riservato resta fuori: nel dubbio, non entra.</p>
+    <p>Quello che ho risolto una volta lo tengo, testato, pronto per la prossima.</p>
     <ul><li>Obsidian</li></ul>
   </article>
 
@@ -246,28 +249,33 @@
 
   <article>
     <h2>Dati</h2>
-    <p>Smonto i portali pubblici che non hanno un'API. Trovo l'indirizzo che restituisce i dati veri, scrivo parser che non si rompono se cambia una colonna, estraggo il contenuto dei PDF.</p>
-    <p>L'archivio sta in SQLite o in Postgres. Sul tavolo arriva il segnale, non l'elenco intero.</p>
-    <ul><li>Python</li><li>SQLite</li><li>Web scraping</li><li>Estrazione PDF</li></ul>
+    <p>Smonto i portali pubblici che non hanno un'API. Trovo l'indirizzo che restituisce i dati veri, scrivo parser che non si rompono se cambia una colonna, estraggo il contenuto dei PDF. Se la chiamata fallisce, riprovo. I duplicati si scartano. Le date italiane restano date.</p>
+    <p>Se la fonte ufficiale c'è, uso quella. Niente dato sintetico al posto di una particella, di una cabina, di un comune.</p>
+    <p>Sul tavolo sono arrivati oltre 21.900 particelle catastali, qualificate per il fotovoltaico. Poi 116 lotti, 709,7 ettari e 591,4 MWp, e 60 poli, 1.166,2 ettari e 971,8 MWp: verificati sul catasto e incrociati con 2.107 cabine primarie. E 277 piazzali per le pensiline, 54,3 MWp, sui 7.904 comuni.</p>
+    <p>L'archivio sta in SQLite o in Postgres. Sul tavolo arriva il segnale, non l'elenco intero. Un punteggio da 0 a 100 mette in ordine quello che va visto prima.</p>
+    <ul><li>Python</li><li>uv</li><li>SQLite</li><li>Web scraping</li><li>Estrazione PDF</li></ul>
   </article>
 
   <article>
     <h2>Rilascio</h2>
     <p>Dal prototipo alla produzione: API REST in FastAPI, funzioni serverless su Netlify e Supabase, accese solo quando servono, chiavi sempre lato server e mai nel browser. I proxy, la porta davanti al servizio, accettano solo domini autorizzati e hanno un limite di richieste. Gli accessi sono separati per cliente.</p>
     <p>Il sito pubblico si genera dai dati, così vetrina e archivio non divergono. Ogni funzione si usa da interfaccia, da riga di comando e via API.</p>
-    <ul><li>FastAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
+    <p>Undici progetti, ognuno col suo ambiente e il suo repository. Nove sono già pubblicati: API, mappe, siti, un SDK Python. Il prezzo di un preventivo lo calcola il codice, non il modello: il modello legge la richiesta, il numero non si inventa.</p>
+    <ul><li>FastAPI</li><li>Railway</li><li>RapidAPI</li><li>Netlify Functions</li><li>Supabase</li><li>JavaScript</li><li>Streamlit</li><li>WorkOS</li></ul>
   </article>
 
   <article>
     <h2>Mappe</h2>
-    <p>Elenchi di siti, punteggi e mappe confrontabili. Una giornata di controlli a tavolino diventa una mappa, con sotto i dati territoriali e i calcoli geometrici: aree, centroidi, distanze. Le stime di produzione solare vengono da PVGIS.</p>
-    <ul><li>MapLibre</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
+    <p>Elenchi di siti, punteggi e mappe confrontabili. Una giornata di controlli a tavolino diventa una mappa, con sotto i dati territoriali e i calcoli geometrici: aree, centroidi, distanze.</p>
+    <p>Interrogo il catasto, le mappe aperte, le linee e le cabine. La distanza conta per l'allaccio. L'irraggiamento viene da PVGIS, a impianto fisso o a tracker.</p>
+    <p>Accanto al terreno metto il valore agricolo, la regola sull'esproprio e il vincolo dell'area idonea. Campagna aperta e periurbano non sono la stessa cosa.</p>
+    <ul><li>MapLibre</li><li>Leaflet</li><li>OpenStreetMap</li><li>Turf.js</li><li>PVGIS</li><li>QGIS</li></ul>
   </article>
 
   <article>
     <h2>Interfaccia</h2>
     <p>Cosa si guarda per primo, come si legge un numero, perché una schermata viene riaperta anche domani. Uso la formazione artistica come una competenza tecnica.</p>
-    <p>Contrasto, gerarchia, telefono. Le pagine si installano sul telefono come un'app. Prima di pubblicare parte un audit automatico.</p>
+    <p>Contrasto, gerarchia, telefono. Le pagine si installano sul telefono come un'app. Prima di pubblicare parte un audit automatico. La schermata serve a decidere in pochi secondi. Quando serve privacy, il sito sta in casa, senza pezzi caricati da fuori.</p>
     <ul><li>UI</li><li>HTML e CSS</li><li>PWA</li><li>Accessibilità</li></ul>
   </article>
 
