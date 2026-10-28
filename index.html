@@ -146,7 +146,7 @@
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
-  #field,
+  .orb,
   body::before,
   .stage {
     position: fixed;
@@ -155,11 +155,23 @@
     width: 100%;
     height: var(--vv-height);
   }
-  #field {
+  .orb {
     z-index: 0;
-    display: block;
-    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    pointer-events: none;
+  }
+  #sphere {
+    width: min(84vmin, 980px);
+    height: min(84vmin, 980px);
+    object-fit: cover;
+    border-radius: 50%;
+    background: #000;
+    pointer-events: auto;
     cursor: grab;
+    touch-action: none;
   }
   body::before {
     content: "";
@@ -327,6 +339,7 @@
     }
     .dock { display: none; }
     .coords { font-size: 0.72rem; }
+    #sphere { width: min(74vmin, 460px); height: min(74vmin, 460px); }
     .stage {
       padding:
         max(16px, env(safe-area-inset-top))
@@ -352,7 +365,11 @@
 </style>
 </head>
 <body>
-<canvas id="field" aria-hidden="true"></canvas>
+<div class="orb">
+<video id="sphere" autoplay muted loop playsinline poster="sphere.jpg" aria-hidden="true">
+  <source src="sphere.mp4" type="video/mp4">
+</video>
+</div>
 
 <header class="barra">
 <a class="lingua" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
@@ -377,7 +394,7 @@
 </main>
 <div class="piede">
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
-<p class="powered">powered: HTML · CSS · Canvas</p>
+<p class="powered">powered: HTML · CSS · video</p>
 </div>
 <p class="trovato" id="trovato" hidden>Trovato. Costruito a Bergamo.</p>
 <nav class="appbar" aria-label="Sezioni">
@@ -406,248 +423,28 @@
 
 <script>
 (function () {
-  var canvas = document.getElementById("field");
-  var ctx = canvas.getContext("2d");
-  var count = 220;
-  var nodes = [];
-  var links = [];
-  var golden = Math.PI * (3 - Math.sqrt(5));
-  var i, a, b, dx, dy, dz, reach;
-
-  for (i = 0; i < count; i++) {
-    var y = 1 - (i / (count - 1)) * 2;
-    var ring = Math.sqrt(Math.max(0, 1 - y * y));
-    var theta = golden * i;
-    nodes.push({
-      x: Math.cos(theta) * ring,
-      y: y,
-      z: Math.sin(theta) * ring,
-      phase: Math.random() * Math.PI * 2,
-      cool: Math.random() < 0.22
-    });
-  }
-  nodes[73].egg = true;
-
-  reach = 0.36;
-  for (a = 0; a < count; a++) {
-    for (b = a + 1; b < count; b++) {
-      dx = nodes[a].x - nodes[b].x;
-      dy = nodes[a].y - nodes[b].y;
-      dz = nodes[a].z - nodes[b].z;
-      if (dx * dx + dy * dy + dz * dz < reach * reach) links.push([a, b]);
-    }
-  }
-
-  var width = 0;
-  var height = 0;
-  var ratio = 1;
-  var centerX = 0;
-  var centerY = 0;
-  var radius = 0;
-  var yaw = 0.4;
-  var pitch = null;
-  var time = 0;
+  var sphere = document.getElementById("sphere");
+  var trovato = document.getElementById("trovato");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var running = true;
+  var rx = 0;
+  var ry = 0;
+  var scale = 1;
   var dragging = false;
   var dragMoved = false;
   var suppressClick = false;
   var lastX = 0;
   var lastY = 0;
-  var idleAt = 0;
-  var projected = new Float32Array(count * 2);
-  var depth = new Float32Array(count);
-  var fire = new Float32Array(count);
-  var eggHit = { x: 0, y: 0, r: 18 };
-  var trovato = document.getElementById("trovato");
 
-  function syncViewport() {
-    var vv = window.visualViewport;
-    var top = vv ? vv.offsetTop : 0;
-    var viewH = vv ? vv.height : window.innerHeight;
-    var bottom = Math.max(0, window.innerHeight - top - viewH);
-    var rootStyle = document.documentElement.style;
-    rootStyle.setProperty("--vv-top", top + "px");
-    rootStyle.setProperty("--vv-height", viewH + "px");
-    rootStyle.setProperty("--vv-bottom", bottom + "px");
+  function paint() {
+    sphere.style.transform = "rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) scale(" + scale.toFixed(3) + ")";
   }
 
-  function fit() {
-    syncViewport();
-    ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
-    canvas.width = Math.max(1, Math.floor(width * ratio));
-    canvas.height = Math.max(1, Math.floor(height * ratio));
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    var stage = document.querySelector(".stage");
-    var box = stage.getBoundingClientRect();
-    var canvasBox = canvas.getBoundingClientRect();
-    var style = getComputedStyle(stage);
-    var padTop = parseFloat(style.paddingTop) || 0;
-    var padBottom = parseFloat(style.paddingBottom) || 0;
-    var padLeft = parseFloat(style.paddingLeft) || 0;
-    var padRight = parseFloat(style.paddingRight) || 0;
-    var contentH = Math.max(1, box.height - padTop - padBottom);
-    var contentW = Math.max(1, box.width - padLeft - padRight);
-    centerX = (box.left + padLeft + contentW / 2) - canvasBox.left;
-    centerY = (box.top + padTop + contentH / 2) - canvasBox.top;
-    radius = Math.min(width, height) * 0.4;
-    if (window.matchMedia("(max-width: 700px), (max-height: 500px)").matches) {
-      var room = height - 56 - 48;
-      var cap = room * 0.46;
-      if (room > 80 && radius > cap) radius = cap;
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    var breath = 1 + (reduce ? 0 : 0.03 * Math.sin(time * 0.85));
-    var span = radius * breath;
-    var sinY = Math.sin(yaw);
-    var cosY = Math.cos(yaw);
-    var tilt = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
-    var sinX = Math.sin(tilt);
-    var cosX = Math.cos(tilt);
-    var focal = 2.5;
-    var n, p, x, y3, z, scale, e, i0, i1, glow, alpha, size;
-
-    for (n = 0; n < count; n++) {
-      p = nodes[n];
-      x = p.x * cosY - p.z * sinY;
-      z = p.x * sinY + p.z * cosY;
-      y3 = p.y * cosX - z * sinX;
-      z = p.y * sinX + z * cosX;
-      scale = focal / (focal - z);
-      projected[n * 2] = centerX + x * span * scale;
-      projected[n * 2 + 1] = centerY + y3 * span * scale;
-      depth[n] = (z + 1) / 2;
-      fire[n] = reduce ? 0.45 : 0.5 + 0.5 * Math.sin(time * 2.1 + p.phase);
-    }
-
-    for (e = 0; e < links.length; e++) {
-      i0 = links[e][0];
-      i1 = links[e][1];
-      glow = (fire[i0] + fire[i1]) * 0.5;
-      alpha = (0.035 + glow * 0.2) * (0.28 + ((depth[i0] + depth[i1]) * 0.5) * 0.72);
-      ctx.strokeStyle = "rgba(46,86,255," + alpha + ")";
-      ctx.lineWidth = 0.7;
-      ctx.beginPath();
-      ctx.moveTo(projected[i0 * 2], projected[i0 * 2 + 1]);
-      ctx.lineTo(projected[i1 * 2], projected[i1 * 2 + 1]);
-      ctx.stroke();
-    }
-
-    var order = [];
-    for (n = 0; n < count; n++) order.push(n);
-    order.sort(function (i0, i1) { return depth[i0] - depth[i1]; });
-
-    for (n = 0; n < count; n++) {
-      var index = order[n];
-      glow = fire[index];
-      size = (3.2 + glow * 3.4) * (0.45 + depth[index] * 0.7);
-      alpha = (0.28 + glow * 0.72) * (0.35 + depth[index] * 0.65);
-      var rgb = nodes[index].cool ? [143, 166, 255] : [237, 235, 230];
-      if (nodes[index].egg) {
-        rgb = [255, 225, 74];
-        size *= 1.7;
-        alpha = 1;
-        eggHit.x = projected[index * 2];
-        eggHit.y = projected[index * 2 + 1];
-        eggHit.r = Math.max(size * 2.2, window.matchMedia("(pointer: coarse)").matches ? 28 : 16);
-      }
-      drawCube(
-        projected[index * 2],
-        projected[index * 2 + 1],
-        size,
-        rgb,
-        alpha
-      );
-    }
-  }
-
-  function drawCube(x, y, s, rgb, alpha) {
-    var w = s;
-    var h = s * 0.55;
-    function tone(factor) {
-      return "rgba(" +
-        Math.round(rgb[0] * factor) + "," +
-        Math.round(rgb[1] * factor) + "," +
-        Math.round(rgb[2] * factor) + "," +
-        alpha + ")";
-    }
-    function face(pts, factor) {
-      ctx.fillStyle = tone(factor);
-      ctx.beginPath();
-      ctx.moveTo(x + pts[0], y + pts[1]);
-      ctx.lineTo(x + pts[2], y + pts[3]);
-      ctx.lineTo(x + pts[4], y + pts[5]);
-      ctx.lineTo(x + pts[6], y + pts[7]);
-      ctx.closePath();
-      ctx.fill();
-    }
-    face([-w, -h, 0, 0, 0, h, -w, 0], 0.62);
-    face([w, -h, 0, 0, 0, h, w, 0], 0.8);
-    face([0, -h * 2, w, -h, 0, 0, -w, -h], 1);
-  }
-
-  function tick() {
-    if (!running) return;
-    time += 0.016;
-    if (!dragging && performance.now() > idleAt) yaw += 0.0015;
-    draw();
-    if (!reduce) requestAnimationFrame(tick);
-  }
-
-  function holdIdle() {
-    idleAt = performance.now() + 3500;
-  }
-
-  function limitPitch(value) {
-    if (value > 1.15) return 1.15;
-    if (value < -1.15) return -1.15;
-    return value;
-  }
-
-  function steer(dx, dy) {
-    var unit = Math.max(radius, 80);
-    if (Math.abs(dy) > 0.5) {
-      var base = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
-      pitch = limitPitch(base + dy / unit * 1.15);
-    }
-    yaw += dx / unit * 1.35;
-    holdIdle();
-    if (reduce) draw();
-  }
-
-  window.addEventListener("resize", function () {
-    fit();
-    if (reduce) draw();
-  });
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", function () {
-      fit();
-      if (reduce) draw();
-    });
-    window.visualViewport.addEventListener("scroll", function () {
-      fit();
-      if (reduce) draw();
-    });
-  }
-  window.matchMedia("(max-width: 700px), (max-height: 500px)").addEventListener("change", function () {
-    fit();
-    if (reduce) draw();
-  });
-  document.addEventListener("visibilitychange", function () {
-    running = document.visibilityState !== "hidden";
-    if (running && !reduce) tick();
-  });
-
-  function overEgg(clientX, clientY) {
-    var rect = canvas.getBoundingClientRect();
-    var dx = clientX - rect.left - eggHit.x;
-    var dy = clientY - rect.top - eggHit.y;
-    return dx * dx + dy * dy <= eggHit.r * eggHit.r;
+  if (reduce) {
+    sphere.removeAttribute("autoplay");
+    sphere.pause();
+  } else {
+    var play = sphere.play();
+    if (play && play.catch) play.catch(function () {});
   }
 
   window.addEventListener("pointerdown", function (event) {
@@ -658,15 +455,15 @@
     suppressClick = false;
     lastX = event.clientX;
     lastY = event.clientY;
-    canvas.style.cursor = "grabbing";
+    sphere.style.cursor = "grabbing";
   });
   window.addEventListener("pointermove", function (event) {
     if (event.target.closest("a, button") && !dragging) {
-      canvas.style.cursor = "";
+      sphere.style.cursor = "";
       return;
     }
     if (!dragging) {
-      canvas.style.cursor = overEgg(event.clientX, event.clientY) ? "pointer" : "grab";
+      sphere.style.cursor = "grab";
       return;
     }
     var dx = event.clientX - lastX;
@@ -674,32 +471,26 @@
     if (dx * dx + dy * dy > 9) dragMoved = true;
     lastX = event.clientX;
     lastY = event.clientY;
-    if (dragMoved) steer(dx, dy);
+    ry = Math.max(-16, Math.min(16, ry + dx * 0.06));
+    rx = Math.max(-12, Math.min(12, rx - dy * 0.05));
+    paint();
   });
   function endDrag() {
     if (!dragging) return;
     dragging = false;
     if (dragMoved) suppressClick = true;
-    canvas.style.cursor = "grab";
+    sphere.style.cursor = "grab";
   }
   window.addEventListener("pointerup", endDrag);
   window.addEventListener("pointercancel", endDrag);
   window.addEventListener("wheel", function (event) {
     if (event.target.closest("a, button")) return;
     event.preventDefault();
-    var dx = event.deltaX;
     var dy = event.deltaY;
-    if (event.deltaMode === 1) { dx *= 16; dy *= 16; }
-    else if (event.deltaMode === 2) { dx *= window.innerWidth; dy *= window.innerHeight; }
-    if (event.shiftKey || Math.abs(dx) > Math.abs(dy)) {
-      var amount = event.shiftKey ? dy : dx;
-      var base = pitch === null ? -0.32 + Math.sin(yaw * 0.45) * 0.1 : pitch;
-      pitch = limitPitch(base + amount * 0.0022);
-    } else {
-      yaw += dy * 0.0022;
-    }
-    holdIdle();
-    if (reduce) draw();
+    if (event.deltaMode === 1) dy *= 16;
+    else if (event.deltaMode === 2) dy *= window.innerHeight;
+    scale = Math.max(0.84, Math.min(1.22, scale * Math.exp(-dy * 0.001)));
+    paint();
   }, { passive: false });
   window.addEventListener("click", function (event) {
     if (suppressClick) {
@@ -707,12 +498,13 @@
       return;
     }
     if (event.target.closest("a, button")) return;
-    if (!overEgg(event.clientX, event.clientY)) return;
+    var rect = sphere.getBoundingClientRect();
+    var dx = event.clientX - (rect.left + rect.width / 2);
+    var dy = event.clientY - (rect.top + rect.height / 2);
+    var limit = rect.width * 0.46;
+    if (dx * dx + dy * dy > limit * limit) return;
     trovato.hidden = !trovato.hidden;
   });
-
-  fit();
-  tick();
 })();
 
 (function () {
