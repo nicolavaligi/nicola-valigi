@@ -1,6 +1,6 @@
 # Nicola Valigi
 
-A Bergamo. Porta un ragionamento e un'intuizione, e l'intelligenza artificiale li amplifica. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.» In inglese è «Let's build now.», su https://www.nicvaligi.com/en/
+A Bergamo. Trasforma flussi manuali e documenti complessi in strumenti automatici che fanno risparmiare ore ogni giorno: estrazioni da portali e PDF ostici, note vocali e messaggi WhatsApp che diventano azioni su CRM e calendari, micro-strumenti su misura usabili dal telefono in pochi giorni. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.» In inglese è «Let's build now.», su https://www.nicvaligi.com/en/
 
 Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, automazione, dati, mappe e interfacce.
 
