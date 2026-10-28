@@ -213,15 +213,15 @@
     color: var(--ink);
   }
   h1 .mark { color: #FFE14A; }
+  .who { padding-left: 0.22em; }
   body.smile .who,
-  body.smile h1 {
-    text-shadow: 0 2px 18px rgba(40, 18, 0, 0.55);
-  }
+  body.smile h1,
   body.smile h1 .mark {
-    text-shadow:
-      0 0 2px rgba(70, 32, 0, 0.9),
-      0 2px 16px rgba(40, 18, 0, 0.6);
+    color: #1a1206;
+    text-shadow: none;
   }
+  body.smile .who { margin-bottom: 12px; }
+  body.smile h1 { line-height: 0.96; }
   .lockup {
     display: flex;
     flex-direction: column;
@@ -358,11 +358,14 @@
         max(20px, env(safe-area-inset-left));
     }
     .who {
-      margin-bottom: 18px;
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
+      margin-bottom: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      padding-left: 0.18em;
     }
-    h1 { font-size: 2rem; }
+    h1 { font-size: 1.85rem; line-height: 1.02; }
+    body.smile .who { margin-bottom: 8px; }
+    body.smile h1 { font-size: 1.7rem; line-height: 0.98; }
     .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
     .powered { font-size: 0.55rem; }
     .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 62px); }
@@ -496,11 +499,11 @@
     "  vec3 side = normalize(cross(up, faceAt));",
     "  vec3 upv = cross(faceAt, side);",
     "  vec2 q = vec2(dot(p - faceAt, side), dot(p - faceAt, upv));",
-    "  vec2 el = (q - vec2(-0.32, 0.52)) / vec2(0.105, 0.155);",
-    "  vec2 er = (q - vec2(0.32, 0.52)) / vec2(0.105, 0.155);",
+    "  vec2 el = (q - vec2(-0.30, 0.66)) / vec2(0.09, 0.13);",
+    "  vec2 er = (q - vec2(0.30, 0.66)) / vec2(0.09, 0.13);",
     "  float eye = max(1.0 - smoothstep(0.72, 1.0, length(el)), 1.0 - smoothstep(0.72, 1.0, length(er)));",
-    "  vec2 mq = q - vec2(0.0, -0.42);",
-    "  float mouth = 1.0 - smoothstep(0.03, 0.068, abs(length(mq) - 0.32));",
+    "  vec2 mq = q - vec2(0.0, -0.52);",
+    "  float mouth = 1.0 - smoothstep(0.028, 0.062, abs(length(mq) - 0.26));",
     "  mouth *= 1.0 - smoothstep(-0.01, 0.07, mq.y);",
     "  float ink = clamp(eye + mouth, 0.0, 1.0) * step(0.25, dot(p, faceAt));",
     "  float lit = 0.36 + 0.64 * clamp(ndl * 0.55 + 0.5, 0.0, 1.0);",
