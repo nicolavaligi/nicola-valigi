@@ -212,6 +212,8 @@
     text-wrap: balance;
     color: var(--ink);
   }
+  h1 .riga,
+  h1 .mark { display: block; }
   h1 .mark { color: #FFE14A; }
   .who { padding-left: 0.22em; }
   body.smile .who,
@@ -220,8 +222,20 @@
     color: #1a1206;
     text-shadow: none;
   }
-  body.smile .who { margin-bottom: 12px; }
-  body.smile h1 { line-height: 0.96; }
+  body.smile .lockup {
+    justify-content: space-between;
+    height: min(38vmin, 400px);
+  }
+  body.smile .who { margin: 0; }
+  body.smile h1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    line-height: 0.92;
+  }
   .lockup {
     display: flex;
     flex-direction: column;
@@ -364,8 +378,8 @@
       padding-left: 0.18em;
     }
     h1 { font-size: 1.85rem; line-height: 1.02; }
-    body.smile .who { margin-bottom: 8px; }
-    body.smile h1 { font-size: 1.7rem; line-height: 0.98; }
+    body.smile .lockup { height: min(38vmin, 210px); }
+    body.smile h1 { font-size: 1.7rem; line-height: 0.95; }
     .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
     .powered { font-size: 0.55rem; }
     .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 62px); }
@@ -400,7 +414,7 @@
 <main class="stage">
   <div class="lockup">
     <p class="who">Nicola Valigi</p>
-    <h1>Let's build<br><span class="mark">now.</span></h1>
+    <h1><span class="riga">Let's build</span><span class="mark">now.</span></h1>
   </div>
 </main>
 <div class="piede">
