@@ -203,12 +203,19 @@
     align-items: center;
   }
   .who { margin: 0 0 clamp(28px, 5vh, 48px); }
-  .coords {
+  .piede {
     position: fixed;
     z-index: 4;
     left: 50%;
-    bottom: calc(var(--vv-bottom) + max(16px, env(safe-area-inset-bottom)));
+    bottom: calc(var(--vv-bottom) + max(12px, env(safe-area-inset-bottom)));
     transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .coords {
+    position: static;
+    transform: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -221,11 +228,19 @@
     white-space: nowrap;
   }
   .coords:hover { color: #FFD0E4; }
+  .powered {
+    margin: -8px 0 0;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: #6e6a62;
+    white-space: nowrap;
+  }
   .trovato {
     position: fixed;
     z-index: 4;
     left: 50%;
-    bottom: calc(var(--vv-bottom) + max(62px, env(safe-area-inset-bottom) + 48px));
+    bottom: calc(var(--vv-bottom) + max(78px, env(safe-area-inset-bottom) + 64px));
     transform: translateX(-50%);
     margin: 0;
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -323,8 +338,9 @@
       letter-spacing: 0.22em;
     }
     h1 { font-size: 2rem; }
-    .coords { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
-    .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 46px); }
+    .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
+    .powered { font-size: 0.55rem; }
+    .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 62px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -357,7 +373,10 @@
     <h1>Costruiamo<br><span class="mark">adesso.</span></h1>
   </div>
 </main>
+<div class="piede">
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
+<p class="powered">powered: HTML · CSS · Canvas</p>
+</div>
 <p class="trovato" id="trovato" hidden>Trovato. Costruito a Bergamo.</p>
 <nav class="appbar" aria-label="Sezioni">
   <a href="index.html" aria-current="page">
