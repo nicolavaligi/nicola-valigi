@@ -213,6 +213,15 @@
     color: var(--ink);
   }
   h1 .mark { color: #FFE14A; }
+  body.smile .who,
+  body.smile h1 {
+    text-shadow: 0 2px 18px rgba(40, 18, 0, 0.55);
+  }
+  body.smile h1 .mark {
+    text-shadow:
+      0 0 2px rgba(70, 32, 0, 0.9),
+      0 2px 16px rgba(40, 18, 0, 0.6);
+  }
   .lockup {
     display: flex;
     flex-direction: column;
@@ -450,7 +459,8 @@
     "uniform float uSmile;",
     "uniform vec3 uDot;",
     "uniform float uDotR;",
-    "uniform float uSmileR;",
+    "uniform vec3 uFace;",
+    "uniform vec3 uUp;",
     "void main() {",
     "  vec3 n = normalize(vN);",
     "  vec3 p = normalize(vPos);",
@@ -481,21 +491,24 @@
     "  col += spec * broad * 0.7;",
     "  col += vec3(1.0, 0.98, 0.94) * hot;",
     "  vec3 aim = normalize(uDot);",
-    "  vec3 pole = abs(aim.y) > 0.9 ? vec3(1.0, 0.0, 0.0) : vec3(0.0, 1.0, 0.0);",
-    "  vec3 side = normalize(cross(pole, aim));",
-    "  vec3 upv = cross(aim, side);",
-    "  vec2 q = vec2(dot(p - aim, side), dot(p - aim, upv));",
-    "  float qd = length(q);",
-    "  float face = 1.0 - smoothstep(uSmileR * 0.78, uSmileR, qd);",
-    "  float er = uSmileR * 0.13;",
-    "  float eye = max(",
-    "    1.0 - smoothstep(er * 0.45, er, length(q - vec2(-0.32, 0.18) * uSmileR)),",
-    "    1.0 - smoothstep(er * 0.45, er, length(q - vec2(0.32, 0.18) * uSmileR)));",
-    "  vec2 mq = q - vec2(0.0, 0.02) * uSmileR;",
-    "  float mouth = 1.0 - smoothstep(uSmileR * 0.035, uSmileR * 0.09, abs(length(mq) - uSmileR * 0.46));",
-    "  mouth *= 1.0 - smoothstep(-uSmileR * 0.02, uSmileR * 0.06, mq.y);",
-    "  vec3 grin = mix(vec3(1.0, 0.88, 0.29), vec3(0.12, 0.06, 0.02), clamp(eye + mouth, 0.0, 1.0));",
-    "  col = mix(col, grin, face * uSmile);",
+    "  vec3 faceAt = normalize(uFace);",
+    "  vec3 up = normalize(uUp);",
+    "  vec3 side = normalize(cross(up, faceAt));",
+    "  vec3 upv = cross(faceAt, side);",
+    "  vec2 q = vec2(dot(p - faceAt, side), dot(p - faceAt, upv));",
+    "  vec2 el = (q - vec2(-0.32, 0.52)) / vec2(0.105, 0.155);",
+    "  vec2 er = (q - vec2(0.32, 0.52)) / vec2(0.105, 0.155);",
+    "  float eye = max(1.0 - smoothstep(0.72, 1.0, length(el)), 1.0 - smoothstep(0.72, 1.0, length(er)));",
+    "  vec2 mq = q - vec2(0.0, -0.42);",
+    "  float mouth = 1.0 - smoothstep(0.03, 0.068, abs(length(mq) - 0.32));",
+    "  mouth *= 1.0 - smoothstep(-0.01, 0.07, mq.y);",
+    "  float ink = clamp(eye + mouth, 0.0, 1.0) * step(0.25, dot(p, faceAt));",
+    "  float lit = 0.36 + 0.64 * clamp(ndl * 0.55 + 0.5, 0.0, 1.0);",
+    "  vec3 scol = vec3(1.0, 0.78, 0.08) * lit;",
+    "  scol += vec3(1.0, 0.97, 0.72) * hot * 0.9;",
+    "  scol += vec3(1.0, 0.9, 0.4) * broad * 0.3;",
+    "  scol = mix(scol, vec3(0.06, 0.05, 0.04), ink);",
+    "  col = mix(col, scol, uSmile);",
     "  float chord = length(p - aim);",
     "  float red = 1.0 - smoothstep(uDotR * 0.4, uDotR, chord);",
     "  col = mix(col, vec3(0.95, 0.04, 0.03), red * (1.0 - uSmile));",
@@ -561,8 +574,11 @@
   var uSmileU = gl.getUniformLocation(prog, "uSmile");
   var uDot = gl.getUniformLocation(prog, "uDot");
   var uDotR = gl.getUniformLocation(prog, "uDotR");
-  var uSmileR = gl.getUniformLocation(prog, "uSmileR");
+  var uFace = gl.getUniformLocation(prog, "uFace");
+  var uUp = gl.getUniformLocation(prog, "uUp");
   var dot = [-0.356, 0.669, -0.653];
+  var face = [0.523, 0.186, -0.832];
+  var faceUp = [0, 0.976, 0.218];
   var smile = false;
   var dotScreen = { x: 0, y: 0, on: false };
   var glowTag = "";
@@ -730,7 +746,6 @@
     var mvp = mul(proj, mv);
     var day = dayAmount();
     var dotR = 10 / Math.max(hitR, 80);
-    var smileR = smilePx() / Math.max(hitR, 80);
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.DEPTH_TEST);
@@ -745,7 +760,8 @@
     gl.uniform1f(uSmileU, smile ? 1 : 0);
     gl.uniform3f(uDot, dot[0], dot[1], dot[2]);
     gl.uniform1f(uDotR, dotR);
-    gl.uniform1f(uSmileR, smileR);
+    gl.uniform3f(uFace, face[0], face[1], face[2]);
+    gl.uniform3f(uUp, faceUp[0], faceUp[1], faceUp[2]);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     var nz = vz;
     var clip = xform(mvp, dot[0], dot[1], dot[2]);
@@ -830,8 +846,23 @@
       return;
     }
     if (event.target.closest("a, button")) return;
+    if (smile) {
+      var ball = canvas.getBoundingClientRect();
+      var bx = event.clientX - (ball.left + ball.width / 2);
+      var by = event.clientY - (ball.top + ball.height / 2);
+      if (bx * bx + by * by <= hitR * hitR) {
+        smile = false;
+        document.body.classList.remove("smile");
+        if (reduce) draw();
+      }
+      return;
+    }
     if (pointingAt(event.clientX, event.clientY)) {
-      smile = !smile;
+      var R = mul(rotY(yaw), rotX(pitch));
+      face = [-R[2], -R[6], -R[10]];
+      faceUp = [R[1], R[5], R[9]];
+      smile = true;
+      document.body.classList.add("smile");
       if (reduce) draw();
       return;
     }
