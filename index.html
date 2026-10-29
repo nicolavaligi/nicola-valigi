@@ -216,26 +216,6 @@
   h1 .mark { display: block; }
   h1 .mark { color: #FFE14A; }
   .who { padding-left: 0.22em; }
-  body.smile .who,
-  body.smile h1,
-  body.smile h1 .mark {
-    color: #1a1206;
-    text-shadow: none;
-  }
-  body.smile .lockup {
-    justify-content: space-between;
-    height: min(38vmin, 400px);
-  }
-  body.smile .who { margin: 0; }
-  body.smile h1 {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    line-height: 0.92;
-  }
   .lockup {
     display: flex;
     flex-direction: column;
@@ -378,8 +358,6 @@
       padding-left: 0.18em;
     }
     h1 { font-size: 1.85rem; line-height: 1.02; }
-    body.smile .lockup { height: min(38vmin, 210px); }
-    body.smile h1 { font-size: 1.7rem; line-height: 0.95; }
     .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
     .powered { font-size: 0.55rem; }
     .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 62px); }
@@ -473,11 +451,6 @@
     "varying vec3 vPos;",
     "uniform float uTime;",
     "uniform float uDay;",
-    "uniform float uSmile;",
-    "uniform vec3 uDot;",
-    "uniform float uDotR;",
-    "uniform vec3 uFace;",
-    "uniform vec3 uUp;",
     "void main() {",
     "  vec3 n = normalize(vN);",
     "  vec3 p = normalize(vPos);",
@@ -507,28 +480,6 @@
     "  vec3 spec = mix(vec3(0.45, 0.62, 1.0), vec3(1.0, 0.9, 0.62), uDay);",
     "  col += spec * broad * 0.7;",
     "  col += vec3(1.0, 0.98, 0.94) * hot;",
-    "  vec3 aim = normalize(uDot);",
-    "  vec3 faceAt = normalize(uFace);",
-    "  vec3 up = normalize(uUp);",
-    "  vec3 side = normalize(cross(up, faceAt));",
-    "  vec3 upv = cross(faceAt, side);",
-    "  vec2 q = vec2(dot(p - faceAt, side), dot(p - faceAt, upv));",
-    "  vec2 el = (q - vec2(-0.30, 0.66)) / vec2(0.09, 0.13);",
-    "  vec2 er = (q - vec2(0.30, 0.66)) / vec2(0.09, 0.13);",
-    "  float eye = max(1.0 - smoothstep(0.72, 1.0, length(el)), 1.0 - smoothstep(0.72, 1.0, length(er)));",
-    "  vec2 mq = q - vec2(0.0, -0.52);",
-    "  float mouth = 1.0 - smoothstep(0.028, 0.062, abs(length(mq) - 0.26));",
-    "  mouth *= 1.0 - smoothstep(-0.01, 0.07, mq.y);",
-    "  float ink = clamp(eye + mouth, 0.0, 1.0) * step(0.25, dot(p, faceAt));",
-    "  float lit = 0.36 + 0.64 * clamp(ndl * 0.55 + 0.5, 0.0, 1.0);",
-    "  vec3 scol = vec3(1.0, 0.78, 0.08) * lit;",
-    "  scol += vec3(1.0, 0.97, 0.72) * hot * 0.9;",
-    "  scol += vec3(1.0, 0.9, 0.4) * broad * 0.3;",
-    "  scol = mix(scol, vec3(0.06, 0.05, 0.04), ink);",
-    "  col = mix(col, scol, uSmile);",
-    "  float chord = length(p - aim);",
-    "  float red = 1.0 - smoothstep(uDotR * 0.4, uDotR, chord);",
-    "  col = mix(col, vec3(0.95, 0.04, 0.03), red * (1.0 - uSmile));",
     "  gl_FragColor = vec4(col, 1.0);",
     "}"
   ].join("\n");
@@ -588,16 +539,6 @@
   var uN = gl.getUniformLocation(prog, "uN");
   var uTime = gl.getUniformLocation(prog, "uTime");
   var uDay = gl.getUniformLocation(prog, "uDay");
-  var uSmileU = gl.getUniformLocation(prog, "uSmile");
-  var uDot = gl.getUniformLocation(prog, "uDot");
-  var uDotR = gl.getUniformLocation(prog, "uDotR");
-  var uFace = gl.getUniformLocation(prog, "uFace");
-  var uUp = gl.getUniformLocation(prog, "uUp");
-  var dot = [-0.356, 0.669, -0.653];
-  var face = [0.523, 0.186, -0.832];
-  var faceUp = [0, 0.976, 0.218];
-  var smile = false;
-  var dotScreen = { x: 0, y: 0, on: false };
   var glowTag = "";
   var yaw = 0.55;
   var pitch = -0.22;
@@ -715,42 +656,16 @@
     return c > 0 ? c : 0;
   }
 
-  function xform(m, x, y, z) {
-    return [
-      m[0] * x + m[4] * y + m[8] * z + m[12],
-      m[1] * x + m[5] * y + m[9] * z + m[13],
-      m[2] * x + m[6] * y + m[10] * z + m[14],
-      m[3] * x + m[7] * y + m[11] * z + m[15]
-    ];
-  }
-
-  function smilePx() {
-    return Math.min(86, Math.max(48, hitR * 0.2));
-  }
-
   function paintGlow(day) {
-    var tag = (smile ? "s" : "d") + day.toFixed(2);
+    var tag = day.toFixed(2);
     if (tag === glowTag) return;
     glowTag = tag;
-    var r, g, b;
-    if (smile) {
-      r = 255; g = 196; b = 40;
-    } else {
-      r = Math.round(31 + (255 - 31) * day);
-      g = Math.round(67 + (150 - 67) * day);
-      b = Math.round(216 + (40 - 216) * day);
-    }
+    var r = Math.round(31 + (255 - 31) * day);
+    var g = Math.round(67 + (150 - 67) * day);
+    var b = Math.round(216 + (40 - 216) * day);
     canvas.style.filter =
       "drop-shadow(0 22px 28px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 42px rgba(" +
       r + "," + g + "," + b + ",0.45))";
-  }
-
-  function pointingAt(x, y) {
-    if (!dotScreen.on) return false;
-    var dx = x - dotScreen.x;
-    var dy = y - dotScreen.y;
-    var rad = (smile ? smilePx() * 0.55 : 9) + 20;
-    return dx * dx + dy * dy < rad * rad;
   }
 
   function draw() {
@@ -762,7 +677,6 @@
     var proj = perspective(fovy, canvas.width / canvas.height, 0.1, 20);
     var mvp = mul(proj, mv);
     var day = dayAmount();
-    var dotR = 10 / Math.max(hitR, 80);
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.DEPTH_TEST);
@@ -772,24 +686,7 @@
     gl.uniformMatrix3fv(uN, false, mat3(mv));
     gl.uniform1f(uTime, time);
     gl.uniform1f(uDay, day);
-    var nrm = mat3(mv);
-    var vz = nrm[2] * dot[0] + nrm[5] * dot[1] + nrm[8] * dot[2];
-    gl.uniform1f(uSmileU, smile ? 1 : 0);
-    gl.uniform3f(uDot, dot[0], dot[1], dot[2]);
-    gl.uniform1f(uDotR, dotR);
-    gl.uniform3f(uFace, face[0], face[1], face[2]);
-    gl.uniform3f(uUp, faceUp[0], faceUp[1], faceUp[2]);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-    var nz = vz;
-    var clip = xform(mvp, dot[0], dot[1], dot[2]);
-    var rect = canvas.getBoundingClientRect();
-    if (clip[3] !== 0 && nz < -0.08) {
-      dotScreen.on = true;
-      dotScreen.x = rect.left + (clip[0] / clip[3] * 0.5 + 0.5) * rect.width;
-      dotScreen.y = rect.top + (-clip[1] / clip[3] * 0.5 + 0.5) * rect.height;
-    } else {
-      dotScreen.on = false;
-    }
     paintGlow(day);
   }
 
@@ -826,7 +723,7 @@
       return;
     }
     if (!dragging) {
-      canvas.style.cursor = pointingAt(event.clientX, event.clientY) ? "pointer" : "grab";
+      canvas.style.cursor = "grab";
       return;
     }
     var dx = event.clientX - lastX;
@@ -863,26 +760,6 @@
       return;
     }
     if (event.target.closest("a, button")) return;
-    if (smile) {
-      var ball = canvas.getBoundingClientRect();
-      var bx = event.clientX - (ball.left + ball.width / 2);
-      var by = event.clientY - (ball.top + ball.height / 2);
-      if (bx * bx + by * by <= hitR * hitR) {
-        smile = false;
-        document.body.classList.remove("smile");
-        if (reduce) draw();
-      }
-      return;
-    }
-    if (pointingAt(event.clientX, event.clientY)) {
-      var R = mul(rotY(yaw), rotX(pitch));
-      face = [-R[2], -R[6], -R[10]];
-      faceUp = [R[1], R[5], R[9]];
-      smile = true;
-      document.body.classList.add("smile");
-      if (reduce) draw();
-      return;
-    }
     var rect = canvas.getBoundingClientRect();
     var cx = rect.left + rect.width / 2;
     var cy = rect.top + rect.height / 2;
