@@ -641,29 +641,62 @@
   .showcase-media {
     position: relative;
     overflow: hidden;
-    background: #000;
-    perspective: 1200px;
+    background: #050811;
+    perspective: 550px;
+    perspective-origin: 50% 35%;
     transform-style: preserve-3d;
-    cursor: default;
+    cursor: crosshair;
   }
   .showcase-media picture {
     display: block;
     position: relative;
-    overflow: hidden;
     transform-style: preserve-3d;
   }
-  .showcase-media::after {
+  /* Atmospheric Horizon Haze */
+  .showcase-media::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle at center, transparent 60%, rgba(6, 7, 19, 0.45) 100%);
+    background: linear-gradient(180deg, 
+      rgba(5, 10, 26, 0.75) 0%, 
+      rgba(5, 10, 26, 0.35) 28%, 
+      transparent 58%, 
+      rgba(2, 4, 10, 0.5) 100%
+    );
     opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 1;
+    transition: opacity 0.6s ease;
+    z-index: 2;
+  }
+  .showcase-card:hover .showcase-media::before {
+    opacity: 1;
+  }
+  /* Specular Solar Glint Sweep */
+  .showcase-media::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 40% at center, rgba(255, 235, 160, 0.22) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 70%);
+    opacity: 0;
+    transform: rotate(-25deg);
+    transition: opacity 0.6s ease;
+    z-index: 3;
   }
   .showcase-card:hover .showcase-media::after {
     opacity: 1;
+    animation: solar-glint-sweep 10s ease-in-out infinite;
+  }
+  @keyframes solar-glint-sweep {
+    0%, 100% {
+      transform: translate(-30%, -20%) rotate(-25deg);
+    }
+    50% {
+      transform: translate(25%, 20%) rotate(-25deg);
+    }
   }
   .showcase-media img {
     display: block;
@@ -671,26 +704,49 @@
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
-    transform-origin: center center;
-    transform: perspective(1200px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0);
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.25, 1);
+    transform-origin: 50% 88%;
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
   .showcase-card:hover .showcase-media img {
-    animation: helicopter-orbit 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    animation: deep-helicopter-orbit 11s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
+  }
+  /* Tactical Gimbal Reticle & Corner Brackets */
+  .showcase-media .gimbal-reticle {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background:
+      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px 14px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) 14px 14px / 2px 12px no-repeat,
+      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 12px 2px no-repeat,
+      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 2px 12px no-repeat,
+      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 12px 2px no-repeat,
+      linear-gradient(to top, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 2px 12px no-repeat,
+      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 12px 2px no-repeat,
+      linear-gradient(to top, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 2px 12px no-repeat,
+      linear-gradient(to right, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 22px 1px no-repeat,
+      linear-gradient(to bottom, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 1px 22px no-repeat;
+  }
+  .showcase-card:hover .gimbal-reticle {
+    opacity: 0.85;
   }
   .hud-sorvolo {
     position: absolute;
     top: 12px;
     left: 12px;
-    z-index: 2;
+    z-index: 5;
     display: inline-flex;
     align-items: center;
     gap: 7px;
     padding: 4px 9px;
-    background: rgba(6, 7, 19, 0.82);
+    background: rgba(6, 7, 19, 0.85);
     border: 1px solid rgba(255, 225, 74, 0.45);
     border-radius: 4px;
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -705,6 +761,34 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+  .hud-telemetria {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    background: rgba(6, 7, 19, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #E2E8F0;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+  .showcase-card:hover .hud-telemetria {
+    opacity: 1;
+    transform: translateY(0);
   }
   .hud-sorvolo-rec {
     width: 6px;
@@ -722,21 +806,21 @@
     opacity: 1;
     transform: translateY(0);
   }
-  @keyframes helicopter-orbit {
+  @keyframes deep-helicopter-orbit {
     0% {
-      transform: perspective(1000px) rotateX(10deg) rotateY(-3.5deg) rotateZ(-1deg) scale(1.09) translate3d(-1.5%, -1%, 10px);
+      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
     }
     25% {
-      transform: perspective(1000px) rotateX(13deg) rotateY(1.5deg) rotateZ(0.8deg) scale(1.13) translate3d(1.5%, -1.5%, 25px);
+      transform: perspective(550px) rotateX(27deg) rotateY(-1deg) rotateZ(-0.5deg) scale(1.36) translate3d(0%, -5%, 60px);
     }
     50% {
-      transform: perspective(1000px) rotateX(9deg) rotateY(4.5deg) rotateZ(1.5deg) scale(1.16) translate3d(2%, 1%, 35px);
+      transform: perspective(550px) rotateX(22deg) rotateY(8deg) rotateZ(3.5deg) scale(1.34) translate3d(3%, -2%, 40px);
     }
     75% {
-      transform: perspective(1000px) rotateX(12deg) rotateY(-1.5deg) rotateZ(-0.8deg) scale(1.12) translate3d(-1%, 1.5%, 20px);
+      transform: perspective(550px) rotateX(19deg) rotateY(2deg) rotateZ(1deg) scale(1.30) translate3d(1%, 2%, 20px);
     }
     100% {
-      transform: perspective(1000px) rotateX(10deg) rotateY(-3.5deg) rotateZ(-1deg) scale(1.09) translate3d(-1.5%, -1%, 10px);
+      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -1023,6 +1107,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 420m · PTCH -24°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
           <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="3D platform for renewable land sourcing and suitability scoring" width="2000" height="879" loading="lazy" decoding="async">
@@ -1046,6 +1132,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 380m · PTCH -22°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
           <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="3D operations console with volumetric building footprints and asset telemetry" width="2000" height="792" loading="lazy" decoding="async">
@@ -1068,6 +1156,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
           <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map with sensitive receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
@@ -1090,6 +1180,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
           <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
@@ -1112,6 +1204,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 410m · PTCH -24°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-retail-geointelligence-3d.webp" type="image/webp">
           <img src="../img/preview-retail-geointelligence-3d.jpg" alt="3D Geo-Intelligence platform for retail expansion and store selection" width="2000" height="890" loading="lazy" decoding="async">
@@ -1135,6 +1229,8 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 440m · PTCH -23°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
           <img src="../img/preview-solar-crawler-aree-idonee.jpg" alt="Solar Crawler operations console for eligible solar surfaces and industrial rooftops" width="2000" height="854" loading="lazy" decoding="async">
