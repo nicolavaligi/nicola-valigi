@@ -288,6 +288,7 @@
   .anteprima:hover {
     border-color: rgba(255, 255, 255, 0.32);
   }
+  .anteprima .anteprima-visual,
   .anteprima a.anteprima-link {
     display: block;
     position: relative;
@@ -295,7 +296,9 @@
     background: #000;
     perspective: 1200px;
     transform-style: preserve-3d;
+    cursor: default;
   }
+  .anteprima .anteprima-visual::after,
   .anteprima a.anteprima-link::after {
     content: "";
     position: absolute;
@@ -306,6 +309,7 @@
     transition: opacity 0.5s ease;
     z-index: 1;
   }
+  .anteprima:hover .anteprima-visual::after,
   .anteprima:hover a.anteprima-link::after {
     opacity: 1;
   }
@@ -494,20 +498,20 @@
     </ul>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="../img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Geo-Intelligence screenshot">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
           <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="3D Geo-Intelligence platform for land suitability and renewable site screening" width="2000" height="879" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">3D GIS &bull; LIVE</span>
             <span>Geo-Intelligence &mdash; Renewable Land Qualification</span>
           </div>
-          <a class="anteprima-apri" href="../img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
+          <a class="anteprima-apri" href="https://nicolavaligi.github.io/sunpro/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
         </div>
         <p class="anteprima-testo">Automated land qualification and constraint filtering engine: algorithmic cross-referencing between official cadastral parcels, HV/MV primary substations, grid proximity buffers, and land acquisition cost scoring.</p>
       </figcaption>
@@ -519,43 +523,39 @@
     <p>Grid capacity, distance to overhead lines, solar irradiation, agricultural constraints, and zoning boundaries: open countryside and peri-urban buffers carry fundamentally different risks. I condense full days of desk analysis and registry cross-referencing into interactive, decision-ready GIS layers.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="../img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Control Tower screenshot">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
           <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="O&M Control Tower console with 3D building models and real-time solar PV telemetry" width="2000" height="792" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag">O&amp;M &bull; DIGITAL TWIN</span>
             <span>Control Tower &mdash; Live Telemetry &amp; AI Agents</span>
           </div>
-          <a class="anteprima-apri" href="../img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
         </div>
         <p class="anteprima-testo">3D operational digital twin featuring volumetric footprints of industrial facilities, real-time generation telemetry (12 plants &bull; 6.4 MWp), P1/Warning anomaly scoring, and autonomous AI-triggered dispatch.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Launch live Solar Crawler console">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
           <img src="../img/preview-solar-crawler-aree-idonee.jpg" alt="Solar Crawler operations console for eligible solar surfaces and industrial rooftops" width="2000" height="854" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">SOLAR CRAWLER &bull; D.LGS 190/2024</span>
             <span>Solar Crawler &mdash; Eligible Rooftops &amp; Areas</span>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;">
-            <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
-            <a class="anteprima-apri" href="../img/preview-solar-crawler-aree-idonee.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
-          </div>
+          <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
         </div>
         <p class="anteprima-testo">Massive screening platform for legally eligible solar surfaces (industrial roofs, quarries, closed landfills; 182 sites &bull; &asymp;102.1 MWp), automated kWp/sqm extraction, MV/HV buffers, and 3D drone walkthroughs.</p>
       </figcaption>
@@ -568,23 +568,20 @@
     <p>From vector branding and operational dashboards to responsive layouts and direct copywriting: I craft visual identities and web tools with deliberate typography, sharp hierarchies, and zero decorative noise. Tools should look intentional, human, and immediately usable.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Launch live 3D Retail Geo-Intelligence demo">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-retail-geointelligence-3d.webp" type="image/webp">
           <img src="../img/preview-retail-geointelligence-3d.jpg" alt="3D Geo-Intelligence platform for retail expansion and store selection" width="2000" height="890" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">RETAIL 3D &bull; EXPANSION</span>
             <span>3D Geo-Intelligence &mdash; Retail Expansion &amp; Site Selection</span>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;">
-            <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
-            <a class="anteprima-apri" href="../img/preview-retail-geointelligence-3d.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
-          </div>
+          <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
         </div>
         <p class="anteprima-testo">Strategic retail scouting tool: photorealistic 3D urban extrusions, foot traffic index, commercial lease rates, competitor proximity metrics, and virtual 3D site visits across Rome.</p>
       </figcaption>
@@ -597,40 +594,38 @@
     <p>I coordinate expropriation procedures and draft technical valuation appraisals (<em>perizie di stima</em>) under Italian expropriation law (D.P.R. 327/2001), protecting property owners and streamlining contentious files.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="../img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution infrastructure corridor screenshot">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
           <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map of acoustic receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">CORRIDORS &bull; GIS</span>
             <span>Spatial Modeling &mdash; Buffer Zones &amp; Sensitive Receivers</span>
           </div>
-          <a class="anteprima-apri" href="../img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
         </div>
         <p class="anteprima-testo">Geospatial simulation along high-capacity transit corridors: cartographic inventory of over 1,100 sensitive receivers, noise mitigation barrier modeling, and pinpointing regulatory limit exceedances for technical appraisal.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="../img/preview-pedemontana-ricettori-acustici.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Pedemontana Highway acoustic receptors screenshot">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
         <picture>
           <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
           <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">HIGHWAY INFRASTRUCTURE &bull; 3D GIS</span>
             <span>Pedemontana Highway &mdash; 6,910 Acoustic Receptors &amp; Interchanges</span>
           </div>
-          <a class="anteprima-apri" href="../img/preview-pedemontana-ricettori-acustici.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
         </div>
         <p class="anteprima-testo">Geospatial console for Sections B2 and C: geo-auditing of 6,910 acoustic receptors, identifying the 39 units exceeding statutory thresholds behind noise mitigation barriers and properties slated for window retrofit packages. Vector CAD road geometries (SS36/Desio interchange, roundabouts), 3D building models, and official cadastral maps.</p>
       </figcaption>

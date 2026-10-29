@@ -288,6 +288,7 @@
   .anteprima:hover {
     border-color: rgba(255, 255, 255, 0.32);
   }
+  .anteprima .anteprima-visual,
   .anteprima a.anteprima-link {
     display: block;
     position: relative;
@@ -295,7 +296,9 @@
     background: #000;
     perspective: 1200px;
     transform-style: preserve-3d;
+    cursor: default;
   }
+  .anteprima .anteprima-visual::after,
   .anteprima a.anteprima-link::after {
     content: "";
     position: absolute;
@@ -306,6 +309,7 @@
     transition: opacity 0.5s ease;
     z-index: 1;
   }
+  .anteprima:hover .anteprima-visual::after,
   .anteprima:hover a.anteprima-link::after {
     opacity: 1;
   }
@@ -494,20 +498,20 @@
     </ul>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer" aria-label="Apri screenshot Geo-Intelligence a piena risoluzione">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-sunpro-geo-intelligence.webp" type="image/webp">
           <img src="img/preview-sunpro-geo-intelligence.jpg" alt="Piattaforma Geo-Intelligence 3D per qualificazione fondiaria e aree idonee" width="2000" height="879" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">GIS 3D &bull; LIVE</span>
             <span>Geo-Intelligence &mdash; Qualificazione Fondiaria Rinnovabili</span>
           </div>
-          <a class="anteprima-apri" href="img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
+          <a class="anteprima-apri" href="https://nicolavaligi.github.io/sunpro/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
         </div>
         <p class="anteprima-testo">Algoritmo di qualificazione ed esclusione vincoli su macro-aree territoriali: incrocio automatico tra particelle catastali ufficiali, cabine primarie AT/MT, buffer di allaccio alla rete e scoring economico fondiario.</p>
       </figcaption>
@@ -519,43 +523,39 @@
     <p>Distanza dalle linee di trasporto e dalle sottostazioni, capacità di allaccio alla rete, irraggiamento solare, valore agricolo dei suoli e vincoli ambientali o paesaggistici: aperta campagna e margini urbani presentano rischi diametralmente opposti. Trasformo intere giornate di verifiche d'ufficio e visure in mappe interattive su cui prendere decisioni strategiche immediate.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer" aria-label="Apri screenshot Torre di Controllo a piena risoluzione">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-torre-controllo-oem-3d.webp" type="image/webp">
           <img src="img/preview-torre-controllo-oem-3d.jpg" alt="Console Torre di Controllo O&M con visualizzazione volumetrica 3D e telemetria impianti fotovoltaici" width="2000" height="792" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag">O&amp;M &bull; DIGITAL TWIN</span>
             <span>Torre di Controllo &mdash; Telemetria e Agenti AI</span>
           </div>
-          <a class="anteprima-apri" href="img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
         </div>
         <p class="anteprima-testo">Console operativa 3D con footprint volumetrici degli edifici industriali, monitoraggio resa in tempo reale (12 impianti &bull; 6,4 MWp), scoring guasti P1/Warning e automazioni AI per manutenzioni e CRM.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Lancia demo live Solar Crawler">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
           <img src="img/preview-solar-crawler-aree-idonee.jpg" alt="Console operativa Solar Crawler per qualificazione aree idonee e tetti industriali" width="2000" height="854" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">SOLAR CRAWLER &bull; D.LGS 190/2024</span>
             <span>Solar Crawler &mdash; Scouting Tetti e Aree Idonee</span>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;">
-            <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
-            <a class="anteprima-apri" href="img/preview-solar-crawler-aree-idonee.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
-          </div>
+          <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
         </div>
         <p class="anteprima-testo">Console per la selezione massiva di superfici idonee ex art. 11-bis D.Lgs. 190/2024: tetti industriali, cave dismesse e discariche (182 siti &bull; &asymp;102.1 MWp), stima automatica kWp, buffer MT/AT e sopralluogo 3D guidato.</p>
       </figcaption>
@@ -568,23 +568,20 @@
     <p>Dalla grafica vettoriale e branding per nuovi strumenti ai cruscotti operativi, fino al copywriting diretto e all'architettura dell'informazione: curo l'estetica attraverso gerarchie tipografiche nette e linee pulite, eliminando il rumore decorativo. Ogni interfaccia deve risultare solida, autentica e subito fruibile.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Lancia demo live Geo-Intelligence 3D Retail">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-retail-geointelligence-3d.webp" type="image/webp">
           <img src="img/preview-retail-geointelligence-3d.jpg" alt="Piattaforma Geo-Intelligence 3D per espansione retail e apertura store" width="2000" height="890" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">RETAIL 3D &bull; EXPANSION</span>
             <span>Geo-Intelligence 3D &mdash; Espansione Retail e Store Scouting</span>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;">
-            <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
-            <a class="anteprima-apri" href="img/preview-retail-geointelligence-3d.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
-          </div>
+          <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
         </div>
         <p class="anteprima-testo">Piattaforma decisionale per nuove aperture retail su scala metropolitana: estrusione 3D fotorealistica del tessuto urbano, analisi flussi pedonali e canoni d'affitto, censimento competitor e sopralluogo virtuale tridimensionale su Roma.</p>
       </figcaption>
@@ -597,40 +594,38 @@
     <p>Coordino fascicoli espropriativi e redigo perizie tecniche di stima nell'ambito del Testo Unico sugli Espropri (D.P.R. 327/2001), tutelando le proprietà private e sbloccando le trattative d'indennizzo più complesse.</p>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer" aria-label="Apri screenshot Corridoi Infrastrutturali a piena risoluzione">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-rho-gallarate-ricettori.webp" type="image/webp">
           <img src="img/preview-rho-gallarate-ricettori.jpg" alt="Mappa GIS modellazione acustica e censimento ricettori sensibili" width="2000" height="737" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">CORRIDOI &bull; GIS</span>
             <span>Modellazione Spaziale &mdash; Fasce di Pertinenza e Ricettori</span>
           </div>
-          <a class="anteprima-apri" href="img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
         </div>
         <p class="anteprima-testo">Simulazione geospaziale lungo corridoi di trasporto ad alta capacità: censimento cartografico di oltre 1.100 recettori, modellazione barriere di mitigazione e individuazione dei punti di superamento dei limiti acustici per perizie tecniche.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
-      <a class="anteprima-link" href="img/preview-pedemontana-ricettori-acustici.jpg" target="_blank" rel="noopener noreferrer" aria-label="Apri screenshot Ricettori Acustici Pedemontana a piena risoluzione">
+      <div class="anteprima-visual">
         <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
         <picture>
           <source srcset="img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
           <img src="img/preview-pedemontana-ricettori-acustici.jpg" alt="Console GIS Ricettori Acustici Autostrada Pedemontana Lombarda con sagome di progetto ed edifici 3D" width="2000" height="799" loading="lazy" decoding="async">
         </picture>
-      </a>
+      </div>
       <figcaption>
         <div class="anteprima-head">
           <div class="anteprima-titolo">
             <span class="badge-tag accent">OPERE VIARIE &bull; GIS 3D</span>
             <span>Autostrada Pedemontana Lombarda &mdash; Ricettori Acustici e Svincoli</span>
           </div>
-          <a class="anteprima-apri" href="img/preview-pedemontana-ricettori-acustici.jpg" target="_blank" rel="noopener noreferrer">A piena risoluzione &nearr;</a>
         </div>
         <p class="anteprima-testo">Console cartografica per le tratte B2 e C: censimento georeferenziato di 6.910 ricettori acustici, individuazione delle 39 unità oltre i limiti post-barriere e dei fabbricati con sostituzione diretta degli infissi. Sovrapposizione vettoriale delle sagome stradali (svincoli SS36/Desio, rotatorie), edifici 3D e visure catastali AdE.</p>
       </figcaption>
