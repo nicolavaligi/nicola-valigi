@@ -642,10 +642,27 @@
     position: relative;
     overflow: hidden;
     background: #000;
+    perspective: 1200px;
+    transform-style: preserve-3d;
   }
   .showcase-media a {
     display: block;
     position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+  .showcase-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 60%, rgba(6, 7, 19, 0.45) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+  }
+  .showcase-card:hover .showcase-media::after {
+    opacity: 1;
   }
   .showcase-media img {
     display: block;
@@ -653,10 +670,82 @@
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transform-origin: center center;
+    transform: perspective(1200px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0);
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.25, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   .showcase-card:hover .showcase-media img {
-    transform: scale(1.02);
+    animation: helicopter-orbit 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  }
+  .hud-sorvolo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 9px;
+    background: rgba(6, 7, 19, 0.82);
+    border: 1px solid rgba(255, 225, 74, 0.45);
+    border-radius: 4px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--amber, #FFE14A);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+  .hud-sorvolo-rec {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFE14A;
+    box-shadow: 0 0 8px #FFE14A;
+    animation: hud-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes hud-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.8); }
+  }
+  .showcase-card:hover .hud-sorvolo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @keyframes helicopter-orbit {
+    0% {
+      transform: perspective(1000px) rotateX(10deg) rotateY(-3.5deg) rotateZ(-1deg) scale(1.09) translate3d(-1.5%, -1%, 10px);
+    }
+    25% {
+      transform: perspective(1000px) rotateX(13deg) rotateY(1.5deg) rotateZ(0.8deg) scale(1.13) translate3d(1.5%, -1.5%, 25px);
+    }
+    50% {
+      transform: perspective(1000px) rotateX(9deg) rotateY(4.5deg) rotateZ(1.5deg) scale(1.16) translate3d(2%, 1%, 35px);
+    }
+    75% {
+      transform: perspective(1000px) rotateX(12deg) rotateY(-1.5deg) rotateZ(-0.8deg) scale(1.12) translate3d(-1%, 1.5%, 20px);
+    }
+    100% {
+      transform: perspective(1000px) rotateX(10deg) rotateY(-3.5deg) rotateZ(-1deg) scale(1.09) translate3d(-1.5%, -1%, 10px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-card:hover .showcase-media img {
+      animation: none !important;
+      transform: scale(1.02) !important;
+    }
+    .hud-sorvolo-rec {
+      animation: none !important;
+    }
   }
   .showcase-body {
     padding: 24px;
@@ -933,6 +1022,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="../img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Land Sourcing screenshot">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
             <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="3D platform for renewable land sourcing and suitability scoring" width="2000" height="879" loading="lazy" decoding="async">
@@ -960,6 +1050,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="../img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution 3D Operations Console screenshot">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
             <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="3D operations console with volumetric building footprints and asset telemetry" width="2000" height="792" loading="lazy" decoding="async">
@@ -984,6 +1075,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="../img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Corridor Modeling screenshot">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
             <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map with sensitive receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
@@ -1008,6 +1100,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="../img/preview-pedemontana-ricettori-acustici.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Pedemontana Highway acoustic receptors screenshot">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
             <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
@@ -1032,6 +1125,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Launch live 3D Retail Geo-Intelligence demo">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-retail-geointelligence-3d.webp" type="image/webp">
             <img src="../img/preview-retail-geointelligence-3d.jpg" alt="3D Geo-Intelligence platform for retail expansion and store selection" width="2000" height="890" loading="lazy" decoding="async">
@@ -1059,6 +1153,7 @@
     <article class="showcase-card">
       <div class="showcase-media">
         <a href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Launch live Solar Crawler console">
+          <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
           <picture>
             <source srcset="../img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
             <img src="../img/preview-solar-crawler-aree-idonee.jpg" alt="Solar Crawler operations console for eligible solar surfaces and industrial rooftops" width="2000" height="854" loading="lazy" decoding="async">
