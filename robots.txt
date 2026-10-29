@@ -1,4 +1,10 @@
+# robots.txt for nicvaligi.com
 User-agent: *
 Allow: /
 
+# Disallow build artifacts, source governance, or private assets if exposed
+Disallow: /.git/
+Disallow: /.github/
+
+# Sitemap location
 Sitemap: https://www.nicvaligi.com/sitemap.xml
