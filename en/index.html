@@ -433,54 +433,61 @@
 
   var vsSrc = [
     "attribute vec3 aPos;",
-    "attribute vec3 aNrm;",
+    "attribute float aPhase;",
+    "attribute float aAccent;",
     "uniform mat4 uMvp;",
-    "uniform mat3 uN;",
-    "varying vec3 vN;",
-    "varying vec3 vPos;",
+    "uniform mat4 uMv;",
+    "uniform float uTime;",
+    "uniform float uRadius;",
+    "uniform float uCamZ;",
+    "uniform float uPx;",
+    "uniform float uMax;",
+    "varying float vFront;",
+    "varying float vPulse;",
+    "varying float vAccent;",
     "void main() {",
-    "  vPos = aPos;",
-    "  vN = uN * aNrm;",
+    "  vec4 view = uMv * vec4(aPos, 1.0);",
     "  gl_Position = uMvp * vec4(aPos, 1.0);",
+    "  float along = (view.z + uCamZ) / max(uRadius, 0.001);",
+    "  vFront = clamp(along * 0.5 + 0.5, 0.0, 1.0);",
+    "  vPulse = 0.5 + 0.5 * sin(uTime * 0.7 + aPhase);",
+    "  vAccent = aAccent;",
+    "  float body = aAccent > 0.5 ? (2.2 + vPulse * 1.5) : (0.82 + vPulse * 0.28);",
+    "  gl_PointSize = min(uMax, uPx * body * (0.5 + vFront * 0.75));",
     "}"
   ].join("\n");
 
-  var fsSrc = [
+  var fsLine = [
     "precision mediump float;",
-    "varying vec3 vN;",
-    "varying vec3 vPos;",
-    "uniform float uTime;",
+    "varying float vFront;",
+    "varying float vPulse;",
+    "varying float vAccent;",
     "uniform float uDay;",
     "void main() {",
-    "  vec3 n = normalize(vN);",
-    "  vec3 p = normalize(vPos);",
-    "  float lon = atan(p.z, p.x);",
-    "  float lat = asin(clamp(p.y, -1.0, 1.0));",
-    "  vec2 cell = vec2(lon * 5.0, lat * 5.0);",
-    "  vec2 gv = fract(cell) - 0.5;",
-    "  float puck = length(gv);",
-    "  float led = smoothstep(0.46, 0.18, puck);",
-    "  float bead = led * (0.55 + 0.45 * smoothstep(0.25, -0.3, gv.y));",
-    "  float twinkle = 0.86 + 0.14 * sin(uTime * 1.3 + cell.x * 2.1 + cell.y * 1.7);",
-    "  float band = smoothstep(0.10, 0.0, abs(lat - 0.62));",
-    "  vec3 nightC = vec3(0.16, 0.42, 1.0);",
-    "  vec3 dayC = vec3(1.0, 0.72, 0.32);",
-    "  vec3 diode = mix(nightC, dayC, uDay);",
-    "  diode = mix(diode, mix(vec3(1.0, 0.86, 0.28), vec3(1.0, 0.96, 0.72), uDay), band);",
-    "  vec3 skin = diode * bead * twinkle;",
-    "  vec3 key = normalize(mix(vec3(-1.05, 0.38, 0.42), vec3(-0.2, 0.95, 0.42), uDay));",
-    "  float ndl = dot(n, key);",
-    "  float shade = mix(smoothstep(-0.85, 0.45, ndl), 0.55 + 0.45 * clamp(ndl, 0.0, 1.0), uDay);",
-    "  float facing = clamp(n.z, 0.0, 1.0);",
-    "  shade *= mix(mix(0.34, 0.62, uDay), 1.0, pow(facing, 0.22));",
-    "  vec3 col = skin * shade;",
-    "  vec3 halfv = normalize(key + vec3(0.15, 0.35, 1.0));",
-    "  float broad = pow(clamp(dot(n, halfv), 0.0, 1.0), 8.0);",
-    "  float hot = pow(clamp(dot(n, halfv), 0.0, 1.0), 48.0);",
-    "  vec3 spec = mix(vec3(0.45, 0.62, 1.0), vec3(1.0, 0.9, 0.62), uDay);",
-    "  col += spec * broad * 0.7;",
-    "  col += vec3(1.0, 0.98, 0.94) * hot;",
-    "  gl_FragColor = vec4(col, 1.0);",
+    "  vec3 col = mix(vec3(0.30, 0.52, 1.0), vec3(1.0, 0.74, 0.32), uDay);",
+    "  float alpha = (0.26 + vPulse * 0.40) * (0.46 + vFront * 0.54);",
+    "  gl_FragColor = vec4(col, alpha);",
+    "}"
+  ].join("\n");
+
+  var fsNode = [
+    "precision mediump float;",
+    "varying float vFront;",
+    "varying float vPulse;",
+    "varying float vAccent;",
+    "uniform float uDay;",
+    "void main() {",
+    "  vec2 q = gl_PointCoord * 2.0 - 1.0;",
+    "  float d = length(q);",
+    "  if (d > 1.0) discard;",
+    "  float rim = smoothstep(1.0, 0.42, d);",
+    "  vec3 ivory = mix(vec3(0.82, 0.86, 0.93), vec3(0.97, 0.94, 0.86), uDay);",
+    "  vec3 accent = mix(vec3(0.64, 0.80, 1.0), vec3(1.0, 0.88, 0.29), uDay);",
+    "  vec3 col = mix(ivory, accent, vAccent);",
+    "  col = mix(col, vec3(1.0), smoothstep(0.45, 0.0, d) * 0.4);",
+    "  float alpha = rim * (0.48 + vPulse * 0.52) * (0.5 + vFront * 0.5);",
+    "  alpha += smoothstep(1.0, 0.15, d) * vAccent * (0.12 + vPulse * 0.2);",
+    "  gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));",
     "}"
   ].join("\n");
 
@@ -491,54 +498,86 @@
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
     return s;
   }
-  var prog = gl.createProgram();
-  gl.attachShader(prog, shader(gl.VERTEX_SHADER, vsSrc));
-  gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, fsSrc));
-  gl.bindAttribLocation(prog, 0, "aPos");
-  gl.bindAttribLocation(prog, 1, "aNrm");
-  gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(prog));
-  gl.useProgram(prog);
+  function makeProg(fs) {
+    var p = gl.createProgram();
+    gl.attachShader(p, shader(gl.VERTEX_SHADER, vsSrc));
+    gl.attachShader(p, shader(gl.FRAGMENT_SHADER, fs));
+    gl.bindAttribLocation(p, 0, "aPos");
+    gl.bindAttribLocation(p, 1, "aPhase");
+    gl.bindAttribLocation(p, 2, "aAccent");
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(p));
+    return p;
+  }
+  var lineProg = makeProg(fsLine);
+  var nodeProg = makeProg(fsNode);
 
-  var slices = 120;
-  var stacks = 80;
-  var positions = [];
-  var indices = [];
-  var y, x, v, u, phi, theta, px, py, pz, row;
-  for (y = 0; y <= stacks; y++) {
-    v = y / stacks;
-    phi = v * Math.PI;
-    for (x = 0; x <= slices; x++) {
-      u = x / slices;
-      theta = u * Math.PI * 2;
-      px = Math.sin(phi) * Math.cos(theta);
-      py = Math.cos(phi);
-      pz = Math.sin(phi) * Math.sin(theta);
-      positions.push(px, py, pz);
+  function unit(n) {
+    var x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+    return x - Math.floor(x);
+  }
+  var count = 228;
+  var reach = 0.4;
+  var reach2 = reach * reach;
+  var nodes = [];
+  var i, y, rad, ang, phase, accent;
+  for (i = 0; i < count; i++) {
+    y = 1 - (i / (count - 1)) * 2;
+    rad = Math.sqrt(Math.max(0, 1 - y * y));
+    ang = i * Math.PI * (3 - Math.sqrt(5));
+    phase = unit(i + 3) * 6.283185307;
+    accent = unit(i + 19) < 0.2 ? 1 : 0;
+    nodes.push(Math.cos(ang) * rad, y, Math.sin(ang) * rad, phase, accent);
+  }
+  var wires = [];
+  var a, b, dx, dy, dz;
+  for (a = 0; a < count; a++) {
+    for (b = a + 1; b < count; b++) {
+      dx = nodes[a * 5] - nodes[b * 5];
+      dy = nodes[a * 5 + 1] - nodes[b * 5 + 1];
+      dz = nodes[a * 5 + 2] - nodes[b * 5 + 2];
+      if (dx * dx + dy * dy + dz * dz < reach2) {
+        wires.push(
+          nodes[a * 5], nodes[a * 5 + 1], nodes[a * 5 + 2], nodes[a * 5 + 3], nodes[a * 5 + 4],
+          nodes[b * 5], nodes[b * 5 + 1], nodes[b * 5 + 2], nodes[b * 5 + 3], nodes[b * 5 + 4]
+        );
+      }
     }
   }
-  for (y = 0; y < stacks; y++) {
-    for (x = 0; x < slices; x++) {
-      row = y * (slices + 1) + x;
-      indices.push(row, row + slices + 1, row + 1);
-      indices.push(row + 1, row + slices + 1, row + slices + 2);
-    }
+  var wireCount = wires.length / 5;
+  function meshBuffer(values) {
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(values), gl.STATIC_DRAW);
+    return buf;
   }
-  var posBuf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-  gl.enableVertexAttribArray(0);
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(1);
-  gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
-  var indexBuf = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuf);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+  var wireBuf = meshBuffer(wires);
+  var nodeBuf = meshBuffer(nodes);
+  function bindMesh(buf) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.enableVertexAttribArray(0);
+    gl.enableVertexAttribArray(1);
+    gl.enableVertexAttribArray(2);
+    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 20, 0);
+    gl.vertexAttribPointer(1, 1, gl.FLOAT, false, 20, 12);
+    gl.vertexAttribPointer(2, 1, gl.FLOAT, false, 20, 16);
+  }
+  var pointMax = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE)[1];
 
-  var uMvp = gl.getUniformLocation(prog, "uMvp");
-  var uN = gl.getUniformLocation(prog, "uN");
-  var uTime = gl.getUniformLocation(prog, "uTime");
-  var uDay = gl.getUniformLocation(prog, "uDay");
+  function locs(prog) {
+    return {
+      mvp: gl.getUniformLocation(prog, "uMvp"),
+      mv: gl.getUniformLocation(prog, "uMv"),
+      time: gl.getUniformLocation(prog, "uTime"),
+      day: gl.getUniformLocation(prog, "uDay"),
+      radius: gl.getUniformLocation(prog, "uRadius"),
+      cam: gl.getUniformLocation(prog, "uCamZ"),
+      px: gl.getUniformLocation(prog, "uPx"),
+      max: gl.getUniformLocation(prog, "uMax")
+    };
+  }
+  var lineLoc = locs(lineProg);
+  var nodeLoc = locs(nodeProg);
   var glowTag = "";
   var yaw = 0.55;
   var pitch = -0.22;
@@ -623,14 +662,6 @@
     return o;
   }
 
-  function mat3(m) {
-    return new Float32Array([
-      m[0], m[1], m[2],
-      m[4], m[5], m[6],
-      m[8], m[9], m[10]
-    ]);
-  }
-
   function desiredRadius() {
     var w = canvas.clientWidth;
     var h = canvas.clientHeight;
@@ -663,37 +694,50 @@
     var r = Math.round(31 + (255 - 31) * day);
     var g = Math.round(67 + (150 - 67) * day);
     var b = Math.round(216 + (40 - 216) * day);
-    canvas.style.filter =
-      "drop-shadow(0 22px 28px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 42px rgba(" +
-      r + "," + g + "," + b + ",0.45))";
+    canvas.style.filter = "drop-shadow(0 0 34px rgba(" + r + "," + g + "," + b + ",0.32))";
+  }
+
+  function drawMesh(prog, loc, buf, mode, n) {
+    gl.useProgram(prog);
+    bindMesh(buf);
+    gl.uniformMatrix4fv(loc.mvp, false, draw.mvp);
+    gl.uniformMatrix4fv(loc.mv, false, draw.mv);
+    gl.uniform1f(loc.time, time);
+    gl.uniform1f(loc.day, draw.day);
+    gl.uniform1f(loc.radius, draw.zoom);
+    gl.uniform1f(loc.cam, camZ);
+    gl.uniform1f(loc.px, draw.px);
+    gl.uniform1f(loc.max, pointMax);
+    gl.drawArrays(mode, 0, n);
   }
 
   function draw() {
     var f = 1 / Math.tan(fovy / 2);
-    var zoom = (hitR * camZ) / (f * (canvas.clientHeight / 2)) * userZoom;
+    var breathe = reduce ? 1 : 1 + 0.012 * Math.sin(time * 0.55);
+    var zoom = (hitR * camZ) / (f * (canvas.clientHeight / 2)) * userZoom * breathe;
     var model = mul(rotY(yaw), mul(rotX(pitch), scale(zoom)));
     var view = translateZ(-camZ);
-    var mv = mul(view, model);
+    draw.mv = mul(view, model);
     var proj = perspective(fovy, canvas.width / canvas.height, 0.1, 20);
-    var mvp = mul(proj, mv);
-    var day = dayAmount();
+    draw.mvp = mul(proj, draw.mv);
+    draw.zoom = zoom;
+    draw.day = dayAmount();
+    draw.px = Math.max(2.2, canvas.clientHeight * 0.0046) * (canvas.height / Math.max(1, canvas.clientHeight));
     gl.clearColor(0, 0, 0, 0);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.enable(gl.DEPTH_TEST);
-    gl.enable(gl.CULL_FACE);
-    gl.useProgram(prog);
-    gl.uniformMatrix4fv(uMvp, false, mvp);
-    gl.uniformMatrix3fv(uN, false, mat3(mv));
-    gl.uniform1f(uTime, time);
-    gl.uniform1f(uDay, day);
-    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-    paintGlow(day);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.disable(gl.DEPTH_TEST);
+    gl.disable(gl.CULL_FACE);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    drawMesh(lineProg, lineLoc, wireBuf, gl.LINES, wireCount);
+    drawMesh(nodeProg, nodeLoc, nodeBuf, gl.POINTS, count);
+    paintGlow(draw.day);
   }
 
   function tick() {
     if (!running) return;
     time += 0.016;
-    if (!dragging && performance.now() > idleAt && !reduce) yaw += 0.0045;
+    if (!dragging && performance.now() > idleAt && !reduce) yaw += 0.0022;
     draw();
     if (!reduce) requestAnimationFrame(tick);
   }
