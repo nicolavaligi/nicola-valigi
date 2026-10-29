@@ -259,6 +259,7 @@
   }
   @media (min-width: 701px) and (min-height: 501px) {
     h1 { font-size: 4.2rem; }
+    article { max-width: 48rem; }
     article h2 { font-size: 1.5rem; }
   }
   article p { margin: 0 0 12px; }
@@ -274,6 +275,93 @@
     color: #fff;
   }
   .numeri strong { font-weight: 700; }
+  .anteprima {
+    margin: 22px 0 16px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0d0d0d;
+    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.55);
+    transition: border-color 0.2s ease;
+  }
+  .anteprima:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+  .anteprima a.anteprima-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .anteprima img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+  .anteprima:hover img {
+    transform: scale(1.01);
+  }
+  .anteprima figcaption {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--quiet);
+  }
+  .anteprima-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-bottom: 6px;
+  }
+  .anteprima-titolo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.84rem;
+    letter-spacing: 0.02em;
+  }
+  .badge-tag {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: rgba(46, 86, 255, 0.18);
+    color: #9cb1ff;
+    border: 1px solid rgba(46, 86, 255, 0.35);
+  }
+  .badge-tag.accent {
+    background: rgba(255, 225, 74, 0.12);
+    color: #FFE14A;
+    border-color: rgba(255, 225, 74, 0.35);
+  }
+  .anteprima-apri {
+    color: #8da4ff;
+    font-size: 0.74rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .anteprima-apri:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .anteprima-testo {
+    margin: 0;
+    color: #B9B5AC;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
   .fondo {
     margin-top: 8px;
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -317,11 +405,49 @@
       <li><strong>2,107</strong> high-voltage primary substations geolocated for grid interconnection</li>
       <li><strong>277</strong> logistics and industrial yards assessed (54.3 MWp) across 7,904 Italian municipalities</li>
     </ul>
+
+    <figure class="anteprima">
+      <a class="anteprima-link" href="../img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution SunPro screenshot">
+        <picture>
+          <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
+          <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="SunPro 3D Geo-Intelligence platform by Nicola Valigi showing 60 qualified sites and 971.8 MWp" width="2000" height="1091" loading="lazy" decoding="async">
+        </picture>
+      </a>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">3D GIS &bull; LIVE</span>
+            <span>SunPro &mdash; Renewable Land Sourcing Intelligence</span>
+          </div>
+          <a class="anteprima-apri" href="../img/preview-sunpro-geo-intelligence.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
+        </div>
+        <p class="anteprima-testo">Land qualification under D.Lgs. 199/2021 across 60 national macro-hubs (971.8 MWp, 1,166 ha) and dedicated Piacenza A1&ndash;A21 cluster (116 land parcels verified via official WMS cadastral layers, HV/MV substations, proximity buffers, and land cost models).</p>
+      </figcaption>
+    </figure>
   </article>
 
   <article>
     <h2>Spatial Analysis &amp; Decision Mapping</h2>
     <p>Grid capacity, distance to overhead lines, solar irradiation, agricultural constraints, and zoning boundaries: open countryside and peri-urban buffers carry fundamentally different risks. I condense full days of desk analysis and registry cross-referencing into interactive, decision-ready GIS layers.</p>
+
+    <figure class="anteprima">
+      <a class="anteprima-link" href="../img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Control Tower screenshot">
+        <picture>
+          <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
+          <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="O&M Control Tower console with 3D building models and real-time solar PV telemetry" width="2000" height="792" loading="lazy" decoding="async">
+        </picture>
+      </a>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag">O&amp;M &bull; DIGITAL TWIN</span>
+            <span>Control Tower &mdash; Live Telemetry &amp; AI Agents</span>
+          </div>
+          <a class="anteprima-apri" href="../img/preview-torre-controllo-oem-3d.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
+        </div>
+        <p class="anteprima-testo">3D operational digital twin featuring volumetric footprints of industrial facilities, real-time generation telemetry (12 plants &bull; 6.4 MWp), P1/Warning anomaly scoring, and autonomous AI-triggered dispatch.</p>
+      </figcaption>
+    </figure>
   </article>
 
   <article>
@@ -334,6 +460,44 @@
     <h2>Domain Expertise: Infrastructure &amp; Expropriation Law</h2>
     <p>Twelve years immersed in the technical, legal, and operational documentation of major infrastructure contracts taught me one rule: the real bottleneck is rarely the one flagged in status meetings.</p>
     <p>I coordinate expropriation procedures and draft technical valuation appraisals (<em>perizie di stima</em>) under Italian expropriation law (D.P.R. 327/2001), protecting property owners and streamlining contentious files.</p>
+
+    <figure class="anteprima">
+      <a class="anteprima-link" href="../img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution Rho-Gallarate noise receivers screenshot">
+        <picture>
+          <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
+          <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map of acoustic receivers and noise barriers for Italian railway RFI Rho-Gallarate" width="2000" height="737" loading="lazy" decoding="async">
+        </picture>
+      </a>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">RAIL INFRASTRUCTURE</span>
+            <span>RFI Railway Quadrupling Rho&ndash;Gallarate</span>
+          </div>
+          <a class="anteprima-apri" href="../img/preview-rho-gallarate-ricettori.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
+        </div>
+        <p class="anteprima-testo">High-capacity rail corridor upgrade (Rho&ndash;Parabiago and Y-link): georeferencing of 1,194 acoustic receivers, 14.2 km of noise mitigation barriers, and spatial identification of 157 non-compliant properties for technical appraisal.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="anteprima">
+      <a class="anteprima-link" href="../img/preview-infrastrutture-svincoli-ricettori.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full resolution road interchange alignment screenshot">
+        <picture>
+          <source srcset="../img/preview-infrastrutture-svincoli-ricettori.webp" type="image/webp">
+          <img src="../img/preview-infrastrutture-svincoli-ricettori.jpg" alt="GIS map with road project alignment, highway interchanges, roundabouts, and acoustic receivers" width="2000" height="511" loading="lazy" decoding="async">
+        </picture>
+      </a>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag">ROADWORKS &bull; EXPROPRIATION</span>
+            <span>Highway Alignment, Interchanges &amp; Receivers</span>
+          </div>
+          <a class="anteprima-apri" href="../img/preview-infrastrutture-svincoli-ricettori.jpg" target="_blank" rel="noopener noreferrer">Full resolution &nearr;</a>
+        </div>
+        <p class="anteprima-testo">CAD/GIS vector overlay of executive highway geometry (carriageways, multi-level interchanges, and roundabouts) directly over aerial orthophotos, with municipal parcel filtering and window insulation replacement schedules.</p>
+      </figcaption>
+    </figure>
   </article>
 
   <article>
