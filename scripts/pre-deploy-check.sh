@@ -88,6 +88,8 @@ PAGES=(
     "en/skills.html|competenze.html|https://www.nicvaligi.com/competenze.html|it"
     "index.html|en/index.html|https://www.nicvaligi.com/en/|en"
     "en/index.html|index.html|https://www.nicvaligi.com/|it"
+    "ora.html|en/now.html|https://www.nicvaligi.com/en/now.html|en"
+    "en/now.html|ora.html|https://www.nicvaligi.com/ora.html|it"
 )
 
 for pair in "${PAGES[@]}"; do
@@ -132,6 +134,8 @@ html_pages=(
     "${DOC_ROOT}/en/index.html"
     "${DOC_ROOT}/competenze.html"
     "${DOC_ROOT}/en/skills.html"
+    "${DOC_ROOT}/ora.html"
+    "${DOC_ROOT}/en/now.html"
 )
 
 for page in "${html_pages[@]}"; do

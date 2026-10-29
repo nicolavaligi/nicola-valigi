@@ -247,6 +247,17 @@
     white-space: nowrap;
   }
   .coords:hover { color: #FFD0E4; }
+  .pagina-ora {
+    display: none;
+    align-items: center;
+    min-height: 44px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+  }
   .powered {
     margin: -8px 0 0;
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -343,6 +354,7 @@
       top: max(8px, env(safe-area-inset-top));
     }
     .dock { display: none; }
+    .pagina-ora { display: inline-flex; }
     .coords { font-size: 0.72rem; }
     .stage {
       padding:
@@ -360,7 +372,7 @@
     h1 { font-size: 1.85rem; line-height: 1.02; }
     .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom)); }
     .powered { font-size: 0.55rem; }
-    .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 62px); }
+    .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size) + env(safe-area-inset-bottom) + 106px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -382,6 +394,7 @@
   </button>
   <div class="links" id="links">
     <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Email</a>
+    <a href="now.html">Now</a>
     <a href="skills.html">Skills</a>
     <a href="https://github.com/nicolavaligi/nicola-valigi" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -396,6 +409,7 @@
   </div>
 </main>
 <div class="piede">
+<a class="pagina-ora" href="now.html">Now</a>
 <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
 <p class="powered">powered: HTML · CSS · WebGL</p>
 </div>
