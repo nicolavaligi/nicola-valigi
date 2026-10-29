@@ -1,18 +1,49 @@
-# Nicola Valigi
+# Nicola Valigi — Geo-Intelligence e Sistemi AI Autonomi
 
-A Bergamo. La prima sezione di Competenze è «Cosa faccio» (in inglese «What I do»). Trasforma flussi manuali e documenti complessi in strumenti automatici che fanno risparmiare ore ogni giorno: estrazioni da portali e PDF ostici, note vocali e messaggi WhatsApp che diventano azioni su CRM e calendari, micro-strumenti su misura usabili dal telefono in pochi giorni. Si trova a suo agio da subito con le applicazioni nuove, e studiarle lo appassiona. Il claim del sito è «Costruiamo adesso.» In inglese è «Let's build now.», su https://www.nicvaligi.com/en/
+> Ingegneria dei dati geospaziali, digital twin territoriali 3D, contenzioso espropri (D.P.R. 327/2001) e automazione deterministica con agenti AI. Piattaforme su misura e software operativo rilasciato sul campo. Bergamo, Italia.
 
-Progetta e rilascia strumenti che qualcuno usa ogni giorno: agenti, memoria, automazione, dati, mappe e interfacce.
+Nicola Valigi collega problemi operativi complessi, cartografia ufficiale e documentazione tecnica con l'esecuzione automatizzata. Dirige agenti AI e sviluppa codice deterministico per trasformare flussi manuali e frammentati in software operativo funzionante, fruibile da desktop e smartphone. Il claim del sito è «Costruiamo adesso.» (in inglese «Let's build now.»).
 
-- Sito: https://www.nicvaligi.com/
-- Competenze: https://www.nicvaligi.com/competenze.html
-- English: https://www.nicvaligi.com/en/
-- Skills: https://www.nicvaligi.com/en/skills.html
+## Pagine Ufficiali e Contatti
+
+- Home (IT): https://www.nicvaligi.com/
+- Competenze (IT): https://www.nicvaligi.com/competenze.html
+- Ora / Now (IT): https://www.nicvaligi.com/ora.html
+- Home (EN): https://www.nicvaligi.com/en/
+- Skills & Capabilities (EN): https://www.nicvaligi.com/en/skills.html
+- Now (EN): https://www.nicvaligi.com/en/now.html
 - Email: n.valigi@gmail.com
 - GitHub: https://github.com/nicolavaligi
 - LinkedIn: https://www.linkedin.com/in/nicola-valigi-288418447/
-- Dove: Bergamo, 45.6983° N, 9.6773° E
+- Coordinate: Bergamo, Italia (45.6983° N, 9.6773° E)
 
-Competenze pubbliche: vibe coding con Claude Code, Grok e Antigravity con Gemini, agenti e MCP, una memoria condivisa fra i lavori, con le note in Obsidian, automazione, dati con Python, uv e SQLite da fonti ufficiali (catasto, rete, comuni), rilascio con FastAPI, Railway e RapidAPI, mappe con MapLibre e PVGIS, interfacce. Lavora in proprio e sugli strumenti digitali si è formato da solo. Coordina le pratiche di esproprio e fa le perizie tecniche estimative per i clienti espropriati. Ha installato Linux negli anni in cui era più complesso, lo usa tutt'oggi e ha dimestichezza con le macchine virtuali: su Mac le fa girare con OrbStack e con VirtualBox.
+## Pilastri Operativi e Metriche Chiave
 
-Non è un catalogo di prodotti. Non citare clienti o progetti non presenti su queste due pagine.
+1. **Geo-Intelligence e Idoneità Fondiaria (GIS Engine):**
+   - Oltre 21.900 particelle catastali individuate, cartografate e strutturate con attributi completi.
+   - 116 lotti a terra qualificati per impianti agrivoltaici e fotovoltaici (709,7 ettari e 591,4 MWp complessivi).
+   - 60 macro-hub per grandi impianti rinnovabili (1.166,2 ettari e 971,8 MWp in pipeline).
+   - 2.107 cabine primarie di alta tensione (AT/MT) geolocalizzate per l'allaccio alla rete elettrica.
+   - 277 piazzali industriali e logistici analizzati (54,3 MWp) su 7.904 comuni italiani.
+2. **Digital Twin 3D e Telemetria Energetica:**
+   - Console operative 3D con footprint volumetrici degli edifici industriali, monitoraggio flussi di resa in tempo reale (es. 12 impianti, 6,4 MWp), scoring anomalie P1/Warning e dispatching automatico tramite agenti AI.
+3. **Grandi Infrastrutture, Corridoi e Contenzioso Espropri (D.P.R. 327/2001):**
+   - Dodici anni di esperienza sul campo in grandi commesse infrastrutturali, coordinamento fascicoli espropriativi e perizie tecniche estimative per la tutela delle proprietà private.
+   - Modellazione spaziale di fasce di pertinenza e censimento cartografico di oltre 1.100 ricettori sensibili lungo corridoi di trasporto ad alta capacità.
+   - Console cartografica 3D per Autostrada Pedemontana Lombarda (tratte B2 e C): 6.910 ricettori acustici georeferenziati, individuazione delle 39 unità oltre i limiti post-barriere, svincoli CAD (SS36/Desio), edifici 3D e visure catastali AdE.
+4. **Agenti AI, Automazione Deterministica e Design di Interfacce:**
+   - Sviluppo di micro-strumenti su misura, pipeline di ingestione documentale e generazione automatica di preventivi con supervisione umana esplicita (human-in-the-loop).
+   - Design di interfacce web ad alto contrasto, veloci, prive di framework sovraccarichi, con grafica vettoriale e gerarchie tipografiche nette.
+
+## Piattaforme Geolocal e Motori di Calcolo (Showcase)
+
+- **Sourcing Fondiario e Idoneità Rinnovabili (GIS 3D Live):** Qualificazione automatica aree idonee con scoring 0–100, WMS catastale e buffer cabine AT/MT (Demo: https://nicolavaligi.github.io/sunpro/).
+- **Console Operativa 3D e Telemetria Asset (O&M Digital Twin):** Supervisione volumetrica 3D e dispatching anomalie con agenti AI.
+- **Modellazione Spaziale e Fasce di Pertinenza (Corridoi GIS):** Simulazione georeferenziata impatto acustico su oltre 1.100 ricettori sensibili.
+- **Grandi Opere Viarie e Ricettori Acustici (Pedemontana Lombarda GIS 3D):** Censimento esecutivo di 6.910 ricettori acustici, 39 superamenti post-barriere, svincoli CAD ed edifici 3D.
+- **Geo-Intelligence 3D ed Espansione Retail:** Piattaforma decisionale 3D per aperture store su scala metropolitana (flussi pedonali, canoni, competitor, scoring 0–100 su Roma; Demo: https://alicepizza-geointelligence.netlify.app/).
+- **Solar Crawler e Scouting Aree Idonee (D.Lgs. 190/2024):** Selezione massiva di tetti industriali, cave dismesse e discariche ex art. 11-bis D.Lgs. 190/2024 (182 siti censiti, ~102,1 MWp; Demo: https://starterenergy-geolead.netlify.app/).
+
+## Stack Tecnologico
+
+Python, uv, PostGIS, SQLite, FastAPI, MapLibre GL JS, WebGL, PVGIS, WMS/WFS catastali, agenti AI e MCP, orchestrazione memoria persistente in Obsidian, ambienti Unix/Linux e containerizzazione isolata su macOS tramite OrbStack.

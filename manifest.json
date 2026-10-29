@@ -1,13 +1,13 @@
 {
   "name": "Nicola Valigi",
   "short_name": "Valigi",
-  "description": "Strumenti automatici da flussi manuali e documenti complessi. Bergamo.",
+  "description": "Ingegneria dei dati geospaziali, digital twin 3D e automazione con agenti AI. Bergamo.",
   "lang": "it",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#060713",
+  "theme_color": "#060713",
   "icons": [
     {
       "src": "icona.svg",

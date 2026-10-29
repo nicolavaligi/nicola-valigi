@@ -11,6 +11,7 @@ body {
   touch-action: manipulation;
 }
 
+#installa,
 .installa {
   position: fixed;
   z-index: 7;
@@ -28,6 +29,7 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
+#installa[hidden],
 .installa[hidden] { display: none; }
 
 .appbar { display: none; }
@@ -35,6 +37,7 @@ body {
 @media (max-width: 700px), (max-height: 500px) {
   :root { --app-bar-size: 56px; }
   .dock { display: none; }
+  #installa,
   .installa {
     left: auto;
     right: max(12px, env(safe-area-inset-right));

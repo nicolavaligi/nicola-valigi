@@ -12,6 +12,8 @@
 <link rel="alternate" hreflang="it" href="https://www.nicvaligi.com/ora.html">
 <link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/now.html">
 <link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/ora.html">
+<link rel="me" href="https://github.com/nicolavaligi">
+<link rel="me" href="https://www.linkedin.com/in/nicola-valigi-288418447/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="it_IT">
@@ -28,6 +30,7 @@
 <meta name="twitter:title" content="Nicola Valigi | Now">
 <meta name="twitter:description" content="Current focus, geospatial pipelines, and agentic AI systems.">
 <meta name="twitter:image" content="https://www.nicvaligi.com/og.png">
+<meta name="twitter:image:alt" content="Nicola Valigi. What I am doing now.">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,22 +43,53 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='ui-monospace,monospace' font-size='11' fill='%232E56FF'%3ENV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://www.nicvaligi.com/#person",
-    "name": "Nicola Valigi",
-    "url": "https://www.nicvaligi.com",
-    "jobTitle": "Geospatial Data Consultant & AI Systems Engineer"
-  },
-  "url": "https://www.nicvaligi.com/en/now.html",
-  "name": "Nicola Valigi | Now",
-  "inLanguage": "en",
-  "description": "Now page of Nicola Valigi highlighting active projects, technical focus, and current work."
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.nicvaligi.com/en/now.html#pagina",
+      "url": "https://www.nicvaligi.com/en/now.html",
+      "name": "Nicola Valigi | Now",
+      "inLanguage": "en",
+      "dateModified": "2026-10-29",
+      "description": "Now page of Nicola Valigi highlighting active projects, technical focus, and current work.",
+      "isPartOf": { "@id": "https://www.nicvaligi.com/#sito" },
+      "about": { "@id": "https://www.nicvaligi.com/#nicola" },
+      "mainEntity": { "@id": "https://www.nicvaligi.com/#nicola" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.nicvaligi.com/#nicola",
+      "name": "Nicola Valigi",
+      "url": "https://www.nicvaligi.com/",
+      "email": "n.valigi@gmail.com",
+      "jobTitle": "Geospatial Data Consultant & AI Systems Engineer",
+      "sameAs": [
+        "https://github.com/nicolavaligi",
+        "https://www.linkedin.com/in/nicola-valigi-288418447/"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Nicola Valigi",
+          "item": "https://www.nicvaligi.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Now",
+          "item": "https://www.nicvaligi.com/en/now.html"
+        }
+      ]
+    }
+  ]
 }
 </script>
 <style>
@@ -208,13 +242,13 @@
       <a href="now.html" aria-current="page">Now</a>
       <a href="skills.html">Skills</a>
       <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Email</a>
-      <a href="https://github.com/nicolavaligi/nicola-valigi" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </nav>
     <a class="lingua" href="../ora.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
   </div>
   <h1>Now</h1>
-  <p class="nota"><em>A snapshot of what I am currently working on and thinking about. Inspired by the <a href="https://nownownow.com/about" rel="noopener noreferrer" target="_blank">/now</a> movement.</em></p>
+  <p class="nota"><em>A snapshot of what I am currently working on and thinking about (last updated: <time datetime="2026-10">October 2026</time>). Inspired by the <a href="https://nownownow.com/about" rel="noopener noreferrer" target="_blank">/now</a> movement.</em></p>
 
   <article>
     <h2>Geospatial Intelligence for Renewables</h2>
@@ -241,12 +275,12 @@
     <p>Exploring persistent memory architectures for autonomous agents, EU AI Act compliance workflows for organizations, and headless virtualized environments on macOS and Unix.</p>
   </article>
 
-  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi/nicola-valigi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
+  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
 </main>
 <nav class="appbar" aria-label="Sections">
   <a href="index.html">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.25" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.75v14.5M4.75 12h14.5M7 8.2c1.5.9 3.2 1.35 5 1.35s3.5-.45 5-1.35M7 15.8c1.5-.9 3.2-1.35 5-1.35s3.5.45 5 1.35" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
-    <span>Now</span>
+    <span>Home</span>
   </a>
   <a href="skills.html">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7h10M9 12h10M9 17h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5.5" cy="7" r="1.1" fill="currentColor"/><circle cx="5.5" cy="12" r="1.1" fill="currentColor"/><circle cx="5.5" cy="17" r="1.1" fill="currentColor"/></svg>
@@ -256,7 +290,7 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.2 12 13l8-5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
     <span>Email</span>
   </a>
-  <a href="https://github.com/nicolavaligi/nicola-valigi" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 8v8M8 6h5.2A2.8 2.8 0 0 1 16 8.8V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     <span>GitHub</span>
   </a>
@@ -265,7 +299,7 @@
     <span>LinkedIn</span>
   </a>
 </nav>
-<button type="button" id="installa" hidden>Install</button>
-<script src="../app.js"></script>
+<button type="button" id="installa" class="installa" hidden>Install</button>
+<script src="../app.js" defer></script>
 </body>
 </html>
