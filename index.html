@@ -142,7 +142,7 @@
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 3px; }
 
-  /* ================= NAVIGAZIONE SUPERIORE ================= */
+  /* ================= NAVIGAZIONE SUPERIORE (STICKY ALLO SCROLL) ================= */
   .top-nav {
     position: fixed;
     top: 0;
@@ -152,12 +152,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px max(24px, env(safe-area-inset-right)) 16px max(24px, env(safe-area-inset-left));
-    background: rgba(6, 7, 19, 0.76);
+    padding: 14px max(24px, env(safe-area-inset-right)) 14px max(24px, env(safe-area-inset-left));
+    background: rgba(6, 7, 19, 0.85);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: background 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .top-nav.scrolled {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
   .brand {
     display: inline-flex;
@@ -185,7 +193,7 @@
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 20px;
   }
   .nav-link {
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -231,22 +239,31 @@
     .nav-menu .nav-link-hide { display: none; }
   }
 
-  /* ================= HERO SECTION (CON SFERA 3D) ================= */
+  /* ================= HERO SECTION (SFERA 3D VERSIONE PRECEDENTE) ================= */
   .hero {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: clamp(96px, 14vh, 140px) 24px 72px;
-    box-sizing: border-box;
     overflow: hidden;
+    background: #000;
   }
-  .hero-orb {
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(46, 86, 255, 0.14), transparent 48%),
+      radial-gradient(circle at 50% 50%, transparent 40%, #000 92%);
+  }
+  .orb {
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -265,75 +282,215 @@
     cursor: grab;
     touch-action: none;
     filter:
-      drop-shadow(0 22px 28px rgba(0, 0, 0, 0.6))
-      drop-shadow(0 0 42px rgba(31, 67, 216, 0.45));
+      drop-shadow(0 22px 28px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 42px rgba(31, 67, 216, 0.4));
   }
-  .hero-ambient {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 50% 48%, rgba(46, 86, 255, 0.18), transparent 52%),
-      radial-gradient(circle at 50% 95%, rgba(6, 7, 19, 0.95), var(--bg) 65%);
-  }
-  .hero-content {
+  .stage {
     position: relative;
     z-index: 3;
-    max-width: 840px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(24px, 6vh, 64px) clamp(20px, 5vw, 48px);
     pointer-events: none;
   }
-  .hero-content * { pointer-events: auto; }
+  .stage * { pointer-events: none; }
+  .lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .who {
+    margin: 0 0 clamp(28px, 5vh, 48px);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    padding-left: 0.22em;
+  }
+  .stage h1 {
+    margin: 0;
+    max-width: 12ch;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6.2vw, 6rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  .stage h1 .riga,
+  .stage h1 .mark { display: block; }
+  .stage h1 .mark { color: #FFE14A; }
 
-  .pill-badge {
-    display: inline-flex;
+  .barra {
+    position: absolute;
+    z-index: 7;
+    top: max(18px, env(safe-area-inset-top));
+    right: max(22px, env(safe-area-inset-right));
+    display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 22px;
-    padding: 6px 14px;
+  }
+  .lingua {
+    min-width: 44px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.2s ease;
+  }
+  .lingua:hover { color: #FFE14A; }
+
+  .dock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .dock.visible { opacity: 1; }
+  .dock button { display: none; }
+  .dock button:hover { background: rgba(46, 86, 255, 0.2); border-color: var(--blue-bright); }
+  .dock button span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .dock.open button span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .dock.open button span:nth-child(2) { opacity: 0; }
+  .dock.open button span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
     border-radius: 999px;
-    background: rgba(22, 26, 56, 0.7);
-    border: 1px solid rgba(77, 114, 255, 0.32);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.05);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .links a:hover { background: var(--blue); border-color: var(--blue-bright); }
+
+  .piede {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: calc(var(--vv-bottom) + max(14px, env(safe-area-inset-bottom)));
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: auto;
+  }
+  .coords {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 12px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    color: #F4A4C8;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+  .coords:hover { color: #FFD0E4; }
+  .pagina-ora {
+    display: none;
+    align-items: center;
+    min-height: 38px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+  }
+  .scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #9cb1ff;
+    color: var(--blue-bright);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    animation: bounceDown 2.2s infinite ease-in-out;
   }
-  .who-hero {
-    margin: 0 0 10px;
+  .scroll-cue:hover { color: #fff; }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); opacity: 0.85; }
+    50% { transform: translateY(4px); opacity: 1; }
+  }
+
+  .trovato {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: calc(var(--vv-bottom) + max(78px, env(safe-area-inset-bottom) + 64px));
+    transform: translateX(-50%);
+    margin: 0;
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
-    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #fff;
+    color: #FFE14A;
+    white-space: nowrap;
   }
-  h1.hero-title {
-    margin: 0 0 20px;
-    font-weight: 700;
-    font-size: clamp(2.8rem, 6.6vw, 5.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-    color: var(--ink);
+
+  @media (max-width: 700px), (max-height: 500px) {
+    .barra {
+      right: auto;
+      left: max(16px, env(safe-area-inset-left));
+      top: max(8px, env(safe-area-inset-top));
+    }
+    .dock { display: none; }
+    .pagina-ora { display: inline-flex; }
+    .coords { font-size: 0.72rem; }
+    .stage {
+      padding:
+        max(16px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(16px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+    }
+    .who {
+      margin-bottom: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      padding-left: 0.18em;
+    }
+    .stage h1 { font-size: 1.85rem; line-height: 1.02; }
+    .piede { bottom: calc(var(--vv-bottom) + var(--app-bar-size, 56px) + env(safe-area-inset-bottom) + 12px); }
+    .trovato { bottom: calc(var(--vv-bottom) + var(--app-bar-size, 56px) + env(safe-area-inset-bottom) + 106px); }
   }
-  h1.hero-title .mark { color: var(--amber); }
-  .hero-desc {
-    max-width: 620px;
-    margin: 0 auto 32px;
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-    line-height: 1.6;
-    color: #C0C3D4;
-  }
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
+
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -375,35 +532,6 @@
   .btn-ghost:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.35);
-  }
-  .scroll-down {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    margin-top: 14px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--quiet);
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-  .scroll-down:hover {
-    color: #fff;
-    transform: translateY(3px);
-  }
-  .trovato {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
   }
 
   /* ================= LAYOUT DELLE SEZIONI ================= */
@@ -703,13 +831,13 @@
 </head>
 <body>
 
-<!-- NAVIGAZIONE SUPERIORE FISSA TRASLUCIDA -->
-<header class="top-nav">
+<!-- NAVIGAZIONE SUPERIORE FISSA TRASLUCIDA (APPARE ALLO SCROLL) -->
+<header class="top-nav" aria-label="Navigazione principale">
   <a class="brand" href="index.html">
     <span class="status-dot"></span>
     <span>Nicola Valigi</span>
   </a>
-  <nav class="nav-menu" aria-label="Navigazione principale">
+  <nav class="nav-menu" aria-label="Navigazione rapida">
     <a class="nav-link nav-link-hide" href="#piattaforme">Sistemi</a>
     <a class="nav-link nav-link-hide" href="#pilastri">Capacità</a>
     <a class="nav-link nav-link-hide" href="#metodo">Metodo</a>
@@ -720,30 +848,43 @@
   </nav>
 </header>
 
-<!-- HERO SECTION CON SFERA 3D E SCROLL VERTICALE -->
+<!-- HERO CON SFERA 3D DELLA VERSIONE PRECEDENTE -->
 <section class="hero" id="hero">
-  <div class="hero-orb">
+  <div class="orb">
     <canvas id="sphere" aria-hidden="true"></canvas>
   </div>
-  <div class="hero-ambient"></div>
-  <div class="hero-content">
-    <div class="pill-badge">
-      <span class="status-dot"></span>
-      <span>Geo-Intelligence &bull; Sistemi AI Autonomi</span>
+
+  <header class="barra">
+    <a class="lingua" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
+    <nav class="dock" id="dock">
+      <button type="button" id="menu-btn" aria-expanded="false" aria-controls="links" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="links" id="links">
+        <a href="#piattaforme">Sistemi</a>
+        <a href="competenze.html">Competenze</a>
+        <a href="ora.html">Ora</a>
+        <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">Scrivimi</a>
+        <a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="stage" id="palco" aria-label="Nicola Valigi">
+    <div class="lockup">
+      <p class="who">Nicola Valigi</p>
+      <h1><span class="riga">Costruiamo</span><span class="mark">adesso.</span></h1>
     </div>
-    <p class="who-hero">Nicola Valigi</p>
-    <h1 class="hero-title"><span class="riga">Costruiamo</span><span class="mark">adesso.</span></h1>
-    <p class="hero-desc">Ingegneria dei dati geospaziali, digital twin territoriali e automazione deterministica con agenti AI. Piattaforme su misura, modelli predittivi e software operativo.</p>
-    <div class="hero-actions">
-      <a href="#piattaforme" class="btn-primary">Esplora i Sistemi &darr;</a>
-      <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso" class="btn-ghost">Inizia una conversazione &rarr;</a>
-    </div>
-    <div>
-      <a href="#pilastri" class="scroll-down" aria-label="Scorri verso il basso">
-        <span>Scorri</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
-      </a>
-    </div>
+  </main>
+
+  <div class="piede">
+    <a class="pagina-ora" href="ora.html">Ora</a>
+    <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
+    <a class="scroll-cue" href="#piattaforme" aria-label="Scorri per scoprire i sistemi">
+      <span>Esplora i Sistemi</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+    </a>
   </div>
   <p class="trovato" id="trovato" hidden>Trovato. Costruito a Bergamo.</p>
 </section>
@@ -1357,6 +1498,40 @@
 
   fit();
   tick();
+})();
+
+(function () {
+  var dock = document.getElementById("dock");
+  var button = document.getElementById("menu-btn");
+  if (dock && button) {
+    window.setTimeout(function () { dock.classList.add("visible"); }, 600);
+    function setOpen(open) {
+      dock.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+      button.setAttribute("aria-label", open ? "Chiudi il menu" : "Apri il menu");
+    }
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      setOpen(!dock.classList.contains("open"));
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setOpen(false);
+    });
+  }
+
+  // Top nav sticky fade-in on vertical scroll
+  var topNav = document.querySelector(".top-nav");
+  if (topNav) {
+    var checkScroll = function () {
+      if (window.scrollY > 120) {
+        topNav.classList.add("scrolled");
+      } else {
+        topNav.classList.remove("scrolled");
+      }
+    };
+    window.addEventListener("scroll", checkScroll, { passive: true });
+    checkScroll();
+  }
 })();
 </script>
 <script src="app.js"></script>
