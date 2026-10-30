@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Skills &amp; Capabilities | Nicola Valigi – Geospatial Data, AI Systems &amp; Interface Design</title>
-<meta name="title" content="Skills &amp; Capabilities | Nicola Valigi – Geospatial Data, AI Systems &amp; Interface Design">
-<meta name="description" content="Technical consulting at the intersection of GIS intelligence, expropriation law (D.P.R. 327/2001), agentic automation, and clean interface design. Turning complex data into operational software.">
+<title>Skills &amp; Professional Background | Nicola Valigi</title>
+<meta name="title" content="Skills &amp; Professional Background | Nicola Valigi">
+<meta name="description" content="Geospatial engineering, web scraping, data pipelines, GIS, major infrastructure delivery (Impregilo, subcontracts & progress milestones) to agentic AI automation.">
 <meta name="author" content="Nicola Valigi">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.nicvaligi.com/en/skills.html">
@@ -70,16 +70,16 @@
         "https://www.linkedin.com/in/nicola-valigi-288418447/"
       ],
       "knowsAbout": [
-        "Geographic Information Systems (GIS)",
-        "Spatial Data Analysis",
-        "Expropriation Law (D.P.R. 327/2001)",
-        "Cadastral Data Intelligence",
-        "AI Agent Automation",
-        "Python",
-        "PostGIS",
-        "Visual Identity & Vector Design",
-        "Lightweight Web Design",
-        "Interface Hierarchy & UX"
+        "Web Scraping & Data Pipelines (Python)",
+        "PDF Data Extraction & SQL Databases (Supabase, PostgreSQL)",
+        "Geographic Information Systems (GIS) & Web Cartography",
+        "Rapid Prototyping & Product Management",
+        "AI Agents & System Integration (Plaud, CRM, Notion, WhatsApp)",
+        "Operational Dashboards & Team Coordination",
+        "Web Development, Technical SEO & E-commerce (Shopify)",
+        "Market Research & Business Development",
+        "Digital Transformation & Infrastructure Site Monitoring (Milestone SAL & Subcontracts)",
+        "Expropriation Law & Valuation Appraisals (D.P.R. 327/2001)"
       ]
     },
     {
@@ -137,14 +137,16 @@
     },
     {
       "@type": "ItemList",
-      "name": "Skills of Nicola Valigi",
+      "name": "Skills & Capabilities of Nicola Valigi",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "What I Do" },
-        { "@type": "ListItem", "position": 2, "name": "Data & Geospatial Intelligence" },
-        { "@type": "ListItem", "position": 3, "name": "Spatial Analysis & Decision Mapping" },
-        { "@type": "ListItem", "position": 4, "name": "Interface, Visual Identity & Communication" },
-        { "@type": "ListItem", "position": 5, "name": "Domain Expertise: Infrastructure & Expropriation Law" },
-        { "@type": "ListItem", "position": 6, "name": "Systems & Stack" }
+        { "@type": "ListItem", "position": 2, "name": "Capabilities Matrix & Proven Execution" },
+        { "@type": "ListItem", "position": 3, "name": "Professional Background: Infrastructure, Job Sites & Digital Delivery" },
+        { "@type": "ListItem", "position": 4, "name": "Web Scraping, Data Pipelines & PDF Extraction" },
+        { "@type": "ListItem", "position": 5, "name": "Data & Geospatial Intelligence (3D GIS & Cadastre)" },
+        { "@type": "ListItem", "position": 6, "name": "AI Agents, System Integration & Product Management" },
+        { "@type": "ListItem", "position": 7, "name": "Web Development, E-commerce, Market Research & Business Strategy" },
+        { "@type": "ListItem", "position": 8, "name": "Systems & Stack" }
       ]
     }
   ]
@@ -553,6 +555,82 @@
     align-items: center;
     min-height: 44px;
   }
+
+  /* ================= MATRICE DELLE COMPETENZE ================= */
+  .tabella-competenze {
+    width: 100%;
+    margin: 20px 0 28px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(13, 13, 13, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .tabella-competenze thead th {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px 16px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--amber, #FFE14A);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .tabella-competenze tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: top;
+  }
+  .tabella-competenze tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .tabella-competenze tbody tr:hover td {
+    background: rgba(46, 86, 255, 0.06);
+  }
+  .tabella-competenze .col-skill {
+    width: 38%;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: normal;
+  }
+  .tabella-competenze .col-desc {
+    color: var(--ink);
+    font-size: 0.92rem;
+  }
+  @media (max-width: 680px) {
+    .tabella-competenze,
+    .tabella-competenze thead,
+    .tabella-competenze tbody,
+    .tabella-competenze th,
+    .tabella-competenze td,
+    .tabella-competenze tr {
+      display: block;
+    }
+    .tabella-competenze thead { display: none; }
+    .tabella-competenze tbody tr {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .tabella-competenze tbody td {
+      padding: 0;
+      border: 0;
+    }
+    .tabella-competenze .col-skill {
+      width: 100%;
+      margin-bottom: 6px;
+      color: #FFE14A;
+      font-size: 0.9rem;
+    }
+    .tabella-competenze .col-desc {
+      font-size: 0.88rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -569,15 +647,126 @@
     </nav>
     <a class="lingua" href="../competenze.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
   </div>
-  <h1>Skills &amp; Capabilities</h1>
+  <h1>Skills &amp; Professional Background</h1>
   <article>
     <h2>What I Do</h2>
-    <p>I connect complex operational problems, technical documentation, and official datasets with automated execution. I direct AI agents and write deterministic code to turn manual, fragmented workflows into working software—often delivered in days, straight to mobile.</p>
-    <p>Whether parsing inbound requests, generating programmatic quotes, or verifying cadastral records, human oversight remains central: <span class="ora">nothing ships without explicit sign-off.</span> I work independently, adopt the best tool for the problem, and deliver tools teams actually rely on daily.</p>
+    <p>I connect complex operational problems, technical documentation, and official datasets with automated execution. I direct AI agents and write deterministic code to turn manual, fragmented workflows into working software—often delivered in days, straight to mobile, and seamlessly embedded in business operations.</p>
+    <p>Whether parsing inbound requests, generating programmatic quotes, extracting data at scale, or monitoring construction sites and cadastral parcels, human oversight remains central: <span class="ora">nothing ships without explicit sign-off.</span> I work independently, adopt the best tool for the problem, and deliver tools teams actually rely on daily.</p>
   </article>
 
   <article>
-    <h2>Data &amp; Geospatial Intelligence</h2>
+    <h2>Capabilities Matrix &amp; Proven Execution</h2>
+    <p>A pragmatic breakdown of core competencies and demonstrated production software:</p>
+
+    <table class="tabella-competenze">
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Demonstrated Execution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-skill">Web scraping, data pipelines, Python</td>
+          <td class="col-desc">Automated crawlers collecting, normalizing, and categorizing public tenders and infrastructure works from institutional portals (continuous monitoring of PNRR contracts, procurement data, and contract IDs).</td>
+        </tr>
+        <tr>
+          <td class="col-skill">PDF data extraction, SQL, databases</td>
+          <td class="col-desc">Unstructured tables, cadastral certificates, and technical annexes extracted from complex PDFs and converted into queryable relational databases on Supabase / PostgreSQL.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">GIS &amp; web cartography</td>
+          <td class="col-desc">Vector alignment maps and sensitive acoustic receptor inventories, KML/GeoJSON export, and geocoding of 21,900+ cadastral parcels with grid interconnection buffers.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Rapid prototyping, product management</td>
+          <td class="col-desc">Public procurement and municipal notice intelligence platforms, parametric 3D configurators, CPQ deterministic quoting engines, and workflow simulators.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">AI agents, system integration</td>
+          <td class="col-desc">Voice memos captured with Plaud transcribed, synthesized, and converted into structured actionable tasks across CRM and Notion; automated WhatsApp inbound request routing pipeline.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Dashboards, team coordination</td>
+          <td class="col-desc">Centralized operations console with task allocation by person, advanced filters, real-time telemetry, and visual progress tracking charts.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Web development, SEO, e-commerce</td>
+          <td class="col-desc">Lightweight, high-performance brand and service websites, including a full Shopify online store, built mobile-first with advanced technical SEO optimization.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Market research, business development</td>
+          <td class="col-desc">In-depth global niche research, market sizing, financial feasibility models, and executive PDF dossiers for partners, executives, and investors.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Digital transformation (pre-AI roots)</td>
+          <td class="col-desc">Proprietary internal platform monitoring subcontracts, industrial accounting, and work progress milestones (SAL) on major infrastructure job sites during the Impregilo era.</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article>
+    <h2>Professional Background: Infrastructure, Job Sites &amp; Digital Delivery</h2>
+    <p>My engineering discipline is rooted in over a decade spent directly on construction sites and in project offices for major infrastructure projects during the <strong>Impregilo</strong> era (now Webuild).</p>
+    <p>Years before the rise of generative AI, I architected and built an internal platform to rigorously track subcontractors, industrial accounting, and work progress certificates (SAL). Managing complex physical job sites, coordinating labor, and eliminating administrative bottlenecks taught me that the real operational hurdle rarely matches what gets presented in executive boardroom decks.</p>
+    <p>That on-the-ground experience also informed my practice in expropriation proceedings (D.P.R. 327/2001): coordinating complex legal-technical files, analyzing right-of-way buffer zones, and drafting formal valuation appraisals (<em>perizie di stima</em>) to safeguard property owners and unblock indemnity settlements.</p>
+
+    <figure class="anteprima">
+      <div class="anteprima-visual">
+        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
+        <picture>
+          <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
+          <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">HIGHWAY INFRASTRUCTURE &bull; 3D GIS</span>
+            <span>Pedemontana Highway &mdash; 6,910 Acoustic Receptors &amp; Interchanges</span>
+          </div>
+        </div>
+        <p class="anteprima-testo">Geospatial console for Sections B2 and C: geo-auditing of 6,910 acoustic receptors, identifying the 39 units exceeding statutory thresholds behind noise mitigation barriers and properties slated for window retrofit packages. Vector CAD road geometries (SS36/Desio interchange, roundabouts), 3D building models, and official cadastral maps.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="anteprima">
+      <div class="anteprima-visual">
+        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
+        <picture>
+          <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
+          <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map of acoustic receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">CORRIDORS &bull; GIS</span>
+            <span>Spatial Modeling &mdash; Buffer Zones &amp; Sensitive Receivers</span>
+          </div>
+        </div>
+        <p class="anteprima-testo">Geospatial simulation along high-capacity transit corridors: cartographic inventory of over 1,100 sensitive receivers, noise mitigation barrier modeling, and pinpointing regulatory limit exceedances for technical appraisal.</p>
+      </figcaption>
+    </figure>
+  </article>
+
+  <article>
+    <h2>Web Scraping, Data Pipelines &amp; PDF Extraction</h2>
+    <p>The most critical B2B intelligence is frequently locked inside legacy government portals, scanned PDF filings, or unindexed public registries. I build automated Python ingestion pipelines with resilient architectures:</p>
+    <ul class="numeri">
+      <li><strong>Institutional &amp; PNRR Procurement Crawlers</strong>: Continuous crawlers monitoring municipal boards, tenders, contract IDs (CIG), and public bids with automated deduplication and schema normalization</li>
+      <li><strong>PDF to Supabase / SQL Pipelines</strong>: Parsing unstructured technical specs, deeds, and decrees into clean tabular formats and relational SQL stores</li>
+      <li><strong>Incremental Cursors &amp; Delta Streams</strong>: High-reliability delta architectures (<span class="ora">since_seq</span>) serving clean real-time feeds to consumer APIs and dashboards</li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Data &amp; Geospatial Intelligence (3D GIS &amp; Cadastre)</h2>
     <p>I source, clean, and georeference mission-critical geospatial data from official registries. Instead of dumping raw spreadsheets, I aggregate datasets into actionable suitability scores (0–100) to de-risk investment and land acquisition:</p>
     <ul class="numeri">
       <li><strong>21,900+</strong> cadastral parcels analyzed, mapped, and attributed</li>
@@ -608,11 +797,6 @@
         <p class="anteprima-testo">Automated land qualification and constraint filtering engine: algorithmic cross-referencing between official cadastral parcels, HV/MV primary substations, grid proximity buffers, and land acquisition cost scoring.</p>
       </figcaption>
     </figure>
-  </article>
-
-  <article>
-    <h2>Spatial Analysis &amp; Decision Mapping</h2>
-    <p>Grid capacity, distance to overhead lines, solar irradiation, agricultural constraints, and zoning boundaries: open countryside and peri-urban buffers carry fundamentally different risks. I condense full days of desk analysis and registry cross-referencing into interactive, decision-ready GIS layers.</p>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
@@ -651,7 +835,7 @@
             <span class="badge-tag accent">SOLAR CRAWLER &bull; D.LGS 190/2024</span>
             <span>Solar Crawler &mdash; Eligible Rooftops &amp; Areas</span>
           </div>
-          <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
+          <span class="badge-tag">SURVEY 3D</span>
         </div>
         <p class="anteprima-testo">Massive screening platform for legally eligible solar surfaces (industrial roofs, quarries, closed landfills; 182 sites &bull; &asymp;102.1 MWp), automated kWp/sqm extraction, MV/HV buffers, and 3D drone walkthroughs.</p>
       </figcaption>
@@ -659,9 +843,24 @@
   </article>
 
   <article>
-    <h2>Interface, Visual Identity &amp; Communication</h2>
-    <p>Data loses value if the interface is hostile or generic. I design clean, high-contrast visual systems and lightweight web interfaces built for immediate comprehension. No bloated UI frameworks, generic corporate templates, or sloppy synthetic layouts.</p>
-    <p>From vector branding and operational dashboards to responsive layouts and direct copywriting: I craft visual identities and web tools with deliberate typography, sharp hierarchies, and zero decorative noise. Tools should look intentional, human, and immediately usable.</p>
+    <h2>AI Agents, System Integration &amp; Product Management</h2>
+    <p>AI delivers real business leverage only when connected directly to daily operational workflows:</p>
+    <ul class="numeri">
+      <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Voice notes recorded on the go transcribed, summarized with action point extraction, and automatically structured into CRM records and Notion operational databases</li>
+      <li><strong>Inbound WhatsApp Dispatching</strong>: Automated WhatsApp channels with instant request parsing, deterministic validation, and operational routing</li>
+      <li><strong>3D Configurators &amp; CPQ Quoting Engines</strong>: Parametric engines generating instant quotations for complex orders (decking, construction, renewables), dynamic Bill of Materials (BOM) calculation, and timeline reflow management</li>
+      <li><strong>Operations Dashboards &amp; Team Tracking</strong>: Central command consoles featuring individual task allocation, granular filters, telemetry feeds, and milestone progress charts</li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Web Development, E-commerce &amp; Market Research</h2>
+    <p>I build lightweight, high-contrast web systems and conversion-focused e-commerce architectures:</p>
+    <ul class="numeri">
+      <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
+      <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
+      <li><strong>Global Niche Research &amp; New Business Strategy</strong>: Deep market studies on international niches, TAM/SAM/SOM modeling, unit economics validation, and executive PDF reports for executives and investors</li>
+    </ul>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
@@ -679,7 +878,7 @@
             <span class="badge-tag accent">RETAIL 3D &bull; EXPANSION</span>
             <span>3D Geo-Intelligence &mdash; Retail Expansion &amp; Site Selection</span>
           </div>
-          <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
+          <span class="badge-tag">URBAN 3D</span>
         </div>
         <p class="anteprima-testo">Strategic retail scouting tool: photorealistic 3D urban extrusions, foot traffic index, commercial lease rates, competitor proximity metrics, and virtual 3D site visits across Rome.</p>
       </figcaption>
@@ -687,56 +886,8 @@
   </article>
 
   <article>
-    <h2>Domain Expertise: Infrastructure &amp; Expropriation Law</h2>
-    <p>Twelve years immersed in the technical, legal, and operational documentation of major infrastructure contracts taught me one rule: the real bottleneck is rarely the one flagged in status meetings.</p>
-    <p>I coordinate expropriation procedures and draft technical valuation appraisals (<em>perizie di stima</em>) under Italian expropriation law (D.P.R. 327/2001), protecting property owners and streamlining contentious files.</p>
-
-    <figure class="anteprima">
-      <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
-        <picture>
-          <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
-          <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map of acoustic receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <figcaption>
-        <div class="anteprima-head">
-          <div class="anteprima-titolo">
-            <span class="badge-tag accent">CORRIDORS &bull; GIS</span>
-            <span>Spatial Modeling &mdash; Buffer Zones &amp; Sensitive Receivers</span>
-          </div>
-        </div>
-        <p class="anteprima-testo">Geospatial simulation along high-capacity transit corridors: cartographic inventory of over 1,100 sensitive receivers, noise mitigation barrier modeling, and pinpointing regulatory limit exceedances for technical appraisal.</p>
-      </figcaption>
-    </figure>
-
-    <figure class="anteprima">
-      <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
-        <picture>
-          <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
-          <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <figcaption>
-        <div class="anteprima-head">
-          <div class="anteprima-titolo">
-            <span class="badge-tag accent">HIGHWAY INFRASTRUCTURE &bull; 3D GIS</span>
-            <span>Pedemontana Highway &mdash; 6,910 Acoustic Receptors &amp; Interchanges</span>
-          </div>
-        </div>
-        <p class="anteprima-testo">Geospatial console for Sections B2 and C: geo-auditing of 6,910 acoustic receptors, identifying the 39 units exceeding statutory thresholds behind noise mitigation barriers and properties slated for window retrofit packages. Vector CAD road geometries (SS36/Desio interchange, roundabouts), 3D building models, and official cadastral maps.</p>
-      </figcaption>
-    </figure>
-  </article>
-
-  <article>
     <h2>Systems &amp; Stack</h2>
-    <p>Pragmatic, terminal-first execution. Deep Unix/Linux background, running isolated environments and headless microservices via OrbStack and virtualized architectures on macOS. I build with Python (GIS/scraping), PostGIS, modern AI APIs, and lightweight web delivery.</p>
+    <p>Pragmatic, terminal-first execution. Deep Unix/Linux background, running isolated environments and headless microservices via OrbStack and virtualized architectures on macOS. I build with Python (GIS, web automation, structured scraping), PostGIS, Supabase, modern AI APIs, and lightweight web delivery deployed on Vercel.</p>
   </article>
 
   <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>

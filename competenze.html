@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Competenze | Nicola Valigi – Dati Geospaziali, Sistemi AI e Interfacce</title>
-<meta name="title" content="Competenze | Nicola Valigi – Dati Geospaziali, Sistemi AI e Interfacce">
-<meta name="description" content="Consulenza tecnica tra analisi GIS avanzata, contenzioso espropri (D.P.R. 327/2001), automazione con agenti AI e design essenziale di interfacce. Dai dati complessi al software operativo.">
+<title>Competenze e Storia Professionale | Nicola Valigi</title>
+<meta name="title" content="Competenze e Storia Professionale | Nicola Valigi">
+<meta name="description" content="Ingegneria dei dati territoriali, web scraping, data pipeline, GIS e cantieri di grandi opere (Impregilo, SAL e subappalti) fino all'automazione con agenti AI.">
 <meta name="author" content="Nicola Valigi">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.nicvaligi.com/competenze.html">
@@ -70,16 +70,16 @@
         "https://www.linkedin.com/in/nicola-valigi-288418447/"
       ],
       "knowsAbout": [
-        "Sistemi Informativi Geografici (GIS)",
-        "Analisi Dati Territoriali",
-        "Testo Unico Espropri (D.P.R. 327/2001)",
-        "Intelligence Dati Catastali",
-        "Automazione con Agenti AI",
-        "Python",
-        "PostGIS",
-        "Identità Visiva e Grafica Vettoriale",
-        "Web Design Minimale",
-        "Gerarchia di Interfaccia e UX"
+        "Web Scraping e Data Pipeline (Python)",
+        "Estrazione Dati da PDF e Database SQL (Supabase, PostgreSQL)",
+        "Sistemi Informativi Geografici (GIS) e Cartografia Web",
+        "Prototipazione Rapida e Product Management",
+        "Agenti AI e Integrazione Sistemi (Plaud, CRM, Notion, WhatsApp)",
+        "Dashboard Operative e Coordinamento Team",
+        "Sviluppo Web, SEO ed E-commerce (Shopify)",
+        "Ricerca di Mercato e Sviluppo Nuovi Business",
+        "Trasformazione Digitale e Monitoraggio Cantieri Infrastrutturali (SAL e Subappalti)",
+        "Testo Unico Espropri (D.P.R. 327/2001)"
       ]
     },
     {
@@ -140,11 +140,13 @@
       "name": "Competenze di Nicola Valigi",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Cosa faccio" },
-        { "@type": "ListItem", "position": 2, "name": "Dati e Intelligence Geospaziale" },
-        { "@type": "ListItem", "position": 3, "name": "Analisi Spaziale e Supporto alle Decisioni" },
-        { "@type": "ListItem", "position": 4, "name": "Interfacce, Identità Visiva e Comunicazione" },
-        { "@type": "ListItem", "position": 5, "name": "Esperienza sul Campo: Infrastrutture e Contenzioso Espropri" },
-        { "@type": "ListItem", "position": 6, "name": "Infrastruttura e Stack Tecnologico" }
+        { "@type": "ListItem", "position": 2, "name": "Matrice delle Competenze & Esperienza Dimostrata" },
+        { "@type": "ListItem", "position": 3, "name": "Storia Professionale: Cantieri, Grandi Opere e Trasformazione Digitale" },
+        { "@type": "ListItem", "position": 4, "name": "Web Scraping, Data Pipeline ed Estrazione da PDF" },
+        { "@type": "ListItem", "position": 5, "name": "Dati e Intelligence Geospaziale (GIS 3D & Catasto)" },
+        { "@type": "ListItem", "position": 6, "name": "Agenti AI, Integrazione di Sistemi e Product Management" },
+        { "@type": "ListItem", "position": 7, "name": "Sviluppo Web, E-commerce, Ricerca di Mercato e Nuovi Business" },
+        { "@type": "ListItem", "position": 8, "name": "Infrastruttura e Stack Tecnologico" }
       ]
     }
   ]
@@ -553,6 +555,82 @@
     align-items: center;
     min-height: 44px;
   }
+
+  /* ================= MATRICE DELLE COMPETENZE ================= */
+  .tabella-competenze {
+    width: 100%;
+    margin: 20px 0 28px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(13, 13, 13, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .tabella-competenze thead th {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px 16px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--amber, #FFE14A);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .tabella-competenze tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: top;
+  }
+  .tabella-competenze tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .tabella-competenze tbody tr:hover td {
+    background: rgba(46, 86, 255, 0.06);
+  }
+  .tabella-competenze .col-skill {
+    width: 38%;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: normal;
+  }
+  .tabella-competenze .col-desc {
+    color: var(--ink);
+    font-size: 0.92rem;
+  }
+  @media (max-width: 680px) {
+    .tabella-competenze,
+    .tabella-competenze thead,
+    .tabella-competenze tbody,
+    .tabella-competenze th,
+    .tabella-competenze td,
+    .tabella-competenze tr {
+      display: block;
+    }
+    .tabella-competenze thead { display: none; }
+    .tabella-competenze tbody tr {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .tabella-competenze tbody td {
+      padding: 0;
+      border: 0;
+    }
+    .tabella-competenze .col-skill {
+      width: 100%;
+      margin-bottom: 6px;
+      color: #FFE14A;
+      font-size: 0.9rem;
+    }
+    .tabella-competenze .col-desc {
+      font-size: 0.88rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -569,15 +647,126 @@
     </nav>
     <a class="lingua" href="en/skills.html" hreflang="en" lang="en" aria-label="English">EN</a>
   </div>
-  <h1>Competenze</h1>
+  <h1>Competenze e Storia Professionale</h1>
   <article>
     <h2>Cosa faccio</h2>
-    <p>Collego problemi operativi complessi, documentazione tecnica e dati ufficiali con l'esecuzione automatizzata. Dirigo agenti AI e sviluppo codice deterministico per trasformare flussi manuali e frammentati in software operativo funzionante—spesso consegnato in pochi giorni, pronto all'uso su smartphone.</p>
-    <p>Dall'analisi di richieste documentali alla generazione automatica di preventivi, fino alla verifica incrociata dei dati catastali: la supervisione umana resta il perno del flusso. <span class="ora">Nulla parte senza un'approvazione esplicita.</span> Lavoro in autonomia, seleziono lo strumento in funzione del problema e rilascio soluzioni che le persone utilizzano davvero nel lavoro quotidiano.</p>
+    <p>Collego problemi operativi complessi, documentazione tecnica e dati ufficiali con l'esecuzione software. Dirigo agenti AI e sviluppo codice deterministico per trasformare flussi frammentati e processi manuali in strumenti operativi affidabili—spesso consegnati in pochi giorni, pronti all'uso su smartphone e integrati con i workflow aziendali.</p>
+    <p>Dall'analisi documentale alla preventivazione istantanea, dall'estrazione dati su larga scala al monitoraggio di cantieri e particelle catastali: la supervisione umana resta sempre il perno. <span class="ora">Nulla parte senza un'approvazione esplicita.</span> Lavoro in piena autonomia, seleziono l'architettura migliore per il problema e rilascio software che le persone utilizzano concretamente ogni giorno.</p>
   </article>
 
   <article>
-    <h2>Dati e Intelligence Geospaziale</h2>
+    <h2>Competenze Operative &amp; Esperienza Dimostrata</h2>
+    <p>Una matrice pragmatica delle competenze chiave e delle soluzioni concrete realizzate sul campo:</p>
+
+    <table class="tabella-competenze">
+      <thead>
+        <tr>
+          <th scope="col">Competenza</th>
+          <th scope="col">Dove l'ho dimostrata</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-skill">Web scraping, data pipeline, Python</td>
+          <td class="col-desc">Crawler automatizzati che raccolgono, normalizzano e classificano le opere pubbliche e i bandi dai portali istituzionali (monitoraggio continuo gare PNRR, contratti e tracciamento CIG).</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Estrazione dati da PDF, SQL, database</td>
+          <td class="col-desc">Elenchi, tabelle non strutturate e visure da PDF complessi convertiti in pipeline automatizzate e archivi relazionali interrogabili su Supabase / PostgreSQL.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">GIS e cartografia web</td>
+          <td class="col-desc">Mappe vettoriali dei tracciati e censimento ricettori acustici sensibili, esportazione KML/GeoJSON, georeferenziazione di oltre 21.900 particelle catastali con buffer di allaccio alla rete elettrica.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Prototipazione rapida, product management</td>
+          <td class="col-desc">Piattaforme di intelligence per albi pretori e bandi pubblici, configuratori 3D parametrici, motore di calcolo preventivi CPQ e simulatori deterministici di workflow operativi.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">AI agents, integrazione di sistemi</td>
+          <td class="col-desc">Note vocali registrate con Plaud trascritte ed elaborate in task operativi su CRM e Notion; pipeline automatica di ricezione, interpretazione e instradamento richieste da WhatsApp.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Dashboard, coordinamento di team</td>
+          <td class="col-desc">Console operativa centralizzata con assegnazione task per persona, filtri avanzati, telemetria in tempo reale e monitoraggio a grafici dello stato di avanzamento commesse.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Sviluppo web, SEO, e-commerce</td>
+          <td class="col-desc">Siti web di servizio e di brand leggeri e performanti, compreso store online su Shopify, architetture responsive concepite mobile-first e ottimizzazione SEO tecnica avanzata.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Ricerca di mercato, sviluppo di nuovi business</td>
+          <td class="col-desc">Studi strategici su nuove nicchie a livello globale, analisi di mercato, unit economics e modelli di business con report esecutivi e dossier in PDF per soci e investitori.</td>
+        </tr>
+        <tr>
+          <td class="col-skill">Trasformazione digitale (da prima dell'AI)</td>
+          <td class="col-desc">Piattaforma interna proprietaria per monitorare subappalti, contabilità industriale e stati di avanzamento lavori (SAL) nei cantieri di grandi opere all'epoca di Impregilo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article>
+    <h2>Storia Professionale: Cantieri, Grandi Opere e Trasformazione Digitale</h2>
+    <p>La mia impostazione tecnica affonda le radici in oltre un decennio vissuto direttamente sul campo nei cantieri e negli uffici di una grande commessa infrastrutturale all'epoca di <strong>Impregilo</strong> (oggi Webuild).</p>
+    <p>Molto prima dell'esplosione dell'AI, ho ideato e implementato una piattaforma interna dedicata al controllo sistematico dei subappalti, alla contabilità industriale e al monitoraggio rigoroso degli stati di avanzamento lavori (SAL). Vivere quotidianamente le complessità di cantiere, il coordinamento delle maestranze e i colli di bottiglia amministrativi mi ha insegnato che il vero problema operativo raramente coincide con quello descritto nei report della direzione generale.</p>
+    <p>Da quel rigore sul campo è nata anche l'esperienza nel contenzioso espropriativo (D.P.R. 327/2001): gestione e coordinamento di fascicoli complessi, analisi delle fasce di pertinenza e redazione di perizie tecniche di stima per la tutela delle proprietà private e lo sblocco degli indennizzi.</p>
+
+    <figure class="anteprima">
+      <div class="anteprima-visual">
+        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
+        <picture>
+          <source srcset="img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
+          <img src="img/preview-pedemontana-ricettori-acustici.jpg" alt="Console GIS Ricettori Acustici Autostrada Pedemontana Lombarda con sagome di progetto ed edifici 3D" width="2000" height="799" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">OPERE VIARIE &bull; GIS 3D</span>
+            <span>Autostrada Pedemontana Lombarda &mdash; Ricettori Acustici e Svincoli</span>
+          </div>
+        </div>
+        <p class="anteprima-testo">Console cartografica per le tratte B2 e C: censimento georeferenziato di 6.910 ricettori acustici, individuazione delle 39 unità oltre i limiti post-barriere e dei fabbricati con sostituzione diretta degli infissi. Sovrapposizione vettoriale delle sagome stradali (svincoli SS36/Desio, rotatorie), edifici 3D e visure catastali AdE.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="anteprima">
+      <div class="anteprima-visual">
+        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
+        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
+        <span class="gimbal-reticle" aria-hidden="true"></span>
+        <picture>
+          <source srcset="img/preview-rho-gallarate-ricettori.webp" type="image/webp">
+          <img src="img/preview-rho-gallarate-ricettori.jpg" alt="Mappa GIS modellazione acustica e censimento ricettori sensibili" width="2000" height="737" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption>
+        <div class="anteprima-head">
+          <div class="anteprima-titolo">
+            <span class="badge-tag accent">CORRIDOI &bull; GIS</span>
+            <span>Modellazione Spaziale &mdash; Fasce di Pertinenza e Ricettori</span>
+          </div>
+        </div>
+        <p class="anteprima-testo">Simulazione geospaziale lungo corridoi di trasporto ad alta capacità: censimento cartografico di oltre 1.100 ricettori, modellazione barriere di mitigazione e individuazione dei punti di superamento dei limiti acustici per perizie tecniche.</p>
+      </figcaption>
+    </figure>
+  </article>
+
+  <article>
+    <h2>Web Scraping, Data Pipeline ed Estrazione da PDF</h2>
+    <p>Le informazioni più preziose nel mercato B2B sono spesso intrappolate in portali istituzionali complessi, allegati PDF scansionati o banche dati non indicizzate. Sviluppo pipeline di ingestione automatizzata in Python con architettura robusta:</p>
+    <ul class="numeri">
+      <li><strong>Scraping Istituzionale e PNRR</strong>: Crawler continui per albi pretori, gare d'appalto, CIG e contratti pubblici, con normalizzazione automatica e deduplica dei lotti</li>
+      <li><strong>Da PDF a Supabase / SQL</strong>: Parsing di documenti tecnici, visure e delibere con estrazione di entità e tabelle, convertiti in database relazionali interrogabili</li>
+      <li><strong>Cursori Incrementali e Delta Feed</strong>: Architetture con sync delta (<span class="ora">since_seq</span>) per erogare dati sempre freschi ad API e cruscotti decisionali</li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Dati e Intelligence Geospaziale (GIS 3D &amp; Catasto)</h2>
     <p>Estraggo, normalizzo e georeferenzio dati territoriali critici attingendo direttamente alle banche dati ufficiali. Non mi limito a consegnare elenchi grezzi: aggrego i parametri in indici di idoneità ponderati da 0 a 100, azzerando le incertezze decisionali negli investimenti e nell'acquisizione di aree:</p>
     <ul class="numeri">
       <li><strong>Oltre 21.900</strong> particelle catastali individuate, cartografate e strutturate con attributi completi</li>
@@ -608,11 +797,6 @@
         <p class="anteprima-testo">Algoritmo di qualificazione ed esclusione vincoli su macro-aree territoriali: incrocio automatico tra particelle catastali ufficiali, cabine primarie AT/MT, buffer di allaccio alla rete e scoring economico fondiario.</p>
       </figcaption>
     </figure>
-  </article>
-
-  <article>
-    <h2>Analisi Spaziale e Supporto alle Decisioni</h2>
-    <p>Distanza dalle linee di trasporto e dalle sottostazioni, capacità di allaccio alla rete, irraggiamento solare, valore agricolo dei suoli e vincoli ambientali o paesaggistici: aperta campagna e margini urbani presentano rischi diametralmente opposti. Trasformo intere giornate di verifiche d'ufficio e visure in mappe interattive su cui prendere decisioni strategiche immediate.</p>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
@@ -651,7 +835,7 @@
             <span class="badge-tag accent">SOLAR CRAWLER &bull; D.LGS 190/2024</span>
             <span>Solar Crawler &mdash; Scouting Tetti e Aree Idonee</span>
           </div>
-          <a class="anteprima-apri" href="https://starterenergy-geolead.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
+          <span class="badge-tag">SURVEY 3D</span>
         </div>
         <p class="anteprima-testo">Console per la selezione massiva di superfici idonee ex art. 11-bis D.Lgs. 190/2024: tetti industriali, cave dismesse e discariche (182 siti &bull; &asymp;102.1 MWp), stima automatica kWp, buffer MT/AT e sopralluogo 3D guidato.</p>
       </figcaption>
@@ -659,9 +843,24 @@
   </article>
 
   <article>
-    <h2>Interfacce, Identità Visiva e Comunicazione</h2>
-    <p>I dati perdono valore se l'interfaccia è ostile o anonima. Progetto sistemi visivi essenziali ad alto contrasto e siti web leggeri, concepiti per essere compresi all'istante. Nessun framework sovraccarico, nessun template aziendale preconfezionato e nessuna impaginazione sciatta o dal sapore artificiale.</p>
-    <p>Dalla grafica vettoriale e branding per nuovi strumenti ai cruscotti operativi, fino al copywriting diretto e all'architettura dell'informazione: curo l'estetica attraverso gerarchie tipografiche nette e linee pulite, eliminando il rumore decorativo. Ogni interfaccia deve risultare solida, autentica e subito fruibile.</p>
+    <h2>AI Agents, Integrazione di Sistemi e Product Management</h2>
+    <p>L'intelligenza artificiale diventa un asset reale solo quando si connette ai flussi di lavoro quotidiani senza frizioni:</p>
+    <ul class="numeri">
+      <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Registrazioni e note vocali trascritte, sintetizzate con estrazione di punti d'azione e trasformate automaticamente in task assegnati su CRM aziendali e database Notion</li>
+      <li><strong>Inbound WhatsApp Dispatching</strong>: Canali di ricezione via WhatsApp con parsing istantaneo delle richieste, validazione deterministica e smistamento operativo</li>
+      <li><strong>Configuratori 3D e Motori CPQ</strong>: Piattaforme parametriche per la preventivazione istantanea di commesse complesse (decking, edilizia, impianti), calcolo Distinta Base (BOM) in tempo reale e gestione reflow ritardi</li>
+      <li><strong>Dashboard Operative &amp; Coordinamento Team</strong>: Console di regia centralizzate con assegnazione task per persona, filtri avanzati, telemetria e grafici di avanzamento</li>
+    </ul>
+  </article>
+
+  <article>
+    <h2>Sviluppo Web, E-commerce e Ricerca di Mercato</h2>
+    <p>Progetto sistemi web leggeri ad alto contrasto e architetture e-commerce orientate alla conversione:</p>
+    <ul class="numeri">
+      <li><strong>Siti di Servizio e Brand</strong>: Interfacce veloci, prive di dipendenze pesanti, modellate mobile-first e ottimizzate per le Core Web Vitals e il posizionamento SEO tecnico</li>
+      <li><strong>E-commerce Shopify</strong>: Negozi online completi, cataloghi ottimizzati, logiche di carrello e pagamenti integrate per esperienze d'acquisto senza frizioni</li>
+      <li><strong>Ricerche di Mercato Globali &amp; Nuovi Business</strong>: Analisi approfondite su nicchie internazionali, dimensionamento TAM/SAM/SOM, validazione unit economics e redazione di report esecutivi in PDF per soci e investitori</li>
+    </ul>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
@@ -679,7 +878,7 @@
             <span class="badge-tag accent">RETAIL 3D &bull; EXPANSION</span>
             <span>Geo-Intelligence 3D &mdash; Espansione Retail e Store Scouting</span>
           </div>
-          <a class="anteprima-apri" href="https://alicepizza-geointelligence.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Demo Live &nearr;</a>
+          <span class="badge-tag">URBAN 3D</span>
         </div>
         <p class="anteprima-testo">Piattaforma decisionale per nuove aperture retail su scala metropolitana: estrusione 3D fotorealistica del tessuto urbano, analisi flussi pedonali e canoni d'affitto, censimento competitor e sopralluogo virtuale tridimensionale su Roma.</p>
       </figcaption>
@@ -687,56 +886,8 @@
   </article>
 
   <article>
-    <h2>Esperienza sul Campo: Infrastrutture e Contenzioso Espropri</h2>
-    <p>Dodici anni a stretto contatto con la documentazione e i cantieri di una grande commessa infrastrutturale mi hanno insegnato una cosa: il vero collo di bottiglia operativo raramente coincide con quello dichiarato nei report direzionali.</p>
-    <p>Coordino fascicoli espropriativi e redigo perizie tecniche di stima nell'ambito del Testo Unico sugli Espropri (D.P.R. 327/2001), tutelando le proprietà private e sbloccando le trattative d'indennizzo più complesse.</p>
-
-    <figure class="anteprima">
-      <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
-        <picture>
-          <source srcset="img/preview-rho-gallarate-ricettori.webp" type="image/webp">
-          <img src="img/preview-rho-gallarate-ricettori.jpg" alt="Mappa GIS modellazione acustica e censimento ricettori sensibili" width="2000" height="737" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <figcaption>
-        <div class="anteprima-head">
-          <div class="anteprima-titolo">
-            <span class="badge-tag accent">CORRIDOI &bull; GIS</span>
-            <span>Modellazione Spaziale &mdash; Fasce di Pertinenza e Ricettori</span>
-          </div>
-        </div>
-        <p class="anteprima-testo">Simulazione geospaziale lungo corridoi di trasporto ad alta capacità: censimento cartografico di oltre 1.100 ricettori, modellazione barriere di mitigazione e individuazione dei punti di superamento dei limiti acustici per perizie tecniche.</p>
-      </figcaption>
-    </figure>
-
-    <figure class="anteprima">
-      <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>SORVOLO 3D</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
-        <picture>
-          <source srcset="img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
-          <img src="img/preview-pedemontana-ricettori-acustici.jpg" alt="Console GIS Ricettori Acustici Autostrada Pedemontana Lombarda con sagome di progetto ed edifici 3D" width="2000" height="799" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <figcaption>
-        <div class="anteprima-head">
-          <div class="anteprima-titolo">
-            <span class="badge-tag accent">OPERE VIARIE &bull; GIS 3D</span>
-            <span>Autostrada Pedemontana Lombarda &mdash; Ricettori Acustici e Svincoli</span>
-          </div>
-        </div>
-        <p class="anteprima-testo">Console cartografica per le tratte B2 e C: censimento georeferenziato di 6.910 ricettori acustici, individuazione delle 39 unità oltre i limiti post-barriere e dei fabbricati con sostituzione diretta degli infissi. Sovrapposizione vettoriale delle sagome stradali (svincoli SS36/Desio, rotatorie), edifici 3D e visure catastali AdE.</p>
-      </figcaption>
-    </figure>
-  </article>
-
-  <article>
     <h2>Infrastruttura e Stack Tecnologico</h2>
-    <p>Approccio pragmatico con focus sul terminale. Solida esperienza Unix/Linux, gestione di ambienti isolati e microservizi containerizzati tramite OrbStack e architetture virtualizzate su macOS. Sviluppo in Python (GIS, web automation e scraping strutturato), PostGIS, modelli e API AI di ultima generazione, con interfacce web leggere e reattive.</p>
+    <p>Approccio rigorosamente pragmatico con focus sul terminale. Solida esperienza Unix/Linux, gestione di ambienti isolati e microservizi containerizzati tramite OrbStack e architetture virtualizzate su macOS. Sviluppo in Python (GIS, web automation, scraping strutturato), PostGIS, Supabase, modelli e API AI di ultima generazione, con interfacce web ultra-leggere, reattive e deployate su Vercel.</p>
   </article>
 
   <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>

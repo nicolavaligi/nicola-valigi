@@ -27,13 +27,19 @@ Nicola Valigi collega problemi operativi complessi, cartografia ufficiale e docu
    - 277 piazzali industriali e logistici analizzati (54,3 MWp) su 7.904 comuni italiani.
 2. **Digital Twin 3D e Telemetria Energetica:**
    - Console operative 3D con footprint volumetrici degli edifici industriali, monitoraggio flussi di resa in tempo reale (es. 12 impianti, 6,4 MWp), scoring anomalie P1/Warning e dispatching automatico tramite agenti AI.
-3. **Grandi Infrastrutture, Corridoi e Contenzioso Espropri (D.P.R. 327/2001):**
-   - Dodici anni di esperienza sul campo in grandi commesse infrastrutturali, coordinamento fascicoli espropriativi e perizie tecniche estimative per la tutela delle proprietà private.
+3. **Grandi Infrastrutture, Cantieri e Trasformazione Digitale (da prima dell'AI):**
+   - Oltre un decennio di esperienza diretta sul campo in grandi commesse infrastrutturali all'epoca di Impregilo (oggi Webuild): ideazione e sviluppo di piattaforma interna per il monitoraggio di subappalti, contabilità industriale e stati di avanzamento lavori (SAL).
+   - Coordinamento fascicoli espropriativi e perizie tecniche estimative ex D.P.R. 327/2001 per la tutela delle proprietà private e lo sblocco degli indennizzi.
    - Modellazione spaziale di fasce di pertinenza e censimento cartografico di oltre 1.100 ricettori sensibili lungo corridoi di trasporto ad alta capacità.
    - Console cartografica 3D per Autostrada Pedemontana Lombarda (tratte B2 e C): 6.910 ricettori acustici georeferenziati, individuazione delle 39 unità oltre i limiti post-barriere, svincoli CAD (SS36/Desio), edifici 3D e visure catastali AdE.
-4. **Agenti AI, Automazione Deterministica e Design di Interfacce:**
-   - Sviluppo di micro-strumenti su misura, pipeline di ingestione documentale e generazione automatica di preventivi con supervisione umana esplicita (human-in-the-loop).
-   - Design di interfacce web ad alto contrasto, veloci, prive di framework sovraccarichi, con grafica vettoriale e gerarchie tipografiche nette.
+4. **Web Scraping, Data Pipeline ed Estrazione da PDF:**
+   - Crawler automatici per il monitoraggio continuativo di opere pubbliche, gare d'appalto e bandi PNRR dai portali istituzionali (tracciamento CIG).
+   - Estrazione da documenti PDF non strutturati (visure catastali, atti, elenchi complessi) e caricamento in database relazionali interrogabili su Supabase / PostgreSQL.
+5. **Agenti AI, Integrazione di Sistemi, Product Management e Sviluppo Web:**
+   - Pipeline voice-to-action con Plaud: note vocali trascritte e sintetizzate in task operativi su CRM e Notion; ricezione automatica richieste da WhatsApp.
+   - Prototipazione rapida e product management: monitoraggio albi pretori e bandi, configuratori 3D parametrici, motore preventivi CPQ e simulatori di workflow.
+   - Dashboard operative di coordinamento team con monitoraggio a grafici e assegnazione task per persona.
+   - Sviluppo web e-commerce ad alte prestazioni (Shopify, Jamstack, PWA), SEO tecnica e ricerche di mercato su nuove nicchie globali con report esecutivi in PDF.
 
 ## Piattaforme Geolocal e Motori di Calcolo (Showcase)
 
@@ -41,9 +47,9 @@ Nicola Valigi collega problemi operativi complessi, cartografia ufficiale e docu
 - **Console Operativa 3D e Telemetria Asset (O&M Digital Twin):** Supervisione volumetrica 3D e dispatching anomalie con agenti AI.
 - **Modellazione Spaziale e Fasce di Pertinenza (Corridoi GIS):** Simulazione georeferenziata impatto acustico su oltre 1.100 ricettori sensibili.
 - **Grandi Opere Viarie e Ricettori Acustici (Pedemontana Lombarda GIS 3D):** Censimento esecutivo di 6.910 ricettori acustici, 39 superamenti post-barriere, svincoli CAD ed edifici 3D.
-- **Geo-Intelligence 3D ed Espansione Retail:** Piattaforma decisionale 3D per aperture store su scala metropolitana (flussi pedonali, canoni, competitor, scoring 0–100 su Roma; Demo: https://alicepizza-geointelligence.netlify.app/).
-- **Solar Crawler e Scouting Aree Idonee (D.Lgs. 190/2024):** Selezione massiva di tetti industriali, cave dismesse e discariche ex art. 11-bis D.Lgs. 190/2024 (182 siti censiti, ~102,1 MWp; Demo: https://starterenergy-geolead.netlify.app/).
+- **Geo-Intelligence 3D ed Espansione Retail:** Piattaforma decisionale 3D per aperture store su scala metropolitana (flussi pedonali, canoni, competitor, scoring 0–100 su Roma).
+- **Solar Crawler e Scouting Aree Idonee (D.Lgs. 190/2024):** Selezione massiva di tetti industriali, cave dismesse e discariche ex art. 11-bis D.Lgs. 190/2024 (182 siti censiti, ~102,1 MWp).
 
 ## Stack Tecnologico
 
-Python, uv, PostGIS, SQLite, FastAPI, MapLibre GL JS, WebGL, PVGIS, WMS/WFS catastali, agenti AI e MCP, orchestrazione memoria persistente in Obsidian, ambienti Unix/Linux e containerizzazione isolata su macOS tramite OrbStack.
+Python, uv, PostGIS, Supabase, PostgreSQL, SQLite, FastAPI, MapLibre GL JS, WebGL, PVGIS, WMS/WFS catastali, agenti AI e MCP, ambienti Unix/Linux e containerizzazione isolata su macOS tramite OrbStack, hosting e deploy Vercel.
