@@ -373,31 +373,44 @@
   .barra {
     position: absolute;
     z-index: 7;
-    top: max(18px, env(safe-area-inset-top));
-    right: max(22px, env(safe-area-inset-right));
+    top: max(20px, env(safe-area-inset-top));
+    right: max(24px, env(safe-area-inset-right));
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 8px;
+    pointer-events: auto;
   }
   .lingua {
-    min-width: 44px;
-    min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(6, 7, 19, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-decoration: none;
-    color: #fff;
-    transition: color 0.2s ease;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .lingua:hover { color: #FFE14A; }
+  .lingua:hover {
+    color: #FFE14A;
+    border-color: #FFE14A;
+    background: rgba(255, 225, 74, 0.12);
+    transform: translateX(-2px);
+  }
 
   .dock {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     opacity: 0;
     transition: opacity 0.8s ease;
   }
@@ -416,27 +429,52 @@
   .dock.open button span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .links {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
   }
   .links a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    padding: 0 14px;
+    justify-content: flex-end;
+    min-height: 29px;
+    padding: 0 13px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(6, 7, 19, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #fff;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    color: rgba(255, 255, 255, 0.82);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
   }
-  .links a:hover { background: var(--blue); border-color: var(--blue-bright); }
+  .links a:hover {
+    background: rgba(46, 86, 255, 0.24);
+    border-color: var(--blue-bright);
+    color: #fff;
+    transform: translateX(-3px);
+    box-shadow: 0 0 14px rgba(46, 86, 255, 0.28);
+  }
+  .links a[target="_blank"] {
+    color: rgba(255, 255, 255, 0.65);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .links a[target="_blank"]:hover {
+    color: #fff;
+    border-color: var(--blue-bright);
+  }
+  .nav-div {
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.16);
+    margin: 4px 6px;
+    align-self: flex-end;
+  }
 
   .piede {
     position: absolute;
@@ -514,6 +552,7 @@
       right: auto;
       left: max(16px, env(safe-area-inset-left));
       top: max(8px, env(safe-area-inset-top));
+      flex-direction: row;
     }
     .dock { display: none; }
     .pagina-ora { display: inline-flex; }
@@ -1085,6 +1124,7 @@
         <a href="competenze.html">Competenze</a>
         <a href="ora.html">Ora</a>
         <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">Scrivimi</a>
+        <span class="nav-div" aria-hidden="true"></span>
         <a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
