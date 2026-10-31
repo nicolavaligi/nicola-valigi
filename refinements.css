@@ -1,0 +1,99 @@
+/* Shared refinements, loaded after each page's styles. */
+html { scroll-padding-top: 90px; }
+body { overflow-wrap: break-word; }
+main:focus { outline: none; }
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #ffe14a;
+  color: #060713;
+  font-weight: 700;
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #ffe14a;
+  outline-offset: 4px;
+}
+.hero {
+  min-height: 680px;
+  min-height: min(760px, 100svh);
+  height: auto;
+  padding: 120px 0 150px;
+}
+#sphere { touch-action: pan-y; }
+.hero::before {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .38), rgba(0, 0, 0, .12) 50%, #000 95%);
+}
+.who { margin-bottom: 24px; }
+.hero-description {
+  max-width: 38ch;
+  margin: 28px 0 12px;
+  color: #f0f2fa;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.hero-specialties {
+  max-width: 49ch;
+  margin: 0;
+  color: #b9bfd2;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-wrap: balance;
+}
+.stage .hero-contact {
+  pointer-events: auto;
+  margin-top: 28px;
+  min-height: 48px;
+}
+.nav-link, .nav-btn, .navdesk a, .links a, .lingua, .footer-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.links { gap: 8px; }
+.links a { padding-inline: 18px; }
+.links a:last-child {
+  border-color: rgba(255, 225, 74, .45);
+  color: #ffe14a;
+}
+.showcase-title, .card-pilastro h3, .card-metodo h3 { text-wrap: balance; }
+.showcase-text { line-height: 1.75; }
+.showcase-meta { margin-top: auto; }
+.sezione { scroll-margin-top: 24px; }
+.appbar a { color: #c7cbd9; }
+.appbar a:last-child { color: #ffe14a; }
+.footer-links { gap: 24px; }
+
+@media (max-width: 700px), (max-height: 500px) {
+  .top-nav { display: none; }
+  .hero {
+    min-height: calc(100svh - var(--app-bar-size, 56px));
+    padding: 84px 0 140px;
+  }
+  .stage { padding: 24px 22px; }
+  .stage h1 { font-size: clamp(2.8rem, 11vw, 4rem); }
+  .who { font-size: .8rem; margin-bottom: 20px; }
+  .hero-description { margin-top: 24px; font-size: 1.1rem; }
+  .hero-specialties { font-size: .92rem; }
+  .piede { bottom: 28px; }
+  .barra { top: 18px; right: 20px; }
+  .showcase-body { padding: 22px 20px; }
+  .grid-pilastri, .grid-metodo { grid-template-columns: minmax(0, 1fr); }
+  .showcase-grid { grid-template-columns: minmax(0, 1fr); }
+  .showcase-meta { line-height: 1.7; }
+  .site-footer { padding-bottom: calc(var(--app-bar-size, 56px) + env(safe-area-inset-bottom) + 32px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

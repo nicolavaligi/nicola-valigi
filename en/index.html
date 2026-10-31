@@ -409,8 +409,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    opacity: 0;
-    transition: opacity 0.8s ease;
+    opacity: 1;
   }
   .dock.visible { opacity: 1; }
   .dock button { display: none; }
@@ -721,198 +720,15 @@
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), 0 0 30px var(--glow);
   }
   .showcase-media {
-    position: relative;
     overflow: hidden;
     background: #050811;
-    perspective: 550px;
-    perspective-origin: 50% 35%;
-    transform-style: preserve-3d;
-    cursor: crosshair;
+    border-bottom: 1px solid var(--card-border);
   }
-  .showcase-media picture {
-    display: block;
-    position: relative;
-    transform-style: preserve-3d;
-  }
-  /* Atmospheric Horizon Haze */
-  .showcase-media::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, 
-      rgba(5, 10, 26, 0.75) 0%, 
-      rgba(5, 10, 26, 0.35) 28%, 
-      transparent 58%, 
-      rgba(2, 4, 10, 0.5) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    z-index: 2;
-  }
-  .showcase-card:hover .showcase-media::before {
-    opacity: 1;
-  }
-  /* Specular Solar Glint Sweep */
-  .showcase-media::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    pointer-events: none;
-    background: radial-gradient(ellipse 60% 40% at center, rgba(255, 235, 160, 0.22) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 70%);
-    opacity: 0;
-    transform: rotate(-25deg);
-    transition: opacity 0.6s ease;
-    z-index: 3;
-  }
-  .showcase-card:hover .showcase-media::after {
-    opacity: 1;
-    animation: solar-glint-sweep 10s ease-in-out infinite;
-  }
-  @keyframes solar-glint-sweep {
-    0%, 100% {
-      transform: translate(-30%, -20%) rotate(-25deg);
-    }
-    50% {
-      transform: translate(25%, 20%) rotate(-25deg);
-    }
-  }
+  .showcase-media picture { display: block; }
   .showcase-media img {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    transform-origin: 50% 88%;
-    transform: perspective(550px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  .showcase-card:hover .showcase-media img {
-    animation: deep-helicopter-orbit 11s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
-  }
-  /* Tactical Gimbal Reticle & Corner Brackets */
-  .showcase-media .gimbal-reticle {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 4;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    background:
-      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px 14px / 12px 2px no-repeat,
-      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) 14px 14px / 2px 12px no-repeat,
-      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 12px 2px no-repeat,
-      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 2px 12px no-repeat,
-      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 12px 2px no-repeat,
-      linear-gradient(to top, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 2px 12px no-repeat,
-      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 12px 2px no-repeat,
-      linear-gradient(to top, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 2px 12px no-repeat,
-      linear-gradient(to right, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 22px 1px no-repeat,
-      linear-gradient(to bottom, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 1px 22px no-repeat;
-  }
-  .showcase-card:hover .gimbal-reticle {
-    opacity: 0.85;
-  }
-  .hud-sorvolo {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 4px 9px;
-    background: rgba(6, 7, 19, 0.85);
-    border: 1px solid rgba(255, 225, 74, 0.45);
-    border-radius: 4px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--amber, #FFE14A);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
-  .hud-telemetria {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 9px;
-    background: rgba(6, 7, 19, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 4px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.64rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: #E2E8F0;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
-  .showcase-card:hover .hud-telemetria {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hud-sorvolo-rec {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #FFE14A;
-    box-shadow: 0 0 8px #FFE14A;
-    animation: hud-pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes hud-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.8); }
-  }
-  .showcase-card:hover .hud-sorvolo {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @keyframes deep-helicopter-orbit {
-    0% {
-      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
-    }
-    25% {
-      transform: perspective(550px) rotateX(27deg) rotateY(-1deg) rotateZ(-0.5deg) scale(1.36) translate3d(0%, -5%, 60px);
-    }
-    50% {
-      transform: perspective(550px) rotateX(22deg) rotateY(8deg) rotateZ(3.5deg) scale(1.34) translate3d(3%, -2%, 40px);
-    }
-    75% {
-      transform: perspective(550px) rotateX(19deg) rotateY(2deg) rotateZ(1deg) scale(1.30) translate3d(1%, 2%, 20px);
-    }
-    100% {
-      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .showcase-card:hover .showcase-media img {
-      animation: none !important;
-      transform: scale(1.02) !important;
-    }
-    .hud-sorvolo-rec {
-      animation: none !important;
-    }
   }
   .showcase-body {
     padding: 24px;
@@ -1084,8 +900,10 @@
     }
   }
 </style>
+<link rel="stylesheet" href="../refinements.css">
 </head>
 <body>
+<a class="skip-link" href="#content">Skip to content</a>
 
 <!-- FIXED TRANSLUCENT TOP NAVIGATION (APPEARS ON SCROLL) -->
 <header class="top-nav" aria-label="Main navigation">
@@ -1100,7 +918,7 @@
 </header>
 
 <!-- HERO WITH 3D SPHERE FROM PREVIOUS VERSION -->
-<main id="content">
+<main id="content" tabindex="-1">
 <section class="hero" id="hero">
   <div class="orb">
     <canvas id="sphere" aria-hidden="true"></canvas>
@@ -1109,9 +927,6 @@
   <div class="barra" role="region" aria-label="Quick access and language">
     <a class="lingua" href="../" hreflang="it" lang="it" aria-label="Italiano">IT</a>
     <nav class="dock" id="dock" aria-label="Main menu">
-      <button type="button" id="menu-btn" aria-expanded="false" aria-controls="links" aria-label="Open the menu">
-        <span></span><span></span><span></span>
-      </button>
       <div class="links" id="links">
         <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact me</a>
@@ -1123,6 +938,9 @@
     <div class="lockup">
       <p class="who">Nicola Valigi</p>
       <h1><span class="riga">Let's build</span><span class="mark">now.</span></h1>
+      <p class="hero-description">I turn territorial data and complex processes into tools you can use.</p>
+      <p class="hero-specialties">GIS, 3D platforms and AI automation. From the first analysis to working software.</p>
+      <a class="btn-primary hero-contact" href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact me <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 
@@ -1141,14 +959,14 @@
 <section class="sezione" id="pilastri">
   <div class="sezione-header">
     <span class="kicker">CAPABILITIES &bull; TECHNICAL FOCUS</span>
-    <h2>Spatial Engineering &amp; Autonomous Agents</h2>
-    <p class="sezione-intro">Connecting complex operational challenges, official registries, and technical documentation with working software deployed to the field.</p>
+    <h2>Tools to understand places and improve workflows</h2>
+    <p class="sezione-intro">I bring data, documents and software together to help you assess sites, monitor infrastructure and automate repetitive work.</p>
   </div>
   <div class="grid-pilastri">
     <article class="card-pilastro">
       <span class="num">01 / GIS ENGINE</span>
       <h3>Geo-Intelligence &amp; Land Qualification</h3>
-      <p>Massive inventory and normalization of official cadastral parcels, HV/MV primary substations, solar irradiation models, and exclusion constraints to generate weighted 0–100 suitability scores.</p>
+      <p>I combine cadastral records, grid infrastructure, solar irradiation and land constraints to compare sites and identify those worth investigating.</p>
     </article>
     <article class="card-pilastro">
       <span class="num">02 / 3D TELEMETRY</span>
@@ -1172,17 +990,14 @@
 <section class="sezione" id="piattaforme">
   <div class="sezione-header">
     <span class="kicker">PREVIEW &bull; PRODUCTION SYSTEMS</span>
-    <h2>Geolocal Platforms &amp; Calculation Engines</h2>
-    <p class="sezione-intro">Monitoring consoles, 3D engines, and interactive geospatial layers developed for strategic and operational decision-making.</p>
+    <h2>From data to working tools</h2>
+    <p class="sezione-intro">Selected platforms and analyses built for practical problems in energy, infrastructure, monitoring and retail expansion.</p>
   </div>
 
   <div class="showcase-grid">
     <!-- CARD 1: LAND SOURCING -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 420m · PTCH -24°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
           <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="3D platform for renewable land sourcing and suitability scoring" width="2000" height="879" loading="lazy" decoding="async">
@@ -1205,9 +1020,6 @@
     <!-- CARD 2: 3D OPERATIONS CONSOLE -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 380m · PTCH -22°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
           <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="3D operations console with volumetric building footprints and asset telemetry" width="2000" height="792" loading="lazy" decoding="async">
@@ -1229,9 +1041,6 @@
     <!-- CARD 3: CORRIDOR MODELING & RECEIVERS -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
           <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map with sensitive receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
@@ -1253,9 +1062,6 @@
     <!-- CARD 4: MAJOR HIGHWAY CORRIDORS & NOISE RECEPTORS (PEDEMONTANA) -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
           <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
@@ -1277,9 +1083,6 @@
     <!-- CARD 5: RETAIL 3D GEO-INTELLIGENCE -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 410m · PTCH -24°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-retail-geointelligence-3d.webp" type="image/webp">
           <img src="../img/preview-retail-geointelligence-3d.jpg" alt="3D Geo-Intelligence platform for retail expansion and store selection" width="2000" height="890" loading="lazy" decoding="async">
@@ -1302,9 +1105,6 @@
     <!-- CARD 6: SOLAR CRAWLER ELIGIBLE SURFACES -->
     <article class="showcase-card">
       <div class="showcase-media">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 440m · PTCH -23°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
           <img src="../img/preview-solar-crawler-aree-idonee.jpg" alt="Solar Crawler operations console for eligible solar surfaces and industrial rooftops" width="2000" height="854" loading="lazy" decoding="async">
@@ -1331,23 +1131,23 @@
   <div class="sezione-header">
     <span class="kicker">METHODOLOGY &bull; EXECUTION</span>
     <h2>How It Works</h2>
-    <p class="sezione-intro">From untangling complexity to delivering fast, solid, deterministic software.</p>
+    <p class="sezione-intro">A practical process: understand the problem, validate the data and build the right tool.</p>
   </div>
 
   <div class="grid-metodo">
     <article class="card-metodo">
       <div class="step-num">01</div>
-      <h3>Ingestion &amp; Georeferencing</h3>
+      <h3>Understand the problem and prepare the data</h3>
       <p>Official cadastral records, WMS/WFS layers, engineering documentation, and survey data converted into standardized spatial and relational models.</p>
     </article>
     <article class="card-metodo">
       <div class="step-num">02</div>
-      <h3>Deterministic Scoring</h3>
-      <p>Metric proximity models, weighted 0–100 viability indices, and high-performance algorithms to eliminate investment uncertainty.</p>
+      <h3>Build and validate the model</h3>
+      <p>Metric proximity models, weighted 0–100 viability indices, and high-performance algorithms to compare alternatives and make decision criteria explicit.</p>
     </article>
     <article class="card-metodo">
       <div class="step-num">03</div>
-      <h3>Production Delivery</h3>
+      <h3>Deliver a usable tool</h3>
       <p>Ultra-lightweight web dashboards, reactive 3D rendering engines, and push notifications immediately accessible from browsers and smartphones.</p>
     </article>
   </div>
@@ -1357,8 +1157,8 @@
 <section class="sezione cta-section">
   <div class="cta-box">
     <h2>Let's build the next system.</h2>
-    <p>From land sourcing intelligence to automated operational workflows powered by AI agents: let's discuss directly.</p>
-    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now" class="btn-primary">Start a Conversation &rarr;</a>
+    <p>Tell me about the problem, the data you have and the result you need. We can use that to define a practical tool.</p>
+    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now" class="btn-primary">Contact me &rarr;</a>
   </div>
 </section>
 </main>
@@ -1372,15 +1172,10 @@
       <span>Bergamo, Italy</span>
     </div>
     <div class="footer-links">
-      <a href="skills.html">Skills</a>
-      <a href="now.html">Now</a>
-      <a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact</a>
+      <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact me</a>
     </div>
-    <div style="opacity: 0.65;">
-      powered: HTML &bull; CSS &bull; WebGL
-    </div>
+
   </div>
 </footer>
 
@@ -1711,35 +1506,49 @@
     paintGlow(draw.day);
   }
 
-  function tick() {
-    if (!running) return;
-    if (inView) {
-      time += 0.016;
-      if (!dragging && performance.now() > idleAt && !reduce) yaw += 0.0022;
-      draw();
-    }
-    if (!reduce) requestAnimationFrame(tick);
+  var frame = null;
+  var lastFrame = 0;
+  function tick(now) {
+    frame = null;
+    if (!running || !inView) return;
+    var delta = lastFrame ? Math.min((now - lastFrame) / 1000, 0.05) : 0;
+    lastFrame = now;
+    time += delta;
+    if (!dragging && performance.now() > idleAt && !reduce) yaw += delta * 0.132;
+    draw();
+    if (!reduce) frame = requestAnimationFrame(tick);
   }
-
+  function resume() {
+    if (frame !== null || !running || !inView) return;
+    lastFrame = 0;
+    frame = requestAnimationFrame(tick);
+  }
+  function pause() {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    lastFrame = 0;
+  }
   if ("IntersectionObserver" in window && heroSection) {
     var obs = new IntersectionObserver(function (entries) {
       inView = entries[0].isIntersecting;
+      if (inView) resume(); else pause();
     }, { threshold: 0.05 });
     obs.observe(heroSection);
   }
-
-  window.addEventListener("resize", function () {
-    fit();
-    if (reduce && inView) draw();
-  });
+  window.addEventListener("resize", function () { fit(); resume(); });
   document.addEventListener("visibilitychange", function () {
     running = document.visibilityState !== "hidden";
-    if (running && !reduce) tick();
+    if (running) resume(); else pause();
+  });
+  window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", function (event) {
+    reduce = event.matches;
+    pause();
+    resume();
   });
 
   // DRAG INTERACTION IN HERO
   heroSection.addEventListener("pointerdown", function (event) {
-    if (event.target.closest("a, button")) return;
+    if (event.target.closest("a, button") || event.pointerType === "touch") return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
     dragging = true;
     dragMoved = false;
@@ -1785,28 +1594,10 @@
   });
 
   fit();
-  tick();
+  resume();
 })();
 
 (function () {
-  var dock = document.getElementById("dock");
-  var button = document.getElementById("menu-btn");
-  if (dock && button) {
-    window.setTimeout(function () { dock.classList.add("visible"); }, 600);
-    function setOpen(open) {
-      dock.classList.toggle("open", open);
-      button.setAttribute("aria-expanded", open ? "true" : "false");
-      button.setAttribute("aria-label", open ? "Close the menu" : "Open the menu");
-    }
-    button.addEventListener("click", function (event) {
-      event.stopPropagation();
-      setOpen(!dock.classList.contains("open"));
-    });
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") setOpen(false);
-    });
-  }
-
   // Top nav sticky fade-in on vertical scroll
   var topNav = document.querySelector(".top-nav");
   if (topNav) {
