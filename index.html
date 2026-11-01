@@ -111,7 +111,7 @@
     {
       "@type": "ItemList",
       "@id": "https://www.nicvaligi.com/#piattaforme-list",
-      "name": "Dai dati agli strumenti operativi",
+      "name": "Tre problemi. Strumenti concreti.",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -901,7 +901,7 @@
   }
 </style>
 <link rel="stylesheet" href="refinements.css">
-<link rel="stylesheet" href="decision-lab.css">
+
 </head>
 <body>
 <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -939,8 +939,8 @@
     <div class="lockup">
       <p class="who">Nicola Valigi</p>
       <h1><span class="riga">Costruiamo</span><span class="mark">adesso.</span></h1>
-      <p class="hero-description">Trasformo dati territoriali e processi complessi in strumenti che puoi usare.</p>
-      <p class="hero-specialties">GIS, piattaforme 3D e automazione con AI. Dalla prima analisi al software operativo.</p>
+      <p class="hero-description">Creo strumenti digitali per leggere il territorio e semplificare il lavoro.</p>
+      <p class="hero-specialties">Geo-intelligence · piattaforme 3D · automazione</p>
       <a class="btn-primary hero-contact" href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">Contattami <span aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
@@ -948,8 +948,8 @@
   <div class="piede">
     <a class="pagina-ora" href="ora.html">Ora</a>
     <a class="coords" href="https://www.google.com/maps/search/?api=1&amp;query=Bergamo" target="_blank" rel="noopener noreferrer">45.6983° N, 9.6773° E</a>
-    <a class="scroll-cue" href="#laboratorio" aria-label="Prova il laboratorio interattivo">
-      <span>Entra nel laboratorio</span>
+    <a class="scroll-cue" href="#piattaforme" aria-label="Scopri i progetti">
+      <span>I progetti</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
     </a>
   </div>
@@ -957,115 +957,13 @@
 </section>
 
 
-<section class="sezione decision-lab" id="laboratorio" aria-labelledby="lab-title" data-decision-lab data-lang="it">
-  <div class="sezione-header lab-heading">
-    <span class="kicker">NV / 01 <span aria-hidden="true">&mdash;</span> LABORATORIO INTERATTIVO</span>
-    <h2 id="lab-title">Il dato da solo<br>non decide.</h2>
-    <p class="sezione-intro">La scelta cambia quando cambiano le priorità. Prova: dai più peso alla rete o alla superficie e osserva cosa succede.</p>
-  </div>
-  <div class="lab-workspace">
-    <div class="lab-toolbar"><span class="lab-eyebrow">SEI AREE. UNA SCELTA DA MOTIVARE.</span><span class="lab-demo">Dati sintetici</span></div>
-    <div class="lab-controls" data-lab-controls hidden>
-      <div class="lab-priority">
-        <label for="lab-weight">01 / Cosa conta di più?</label>
-        <div class="lab-range-labels"><span>Più superficie</span><span>Più vicina alla rete</span></div>
-        <input type="range" id="lab-weight" min="0" max="100" step="5" value="65" aria-describedby="lab-weight-value">
-        <output id="lab-weight-value" for="lab-weight">Rete 65% · Superficie 35%</output>
-        <p class="lab-live-result" data-lab-leading>In testa: Area A · 73 / 100</p>
-      </div>
-      <label class="lab-check"><input type="checkbox" id="lab-exclude" checked><span>Escludi le aree con vincoli<small>Un requisito cambia le alternative.</small></span></label>
-    </div>
-    <div class="lab-grid">
-      <div class="lab-map-wrap">
-        <div class="lab-map" aria-label="Schema delle sei aree dimostrative">
-          <svg class="lab-terrain" viewBox="0 0 600 420" aria-hidden="true" preserveAspectRatio="none">
-            <defs><pattern id="lab-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#233f46" stroke-width=".7"/></pattern></defs>
-            <rect width="600" height="420" fill="#0b1d23"/><rect width="600" height="420" fill="url(#lab-grid)"/>
-            <path d="M-20 220C90 170 140 235 255 190S440 145 620 200" fill="none" stroke="#1d4b60" stroke-width="35"/>
-            <path d="M-20 220C90 170 140 235 255 190S440 145 620 200" fill="none" stroke="#33748a" stroke-width="1"/>
-            <path d="M40 0L175 170L210 420M600 50L400 165L410 420M0 345L210 340L600 340" fill="none" stroke="#32484b" stroke-width="12"/>
-            <path d="M40 0L175 170L210 420M600 50L400 165L410 420M0 345L210 340L600 340" fill="none" stroke="#72918b" stroke-width="1" stroke-dasharray="5 8"/>
-            <path d="M90 15L260 60L350 100L560 90" fill="none" stroke="#bfb578" stroke-width="2" stroke-dasharray="3 6"/>
-            <path class="lab-parcel" data-parcel="A" d="M65 65L146 48L172 129L87 145Z"/>
-            <path class="lab-parcel" data-parcel="B" d="M222 45L334 55L349 134L238 150Z"/>
-            <path class="lab-parcel" data-parcel="C" d="M412 67L529 59L549 154L439 169Z"/>
-            <path class="lab-parcel" data-parcel="D" d="M70 246L171 252L188 320L60 326Z"/>
-            <path class="lab-parcel" data-parcel="E" d="M268 235L337 240L345 307L272 312Z"/>
-            <path class="lab-parcel" data-parcel="F" d="M424 252L541 240L555 333L431 329Z"/>
-            <g fill="#bfb578"><circle cx="90" cy="15" r="4"/><circle cx="260" cy="60" r="4"/><circle cx="350" cy="100" r="4"/><circle cx="560" cy="90" r="4"/></g>
-          </svg>
-          <span class="lab-map-caption">TERRITORIO IMMAGINARIO</span>
-          <span class="lab-north" aria-hidden="true">N &uarr;</span>
-          <button type="button" class="lab-point" data-site="A" style="--x:20%;--y:25%" aria-label="Area A" aria-pressed="true" disabled>A</button>
-<button type="button" class="lab-point" data-site="E" style="--x:51%;--y:66%" aria-label="Area E" aria-pressed="false" disabled>E</button>
-<button type="button" class="lab-point" data-site="B" style="--x:48%;--y:23%" aria-label="Area B" aria-pressed="false" disabled>B</button>
-<button type="button" class="lab-point" data-site="D" style="--x:22%;--y:70%" aria-label="Area D" aria-pressed="false" disabled>D</button>
-<button type="button" class="lab-point" data-site="F" style="--x:79%;--y:73%" aria-label="Area F" aria-pressed="false" disabled>F</button>
-<button type="button" class="lab-point" data-site="C" style="--x:78%;--y:28%" aria-label="Area C" aria-pressed="false" disabled>C</button>
-          <div class="lab-legend" aria-hidden="true"><span><i></i>Da approfondire</span><span><i class="lab-legend-muted"></i>Esclusa</span></div>
-        </div>
-        <p class="lab-map-note">02 / Tocca un’area per leggere il perché.</p>
-        <ul class="lab-ranking" aria-label="Confronto delle aree: superficie, distanza dalla rete e indice"><li><button type="button" class="lab-row" data-site="A" aria-pressed="true" disabled><span class="lab-row-id">A</span><span>Area A<small>11 000 m² · 140 m</small></span><span class="lab-row-score" data-score="A">73</span></button></li>
-<li><button type="button" class="lab-row" data-site="E" aria-pressed="false" disabled><span class="lab-row-id">E</span><span>Area E<small>6 400 m² · 80 m</small></span><span class="lab-row-score" data-score="E">70</span></button></li>
-<li><button type="button" class="lab-row" data-site="B" aria-pressed="false" disabled><span class="lab-row-id">B</span><span>Area B<small>19 000 m² · 480 m</small></span><span class="lab-row-score" data-score="B">67</span></button></li>
-<li><button type="button" class="lab-row" data-site="D" aria-pressed="false" disabled><span class="lab-row-id">D</span><span>Area D<small>13 500 m² · 900 m</small></span><span class="lab-row-score" data-score="D">36</span></button></li>
-<li><button type="button" class="lab-row" data-site="F" aria-pressed="false" disabled><span class="lab-row-id">F</span><span>Area F<small>21 000 m² · 1100 m</small></span><span class="lab-row-score" data-score="F">36</span></button></li>
-<li><button type="button" class="lab-row" data-site="C" aria-pressed="false" disabled><span class="lab-row-id">C</span><span>Area C<small>23 000 m² · 110 m</small></span><span class="lab-row-score" data-score="C">Esclusa</span></button></li></ul>
-      </div>
-      <div class="lab-result">
-        <span class="lab-eyebrow">03 / DAL DATO ALLA SCELTA</span>
-        <p class="lab-result-label" data-result-label>Prima area da approfondire</p>
-        <div class="lab-result-head"><h3 data-result-name>Area A</h3><p class="lab-score"><span data-result-score>73</span><small>/ 100</small></p></div>
-        <p class="lab-reason" data-result-reason>Una combinazione di vicinanza alla rete e superficie disponibile. Cambia i pesi per confrontare le alternative.</p>
-        <dl class="lab-metrics"><div><dt>Superficie</dt><dd data-result-area>11&thinsp;000 m²</dd></div><div><dt>Distanza dalla rete</dt><dd data-result-distance>140 m</dd></div><div><dt>Vincoli nel modello</dt><dd data-result-constraint>Assenti</dd></div></dl>
-        <details class="lab-formula"><summary>Come si forma l’indice?</summary><p>Due valori normalizzati da 0 a 100: la vicinanza alla rete (0–1.200 m) e la superficie (0–24.000 m²). L’indice è la loro media pesata. Il filtro vincoli esclude un’area dalla graduatoria.</p><p class="lab-calculation" data-calculation>88,3 × 65% + 45,8 × 35% = 73</p></details>
-        <p class="lab-bridge">Sul tuo progetto, partiamo dai dati e dai criteri reali.</p>
-        <a class="btn-primary lab-contact" data-lab-contact href="mailto:n.valigi@gmail.com?subject=Un%20caso%20reale">Parliamo di un caso reale <span aria-hidden="true">&nearr;</span></a>
-      </div>
-    </div>
-    <p class="lab-status" role="status" aria-live="polite" aria-atomic="true" data-lab-status></p>
-    <div class="lab-footnote"><p>Una dimostrazione del metodo, con aree e valori inventati. Non è una valutazione tecnica o di fattibilità.</p><button type="button" class="lab-reset" data-lab-reset hidden>Riparti da zero <span aria-hidden="true">&circlearrowleft;</span></button></div>
-    <noscript><p class="lab-nojs">Stai leggendo l’esempio statico. Con JavaScript attivo puoi cambiare le priorità e confrontare le aree.</p></noscript>
-  </div>
-</section>
-
-<!-- SEZIONE 1: I 4 PILASTRI OPERATIVI -->
-<section class="sezione" id="pilastri">
-  <div class="sezione-header">
-    <span class="kicker">CAPACITÀ &bull; FOCUS TECNOLOGICO</span>
-    <h2>Strumenti per leggere il territorio e lavorare meglio</h2>
-    <p class="sezione-intro">Metto insieme dati, documenti e software per aiutarti a valutare aree, monitorare infrastrutture e automatizzare il lavoro ripetitivo.</p>
-  </div>
-  <div class="grid-pilastri">
-    <article class="card-pilastro">
-      <span class="num">01 / GIS ENGINE</span>
-      <h3>Geo-Intelligence e Idoneità Fondiaria</h3>
-      <p>Incrocio catasto, rete elettrica, irraggiamento e vincoli territoriali per confrontare le aree e individuare quelle da approfondire.</p>
-    </article>
-    <article class="card-pilastro">
-      <span class="num">02 / 3D TELEMETRY</span>
-      <h3>Digital Twin 3D e Telemetria Energetica</h3>
-      <p>Rendo edifici, impianti e dati di monitoraggio consultabili in un unico ambiente 3D, per leggere lo stato degli asset e individuare le anomalie.</p>
-    </article>
-    <article class="card-pilastro">
-      <span class="num">03 / SPATIAL ANALYSIS</span>
-      <h3>Grandi Infrastrutture e Corridoi</h3>
-      <p>Analisi delle fasce di pertinenza, simulazioni geospaziali d'impatto acustico e ambientale, supporto tecnico al contenzioso espropriativo e perizie estimative (D.P.R. 327/2001).</p>
-    </article>
-    <article class="card-pilastro">
-      <span class="num">04 / AI AUTOMATION</span>
-      <h3>Agenti AI e Automazione dei Processi</h3>
-      <p>Trasformo documenti e attività ripetitive in flussi automatizzati, con regole verificabili e supervisione umana. Strumenti utilizzabili anche da smartphone.</p>
-    </article>
-  </div>
-</section>
 
 <!-- SEZIONE 2: SHOWCASE PIATTAFORME GEOLOCAL (PREVIEWS) -->
 <section class="sezione" id="piattaforme">
   <div class="sezione-header">
-    <span class="kicker">PREVIEW &bull; SISTEMI OPERATIVI</span>
-    <h2>Dai dati agli strumenti operativi</h2>
-    <p class="sezione-intro">Una selezione di piattaforme e analisi sviluppate per problemi concreti: energia, infrastrutture, monitoraggio ed espansione commerciale.</p>
+    <span class="kicker">PROGETTI SELEZIONATI</span>
+    <h2>Tre problemi. Strumenti concreti.</h2>
+    <p class="sezione-intro">Geo-intelligence, infrastrutture e piattaforme operative.</p>
   </div>
 
   <div class="showcase-grid">
@@ -1083,7 +981,7 @@
           <span class="tag">MAPLIBRE &bull; WMS</span>
         </div>
         <h3 class="showcase-title">Sourcing Fondiario e Idoneità Rinnovabili</h3>
-        <p class="showcase-text">Motore geospaziale per la qualificazione automatica di aree idonee. Incrocio algoritmico tra oltre 21.000 particelle catastali, 2.100 cabine primarie AT/MT, curve di irraggiamento solare, buffer di allaccio e vincoli territoriali.</p>
+        <p class="showcase-text">Analisi geospaziale per confrontare aree, rete elettrica, irraggiamento e vincoli territoriali.</p>
         <div class="showcase-meta">
           <span>&gt;21.900 Particelle &bull; Scoring 0–100</span>
           <a class="showcase-link" href="https://nicolavaligi.github.io/sunpro/" target="_blank" rel="noopener noreferrer" style="color:var(--amber);font-weight:700;">Demo Live &nearr;</a>
@@ -1105,7 +1003,7 @@
           <span class="tag">WEBGL &bull; AI AGENTS</span>
         </div>
         <h3 class="showcase-title">Console Operativa 3D e Telemetria Asset</h3>
-        <p class="showcase-text">Console di supervisione con footprint volumetrici 3D degli asset produttivi, monitoraggio dei flussi di resa in linea, rilevamento anomalie P1/Warning e dispatching automatico degli interventi tramite agenti AI.</p>
+        <p class="showcase-text">Una console 3D per monitorare impianti, individuare anomalie e coordinare interventi.</p>
         <div class="showcase-meta">
           <span>Volumetrie 3D &bull; Anomaly Dispatch</span>
         </div>
@@ -1147,7 +1045,7 @@
           <span class="tag">6.910 RICETTORI &bull; CADASTRE</span>
         </div>
         <h3 class="showcase-title">Grandi Opere Viarie e Ricettori Acustici</h3>
-        <p class="showcase-text">Simulazione geospaziale e censimento per l'Autostrada Pedemontana Lombarda (tratte B2 e C): 6.910 ricettori acustici censiti con posizione esatta da schede esecutive, individuazione delle 39 unità oltre i limiti post-barriere e dei fabbricati con sostituzione infissi. Sovrapposizione geometrica CAD di carreggiate, svincoli multilivello, edifici 3D e catasto particellare.</p>
+        <p class="showcase-text">Analisi GIS di 6.910 ricettori acustici per l’Autostrada Pedemontana Lombarda.</p>
         <div class="showcase-meta">
           <span>6.910 Ricettori &bull; Svincoli CAD &bull; Edifici 3D</span>
         </div>
@@ -1196,33 +1094,6 @@
           <span class="tag">SURVEY 3D</span>
         </div>
       </div>
-    </article>
-  </div>
-</section>
-
-<!-- SEZIONE 3: IL METODO OPERATIVO -->
-<section class="sezione" id="metodo">
-  <div class="sezione-header">
-    <span class="kicker">METODOLOGIA &bull; ESECUZIONE</span>
-    <h2>Come Funziona</h2>
-    <p class="sezione-intro">Un percorso concreto: capire il problema, verificare i dati e costruire lo strumento adatto.</p>
-  </div>
-
-  <div class="grid-metodo">
-    <article class="card-metodo">
-      <div class="step-num">01</div>
-      <h3>Capire il problema e preparare i dati</h3>
-      <p>Dati catastali ufficiali, layer WMS/WFS, specifiche tecniche e rilievi convertiti in strutture geometriche standardizzate e georeferenziate.</p>
-    </article>
-    <article class="card-metodo">
-      <div class="step-num">02</div>
-      <h3>Costruire e verificare il modello</h3>
-      <p>Modelli di prossimità metrica, indici pesati da 0 a 100 e algoritmi ad alte prestazioni per confrontare le alternative e rendere espliciti i criteri di scelta.</p>
-    </article>
-    <article class="card-metodo">
-      <div class="step-num">03</div>
-      <h3>Consegnare uno strumento utilizzabile</h3>
-      <p>Cruscotti web ultra-leggeri, motori 3D reattivi e notifiche utilizzabili immediatamente da browser e smartphone senza dipendenze pesanti.</p>
     </article>
   </div>
 </section>
@@ -1688,6 +1559,5 @@
 })();
 </script>
 <script src="app.js" defer></script>
-<script src="decision-lab.js" defer></script>
 </body>
 </html>
