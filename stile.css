@@ -139,8 +139,8 @@ a:hover { text-decoration: none; }
 .m-cabina rect { fill: var(--carta-chiara); stroke: var(--ink); stroke-width: 2; }
 .m-cabina path { stroke: var(--ink); stroke-width: 1.5; }
 .m-etichetta { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .1em; fill: var(--ink); paint-order: stroke; stroke: var(--carta-chiara); stroke-width: 3.5px; pointer-events: none; }
-.m-etichetta-acqua { fill: #3D5F86; stroke: none; font-weight: 500; }
-.m-num { font-family: var(--mono); font-size: 8px; fill: var(--ink); fill-opacity: .5; text-anchor: middle; pointer-events: none; }
+.m-etichetta-acqua { fill: #284766; stroke: none; font-weight: 500; }
+.m-num { font-family: var(--mono); font-size: 8px; fill: var(--muto); text-anchor: middle; pointer-events: none; }
 .m-cornice { fill: none; stroke: var(--ink); stroke-width: 1.6; }
 .m-tacca { stroke: var(--ink); stroke-width: 1; }
 .m-coord, .m-scala text, .m-nord text { font-family: var(--mono); font-size: 9.5px; fill: var(--muto); letter-spacing: .06em; }
