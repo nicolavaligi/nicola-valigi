@@ -40,8 +40,8 @@
     "varying float vAccent;",
     "uniform float uDay;",
     "void main() {",
-    "  vec3 col = vec3(0.38, 0.58, 0.85);",
-    "  float alpha = (0.26 + vPulse * 0.40) * (0.46 + vFront * 0.54);",
+    "  vec3 col = vec3(0.137, 0.294, 1.0);",
+    "  float alpha = (0.20 + vPulse * 0.28) * (0.28 + vFront * 0.72);",
     "  gl_FragColor = vec4(col, alpha);",
     "}"
   ].join("\n");
@@ -57,10 +57,10 @@
     "  float d = length(q);",
     "  if (d > 1.0) discard;",
     "  float rim = smoothstep(1.0, 0.42, d);",
-    "  vec3 ivory = mix(vec3(0.82, 0.86, 0.93), vec3(0.97, 0.94, 0.86), uDay);",
-    "  vec3 accent = vec3(1.0, 0.88, 0.29);",
+    "  vec3 ivory = vec3(0.08, 0.09, 0.12);",
+    "  vec3 accent = vec3(0.137, 0.294, 1.0);",
     "  vec3 col = mix(ivory, accent, vAccent);",
-    "  col = mix(col, vec3(1.0), smoothstep(0.45, 0.0, d) * 0.4);",
+    "  col = mix(col, accent, smoothstep(0.45, 0.0, d) * 0.16);",
     "  float alpha = rim * (0.48 + vPulse * 0.52) * (0.5 + vFront * 0.5);",
     "  alpha += smoothstep(1.0, 0.15, d) * vAccent * (0.12 + vPulse * 0.2);",
     "  gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));",
@@ -154,7 +154,6 @@
   }
   var lineLoc = locs(lineProg);
   var nodeLoc = locs(nodeProg);
-  var glowTag = "";
   var yaw = 0.55;
   var pitch = -0.22;
   var userZoom = 1;
@@ -262,23 +261,6 @@
     hitR = desiredRadius();
   }
 
-  function dayAmount() {
-    var now = new Date();
-    var h = now.getHours() + now.getMinutes() / 60;
-    var c = Math.cos(((h - 13) / 12) * Math.PI);
-    return c > 0 ? c : 0;
-  }
-
-  function paintGlow(day) {
-    var tag = day.toFixed(2);
-    if (tag === glowTag) return;
-    glowTag = tag;
-    var r = Math.round(31 + (255 - 31) * day);
-    var g = Math.round(67 + (150 - 67) * day);
-    var b = Math.round(216 + (40 - 216) * day);
-    canvas.style.filter = "drop-shadow(0 0 34px rgba(" + r + "," + g + "," + b + ",0.32))";
-  }
-
   function drawMesh(prog, loc, buf, mode, n) {
     gl.useProgram(prog);
     bindMesh(buf);
@@ -303,7 +285,7 @@
     var proj = perspective(fovy, canvas.width / canvas.height, 0.1, 20);
     draw.mvp = mul(proj, draw.mv);
     draw.zoom = zoom;
-    draw.day = dayAmount();
+    draw.day = 0;
     draw.px = Math.max(2.2, canvas.clientHeight * 0.0046) * (canvas.height / Math.max(1, canvas.clientHeight));
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -313,7 +295,6 @@
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     drawMesh(lineProg, lineLoc, wireBuf, gl.LINES, wireCount);
     drawMesh(nodeProg, nodeLoc, nodeBuf, gl.POINTS, count);
-    paintGlow(draw.day);
   }
 
   var frame = null;

@@ -5,4 +5,6 @@
 - Conservare un percorso semplice verso il contatto e mantenere allineate le versioni italiana e inglese.
 - Il laboratorio usa dati sintetici dichiarati: non presentarli come aree reali, valutazioni tecniche o risultati di progetti.
 - Preferire interazioni leggere con HTML, CSS, SVG e JavaScript nativi; mantenere un contenuto utile anche senza JavaScript.
+- Non usare evidenziazioni di sfondo o sottolineature decorative nei testi (come i tratti gialli): enfatizzare con il colore del testo, preferibilmente blu elettrico.
+- Non sovrapporre tondini o pin numerati decorativi alle immagini dei progetti; usare didascalie descrittive semplici.
 - Dopo le verifiche, aggiornare GitHub e la pubblicazione Vercel come già autorizzato dall'utente.

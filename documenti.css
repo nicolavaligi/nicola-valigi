@@ -1,0 +1,39 @@
+/* The same paper, typography and electric blue on every supporting page. */
+.documento { padding-block: clamp(40px, 6vw, 80px); }
+.documento h1 { font-size: clamp(2.4rem, 5.5vw, 4.8rem); max-width: 23ch; margin-bottom: 32px; }
+.documento article { padding-block: 32px; border-top: 1px solid var(--riga); }
+.documento article:first-of-type { border-top: 1px solid var(--ink); }
+.documento h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); max-width: 38ch; margin-bottom: 20px; line-height: 1.15; }
+.documento p { max-width: 76ch; }
+.documento article p + p { margin-top: 16px; }
+.documento .nota { color: var(--muto); font-size: .9rem; margin-bottom: 32px; }
+.documento .ora, .documento a { color: var(--blu); }
+.documento .numeri { display: block; margin-top: 20px; border: 0; font-family: var(--sans); font-size: 1rem; }
+.documento .numeri li { display: block; padding: 12px 0; border: 0; border-top: 1px solid var(--riga); max-width: 80ch; }
+.documento .numeri strong { display: inline; color: var(--ink); font: inherit; font-weight: 700; }
+.documento .numeri span { display: inline; font: inherit; max-width: none; }
+.tabella-competenze { border-collapse: collapse; width: 100%; table-layout: fixed; font-size: .95rem; line-height: 1.6; }
+.tabella-competenze th, .tabella-competenze td { padding: 18px 20px 18px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--riga); overflow-wrap: anywhere; }
+.tabella-competenze th { font-family: var(--mono); color: var(--muto); font-size: .72rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; border-bottom-color: var(--ink); }
+.tabella-competenze th:first-child, .tabella-competenze .col-skill { width: 31%; }
+.tabella-competenze .col-skill { font-weight: 600; }
+.tabella-competenze .col-desc { color: var(--muto); }
+.anteprima { margin-block: 28px; border: 1px solid var(--riga); background: var(--carta-chiara); }
+.anteprima-visual { display: block; }
+.anteprima img { display: block; width: 100%; height: auto; }
+.anteprima figcaption { padding: 20px 24px; border-top: 1px solid var(--riga); }
+.anteprima-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 24px; }
+.anteprima-titolo { display: grid; gap: 6px; font-weight: 600; }
+.badge-tag { display: inline; color: var(--blu); font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; }
+.anteprima-apri { min-height: 44px; display: inline-flex; align-items: center; font-size: .88rem; }
+.documento .anteprima-testo { margin-top: 12px; font-size: .9rem; line-height: 1.65; color: var(--muto); }
+.documento .credito-immagine { margin-top: 12px; color: var(--muto); font-size: .7rem; }
+.documento-relativi { display: flex; flex-wrap: wrap; gap: 10px 28px; padding-top: 24px; border-top: 1px solid var(--ink); }
+.documento-relativi a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }
+@media (max-width: 699px) {
+  .tabella-competenze { font-size: .83rem; }
+  .tabella-competenze th, .tabella-competenze td { padding: 14px 10px 14px 0; }
+  .tabella-competenze th:first-child, .tabella-competenze .col-skill { width: 34%; }
+  .tabella-competenze th { font-size: .61rem; letter-spacing: .03em; }
+  .anteprima figcaption { padding: 16px; }
+}

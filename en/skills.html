@@ -8,497 +8,15 @@
 <link rel="me" href="https://github.com/nicolavaligi">
 <link rel="me" href="https://www.linkedin.com/in/nicola-valigi-288418447/">
 <meta name="twitter:url" content="https://www.nicvaligi.com/en/skills.html">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F1EA">
+<meta name="theme-color" content="#F4F1EA">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Valigi">
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../icona-180.png">
-<link rel="stylesheet" href="../shell.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='ui-monospace,monospace' font-size='11' fill='%232E56FF'%3ENV%3C/text%3E%3C/svg%3E">
-<style>
-  :root { --ink: #EDEBE6; --blue: #2E56FF; --quiet: #B9B5AC; }
-  * { box-sizing: border-box; }
-  html { overscroll-behavior-y: none; }
-  body {
-    margin: 0;
-    background: #000;
-    color: var(--ink);
-    font-family: Archivo, "Helvetica Neue", sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-  .pagina {
-    width: min(680px, 100%);
-    margin: 0 auto;
-    padding:
-      max(28px, env(safe-area-inset-top))
-      max(22px, env(safe-area-inset-right))
-      calc(var(--app-bar-size, 0px) + max(48px, env(safe-area-inset-bottom)))
-      max(22px, env(safe-area-inset-left));
-  }
-  .testa {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .lingua {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-decoration: none;
-    color: #fff;
-  }
-  .torna {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-    white-space: nowrap;
-  }
-  .navdesk { display: none; }
-  @media (min-width: 701px) and (min-height: 501px) {
-    .pagina { width: min(1040px, calc(100% - 64px)); }
-    .navdesk {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 2px 18px;
-      margin-left: auto;
-    }
-    .navdesk a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-    .navdesk a[aria-current="page"] { color: #FFE14A; }
-    .torna { font-size: 1rem; letter-spacing: 0.06em; }
-  }
-  @media (max-width: 700px), (max-height: 500px) {
-    .testa {
-      position: sticky;
-      top: 0;
-      z-index: 4;
-      display: flex;
-      margin-top: calc(-1 * max(28px, env(safe-area-inset-top)));
-      margin-left: calc(-1 * max(22px, env(safe-area-inset-left)));
-      margin-right: calc(-1 * max(22px, env(safe-area-inset-right)));
-      padding:
-        max(8px, env(safe-area-inset-top))
-        max(22px, env(safe-area-inset-right))
-        8px
-        max(22px, env(safe-area-inset-left));
-      background: #000;
-    }
-  }
-  h1 {
-    margin: 28px 0 18px;
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  article {
-    max-width: 40rem;
-    padding: 22px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  article:first-of-type { border-top: 0; padding-top: 0; }
-  article h2 {
-    margin: 0 0 8px;
-    font-size: 1.35rem;
-    letter-spacing: -0.03em;
-  }
-  @media (min-width: 701px) and (min-height: 501px) {
-    h1 { font-size: 4.2rem; }
-    article { max-width: 48rem; }
-    article h2 { font-size: 1.5rem; }
-  }
-  article p { margin: 0 0 12px; }
-  article p:last-child { margin-bottom: 0; }
-  .ora { color: #FFE14A; }
-  .numeri {
-    margin: 4px 0 0;
-    padding: 0;
-    list-style: none;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.98rem;
-    line-height: 1.75;
-    color: #fff;
-  }
-  .numeri strong { font-weight: 700; }
-  .anteprima {
-    margin: 22px 0 16px;
-    padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0d0d0d;
-    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.55);
-    transition: border-color 0.2s ease;
-  }
-  .anteprima:hover {
-    border-color: rgba(255, 255, 255, 0.32);
-  }
-  .anteprima .anteprima-visual,
-  .anteprima a.anteprima-link {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    background: #050811;
-    perspective: 550px;
-    perspective-origin: 50% 35%;
-    transform-style: preserve-3d;
-    cursor: crosshair;
-  }
-  /* Atmospheric Horizon Haze */
-  .anteprima .anteprima-visual::before,
-  .anteprima a.anteprima-link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, 
-      rgba(5, 10, 26, 0.75) 0%, 
-      rgba(5, 10, 26, 0.35) 28%, 
-      transparent 58%, 
-      rgba(2, 4, 10, 0.5) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    z-index: 2;
-  }
-  .anteprima:hover .anteprima-visual::before,
-  .anteprima:hover a.anteprima-link::before {
-    opacity: 1;
-  }
-  /* Specular Solar Glint Sweep */
-  .anteprima .anteprima-visual::after,
-  .anteprima a.anteprima-link::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    pointer-events: none;
-    background: radial-gradient(ellipse 60% 40% at center, rgba(255, 235, 160, 0.22) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 70%);
-    opacity: 0;
-    transform: rotate(-25deg);
-    transition: opacity 0.6s ease;
-    z-index: 3;
-  }
-  .anteprima:hover .anteprima-visual::after,
-  .anteprima:hover a.anteprima-link::after {
-    opacity: 1;
-    animation: solar-glint-sweep 10s ease-in-out infinite;
-  }
-  @keyframes solar-glint-sweep {
-    0%, 100% {
-      transform: translate(-30%, -20%) rotate(-25deg);
-    }
-    50% {
-      transform: translate(25%, 20%) rotate(-25deg);
-    }
-  }
-  .anteprima img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transform-origin: 50% 88%;
-    transform: perspective(550px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) translate3d(0, 0, 0);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  .anteprima:hover img {
-    animation: deep-helicopter-orbit 11s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
-  }
-  /* Tactical Gimbal Reticle & Corner Brackets */
-  .anteprima .gimbal-reticle {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 4;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    background:
-      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px 14px / 12px 2px no-repeat,
-      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) 14px 14px / 2px 12px no-repeat,
-      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 12px 2px no-repeat,
-      linear-gradient(to bottom, #FFE14A 2px, transparent 2px) calc(100% - 14px) 14px / 2px 12px no-repeat,
-      linear-gradient(to right, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 12px 2px no-repeat,
-      linear-gradient(to top, #FFE14A 2px, transparent 2px) 14px calc(100% - 14px) / 2px 12px no-repeat,
-      linear-gradient(to left, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 12px 2px no-repeat,
-      linear-gradient(to top, #FFE14A 2px, transparent 2px) calc(100% - 14px) calc(100% - 14px) / 2px 12px no-repeat,
-      linear-gradient(to right, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 22px 1px no-repeat,
-      linear-gradient(to bottom, rgba(255, 225, 74, 0.5) 1px, transparent 1px) center / 1px 22px no-repeat;
-  }
-  .anteprima:hover .gimbal-reticle {
-    opacity: 0.85;
-  }
-  .hud-sorvolo {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 4px 9px;
-    background: rgba(6, 7, 19, 0.85);
-    border: 1px solid rgba(255, 225, 74, 0.45);
-    border-radius: 4px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--amber, #FFE14A);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
-  .hud-telemetria {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 5;
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 9px;
-    background: rgba(6, 7, 19, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 4px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.64rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: #E2E8F0;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-  }
-  .anteprima:hover .hud-telemetria {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hud-sorvolo-rec {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #FFE14A;
-    box-shadow: 0 0 8px #FFE14A;
-    animation: hud-pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes hud-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.8); }
-  }
-  .anteprima:hover .hud-sorvolo {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @keyframes deep-helicopter-orbit {
-    0% {
-      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
-    }
-    25% {
-      transform: perspective(550px) rotateX(27deg) rotateY(-1deg) rotateZ(-0.5deg) scale(1.36) translate3d(0%, -5%, 60px);
-    }
-    50% {
-      transform: perspective(550px) rotateX(22deg) rotateY(8deg) rotateZ(3.5deg) scale(1.34) translate3d(3%, -2%, 40px);
-    }
-    75% {
-      transform: perspective(550px) rotateX(19deg) rotateY(2deg) rotateZ(1deg) scale(1.30) translate3d(1%, 2%, 20px);
-    }
-    100% {
-      transform: perspective(550px) rotateX(23deg) rotateY(-8deg) rotateZ(-3.5deg) scale(1.32) translate3d(-3%, -2%, 30px);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .anteprima:hover img {
-      animation: none !important;
-      transform: scale(1.02) !important;
-    }
-    .hud-sorvolo-rec {
-      animation: none !important;
-    }
-  }
-  .anteprima figcaption {
-    padding: 12px 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.8rem;
-    line-height: 1.55;
-    color: var(--quiet);
-  }
-  .anteprima-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    margin-bottom: 6px;
-  }
-  .anteprima-titolo {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.84rem;
-    letter-spacing: 0.02em;
-  }
-  .badge-tag {
-    display: inline-block;
-    padding: 2px 7px;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 4px;
-    background: rgba(46, 86, 255, 0.18);
-    color: #9cb1ff;
-    border: 1px solid rgba(46, 86, 255, 0.35);
-  }
-  .badge-tag.accent {
-    background: rgba(255, 225, 74, 0.12);
-    color: #FFE14A;
-    border-color: rgba(255, 225, 74, 0.35);
-  }
-  .anteprima-apri {
-    color: #8da4ff;
-    font-size: 0.74rem;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .anteprima-apri:hover {
-    color: #fff;
-    text-decoration: underline;
-  }
-  .anteprima-testo {
-    margin: 0;
-    color: #B9B5AC;
-    font-size: 0.78rem;
-    line-height: 1.5;
-  }
-  .fondo {
-    margin-top: 8px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 1rem;
-  }
-  .fondo a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-
-  /* ================= MATRICE DELLE COMPETENZE ================= */
-  .tabella-competenze {
-    width: 100%;
-    margin: 20px 0 28px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    overflow: hidden;
-    background: rgba(13, 13, 13, 0.75);
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-  .tabella-competenze thead th {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 12px 16px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: left;
-    color: var(--amber, #FFE14A);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  }
-  .tabella-competenze tbody td {
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    vertical-align: top;
-  }
-  .tabella-competenze tbody tr:last-child td {
-    border-bottom: 0;
-  }
-  .tabella-competenze tbody tr:hover td {
-    background: rgba(46, 86, 255, 0.06);
-  }
-  .tabella-competenze .col-skill {
-    width: 38%;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: #fff;
-    white-space: normal;
-  }
-  .tabella-competenze .col-desc {
-    color: var(--ink);
-    font-size: 0.92rem;
-  }
-  @media (max-width: 680px) {
-    .tabella-competenze,
-    .tabella-competenze thead,
-    .tabella-competenze tbody,
-    .tabella-competenze th,
-    .tabella-competenze td,
-    .tabella-competenze tr {
-      display: block;
-    }
-    .tabella-competenze thead { display: none; }
-    .tabella-competenze tbody tr {
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .tabella-competenze tbody td {
-      padding: 0;
-      border: 0;
-    }
-    .tabella-competenze .col-skill {
-      width: 100%;
-      margin-bottom: 6px;
-      color: #FFE14A;
-      font-size: 0.9rem;
-    }
-    .tabella-competenze .col-desc {
-      font-size: 0.88rem;
-    }
-  }
-</style>
-<link rel="stylesheet" href="../refinements.css">
 <link rel="stylesheet" href="../fonts.css">
 <meta name="description" content="Nicola Valigi’s background in major infrastructure, GIS, geo-intelligence, expropriation, spatial data and operational platforms with AI agents.">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -524,34 +42,26 @@
 <link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/skills.html">
 <link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/competenze.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://www.nicvaligi.com/#nicola","name":"Nicola Valigi","url":"https://www.nicvaligi.com/","image":"https://www.nicvaligi.com/img/nicola-valigi-al-lavoro.jpeg","email":"n.valigi@gmail.com","homeLocation":{"@type":"Place","name":"Bergamo, Italia"},"knowsLanguage":["it","en"],"sameAs":["https://www.linkedin.com/in/nicola-valigi-288418447/","https://github.com/nicolavaligi"],"knowsAbout":["Geo-intelligence","GIS","Fotogrammetria","Rilievi con drone","Agenti AI","Infrastrutture"]},{"@type":"WebSite","@id":"https://www.nicvaligi.com/#sito","url":"https://www.nicvaligi.com/","name":"Nicola Valigi","inLanguage":["it","en"],"publisher":{"@id":"https://www.nicvaligi.com/#nicola"}},{"@type":"BreadcrumbList","@id":"https://www.nicvaligi.com/en/skills.html#percorso","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.nicvaligi.com/en/"},{"@type":"ListItem","position":2,"name":"GIS, infrastructure and AI skills","item":"https://www.nicvaligi.com/en/skills.html"}]},{"@type":"WebPage","@id":"https://www.nicvaligi.com/en/skills.html#pagina","url":"https://www.nicvaligi.com/en/skills.html","name":"GIS, infrastructure and AI skills | Nicola Valigi","description":"Nicola Valigi’s background in major infrastructure, GIS, geo-intelligence, expropriation, spatial data and operational platforms with AI agents.","inLanguage":"en","isPartOf":{"@id":"https://www.nicvaligi.com/#sito"},"about":{"@id":"https://www.nicvaligi.com/#nicola"},"breadcrumb":{"@id":"https://www.nicvaligi.com/en/skills.html#percorso"}}]}</script>
+<link rel="stylesheet" href="../stile.css">
+<link rel="stylesheet" href="../documenti.css">
 </head>
-<body>
-<a class="skip-link" href="#content">Skip to content</a>
-<main class="pagina" id="content" tabindex="-1">
-  <div class="testa">
-    <a class="torna" href="index.html">Nicola Valigi</a>
-    <nav class="navdesk" aria-label="Sections">
-    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact me</a>
-  </nav>
-    <a class="lingua" href="../competenze.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
-  </div>
-  <h1>Skills &amp; Professional Background</h1>
+<body><a class="salta" href="#contenuto">Skip to content</a><header class="contenitore testata"><a class="marchio" href="/en/#contenuto">Nicola Valigi</a><nav class="menu" aria-label="Main menu"><a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="contatto" href="#contatto">Get in touch</a><a class="lingua" href="/competenze.html" hreflang="it" lang="it" aria-label="Italiano">IT</a></nav></header><main class="documento contenitore" id="contenuto" tabindex="-1">
+  <h1>Skills and professional background</h1>
   <article>
-    <h2>What I Do</h2>
-    <p>I connect complex operational problems, technical documentation, and official datasets with automated execution. I direct AI agents and write deterministic code to turn manual, fragmented workflows into working software—often delivered in days, straight to mobile, and seamlessly embedded in business operations.</p>
-    <p>Whether parsing inbound requests, generating programmatic quotes, extracting data at scale, or monitoring construction sites and cadastral parcels, human oversight remains central: <span class="ora">nothing ships without explicit sign-off.</span> I work independently, adopt the best tool for the problem, and deliver tools teams actually rely on daily.</p>
+    <h2>What I do</h2>
+    <p>I connect operational problems, technical documentation and official data through software. I direct AI agents and write deterministic code to turn manual processes into tools people can use every day, including on phones and within existing business workflows.</p>
+    <p>Whether parsing inbound requests, generating programmatic quotes, extracting data at scale, or monitoring construction sites and cadastral parcels, human oversight remains central: <span class="ora">nothing ships without explicit sign-off.</span> I choose tools to suit the problem and take software from testing to everyday use.</p>
   </article>
 
   <article>
-    <h2>Capabilities Matrix &amp; Proven Execution</h2>
-    <p>A pragmatic breakdown of core competencies and demonstrated production software:</p>
+    <h2>Skills and experience</h2>
+    <p>The main skills and projects where I have applied them:</p>
 
     <table class="tabella-competenze">
       <thead>
         <tr>
           <th scope="col">Capability</th>
-          <th scope="col">Demonstrated Execution</th>
+          <th scope="col">Where I have applied it</th>
         </tr>
       </thead>
       <tbody>
@@ -565,7 +75,7 @@
         </tr>
         <tr>
           <td class="col-skill">GIS &amp; web cartography</td>
-          <td class="col-desc">Vector alignment maps and sensitive acoustic receptor inventories, KML/GeoJSON export, and geocoding of 21,900+ cadastral parcels with grid interconnection buffers.</td>
+          <td class="col-desc">Vector alignment maps and noise receptor surveys, KML/GeoJSON export, and georeferencing of 21,900+ cadastral parcels with grid interconnection buffers.</td>
         </tr>
         <tr>
           <td class="col-skill">Rapid prototyping, product management</td>
@@ -589,23 +99,20 @@
         </tr>
         <tr>
           <td class="col-skill">Digital transformation (pre-AI roots)</td>
-          <td class="col-desc">Proprietary internal platform monitoring subcontracts, industrial accounting, and work progress milestones (SAL) on major infrastructure job sites during the Impregilo era.</td>
+          <td class="col-desc">Proprietary internal platform monitoring subcontracts, cost accounting, and work progress statements (SAL) on major infrastructure job sites during the Impregilo era.</td>
         </tr>
-      </tbody>
+      <tr><td class="col-skill">Drone surveys and photogrammetry</td><td class="col-desc">Orthophotos, point clouds, 3D models, sections and thermal imaging for infrastructure, construction sites and the environment.</td></tr></tbody>
     </table>
   </article>
 
   <article>
-    <h2>Professional Background: Infrastructure, Job Sites &amp; Digital Delivery</h2>
-    <p>My engineering discipline is rooted in over a decade spent directly on construction sites and in project offices for major infrastructure projects during the <strong>Impregilo</strong> era (now Webuild).</p>
-    <p>Years before the rise of generative AI, I architected and built an internal platform to rigorously track subcontractors, industrial accounting, and work progress certificates (SAL). Managing complex physical job sites, coordinating labor, and eliminating administrative bottlenecks taught me that the real operational hurdle rarely matches what gets presented in executive boardroom decks.</p>
-    <p>That on-the-ground experience also informed my practice in expropriation proceedings (D.P.R. 327/2001): coordinating complex legal-technical files, analyzing right-of-way buffer zones, and drafting formal valuation appraisals (<em>perizie di stima</em>) to safeguard property owners and unblock indemnity settlements.</p>
+    <h2>Construction sites, infrastructure and digital delivery</h2>
+    <p>My technical approach is rooted in over a decade spent on construction sites and in project offices for major infrastructure projects during the <strong>Impregilo</strong> era (now Webuild).</p>
+    <p>Years before the rise of generative AI, I architected and built an internal platform to rigorously track subcontractors, cost accounting, and work progress statements (SAL). Managing complex physical job sites, coordinating labor, and eliminating administrative bottlenecks taught me that the real operational hurdle rarely matches what gets presented in executive boardroom decks.</p>
+    <p>That on-the-ground experience also informed my practice in expropriation proceedings (D.P.R. 327/2001): coordinating complex legal-technical files, analyzing right-of-way buffer zones, and drafting technical appraisals (<em>perizie di stima</em>) to safeguard property owners and unblock indemnity settlements.</p>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 480m · PTCH -25°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-pedemontana-ricettori-acustici.webp" type="image/webp">
           <img src="../img/preview-pedemontana-ricettori-acustici.jpg" alt="GIS operations console for Pedemontana Lombarda highway acoustic receptors, project alignments, and 3D buildings" width="2000" height="799" loading="lazy" decoding="async">
@@ -618,15 +125,12 @@
             <span>Pedemontana Highway &mdash; 6,910 Acoustic Receptors &amp; Interchanges</span>
           </div>
         </div>
-        <p class="anteprima-testo">Geospatial console for Sections B2 and C: geo-auditing of 6,910 acoustic receptors, identifying the 39 units exceeding statutory thresholds behind noise mitigation barriers and properties slated for window retrofit packages. Vector CAD road geometries (SS36/Desio interchange, roundabouts), 3D building models, and official cadastral maps.</p>
+        <p class="anteprima-testo">Geospatial console for Sections B2 and C: georeferenced survey of 6,910 noise receptors, identifying the 39 units exceeding noise limits after mitigation and properties slated for window retrofit packages. Vector CAD road geometries (SS36/Desio interchange, roundabouts), 3D building models, and official cadastral maps.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 350m · PTCH -26°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-rho-gallarate-ricettori.webp" type="image/webp">
           <img src="../img/preview-rho-gallarate-ricettori.jpg" alt="GIS map of acoustic receivers and buffer zones along infrastructure corridors" width="2000" height="737" loading="lazy" decoding="async">
@@ -639,13 +143,13 @@
             <span>Spatial Modeling &mdash; Buffer Zones &amp; Sensitive Receivers</span>
           </div>
         </div>
-        <p class="anteprima-testo">Geospatial simulation along high-capacity transit corridors: cartographic inventory of over 1,100 sensitive receivers, noise mitigation barrier modeling, and pinpointing regulatory limit exceedances for technical appraisal.</p>
+        <p class="anteprima-testo">Geospatial simulation along high-capacity transit corridors: cartographic inventory of over 1,100 noise-sensitive receptors, noise mitigation barrier modeling, and pinpointing regulatory limit exceedances for technical appraisal.</p>
       </figcaption>
     </figure>
   </article>
 
   <article>
-    <h2>Web Scraping, Data Pipelines &amp; PDF Extraction</h2>
+    <h2>Web scraping, data pipelines and PDF extraction</h2>
     <p>The most critical B2B intelligence is frequently locked inside legacy government portals, scanned PDF filings, or unindexed public registries. I build automated Python ingestion pipelines with resilient architectures:</p>
     <ul class="numeri">
       <li><strong>Institutional &amp; PNRR Procurement Crawlers</strong>: Continuous crawlers monitoring municipal boards, tenders, contract IDs (CIG), and public bids with automated deduplication and schema normalization</li>
@@ -655,8 +159,8 @@
   </article>
 
   <article>
-    <h2>Data &amp; Geospatial Intelligence (3D GIS &amp; Cadastre)</h2>
-    <p>I source, clean, and georeference mission-critical geospatial data from official registries. Instead of dumping raw spreadsheets, I aggregate datasets into actionable suitability scores (0–100) to de-risk investment and land acquisition:</p>
+    <h2>Geo-intelligence: 3D GIS and cadastral data</h2>
+    <p>I source, clean, and georeference mission-critical geospatial data from official registries. Instead of dumping raw spreadsheets, I aggregate datasets into actionable suitability scores (0–100) to make criteria, constraints and checks explicit when assessing investments and land acquisitions:</p>
     <ul class="numeri">
       <li><strong>21,900+</strong> cadastral parcels analyzed, mapped, and attributed</li>
       <li><strong>116</strong> utility-scale solar parcels screened: 709.7 ha, 591.4 MWp total potential</li>
@@ -667,13 +171,7 @@
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 420m · PTCH -24°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
-        <picture>
-          <source srcset="../img/preview-sunpro-geo-intelligence.webp" type="image/webp">
-          <img src="../img/preview-sunpro-geo-intelligence.jpg" alt="3D Geo-Intelligence platform for land suitability and renewable site screening" width="2000" height="879" fetchpriority="high" decoding="async">
-        </picture>
+        <img src="../img/po-valley-sentinel-1280.jpg" srcset="../img/po-valley-sentinel-1280.jpg 1280w, ../img/po-valley-sentinel-3840.jpg 3840w" sizes="(max-width: 1280px) calc(100vw - 40px), 1240px" alt="Copernicus Sentinel-2 satellite view of the Po Valley" width="3840" height="1236" loading="lazy" decoding="async">
       </div>
       <figcaption>
         <div class="anteprima-head">
@@ -681,17 +179,14 @@
             <span class="badge-tag accent">3D GIS &bull; LIVE</span>
             <span>Geo-Intelligence &mdash; Renewable Land Qualification</span>
           </div>
-          <a class="anteprima-apri" href="https://nicolavaligi.github.io/sunpro/" target="_blank" rel="noopener noreferrer" style="color:var(--amber,#FFE14A);font-weight:700;">Live Demo &nearr;</a>
+          <a class="anteprima-apri" href="https://nicolavaligi.github.io/sunpro/" target="_blank" rel="noopener noreferrer">Live Demo &nearr;</a>
         </div>
         <p class="anteprima-testo">Automated land qualification and constraint filtering engine: algorithmic cross-referencing between official cadastral parcels, HV/MV primary substations, grid proximity buffers, and land acquisition cost scoring.</p>
-      </figcaption>
+      <p class="credito-immagine">Satellite context image. Contains modified Copernicus Sentinel data (2018–19), processed by <a href="https://www.esa.int/media/po-valley-italy-en-228663" target="_blank" rel="noopener noreferrer">ESA</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/igo/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0 IGO</a> · resized.</p></figcaption>
     </figure>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 380m · PTCH -22°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-torre-controllo-oem-3d.webp" type="image/webp">
           <img src="../img/preview-torre-controllo-oem-3d.jpg" alt="O&M Control Tower console with 3D building models and real-time solar PV telemetry" width="2000" height="792" loading="lazy" decoding="async">
@@ -704,15 +199,12 @@
             <span>Control Tower &mdash; Live Telemetry &amp; AI Agents</span>
           </div>
         </div>
-        <p class="anteprima-testo">3D operational digital twin featuring volumetric footprints of industrial facilities, real-time generation telemetry (12 plants &bull; 6.4 MWp), P1/Warning anomaly scoring, and autonomous AI-triggered dispatch.</p>
+        <p class="anteprima-testo">Demonstration of a 3D operations console with volumetric models of industrial buildings, generation telemetry (12 plants &bull; 6.4 MWp), anomaly scoring and AI-assisted maintenance workflows.</p>
       </figcaption>
     </figure>
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 440m · PTCH -23°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-solar-crawler-aree-idonee.webp" type="image/webp">
           <img src="../img/preview-solar-crawler-aree-idonee.jpg" alt="Solar Crawler operations console for eligible solar surfaces and industrial rooftops" width="2000" height="854" loading="lazy" decoding="async">
@@ -726,14 +218,14 @@
           </div>
           <span class="badge-tag">SURVEY 3D</span>
         </div>
-        <p class="anteprima-testo">Massive screening platform for legally eligible solar surfaces (industrial roofs, quarries, closed landfills; 182 sites &bull; &asymp;102.1 MWp), automated kWp/sqm extraction, MV/HV buffers, and 3D drone walkthroughs.</p>
+        <p class="anteprima-testo">Screening platform for candidate solar surfaces (industrial roofs, quarries, closed landfills; 182 sites &bull; &asymp;102.1 MWp), automated kWp/sqm extraction, MV/HV buffers, and virtual 3D site visits.</p>
       </figcaption>
     </figure>
   </article>
 
   <article>
-    <h2>AI Agents, System Integration &amp; Product Management</h2>
-    <p>AI delivers real business leverage only when connected directly to daily operational workflows:</p>
+    <h2>AI agents, system integration and product management</h2>
+    <p>I integrate AI agents into daily workflows, with defined tasks and explicit checks:</p>
     <ul class="numeri">
       <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Voice notes recorded on the go transcribed, summarized with action point extraction, and automatically structured into CRM records and Notion operational databases</li>
       <li><strong>Inbound WhatsApp Dispatching</strong>: Automated WhatsApp channels with instant request parsing, deterministic validation, and operational routing</li>
@@ -743,7 +235,7 @@
   </article>
 
   <article>
-    <h2>Web Development, E-commerce &amp; Market Research</h2>
+    <h2>Web development, e-commerce and market research</h2>
     <p>I build lightweight, high-contrast web systems and conversion-focused e-commerce architectures:</p>
     <ul class="numeri">
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
@@ -753,9 +245,6 @@
 
     <figure class="anteprima">
       <div class="anteprima-visual">
-        <span class="hud-sorvolo" aria-hidden="true"><span class="hud-sorvolo-rec"></span><span>3D FLYOVER</span></span>
-        <span class="hud-telemetria" aria-hidden="true">ALT 410m · PTCH -24°</span>
-        <span class="gimbal-reticle" aria-hidden="true"></span>
         <picture>
           <source srcset="../img/preview-retail-geointelligence-3d.webp" type="image/webp">
           <img src="../img/preview-retail-geointelligence-3d.jpg" alt="3D Geo-Intelligence platform for retail expansion and store selection" width="2000" height="890" loading="lazy" decoding="async">
@@ -769,29 +258,13 @@
           </div>
           <span class="badge-tag">URBAN 3D</span>
         </div>
-        <p class="anteprima-testo">Strategic retail scouting tool: photorealistic 3D urban extrusions, foot traffic index, commercial lease rates, competitor proximity metrics, and virtual 3D site visits across Rome.</p>
+        <p class="anteprima-testo">Demo with simulated data for retail site comparisons: 3D urban views, foot traffic indicators, commercial rents, competitor proximity and virtual site visits across Rome.</p>
       </figcaption>
     </figure>
   </article>
 
   <article>
-    <h2>Systems &amp; Stack</h2>
+    <h2>Infrastructure and technologies</h2>
     <p>Pragmatic, terminal-first execution. Deep Unix/Linux background, running isolated environments and headless microservices via OrbStack and virtualized architectures on macOS. I build with Python (GIS, web automation, structured scraping), PostGIS, Supabase, modern AI APIs, and lightweight web delivery deployed on Vercel.</p>
   </article>
-
-  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://github.com/nicolavaligi">GitHub</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
-</main>
-<nav class="appbar" aria-label="Sections">
-    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V16M8 7.6v.2M12 16v-3.4a2 2 0 0 1 4 0V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span>LinkedIn</span>
-  </a>
-    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.2 12 13l8-5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    <span>Contact me</span>
-  </a>
-  </nav>
-<button type="button" id="installa" class="installa" hidden>Install</button>
-<script src="../app.js" defer></script>
-</body>
-</html>
+<div class="documento-relativi"><a href="/en/#contenuto">Home and projects &rarr;</a><a href="/en/drone-surveys.html">Drone surveys &rarr;</a><a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></div></main><footer class="piede" id="contatto"><div class="contenitore"><p><span>Nicola Valigi · Bergamo, Italy</span><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p><p><span>No cookies, no tracking.</span><a href="/en/privacy.html">Privacy</a></p></div></footer></body></html>

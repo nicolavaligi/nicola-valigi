@@ -4,154 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy e dati di navigazione | Nicola Valigi</title>
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#F4F1EA">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icona-180.png">
 <link rel="icon" href="icona.svg" type="image/svg+xml">
-<link rel="stylesheet" href="shell.css">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
-<style>
-  :root { --ink: #EDEBE6; --blue: #2E56FF; --quiet: #B9B5AC; }
-  * { box-sizing: border-box; }
-  html { overscroll-behavior-y: none; }
-  body {
-    margin: 0;
-    background: #000;
-    color: var(--ink);
-    font-family: Archivo, "Helvetica Neue", sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-  .pagina {
-    width: min(680px, 100%);
-    margin: 0 auto;
-    padding:
-      max(28px, env(safe-area-inset-top))
-      max(22px, env(safe-area-inset-right))
-      calc(var(--app-bar-size, 0px) + max(48px, env(safe-area-inset-bottom)))
-      max(22px, env(safe-area-inset-left));
-  }
-  .testa {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .lingua {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-decoration: none;
-    color: #fff;
-  }
-  .torna {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-    white-space: nowrap;
-  }
-  .navdesk { display: none; }
-  @media (min-width: 701px) and (min-height: 501px) {
-    .pagina { width: min(1040px, calc(100% - 64px)); }
-    .navdesk {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 2px 18px;
-      margin-left: auto;
-    }
-    .navdesk a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-    .navdesk a[aria-current="page"] { color: #FFE14A; }
-    .torna { font-size: 1rem; letter-spacing: 0.06em; }
-  }
-  @media (max-width: 700px), (max-height: 500px) {
-    .testa {
-      position: sticky;
-      top: 0;
-      z-index: 4;
-      display: flex;
-      margin-top: calc(-1 * max(28px, env(safe-area-inset-top)));
-      margin-left: calc(-1 * max(22px, env(safe-area-inset-left)));
-      margin-right: calc(-1 * max(22px, env(safe-area-inset-right)));
-      padding:
-        max(8px, env(safe-area-inset-top))
-        max(22px, env(safe-area-inset-right))
-        8px
-        max(22px, env(safe-area-inset-left));
-      background: #000;
-    }
-  }
-  h1 {
-    margin: 28px 0 18px;
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  article {
-    max-width: 40rem;
-    padding: 22px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  article:first-of-type { border-top: 0; padding-top: 0; }
-  article h2 {
-    margin: 0 0 8px;
-    font-size: 1.35rem;
-    letter-spacing: -0.03em;
-  }
-  @media (min-width: 701px) and (min-height: 501px) {
-    h1 { font-size: 4.2rem; }
-    article h2 { font-size: 1.5rem; }
-  }
-  article p { margin: 0 0 12px; }
-  article p:last-child { margin-bottom: 0; }
-  .ora { color: #FFE14A; }
-  .nota { margin: 0 0 8px; color: var(--quiet); }
-  .nota a { color: #fff; }
-  .numeri {
-    margin: 4px 0 0;
-    padding: 0;
-    list-style: none;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.98rem;
-    line-height: 1.75;
-    color: #fff;
-  }
-  .numeri strong { font-weight: 700; }
-  .fondo {
-    margin-top: 8px;
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 1rem;
-  }
-  .fondo a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-</style>
-<link rel="stylesheet" href="refinements.css">
 <meta name="description" content="Informazioni sui dati di navigazione e sui contatti email del sito di Nicola Valigi. Nessun cookie di profilazione, nessun tracciamento.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="author" content="Nicola Valigi">
@@ -176,18 +34,10 @@
 <link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/privacy.html">
 <link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/privacy.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://www.nicvaligi.com/#nicola","name":"Nicola Valigi","url":"https://www.nicvaligi.com/","image":"https://www.nicvaligi.com/img/nicola-valigi-al-lavoro.jpeg","email":"n.valigi@gmail.com","homeLocation":{"@type":"Place","name":"Bergamo, Italia"},"knowsLanguage":["it","en"],"sameAs":["https://www.linkedin.com/in/nicola-valigi-288418447/","https://github.com/nicolavaligi"],"knowsAbout":["Geo-intelligence","GIS","Fotogrammetria","Rilievi con drone","Agenti AI","Infrastrutture"]},{"@type":"WebSite","@id":"https://www.nicvaligi.com/#sito","url":"https://www.nicvaligi.com/","name":"Nicola Valigi","inLanguage":["it","en"],"publisher":{"@id":"https://www.nicvaligi.com/#nicola"}},{"@type":"BreadcrumbList","@id":"https://www.nicvaligi.com/privacy.html#percorso","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.nicvaligi.com/"},{"@type":"ListItem","position":2,"name":"Privacy e dati di navigazione","item":"https://www.nicvaligi.com/privacy.html"}]},{"@type":"WebPage","@id":"https://www.nicvaligi.com/privacy.html#pagina","url":"https://www.nicvaligi.com/privacy.html","name":"Privacy e dati di navigazione | Nicola Valigi","description":"Informazioni sui dati di navigazione e sui contatti email del sito di Nicola Valigi. Nessun cookie di profilazione, nessun tracciamento.","inLanguage":"it","isPartOf":{"@id":"https://www.nicvaligi.com/#sito"},"about":{"@id":"https://www.nicvaligi.com/#nicola"},"breadcrumb":{"@id":"https://www.nicvaligi.com/privacy.html#percorso"}}]}</script>
+<link rel="stylesheet" href="stile.css">
+<link rel="stylesheet" href="documenti.css">
 </head>
-<body>
-<a class="skip-link" href="#contenuto">Vai al contenuto</a>
-<main class="pagina" id="contenuto" tabindex="-1">
-  <div class="testa">
-    <a class="torna" href="index.html">Nicola Valigi</a>
-    <nav class="navdesk" aria-label="Sezioni">
-    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">Contattami</a>
-  </nav>
-    <a class="lingua" href="en/privacy.html" hreflang="en" lang="en" aria-label="English">EN</a>
-  </div>
+<body><a class="salta" href="#contenuto">Vai al contenuto</a><header class="contenitore testata"><a class="marchio" href="/#contenuto">Nicola Valigi</a><nav class="menu" aria-label="Menu principale"><a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="contatto" href="#contatto">Contattami</a><a class="lingua" href="/en/privacy.html" hreflang="en" lang="en" aria-label="English">EN</a></nav></header><main class="documento contenitore" id="contenuto" tabindex="-1">
   <h1>Privacy</h1>
   <p class="nota"><em>Ultimo aggiornamento: <time datetime="2026-11">novembre 2026</time>.</em></p>
 
@@ -213,26 +63,11 @@
 
   <article>
     <h2>Collegamenti esterni</h2>
-    <p>I collegamenti a LinkedIn, a Google Maps e alla demo pubblica portano a siti di terzi, che applicano le proprie regole. Nessun dato viene trasmesso a questi servizi finché non apri il collegamento.</p>
+    <p>I collegamenti a LinkedIn, GitHub, alle demo e alle fonti citate portano a siti di terzi, che applicano le proprie regole. Nessun dato viene trasmesso a questi servizi finché non apri il collegamento.</p>
   </article>
 
   <article>
     <h2>I tuoi diritti</h2>
-    <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione od opporti al trattamento (artt. 15–22 GDPR) scrivendo all'indirizzo indicato sopra. Puoi inoltre proporre reclamo al <a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer">Garante per la protezione dei dati personali</a>.</p>
+    <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione oppure opporti al trattamento (artt. 15–22 GDPR) scrivendo all'indirizzo indicato sopra. Puoi inoltre proporre reclamo al <a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer">Garante per la protezione dei dati personali</a>.</p>
   </article>
-
-  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
-</main>
-<nav class="appbar" aria-label="Sezioni">
-    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V16M8 7.6v.2M12 16v-3.4a2 2 0 0 1 4 0V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span>LinkedIn</span>
-  </a>
-    <a href="mailto:n.valigi@gmail.com?subject=Costruiamo%20adesso">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.2 12 13l8-5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    <span>Contattami</span>
-  </a>
-  </nav>
-<script src="app.js" defer></script>
-</body>
-</html>
+<div class="documento-relativi"><a href="/#contenuto">Home e progetti &rarr;</a><a href="/rilievi-drone.html">Rilievi con drone &rarr;</a><a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></div></main><footer class="piede" id="contatto"><div class="contenitore"><p><span>Nicola Valigi · Bergamo, Italia</span><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p><p><span>Nessun cookie, nessun tracciamento.</span><a href="/privacy.html">Privacy</a></p></div></footer></body></html>

@@ -9,14 +9,14 @@ main:focus { outline: none; }
   left: 12px;
   padding: 12px 18px;
   border-radius: 8px;
-  background: #ffe14a;
-  color: #060713;
+  background: #234bff;
+  color: #fff;
   font-weight: 700;
   transform: translateY(-180%);
 }
 .skip-link:focus { transform: translateY(0); }
 a:focus-visible, button:focus-visible {
-  outline: 2px solid #ffe14a;
+  outline: 2px solid #9cb1ff;
   outline-offset: 4px;
 }
 .hero {
