@@ -65,7 +65,7 @@
   <footer class="intro-footer">
     <span class="intro-location">BERGAMO, ITALIA</span>
     <span class="intro-note">VEDERE · RICORDARE · DECIDERE</span>
-    <button class="intro-pause" type="button" aria-pressed="false">Ferma animazione</button>
+    <div class="intro-controls"><button class="intro-music" type="button" aria-label="Musica lounge" aria-pressed="false" hidden><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 8h3l4-4v12l-4-4H3zM13 7a5 5 0 0 1 0 6M15 4a9 9 0 0 1 0 12"/></svg><span>Musica</span><span data-music-status aria-hidden="true">OFF</span></button><button class="intro-pause" type="button" aria-pressed="false">Ferma animazione</button></div>
   </footer>
 </section>
 <div class="site-shell" id="site-shell">
@@ -632,5 +632,6 @@
 </div>
 <script src="intro.js" defer></script>
 <script src="intro-globe.js" defer></script>
+<script src="intro-audio.js" defer></script>
 </body>
 </html>

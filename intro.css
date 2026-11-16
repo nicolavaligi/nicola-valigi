@@ -32,13 +32,13 @@
 }
 .intro-copy { grid-column: 1; grid-row: 1; min-width: 0; }
 .intro-kicker { margin-bottom: 26px; font: .7rem var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--intro-muted); }
-.intro-title { font-size: clamp(3rem, 5.4vw, 5.2rem); line-height: 1.02; letter-spacing: -.055em; font-weight: 700; }
+.intro-title { color: #030c30; font-size: clamp(3rem, 5.4vw, 5.2rem); line-height: 1.02; letter-spacing: -.055em; font-weight: 700; }
 .intro-title span { color: #fff; }
 .intro-subtitle { margin-top: 28px; max-width: 34ch; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--intro-muted); }
 .intro-enter {
   display: inline-flex; align-items: center; justify-content: center; gap: 26px;
   min-height: 56px; margin-top: 30px; padding-inline: 26px;
-  border: 1.5px solid var(--carta); border-radius: 999px; background: var(--carta); color: var(--blu);
+  border: 1.5px solid var(--carta); border-radius: 999px; background: var(--carta); color: #030c30;
   font-size: 1rem; font-weight: 700; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
 }
@@ -64,6 +64,10 @@
 .intro-location { display: flex; align-items: center; gap: 9px; }
 .intro-location::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--carta); }
 .intro-pause { min-height: 44px; padding: 0; background: transparent; color: inherit; border: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.intro-controls { display: flex; align-items: center; gap: 16px; }
+.intro-music { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 9px; border: 1px solid #f4f1ea77; border-radius: 999px; background: transparent; color: var(--carta); font: inherit; cursor: pointer; }
+.intro-music[aria-pressed="true"] { background: var(--carta); color: #030c30; border-color: var(--carta); }
+.intro-music [data-music-status] { font-weight: 700; }
 .intro-entering .site-shell { visibility: visible; position: relative; z-index: 30; }
 .intro-entering .intro-stage, .intro-entering .intro-enter { pointer-events: none; }
 @media (max-width: 999px) {
@@ -85,6 +89,8 @@
   .intro-enter { margin-top: 22px; }
   .intro-sections { margin-top: 24px; font-size: .65rem; gap: 8px 16px; }
   .intro-footer { font-size: .53rem; gap: 8px; padding-block: 6px max(8px, env(safe-area-inset-bottom)); }
+  .intro-controls { gap: 10px; }
+  .intro-music { padding-inline: 6px; }
   .intro-note { display: none; }
 }
 @media (max-width: 359px) {
