@@ -7,4 +7,5 @@
 - Preferire interazioni leggere con HTML, CSS, SVG e JavaScript nativi; mantenere un contenuto utile anche senza JavaScript.
 - Non usare evidenziazioni di sfondo o sottolineature decorative nei testi (come i tratti gialli): enfatizzare con il colore del testo, preferibilmente blu elettrico.
 - Non sovrapporre tondini o pin numerati decorativi alle immagini dei progetti; usare didascalie descrittive semplici.
+- Nei testi del sito non citare colleghi o attribuire lo sviluppo a collaborazioni con altre persone; mantenere la descrizione dei progetti centrata su Nicola.
 - Dopo le verifiche, aggiornare GitHub e la pubblicazione Vercel come già autorizzato dall'utente.
