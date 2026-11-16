@@ -6,62 +6,63 @@
 .intro-active .intro-stage {
   position: fixed; inset: 0; z-index: 20; isolation: isolate;
   display: flex; flex-direction: column; overflow: auto; min-height: 100svh;
-  color: var(--ink); background: var(--carta); --intro-muted: var(--muto);
+  color: var(--carta); background: var(--blu); --intro-muted: #e3e8ff;
 }
 .intro-stage::before {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background-image: linear-gradient(to right, #15161b0c 1px, transparent 1px), linear-gradient(to bottom, #15161b0c 1px, transparent 1px);
+  background-image: linear-gradient(to right, #f4f1ea12 1px, transparent 1px), linear-gradient(to bottom, #f4f1ea12 1px, transparent 1px);
   background-size: 28px 28px;
 }
+.intro-stage ::selection { background: var(--carta); color: var(--blu); }
 .intro-header, .intro-footer, .intro-composition {
   width: min(var(--largo), calc(100% - 2 * var(--bordo))); margin-inline: auto;
 }
 .intro-header, .intro-footer { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; gap: 16px; }
-.intro-header { padding-block: 18px; border-bottom: 1px solid var(--ink); }
+.intro-header { padding-block: 18px; border-bottom: 1px solid #f4f1ea66; }
 .intro-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -.01em; }
 .intro-nav { display: flex; align-items: center; gap: 6px; }
 .intro-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-size: .95rem; font-weight: 600; text-decoration: none; }
 .intro-nav a:hover { text-decoration: underline; }
-.intro-nav .intro-contact { border: 1.5px solid var(--blu); color: var(--blu); padding-inline: 18px; border-radius: 999px; }
-.intro-nav .intro-contact:hover { background: var(--blu); color: #fff; text-decoration: none; }
-.intro-nav .intro-language { color: var(--muto); font-family: var(--mono); font-size: .8rem; }
+.intro-nav .intro-contact { border: 1.5px solid var(--carta); color: var(--carta); padding-inline: 18px; border-radius: 999px; }
+.intro-nav .intro-contact:hover { background: var(--carta); color: var(--blu); text-decoration: none; }
+.intro-nav .intro-language { color: var(--intro-muted); font-family: var(--mono); font-size: .8rem; }
 .intro-composition {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center;
   gap: 64px; flex: 1 0 auto; padding-block: clamp(32px, 5vh, 72px);
 }
 .intro-copy { grid-column: 1; grid-row: 1; min-width: 0; }
-.intro-kicker { margin-bottom: 26px; font: .7rem var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--muto); }
+.intro-kicker { margin-bottom: 26px; font: .7rem var(--mono); letter-spacing: .13em; text-transform: uppercase; color: var(--intro-muted); }
 .intro-title { font-size: clamp(3rem, 5.4vw, 5.2rem); line-height: 1.02; letter-spacing: -.055em; font-weight: 700; }
-.intro-title span { color: var(--blu); }
-.intro-subtitle { margin-top: 28px; max-width: 34ch; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--muto); }
+.intro-title span { color: #fff; }
+.intro-subtitle { margin-top: 28px; max-width: 34ch; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--intro-muted); }
 .intro-enter {
   display: inline-flex; align-items: center; justify-content: center; gap: 26px;
   min-height: 56px; margin-top: 30px; padding-inline: 26px;
-  border: 1.5px solid var(--blu); border-radius: 999px; background: var(--blu); color: #fff;
+  border: 1.5px solid var(--carta); border-radius: 999px; background: var(--carta); color: var(--blu);
   font-size: 1rem; font-weight: 700; text-decoration: none;
   transition: transform .2s, box-shadow .2s;
 }
-.intro-enter:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--carta-scura), 4px 4px 0 1.5px var(--ink); }
+.intro-enter:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #1835c9, 4px 4px 0 1.5px var(--carta); }
 .intro-enter svg { transition: transform .2s; }
 .intro-enter:hover svg { transform: translateX(4px); }
-.intro-sections { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 34px; font-size: .72rem; color: var(--muto); }
+.intro-sections { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 34px; font-size: .72rem; color: var(--intro-muted); }
 .intro-sections li { display: inline-flex; align-items: center; gap: 7px; }
-.intro-sections b { color: var(--blu); font-family: var(--mono); font-size: .72rem; }
+.intro-sections b { color: #fff; font-family: var(--mono); font-size: .72rem; }
 .intro-orbit {
   position: relative; grid-column: 2; grid-row: 1; justify-self: center;
   width: 100%; max-width: 620px; aspect-ratio: 1; pointer-events: none;
 }
 .intro-orbit::before {
   content: ''; position: absolute; inset: -8%; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, #234bff0b 0%, #234bff04 44%, transparent 64%);
+  background: radial-gradient(circle, #f4f1ea17 0%, #f4f1ea05 44%, transparent 64%);
 }
 #sphere, .intro-fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
-.intro-fallback { color: var(--blu); opacity: .5; }
+.intro-fallback { color: var(--carta); opacity: .75; }
 .globe-ready .intro-fallback { display: none; }
-.intro-stage :focus-visible { outline: 3px solid var(--blu); outline-offset: 5px; }
-.intro-footer { padding-block: 14px; border-top: 1px solid var(--ink); color: var(--muto); font: .63rem var(--mono); letter-spacing: .06em; }
+.intro-stage :focus-visible { outline: 3px solid var(--carta); outline-offset: 5px; }
+.intro-footer { padding-block: 14px; border-top: 1px solid #f4f1ea66; color: var(--intro-muted); font: .63rem var(--mono); letter-spacing: .06em; }
 .intro-location { display: flex; align-items: center; gap: 9px; }
-.intro-location::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blu); }
+.intro-location::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--carta); }
 .intro-pause { min-height: 44px; padding: 0; background: transparent; color: inherit; border: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
 .intro-entering .site-shell { visibility: visible; position: relative; z-index: 30; }
 .intro-entering .intro-stage, .intro-entering .intro-enter { pointer-events: none; }

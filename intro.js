@@ -14,6 +14,8 @@
   var animation;
   function finish(focus) {
     root.classList.remove('intro-active', 'intro-entering');
+    var theme = document.querySelector('meta[name="theme-color"]');
+    if (theme) theme.content = '#F4F1EA';
     site.style.clipPath = '';
     site.inert = false;
     intro.inert = true;

@@ -4,7 +4,7 @@
 
   var heroSection = document.getElementById("intro");
   if (!canvas || !document.documentElement.classList.contains("intro-active")) return;
-  var gl = canvas.getContext("webgl", { alpha: true, antialias: true, premultipliedAlpha: false });
+  var gl = canvas.getContext("webgl", { alpha: true, antialias: true, premultipliedAlpha: true });
   if (!gl) { document.querySelector(".intro-pause").hidden = true; return; }
 
   var vsSrc = [
@@ -40,8 +40,8 @@
     "varying float vAccent;",
     "uniform float uDay;",
     "void main() {",
-    "  vec3 col = vec3(0.137, 0.294, 1.0);",
-    "  float alpha = (0.20 + vPulse * 0.28) * (0.28 + vFront * 0.72);",
+    "  vec3 col = vec3(0.957, 0.945, 0.918);",
+    "  float alpha = (0.26 + vPulse * 0.34) * (0.28 + vFront * 0.72);",
     "  gl_FragColor = vec4(col, alpha);",
     "}"
   ].join("\n");
@@ -57,8 +57,8 @@
     "  float d = length(q);",
     "  if (d > 1.0) discard;",
     "  float rim = smoothstep(1.0, 0.42, d);",
-    "  vec3 ivory = vec3(0.08, 0.09, 0.12);",
-    "  vec3 accent = vec3(0.137, 0.294, 1.0);",
+    "  vec3 ivory = vec3(0.957, 0.945, 0.918);",
+    "  vec3 accent = vec3(1.0, 1.0, 1.0);",
     "  vec3 col = mix(ivory, accent, vAccent);",
     "  col = mix(col, accent, smoothstep(0.45, 0.0, d) * 0.16);",
     "  float alpha = rim * (0.48 + vPulse * 0.52) * (0.5 + vFront * 0.5);",
@@ -292,7 +292,7 @@
     gl.disable(gl.DEPTH_TEST);
     gl.disable(gl.CULL_FACE);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     drawMesh(lineProg, lineLoc, wireBuf, gl.LINES, wireCount);
     drawMesh(nodeProg, nodeLoc, nodeBuf, gl.POINTS, count);
   }
