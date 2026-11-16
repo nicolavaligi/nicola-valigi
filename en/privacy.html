@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicola Valigi | Privacy</title>
+<meta name="description" content="Privacy notice for nicvaligi.com: no cookies, no tracking, fonts and images served by the site itself.">
+<meta name="author" content="Nicola Valigi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.nicvaligi.com/en/privacy.html">
+<link rel="alternate" hreflang="it" href="https://www.nicvaligi.com/privacy.html">
+<link rel="alternate" hreflang="en" href="https://www.nicvaligi.com/en/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://www.nicvaligi.com/privacy.html">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../icona-180.png">
+<link rel="icon" href="../icona.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shell.css">
+<link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+  :root { --ink: #EDEBE6; --blue: #2E56FF; --quiet: #B9B5AC; }
+  * { box-sizing: border-box; }
+  html { overscroll-behavior-y: none; }
+  body {
+    margin: 0;
+    background: #000;
+    color: var(--ink);
+    font-family: Archivo, "Helvetica Neue", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+  .pagina {
+    width: min(680px, 100%);
+    margin: 0 auto;
+    padding:
+      max(28px, env(safe-area-inset-top))
+      max(22px, env(safe-area-inset-right))
+      calc(var(--app-bar-size, 0px) + max(48px, env(safe-area-inset-bottom)))
+      max(22px, env(safe-area-inset-left));
+  }
+  .testa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .lingua {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    color: #fff;
+  }
+  .torna {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .navdesk { display: none; }
+  @media (min-width: 701px) and (min-height: 501px) {
+    .pagina { width: min(1040px, calc(100% - 64px)); }
+    .navdesk {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2px 18px;
+      margin-left: auto;
+    }
+    .navdesk a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .navdesk a[aria-current="page"] { color: #FFE14A; }
+    .torna { font-size: 1rem; letter-spacing: 0.06em; }
+  }
+  @media (max-width: 700px), (max-height: 500px) {
+    .testa {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      display: flex;
+      margin-top: calc(-1 * max(28px, env(safe-area-inset-top)));
+      margin-left: calc(-1 * max(22px, env(safe-area-inset-left)));
+      margin-right: calc(-1 * max(22px, env(safe-area-inset-right)));
+      padding:
+        max(8px, env(safe-area-inset-top))
+        max(22px, env(safe-area-inset-right))
+        8px
+        max(22px, env(safe-area-inset-left));
+      background: #000;
+    }
+  }
+  h1 {
+    margin: 28px 0 18px;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  article {
+    max-width: 40rem;
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  article:first-of-type { border-top: 0; padding-top: 0; }
+  article h2 {
+    margin: 0 0 8px;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+  }
+  @media (min-width: 701px) and (min-height: 501px) {
+    h1 { font-size: 4.2rem; }
+    article h2 { font-size: 1.5rem; }
+  }
+  article p { margin: 0 0 12px; }
+  article p:last-child { margin-bottom: 0; }
+  .ora { color: #FFE14A; }
+  .nota { margin: 0 0 8px; color: var(--quiet); }
+  .nota a { color: #fff; }
+  .numeri {
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #fff;
+  }
+  .numeri strong { font-weight: 700; }
+  .fondo {
+    margin-top: 8px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 1rem;
+  }
+  .fondo a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>
+<link rel="stylesheet" href="../refinements.css">
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<main class="pagina" id="content" tabindex="-1">
+  <div class="testa">
+    <a class="torna" href="./">Nicola Valigi</a>
+    <nav class="navdesk" aria-label="Sections">
+    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">Contact me</a>
+  </nav>
+    <a class="lingua" href="../privacy.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
+  </div>
+  <h1>Privacy</h1>
+  <p class="nota"><em>Last updated: <time datetime="2026-11">November 2026</time>.</em></p>
+
+  <article>
+    <h2>In short</h2>
+    <p>This site uses no cookies, no analytics or profiling tools, and has no forms. Fonts, images and scripts are served by the site itself: opening a page does not make your browser contact third-party services.</p>
+  </article>
+
+  <article>
+    <h2>Data controller</h2>
+    <p>Nicola Valigi, Bergamo, Italy. For any request: <a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a>.</p>
+  </article>
+
+  <article>
+    <h2>Technical browsing data</h2>
+    <p>The site is hosted by Vercel Inc. To deliver pages and protect the service, the provider processes technical data such as IP address, date and time of the request and browser type. This data is processed on the basis of the legitimate interest in running and securing the site (Art. 6(1)(f) GDPR) and is not used to identify visitors. Vercel may also process it outside the European Union, with the safeguards set out in its data processing agreement.</p>
+  </article>
+
+  <article>
+    <h2>If you write to me</h2>
+    <p>If you contact me by email, I use your address and the content of your message only to reply and follow up on your request. I keep the correspondence for as long as needed to handle it.</p>
+  </article>
+
+  <article>
+    <h2>External links</h2>
+    <p>Links to LinkedIn, Google Maps and the public demo lead to third-party sites, which apply their own rules. No data is sent to these services until you open the link.</p>
+  </article>
+
+  <article>
+    <h2>Your rights</h2>
+    <p>You can ask for access, rectification, erasure or restriction, or object to processing (Arts. 15–22 GDPR) by writing to the address above. You can also lodge a complaint with the <a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer">Italian Data Protection Authority</a>.</p>
+  </article>
+
+  <p class="fondo"><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a> · <a href="https://www.linkedin.com/in/nicola-valigi-288418447/">LinkedIn</a></p>
+</main>
+<nav class="appbar" aria-label="Sections">
+    <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V16M8 7.6v.2M12 16v-3.4a2 2 0 0 1 4 0V16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>LinkedIn</span>
+  </a>
+    <a href="mailto:n.valigi@gmail.com?subject=Let%27s%20build%20now">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.2 12 13l8-5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Contact me</span>
+  </a>
+  </nav>
+<script src="../app.js" defer></script>
+</body>
+</html>
