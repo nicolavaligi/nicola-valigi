@@ -24,7 +24,8 @@
 .intro-nav { display: flex; align-items: center; gap: 18px; }
 .intro-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: .85rem; }
 .intro-nav a:hover { color: #ffe14a; }
-.intro-nav .intro-contact { border: 1px solid #ffffff38; padding-inline: 18px; border-radius: 999px; }
+.intro-nav .intro-contact { border: 1px solid #6785ff; padding-inline: 18px; border-radius: 999px; }
+.intro-nav .intro-contact:hover { background: var(--blu); border-color: var(--blu); color: #fff; }
 .intro-language { font-family: var(--mono); color: var(--intro-muted); }
 .intro-composition {
   position: relative; width: 100%; flex: 1 0 630px;
@@ -37,7 +38,7 @@
   pointer-events: none;
 }
 .intro-orbit::before, .intro-orbit::after {
-  content: ''; position: absolute; border: 1px solid #7b9ec92b;
+  content: ''; position: absolute; border: 1px solid #4168ff60;
   border-radius: 50%; inset: 2%;
 }
 .intro-orbit::after { inset: -4%; border-style: dashed; border-color: #7b9ec918; }

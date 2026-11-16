@@ -7,7 +7,7 @@
   --muto: #5A5C66;
   --riga: #CFC9BA;
   --giallo: #FFE14A;
-  --blu: #2447D6;
+  --blu: #234BFF;
   --acqua: #BCD3E8;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --sans: Archivo, "Helvetica Neue", Arial, sans-serif;
@@ -57,8 +57,8 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
   font-weight: 600; font-size: .95rem; text-decoration: none;
 }
 .menu a:hover { text-decoration: underline; }
-.menu .contatto { border: 1.5px solid var(--ink); border-radius: 999px; padding: 0 18px; }
-.menu .contatto:hover { background: var(--ink); color: var(--carta); text-decoration: none; }
+.menu .contatto { border: 1.5px solid var(--blu); color: var(--blu); border-radius: 999px; padding: 0 18px; }
+.menu .contatto:hover { background: var(--blu); color: #fff; text-decoration: none; }
 .menu .lingua { font-family: var(--mono); font-size: .8rem; color: var(--muto); }
 
 /* ---------- apertura ---------- */
@@ -84,14 +84,15 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 .bottone {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 52px; padding: 0 26px;
-  border: 1.5px solid var(--ink); border-radius: 999px;
-  background: var(--ink); color: var(--carta);
+  border: 1.5px solid var(--blu); border-radius: 999px;
+  background: var(--blu); color: #fff;
   font: inherit; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease;
 }
 .bottone:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--giallo), 4px 4px 0 1.5px var(--ink); }
-.bottone.chiaro { background: transparent; color: var(--ink); }
-.collegamento { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.bottone.chiaro { background: transparent; color: var(--ink); border-color: var(--ink); }
+.collegamento { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--blu); }
+.caso-settore a, .gambe .dato { color: var(--blu); }
 
 /* ---------- mappa ---------- */
 .mappa { min-width: 0; }
@@ -294,7 +295,7 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 .gambe span:last-child { color: var(--muto); max-width: 30ch; }
 .gruppo { margin-top: clamp(72px, 10vw, 136px); scroll-margin-top: 24px; }
 .gruppo-testa { display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(16px, 3vw, 32px); align-items: start; padding-top: 22px; border-top: 3px solid var(--ink); }
-.gruppo-lettera { font-family: var(--mono); font-weight: 700; font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: .9; background: var(--giallo); padding: 8px 14px 4px; border: 1.6px solid var(--ink); }
+.gruppo-lettera { font-family: var(--mono); font-weight: 700; font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: .9; background: var(--blu); color: #fff; padding: 8px 14px 4px; border: 1.6px solid var(--blu); }
 .gruppo-testa h3 { font-size: clamp(1.9rem, 5vw, 3.2rem); }
 .gruppo-testa p { margin-top: 10px; max-width: 48ch; font-size: 1.15rem; color: var(--muto); }
 .gruppo .caso { margin-top: clamp(44px, 6vw, 72px); }
@@ -362,3 +363,12 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 }
 
 [hidden] { display: none !important; }
+
+/* Landscape photography for the solar land sourcing case. */
+.progetto-paesaggio .schermata { border: 0; box-shadow: none; overflow: hidden; background: #c4d2dc; }
+.progetto-paesaggio img { aspect-ratio: 2 / 1; object-fit: cover; object-position: center 55%; }
+.progetto-paesaggio figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 14px; color: var(--muto); font-size: .78rem; line-height: 1.5; }
+.progetto-paesaggio figcaption a { min-height: 44px; display: inline-flex; align-items: flex-start; }
+@media (max-width: 699px) {
+  .progetto-paesaggio img { aspect-ratio: 4 / 3; }
+}
