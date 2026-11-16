@@ -23,8 +23,44 @@
 <link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../stile.css">
+<link rel="stylesheet" href="../intro.css">
+<script src="../intro-boot.js"></script>
 </head>
 <body>
+<section class="intro-stage" id="intro" aria-label="Welcome">
+  <header class="intro-header">
+    <p class="intro-name">Nicola Valigi</p>
+    <nav class="intro-nav" aria-label="Quick links">
+      <a href="https://www.linkedin.com/in/nicola-valigi-288418447/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="intro-contact" href="#contatto">Get in touch</a>
+      <a class="intro-language" href="/" lang="it" hreflang="it" aria-label="Italiano">IT</a>
+    </nav>
+  </header>
+  <div class="intro-composition">
+    <div class="intro-orbit" aria-hidden="true">
+      <svg class="intro-fallback" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width=".65">
+        <circle cx="200" cy="200" r="170"/><ellipse cx="200" cy="200" rx="90" ry="170"/><ellipse cx="200" cy="200" rx="145" ry="170"/>
+        <ellipse cx="200" cy="200" rx="170" ry="60"/><ellipse cx="200" cy="200" rx="170" ry="120"/><path d="M30 200h340M200 30v340"/>
+      </svg>
+      <canvas id="sphere"></canvas>
+      <div class="intro-reticle"></div>
+      <span class="intro-axis">45.6983° N</span><span class="intro-axis">9.6773° E</span>
+    </div>
+    <div class="intro-copy">
+      <p class="intro-kicker">From places to decisions</p>
+      <p class="intro-title">Let's build<br><span>now.</span></p>
+      <p class="intro-subtitle">Geo-intelligence, platforms and AI agents.</p>
+      <a class="intro-enter" href="#contenuto"><span>Click to enter</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <footer class="intro-footer">
+    <span class="intro-location">BERGAMO, ITALY</span>
+    <span class="intro-note">SEE · REMEMBER · DECIDE</span>
+    <button class="intro-pause" type="button" aria-pressed="false">Pause animation</button>
+  </footer>
+</section>
+<div class="site-shell" id="site-shell">
+
 <a class="salta" href="#contenuto">Skip to content</a>
 
 
@@ -598,5 +634,8 @@
 </footer>
 
 <script src="../home.js" defer></script>
+</div>
+<script src="../intro.js" defer></script>
+<script src="../intro-globe.js" defer></script>
 </body>
 </html>
