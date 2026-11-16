@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" fill="none">
+<title>Schema illustrativo di rilievo con drone su un corridoio stradale</title>
+<defs>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#15161b" stroke-opacity=".07"/></pattern>
+ <pattern id="field" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><path d="M0 0V12" stroke="#697b64" stroke-opacity=".22" stroke-width="2"/></pattern>
+ <g id="gcp"><circle r="12" fill="#fbf9f4" stroke="#15161b" stroke-width="1.5"/><path d="M0-12A12 12 0 0 1 12 0H0ZM0 12A12 12 0 0 1-12 0H0Z" fill="#15161b"/></g>
+ <g id="drone" stroke="#234bff" stroke-width="3"><path d="M-24-24L24 24M24-24L-24 24"/><rect x="-10" y="-14" width="20" height="28" rx="6" fill="#fbf9f4"/><circle cx="-26" cy="-26" r="19"/><circle cx="26" cy="-26" r="19"/><circle cx="26" cy="26" r="19"/><circle cx="-26" cy="26" r="19"/></g>
+</defs>
+<path fill="#f4f1ea" d="M0 0H1200V520H0Z"/>
+<path fill="#dde4d4" d="M0 0H340L360 166 0 211Z"/>
+<path fill="url(#field)" d="M0 0H340L360 166 0 211Z"/>
+<path fill="#e3d9be" d="M354 0H734L707 182 375 166Z"/>
+<path fill="#d0ddce" d="M754 0H1200V218L727 182Z"/>
+<path fill="url(#field)" d="M754 0H1200V218L727 182Z"/>
+<path fill="#e8dfc9" d="M0 338L327 314 360 520H0Z"/>
+<path fill="#d3dfce" d="M343 313L741 358 707 520H377Z"/>
+<path fill="url(#field)" d="M343 313L741 358 707 520H377Z"/>
+<path fill="#e1dcc9" d="M760 359L1200 363V520H727Z"/>
+<path fill="url(#grid)" d="M0 0H1200V520H0Z"/>
+<path d="M-30 275L320 242Q365 238 410 252L698 298Q738 304 780 300L1230 290" stroke="#fbf9f4" stroke-width="88"/>
+<path d="M-30 275L320 242Q365 238 410 252L698 298Q738 304 780 300L1230 290" stroke="#33363d" stroke-width="62"/>
+<path d="M-30 275L320 242Q365 238 410 252L698 298Q738 304 780 300L1230 290" stroke="#fbf9f4" stroke-width="2" stroke-dasharray="20 16"/>
+<path d="M139 133L1073 170 1052 420 119 375Z" fill="#234bff" fill-opacity=".055" stroke="#234bff" stroke-width="2"/>
+<path d="M175 185L1004 219Q1034 220 1032 246Q1030 270 1002 269L168 235Q140 234 139 261Q138 284 166 285L997 319Q1026 320 1025 344Q1024 369 995 367L160 335" stroke="#234bff" stroke-width="2.5" stroke-dasharray="8 6"/>
+<g fill="#234bff"><path d="M416 189L429 195 415 201Z"/><path d="M810 255L797 249 811 243Z"/><path d="M415 290L428 296 414 302Z"/><path d="M810 363L797 357 811 351Z"/></g>
+<g fill="#fff" stroke="#234bff" stroke-width="1.5"><path d="M135 129h8v8h-8zM1069 166h8v8h-8zM1048 416h8v8h-8zM115 371h8v8h-8z"/></g>
+<use href="#gcp" x="180" y="155"/><use href="#gcp" x="1029" y="191"/><use href="#gcp" x="1007" y="391"/><use href="#gcp" x="161" y="351"/>
+<path d="M303 304l-10 18h20z" fill="#ffe14a" stroke="#15161b" stroke-width="1.5"/>
+<use href="#drone" transform="translate(618 235) rotate(2)"/>
+<g font-family="monospace" font-size="13" fill="#15161b"><text x="200" y="151">GCP</text><text x="1048" y="194">GCP</text><text x="1027" y="395">GCP</text><text x="181" y="356">GCP</text><text x="324" y="323">CP</text></g>
+<g transform="translate(1124 62)" stroke="#234bff" stroke-width="1.5"><circle r="24" fill="#fbf9f4"/><path d="M0-17L7 13 0 7-7 13Z" fill="#234bff"/><text y="-32" font-family="monospace" font-size="12" text-anchor="middle" fill="#234bff" stroke="none">N</text></g>
+</svg>

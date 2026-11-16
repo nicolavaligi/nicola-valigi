@@ -3,7 +3,6 @@
 .site-shell { background: var(--carta); }
 .intro-active { scroll-behavior: auto; }
 .intro-active body { overflow: hidden; }
-.intro-active .site-shell { visibility: hidden; }
 .intro-active .intro-stage {
   position: fixed; inset: 0; z-index: 20;
   display: flex; flex-direction: column; isolation: isolate;

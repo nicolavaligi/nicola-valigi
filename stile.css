@@ -36,11 +36,10 @@ ol, ul { list-style: none; }
 h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 .contenitore { width: min(var(--largo), 100% - 2 * var(--bordo)); margin-inline: auto; }
 .salta {
-  position: fixed; z-index: 10; top: 10px; left: 10px;
+  position: fixed; z-index: 10; top: -160px; left: 10px;
   padding: 12px 18px; background: var(--ink); color: var(--carta); font-weight: 700;
-  transform: translateY(-200%);
 }
-.salta:focus { transform: none; }
+.salta:focus { top: 10px; }
 .evid { background: linear-gradient(transparent 56%, var(--giallo) 56% 94%, transparent 94%); padding-inline: .06em; }
 .dato { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
@@ -269,7 +268,7 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 /* ---------- dati pubblici ---------- */
 .archivi { display: grid; gap: 0 40px; margin-top: 44px; }
 .archivi li { padding: 22px 0 26px; border-top: 1.6px solid var(--ink); }
-.archivi h5 { font-size: 1.25rem; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.15; }
+.archivi h5, .archivi h3 { font-size: 1.25rem; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.15; }
 .archivi p { color: var(--muto); max-width: 34ch; }
 .sotto-blocco .azioni { margin-top: 18px; }
 
@@ -371,4 +370,32 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.05; }
 .progetto-paesaggio figcaption a { min-height: 44px; display: inline-flex; align-items: flex-start; }
 @media (max-width: 699px) {
   .progetto-paesaggio img { aspect-ratio: 4 / 3; }
+}
+
+/* Satellite context and drone survey service. */
+.progetto-gis .schermata img { aspect-ratio: auto; height: auto; }
+.progetto-gis figcaption span:last-child { max-width: 72ch; }
+.progetto-gis figcaption a { display: inline; min-height: auto; }
+.gis-livelli { margin-top: 18px; padding: 18px 0; border-block: 1px solid var(--riga); }
+.gis-livelli p { font: .65rem var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muto); margin-bottom: 10px; }
+.gis-livelli ul { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: .88rem; }
+.gis-livelli li::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--blu); margin-right: 8px; }
+.servizio-intro { max-width: 72ch; margin-block: 20px 28px; font-size: 1.12rem; }
+.drone-schema { margin-top: 32px; border: 1px solid var(--riga); }
+.drone-schema img { width: 100%; height: auto; }
+.drone-schema figcaption { padding: 12px 16px; font-size: .75rem; color: var(--muto); border-top: 1px solid var(--riga); }
+.servizio-drone .archivi, .drone-apertura + section .archivi { margin-top: 32px; }
+.consegne-drone { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--riga); max-width: 85ch; }
+.consegne-drone h5 { margin: 0 0 8px; font-size: 1rem; }
+.consegne-drone h3 { margin-top: 28px; font-size: 1.2rem; }
+.consegne-drone .abilitazioni { font-size: .85rem; margin-top: 16px; color: var(--muto); }
+.drone-apertura { background: var(--carta-chiara); border-bottom: 1px solid var(--ink); }
+.drone-apertura h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); max-width: 18ch; margin-top: 24px; }
+.drone-apertura .intro { margin-top: 24px; max-width: 65ch; }
+.brochure-drone { max-width: 900px; margin-block: 36px; }
+.brochure-drone img { width: 100%; height: auto; border: 1px solid var(--riga); }
+.brochure-drone figcaption { font-size: .8rem; color: var(--muto); margin-top: 8px; }
+@media (max-width: 699px) {
+ .progetto-gis .schermata { aspect-ratio: 4 / 3; }
+ .progetto-gis .schermata img { width: 100%; height: 100%; object-fit: cover; object-position: 66% center; }
 }

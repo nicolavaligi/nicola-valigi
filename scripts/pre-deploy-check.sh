@@ -172,4 +172,7 @@ echo "Errori: ${ERRORS}  Avvisi: ${WARNINGS}"
 if [[ "$ERRORS" -gt 0 ]]; then
     exit 1
 fi
+if [[ -f "${DOC_ROOT}/scripts/check-site.py" ]]; then
+    python3 "${DOC_ROOT}/scripts/check-site.py"
+fi
 exit 0
