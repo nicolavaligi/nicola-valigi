@@ -1,8 +1,8 @@
 /* The opening is sheet 00 of the same atlas as the main site. */
 .intro-stage { display: none; }
 .site-shell { background: var(--carta); }
-.intro-active { scroll-behavior: auto; }
-.intro-active body { overflow: hidden; }
+.intro-active { scroll-behavior: auto; overflow: hidden; }
+.intro-active body { position: fixed; inset: 0; width: 100%; overflow: hidden; }
 .intro-active .intro-stage {
   position: fixed; inset: 0; z-index: 20; isolation: isolate;
   display: flex; flex-direction: column; overflow: auto; min-height: 100svh;
@@ -93,7 +93,8 @@
   .intro-note { display: none; }
 }
 @media (max-width: 359px) {
-  .intro-name { max-width: 62px; line-height: 1.15; }
+  .intro-header { flex-wrap: wrap; }
+  .intro-nav { width: 100%; justify-content: space-between; }
   .intro-nav { gap: 3px; }
 }
 @media (max-height: 600px) and (min-width: 700px) {
@@ -107,3 +108,38 @@
 @media (prefers-reduced-motion: reduce) {
   .intro-stage *, .intro-stage *::before, .intro-stage *::after { animation: none !important; transition: none !important; }
 }
+
+/* Safe areas, small phones and text enlargement. The intro remains scrollable. */
+.intro-stage { overscroll-behavior-y: contain; }
+.intro-header { padding-top: max(12px, env(safe-area-inset-top)); }
+.intro-footer { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+.intro-nav .intro-language { min-width: 44px; justify-content: center; }
+@media (max-width: 699px) {
+  .intro-header { gap: 8px; flex-wrap: wrap; }
+  .intro-nav { min-width: 0; flex-wrap: wrap; }
+  .intro-name { font-size: .875rem; }
+  .intro-nav { gap: 4px; }
+  .intro-nav a { font-size: .875rem; padding-inline: 8px; }
+  .intro-nav .intro-contact { padding-inline: 12px; }
+  .intro-title { font-size: clamp(2.25rem, 10.3vw, 3.2rem); line-height: 1.06; }
+  .intro-subtitle { font-size: 1rem; }
+  .intro-enter { width: 100%; justify-content: space-between; padding: 12px 24px; }
+  .intro-footer { gap: 8px 16px; padding-top: 8px; }
+  .intro-controls { gap: 12px; }
+  .intro-pause, .intro-music { min-height: 48px; }
+  .intro-pause { padding-inline: 8px; }
+}
+@media (max-width: 699px) and (max-height: 740px) {
+  .intro-composition { padding-block: 24px 12px; gap: 16px; }
+  .intro-kicker { margin-bottom: 12px; }
+  .intro-subtitle { margin-top: 16px; }
+  .intro-enter, .intro-sections { margin-top: 16px; }
+  .intro-orbit { width: min(48vw, 176px); }
+}
+@media (max-width: 999px) and (orientation: landscape) and (max-height: 500px) {
+  .intro-composition { gap: 24px; padding-block: 24px; }
+  .intro-title { font-size: 2.5rem; }
+  .intro-orbit { max-width: 240px; }
+}
+
+.intro-enter svg { flex-shrink: 0; }

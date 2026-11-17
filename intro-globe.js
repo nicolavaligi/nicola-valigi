@@ -246,7 +246,6 @@
   function desiredRadius() {
     var w = canvas.clientWidth;
     var h = canvas.clientHeight;
-    var narrow = window.matchMedia("(max-width: 700px), (max-height: 500px)").matches;
     var d = Math.min(w, h) * 0.84;
     return d * 0.5;
   }
@@ -299,9 +298,16 @@
 
   var frame = null;
   var lastFrame = 0;
+  var lastDraw = 0;
+  var coarsePointer = window.matchMedia("(pointer: coarse)");
   function tick(now) {
     frame = null;
     if (!running || !inView || closed) return;
+    if (coarsePointer.matches && lastDraw && now - lastDraw < 32) {
+      frame = requestAnimationFrame(tick);
+      return;
+    }
+    lastDraw = now;
     var delta = lastFrame ? Math.min((now - lastFrame) / 1000, 0.05) : 0;
     lastFrame = now;
     time += delta;
@@ -314,7 +320,7 @@
   }
   function resume() {
     if (frame !== null || !running || !inView || closed) return;
-    lastFrame = 0;
+    lastFrame = lastDraw = 0;
     frame = requestAnimationFrame(tick);
   }
   function pause() {

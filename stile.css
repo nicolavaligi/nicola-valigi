@@ -29,7 +29,7 @@
   --acqua: #BCD3E8;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --sans: Archivo, "Helvetica Neue", Arial, sans-serif;
-  --bordo: max(20px, env(safe-area-inset-left));
+  --bordo: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
   --largo: 1240px;
   color-scheme: light;
 }
@@ -46,6 +46,7 @@ body {
   overflow-wrap: break-word;
 }
 ::selection { background: var(--blu); color: #fff; }
+picture { display: block; min-width: 0; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 :focus-visible { outline: 3px solid var(--blu); outline-offset: 3px; border-radius: 2px; }
@@ -414,4 +415,47 @@ a:hover { text-decoration: none; }
 @media (max-width: 359px) {
   .testata { gap: var(--space-2); flex-wrap: wrap; }
   .menu { margin-left: auto; }
+}
+
+/* Mobile: comfortable controls and a single, predictable reading column. */
+a, button { -webkit-tap-highlight-color: rgba(35, 75, 255, .15); }
+button, .bottone { touch-action: manipulation; }
+.menu .lingua { min-width: 44px; justify-content: center; }
+@media (max-width: 699px) {
+  .testata { gap: 8px; flex-wrap: wrap; padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: 12px; }
+  .marchio { font-size: .9375rem; }
+  .menu { gap: 4px; flex-wrap: wrap; min-width: 0; }
+  .menu a { padding-inline: 8px; font-size: .875rem; }
+  .menu .contatto { padding-inline: 12px; }
+  .apertura-griglia { gap: 32px; padding-block: 40px 48px; }
+  .apertura h1 { font-size: clamp(2.75rem, 12.8vw, 5.25rem); line-height: 1; }
+  .sommario { font-size: 1.125rem; line-height: 1.6; }
+  .caso-testa { align-items: flex-start; gap: 8px 12px; }
+  .caso-testa h4 { flex-basis: calc(100% - 48px); }
+  .caso-settore { flex-basis: 100%; }
+  .caso-testo { gap: 24px; }
+  .caso-testo p, .passi p, .archivi p, .gambe span:last-child { max-width: none; }
+  .chi-griglia { gap: 32px; }
+  .chi-testo p { font-size: var(--text-body); }
+  .scheda-esempio dl > div { grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); gap: 12px; padding: 16px; }
+  .tenant li { flex-wrap: wrap; }
+  .indirizzo { max-width: 100%; overflow-wrap: anywhere; font-size: clamp(1.125rem, 5vw, 2rem); }
+  .piede .contenitore { gap: 16px; }
+  .piede p { gap: 8px 16px; }
+  .progetto-gis .schermata picture { height: 100%; }
+}
+@media (max-width: 479px) {
+  .azioni { align-items: stretch; gap: 12px; }
+  .azioni .bottone { width: 100%; min-height: 56px; padding: 12px 20px; text-align: center; }
+  .azioni .collegamento { justify-content: center; width: 100%; min-height: 48px; }
+  .cartiglio .stato { gap: 12px; }
+  .cartiglio button { width: 100%; min-height: 48px; }
+  .gruppo-testa { gap: 16px; }
+  .gruppo-lettera { font-size: 2rem; padding: 8px 10px; }
+  .sotto-blocco, .regole { padding: 24px 16px; }
+  .caso-settore { letter-spacing: .04em; }
+}
+@media (max-width: 359px) {
+  .testata { flex-wrap: wrap; }
+  .menu { width: 100%; justify-content: space-between; margin-left: 0; }
 }
