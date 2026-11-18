@@ -118,6 +118,7 @@ a:hover { text-decoration: none; }
 
 /* ---------- mappa ---------- */
 .mappa { min-width: 0; }
+.caso .mappa { width: min(100%, 760px); margin-inline: auto; }
 .mappa-svg { width: 100%; height: auto; overflow: visible; }
 .m-carta { fill: var(--carta-chiara); }
 .m-p { stroke: var(--ink); stroke-width: .6; stroke-opacity: .5; }
@@ -215,11 +216,11 @@ a:hover { text-decoration: none; }
 
 /* ---------- chi sono ---------- */
 .chi { background: var(--carta-chiara); border-block: 1px solid var(--ink); }
-.chi-griglia { display: grid; gap: 36px var(--space-16); margin-top: 40px; }
 .ritratto {
   display: block; width: 100%; max-width: 580px; height: auto;
   border: 1.6px solid var(--ink); border-radius: 2px;
 }
+.chi-testo { max-width: 760px; margin-top: 40px; }
 .chi-testo p + p { margin-top: var(--space-6); }
 .chi-testo p { max-width: 56ch; font-size: 1.12rem; }
 .percorso { margin-top: var(--space-8); border-top: 1px solid var(--ink); }
@@ -358,7 +359,6 @@ a:hover { text-decoration: none; }
 @media (min-width: 1000px) {
   .apertura-griglia { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: var(--space-16); }
   .apertura h1 { font-size: clamp(3.6rem, 6.7vw, 6.2rem); }
-  .chi-griglia { grid-template-columns: 380px minmax(0, 1fr); align-items: start; }
 }
 @media (max-width: 420px) {
   .menu a { padding: 0 var(--space-2); font-size: .9rem; }
@@ -435,7 +435,6 @@ button, .bottone { touch-action: manipulation; }
   .caso-settore { flex-basis: 100%; }
   .caso-testo { gap: 24px; }
   .caso-testo p, .passi p, .archivi p, .gambe span:last-child { max-width: none; }
-  .chi-griglia { gap: 32px; }
   .chi-testo p { font-size: var(--text-body); }
   .scheda-esempio dl > div { grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); gap: 12px; padding: 16px; }
   .tenant li { flex-wrap: wrap; }

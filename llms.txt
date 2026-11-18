@@ -1,6 +1,6 @@
 # Nicola Valigi
 
-> Geo-intelligence, rilievi con drone, fonti pubbliche e piattaforme con agenti AI. Bergamo, Italia.
+> Sviluppo software con l’AI e configuro agenti e automazioni per il lavoro quotidiano. I progetti includono piattaforme per clienti, monitoraggio di fonti pubbliche e applicazioni territoriali. Bergamo, Italia.
 
 ## Pagine e servizi
 - [Home italiana](https://www.nicvaligi.com/): progetti, servizi, metodo e contatti.
