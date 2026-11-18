@@ -49,8 +49,8 @@
   <h1>Skills and professional background</h1>
   <article>
     <h2>What I do</h2>
-    <p>I connect operational problems, technical documentation and official data through software. I direct AI agents and write deterministic code to turn manual processes into tools people can use every day, including on phones and within existing business workflows.</p>
-    <p>Whether parsing inbound requests, generating programmatic quotes, extracting data at scale, or monitoring construction sites and cadastral parcels, human oversight remains central: <span class="ora">nothing ships without explicit sign-off.</span> I choose tools to suit the problem and take software from testing to everyday use.</p>
+    <p>I use AI to design, write and test software. I also configure AI agents, programs that look up documents or carry out specific tasks using tools the business already has.</p>
+    <p>For example, I can turn a voice memo into an assignable task, collect tender notices from several portals or calculate a quote from selected options. Before putting a tool into use, I check how it works in practice.</p>
   </article>
 
   <article>
@@ -66,28 +66,28 @@
       </thead>
       <tbody role="rowgroup">
         <tr role="row">
-          <td role="cell" class="col-skill">Web scraping, data pipelines, Python</td>
-          <td role="cell" class="col-desc">Automated crawlers collecting, normalizing, and categorizing public tenders and infrastructure works from institutional portals (continuous monitoring of PNRR contracts, procurement data, and contract IDs).</td>
+          <td role="cell" class="col-skill">Automated collection of online data (Python)</td>
+          <td role="cell" class="col-desc">I build programs that check public portals, collect tenders and information on infrastructure projects, and organize it for search. They also track contracts under Italy’s recovery plan and their procurement IDs.</td>
         </tr>
         <tr role="row">
-          <td role="cell" class="col-skill">PDF data extraction, SQL, databases</td>
-          <td role="cell" class="col-desc">Unstructured tables, cadastral certificates, and technical annexes extracted from complex PDFs and converted into queryable relational databases on Supabase / PostgreSQL.</td>
+          <td role="cell" class="col-skill">Extracting and searching data from PDFs</td>
+          <td role="cell" class="col-desc">I extract lists, tables, land records and technical annexes from complex PDFs and organize them so people can search, filter and cross-reference the data in Supabase or PostgreSQL.</td>
         </tr>
         <tr role="row">
-          <td role="cell" class="col-skill">GIS &amp; web cartography</td>
-          <td role="cell" class="col-desc">Vector alignment maps and noise receptor surveys, KML/GeoJSON export, and georeferencing of 21,900+ cadastral parcels with grid interconnection buffers.</td>
+          <td role="cell" class="col-skill">Digital maps and spatial analysis (GIS)</td>
+          <td role="cell" class="col-desc">I map routes and sites exposed to noise. I have mapped over 21,900 land parcels and analyzed their distance from the electricity grid. Maps can be exported in KML and GeoJSON.</td>
         </tr>
         <tr role="row">
-          <td role="cell" class="col-skill">Rapid prototyping, product management</td>
-          <td role="cell" class="col-desc">Public procurement and municipal notice intelligence platforms, parametric 3D configurators, CPQ deterministic quoting engines, and workflow simulators.</td>
+          <td role="cell" class="col-skill">Prototypes and automated quotes</td>
+          <td role="cell" class="col-desc">I build working versions of 3D configurators, tools that calculate quotes from selected options, and simulators for work processes. I’ve also built tools for reviewing tenders and municipal notices.</td>
         </tr>
         <tr role="row">
-          <td role="cell" class="col-skill">AI agents, system integration</td>
-          <td role="cell" class="col-desc">Voice memos captured with Plaud transcribed, synthesized, and converted into structured actionable tasks across CRM and Notion; automated WhatsApp inbound request routing pipeline.</td>
+          <td role="cell" class="col-skill">AI agents that connect existing tools</td>
+          <td role="cell" class="col-desc">I turn Plaud voice memos into tasks in Notion or a customer management system. Incoming WhatsApp requests are read and routed to the people who handle them.</td>
         </tr>
         <tr role="row">
-          <td role="cell" class="col-skill">Dashboards, team coordination</td>
-          <td role="cell" class="col-desc">Centralized operations console with task allocation by person, advanced filters, real-time telemetry, and visual progress tracking charts.</td>
+          <td role="cell" class="col-skill">Dashboards for coordinating work</td>
+          <td role="cell" class="col-desc">One screen for assigning tasks, filtering information and checking project progress with charts and live updates.</td>
         </tr>
         <tr role="row">
           <td role="cell" class="col-skill">Web development, SEO, e-commerce</td>
@@ -241,8 +241,8 @@
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
       <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
       <li><strong>Global Niche Research &amp; New Business Strategy</strong>: Deep market studies on international niches, TAM/SAM/SOM modeling, unit economics validation, and executive PDF reports for executives and investors</li>
-      <li><strong>Reliable one-off operations</strong>: If a procedure is interrupted, I can rerun it without repeating completed actions or sending duplicate emails. The output omits personal data in plain text. Automated tests run on PostgreSQL with external services simulated.</li>
-      <li><strong>User management across tenants</strong>: The same user can access multiple tenant spaces with a single role. The platform manages invitations and reactivates users at first sign-in.</li>
+      <li><strong>Procedures that can resume after an interruption</strong>. If a procedure is interrupted, I can rerun it without repeating completed actions or sending duplicate emails. The output omits personal data in plain text. Automated tests run on PostgreSQL with external services simulated.</li>
+      <li><strong>One sign-in across multiple client spaces</strong>. The same user can access multiple tenant spaces with a single role. The platform manages invitations and reactivates users at first sign-in.</li>
     </ul>
 
     <figure class="anteprima">
@@ -267,9 +267,9 @@
 
   <article>
     <h2>Infrastructure and technologies</h2>
-    <p>Pragmatic, terminal-first execution. Deep Unix/Linux background, running isolated environments and headless microservices via OrbStack and virtualized architectures on macOS. I build with Python (GIS, web automation, structured scraping), PostGIS, Supabase, modern AI APIs, and lightweight web delivery deployed on Vercel.</p>
+    <p>I set up a test environment separate from the service people use. There I check updates, test database operations and verify access permissions before release. I use Python, Django and Django REST Framework for application logic, PostgreSQL, PostGIS and Supabase for data, and React and TanStack Start for interfaces. I use WorkOS for sign-in and roles, Vercel and Google Cloud Run for deployment, and Unix/Linux and OrbStack for managing development environments, including on macOS.</p>
     <ul class="numeri">
-      <li><strong>Identity environment separation</strong>: I compare the WorkOS configuration in production with the staging setup. I plan the separation of the two authentication environments in six steps, with a dedicated release and a short downtime window.</li>
+      <li><strong>Separate sign-in for testing and production</strong>. I compare the WorkOS configuration in production with the staging setup. I plan the separation of the two authentication environments in six steps, with a dedicated release and a short downtime window.</li>
       <li><strong>User migration without manual re-entry</strong>: A Django command reads email addresses and roles from the old environment in read-only mode and uses them to create invitations in the new one. Preview mode shows what would happen before any changes are made. The command can be rerun and records completed actions.</li>
     </ul>
   </article>
