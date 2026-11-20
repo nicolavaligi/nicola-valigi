@@ -241,7 +241,8 @@
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
       <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
       <li><strong>Global Niche Research &amp; New Business Strategy</strong>: Deep market studies on international niches, TAM/SAM/SOM modeling, unit economics validation, and executive PDF reports for executives and investors</li>
-      <li><strong>Procedures that can resume after an interruption</strong>. If a procedure is interrupted, I can rerun it without repeating completed actions or sending duplicate emails. The output omits personal data in plain text. Automated tests run on PostgreSQL with external services simulated.</li>
+      <li><strong>Two-way Google Calendar sync</strong>. The booking system sends reservations to Google Calendar and imports closures and other commitments entered there. Rules define where each type of event is managed. An alert flags any changes to reservations made directly in Google Calendar.</li>
+      <li><strong>Procedures that can resume after an interruption</strong>. I can rerun an interrupted procedure without repeating completed actions or sending duplicate emails. To reconcile two systems, each run compares their full state. A later run can resolve any differences after an interruption without creating duplicates.</li>
       <li><strong>One sign-in across multiple client spaces</strong>. The same user can access multiple tenant spaces with a single role. The platform manages invitations and reactivates users at first sign-in.</li>
     </ul>
 
@@ -271,6 +272,9 @@
     <ul class="numeri">
       <li><strong>Separate sign-in for testing and production</strong>. I compare the WorkOS configuration in production with the staging setup. I plan the separation of the two authentication environments in six steps, with a dedicated release and a short downtime window.</li>
       <li><strong>User migration without manual re-entry</strong>: A Django command reads email addresses and roles from the old environment in read-only mode and uses them to create invitations in the new one. Preview mode shows what would happen before any changes are made. The command can be rerun and records completed actions.</li>
+      <li><strong>Least-privilege OAuth 2.0</strong>. I use a permission limited to the calendar created by the application. The token is encrypted in a secure vault, and authorisation links expire and can be used only once.</li>
+      <li><strong>Deno Edge Functions and PostgreSQL</strong>. I keep application logic separate from network and database access. I verify procedures with automated tests that simulate external services and check repeatable migrations on a local PostgreSQL instance before release.</li>
+      <li><strong>Privacy by design (GDPR)</strong>. I minimise data shared with third parties, enforce retention periods in code, keep personal data out of logs and restrict access by role. Procedure outputs omit personal data in plain text.</li>
     </ul>
   </article>
 <div class="documento-relativi"><a href="/en/#contenuto">Home and projects &rarr;</a><a href="/en/drone-surveys.html">Drone surveys &rarr;</a><a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></div></main><footer class="piede" id="contatto"><div class="contenitore"><p><span>Nicola Valigi · Bergamo, Italy</span><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p><p><span>No cookies, no tracking.</span><a href="/en/privacy.html">Privacy</a></p></div></footer></body></html>
