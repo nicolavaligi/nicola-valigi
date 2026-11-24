@@ -152,6 +152,9 @@
     <h2>Web scraping, data pipelines and PDF extraction</h2>
     <p>The most critical B2B intelligence is frequently locked inside legacy government portals, scanned PDF filings, or unindexed public registries. I build automated Python ingestion pipelines with resilient architectures:</p>
     <ul class="numeri">
+      <li><strong>Integration with point-of-sale systems without a public API</strong>. I read end-of-day records from the vendor’s portal and reconstruct receipts, cover counts, product sales and split bills. I reconcile takings to the cent.</li>
+      <li><strong>Repeatable imports without duplicates</strong>. Re-importing the same day leaves the data unchanged. I imported and reconciled three months of historical records.</li>
+      <li><strong>Automated daily reporting</strong>. Reports include takings, covers, average receipt value, a comparison with the previous week and a written summary in two languages.</li>
       <li><strong>Institutional &amp; PNRR Procurement Crawlers</strong>: Continuous crawlers monitoring municipal boards, tenders, contract IDs (CIG), and public bids with automated deduplication and schema normalization</li>
       <li><strong>PDF to Supabase / SQL Pipelines</strong>: Parsing unstructured technical specs, deeds, and decrees into clean tabular formats and relational SQL stores</li>
       <li><strong>Incremental Cursors &amp; Delta Streams</strong>: High-reliability delta architectures (<span class="ora">since_seq</span>) serving clean real-time feeds to consumer APIs and dashboards</li>
@@ -227,6 +230,9 @@
     <h2>AI agents, system integration and product management</h2>
     <p>I integrate AI agents into daily workflows, with defined tasks and explicit checks:</p>
     <ul class="numeri">
+      <li><strong>Natural-language reporting</strong>. The “Ask and extract” panel above a restaurant’s daily reports answers questions, cites the date behind each figure and produces tables ready to copy.</li>
+      <li><strong>The model receives only aggregated data</strong>. I send only aggregated takings, cover counts and product sales. Names and contact details are excluded. The model flags dates with missing data.</li>
+      <li><strong>Running Claude through its API</strong>. I use a dedicated key for each environment, with a service account, limited scope and an expiry date. I verify the setup with a test call and schedule a renewal reminder.</li>
       <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Voice notes recorded on the go transcribed, summarized with action point extraction, and automatically structured into CRM records and Notion operational databases</li>
       <li><strong>Inbound WhatsApp Dispatching</strong>: Automated WhatsApp channels with instant request parsing, deterministic validation, and operational routing</li>
       <li><strong>3D Configurators &amp; CPQ Quoting Engines</strong>: Parametric engines generating instant quotations for complex orders (decking, construction, renewables), dynamic Bill of Materials (BOM) calculation, and timeline reflow management</li>
@@ -238,6 +244,8 @@
     <h2>Web development, e-commerce and market research</h2>
     <p>I build lightweight, high-contrast web systems and conversion-focused e-commerce architectures:</p>
     <ul class="numeri">
+      <li><strong>Multi-tenant platform</strong>. I build components for each client, with isolated data, user and role management, and error messages that explain what to do next.</li>
+      <li><strong>File import as a fallback</strong>. If an integration stalls, I use a file import that applies the same rules as the direct integration so the demo can continue.</li>
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
       <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
       <li><strong>Global Niche Research &amp; New Business Strategy</strong>: Deep market studies on international niches, TAM/SAM/SOM modeling, unit economics validation, and executive PDF reports for executives and investors</li>
@@ -270,11 +278,20 @@
     <h2>Infrastructure and technologies</h2>
     <p>I set up a test environment separate from the service people use. There I check updates, test database operations and verify access permissions before release. I use Python, Django and Django REST Framework for application logic, PostgreSQL, PostGIS and Supabase for data, and React and TanStack Start for interfaces. I use WorkOS for sign-in and roles, Vercel and Google Cloud Run for deployment, and Unix/Linux and OrbStack for managing development environments, including on macOS.</p>
     <ul class="numeri">
+      <li><strong>Diagnosing third-party integrations</strong>. I trace sign-in step by step and compare credential fingerprints across environments without reading the credential values.</li>
+      <li><strong>Secrets management on Google Cloud</strong>. I use Secret Manager and Cloud Run with encrypted credentials for each client. Keys stay protected in every environment.</li>
+      <li><strong>Controlled releases</strong>. I deploy automatically to the test environment and run tests there. Production requires an explicit release.</li>
       <li><strong>Separate sign-in for testing and production</strong>. I compare the WorkOS configuration in production with the staging setup. I plan the separation of the two authentication environments in six steps, with a dedicated release and a short downtime window.</li>
       <li><strong>User migration without manual re-entry</strong>: A Django command reads email addresses and roles from the old environment in read-only mode and uses them to create invitations in the new one. Preview mode shows what would happen before any changes are made. The command can be rerun and records completed actions.</li>
       <li><strong>Least-privilege OAuth 2.0</strong>. I use a permission limited to the calendar created by the application. The token is encrypted in a secure vault, and authorisation links expire and can be used only once.</li>
       <li><strong>Deno Edge Functions and PostgreSQL</strong>. I keep application logic separate from network and database access. I verify procedures with automated tests that simulate external services and check repeatable migrations on a local PostgreSQL instance before release.</li>
-      <li><strong>Privacy by design (GDPR)</strong>. I minimise data shared with third parties, enforce retention periods in code, keep personal data out of logs and restrict access by role. Procedure outputs omit personal data in plain text.</li>
+      <li><strong>Privacy by design (GDPR)</strong>. I minimise data shared with third parties, enforce retention periods in code, keep personal data out of logs and restrict access by role. Procedure outputs omit personal data in plain text. I minimise data sent to the AI provider, log who accesses real data and document exceptions with an expiry date.</li>
+    </ul>
+  </article>
+  <article>
+    <h2>Project management</h2>
+    <ul class="numeri">
+      <li><strong>Coordination with external developers</strong>. I share progress updates and write technical questions and specific requests in English, with clear priorities.</li>
     </ul>
   </article>
 <div class="documento-relativi"><a href="/en/#contenuto">Home and projects &rarr;</a><a href="/en/drone-surveys.html">Drone surveys &rarr;</a><a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></div></main><footer class="piede" id="contatto"><div class="contenitore"><p><span>Nicola Valigi · Bergamo, Italy</span><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p><p><span>No cookies, no tracking.</span><a href="/en/privacy.html">Privacy</a></p></div></footer></body></html>

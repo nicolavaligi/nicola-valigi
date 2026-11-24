@@ -152,6 +152,9 @@
     <h2>Web scraping, flussi di dati ed estrazione da PDF</h2>
     <p>Le informazioni più preziose nel mercato B2B sono spesso intrappolate in portali istituzionali complessi, allegati PDF scansionati o banche dati non indicizzate. Sviluppo pipeline di ingestione automatizzata in Python con architettura robusta:</p>
     <ul class="numeri">
+      <li><strong>Integrazione con sistemi di cassa senza API pubblica</strong>. Leggo le chiusure dal portale del fornitore e ricostruisco scontrini, coperti, prodotti e conti divisi. Verifico gli incassi al centesimo.</li>
+      <li><strong>Import ripetibile senza doppioni</strong>. Rileggere lo stesso giorno lascia invariati i dati. Ho importato e riconteggiato tre mesi di storico.</li>
+      <li><strong>Reportistica giornaliera automatica</strong>. Il report include incasso, coperti, scontrino medio, confronto con la settimana precedente e una sintesi in due lingue.</li>
       <li><strong>Scraping Istituzionale e PNRR</strong>: Crawler continui per albi pretori, gare d'appalto, CIG e contratti pubblici, con normalizzazione automatica e deduplica dei lotti</li>
       <li><strong>Da PDF a Supabase / SQL</strong>: Parsing di documenti tecnici, visure e delibere con estrazione di entità e tabelle, convertiti in database relazionali interrogabili</li>
       <li><strong>Cursori Incrementali e Delta Feed</strong>: Architetture con sync delta (<span class="ora">since_seq</span>) per distribuire aggiornamenti progressivi a API e cruscotti decisionali</li>
@@ -227,6 +230,9 @@
     <h2>Agenti AI, integrazione di sistemi e gestione del prodotto</h2>
     <p>Integro gli agenti AI nei flussi di lavoro quotidiani, con compiti definiti e controlli espliciti:</p>
     <ul class="numeri">
+      <li><strong>Report interrogabili in linguaggio naturale</strong>. Il riquadro «Chiedi ed estrai», sopra i report giornalieri di un ristorante, risponde alle domande citando il giorno da cui proviene ogni cifra e prepara tabelle da copiare.</li>
+      <li><strong>Al modello arrivano solo dati aggregati</strong>. Invio esclusivamente aggregati su incassi, coperti e prodotti. Nomi e contatti restano fuori. Il modello segnala i giorni per cui mancano dati.</li>
+      <li><strong>Messa in esercizio di Claude via API</strong>. Uso una chiave dedicata per ambiente, con account di servizio, ambito ristretto e scadenza. Verifico la configurazione con una chiamata di prova e programmo un promemoria di rinnovo.</li>
       <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Registrazioni e note vocali trascritte, sintetizzate con estrazione di punti d'azione e trasformate automaticamente in task assegnati su CRM aziendali e database Notion</li>
       <li><strong>Inbound WhatsApp Dispatching</strong>: Canali di ricezione via WhatsApp con parsing istantaneo delle richieste, validazione deterministica e smistamento operativo</li>
       <li><strong>Configuratori 3D e Motori CPQ</strong>: Piattaforme parametriche per la preventivazione istantanea di commesse complesse (decking, edilizia, impianti), calcolo Distinta Base (BOM) in tempo reale e aggiornamento delle pianificazioni in caso di ritardo</li>
@@ -238,6 +244,8 @@
     <h2>Sviluppo web, e-commerce e ricerca di mercato</h2>
     <p>Progetto sistemi web leggeri ad alto contrasto e architetture e-commerce orientate alla conversione:</p>
     <ul class="numeri">
+      <li><strong>Piattaforma multi-cliente</strong>. Sviluppo componenti per ciascun cliente, con dati isolati, gestione di utenti e ruoli e messaggi d’errore che indicano come procedere.</li>
+      <li><strong>Caricamento da file in caso di blocco</strong>. Quando un’integrazione si blocca, uso un import da file con le stesse regole della lettura diretta per proseguire con la demo.</li>
       <li><strong>Siti di Servizio e Brand</strong>: Interfacce veloci, prive di dipendenze pesanti, modellate mobile-first e ottimizzate per i Core Web Vitals e il posizionamento SEO tecnico</li>
       <li><strong>E-commerce Shopify</strong>: Negozi online completi, cataloghi ottimizzati, logiche di carrello e pagamenti integrate per percorsi d'acquisto semplici</li>
       <li><strong>Ricerche di Mercato Globali e Nuovi Business</strong>: Analisi approfondite su nicchie internazionali, dimensionamento TAM/SAM/SOM, validazione unit economics e redazione di report esecutivi in PDF per soci e investitori</li>
@@ -270,11 +278,20 @@
     <h2>Infrastruttura e tecnologie</h2>
     <p>Preparo un ambiente di prova separato dal servizio usato dagli utenti. Lì verifico gli aggiornamenti, testo le operazioni sul database e controllo i permessi di accesso prima di pubblicare. Uso Python, Django e Django REST Framework per la logica applicativa, PostgreSQL, PostGIS e Supabase per i dati, React e TanStack Start per le interfacce. Uso WorkOS per accessi e ruoli, Vercel e Google Cloud Run per pubblicare e Unix/Linux e OrbStack per gestire gli ambienti di sviluppo, anche su macOS.</p>
     <ul class="numeri">
+      <li><strong>Diagnosi di integrazioni esterne</strong>. Traccio i passaggi di un accesso e confronto le impronte delle credenziali tra ambienti senza leggerne i valori.</li>
+      <li><strong>Gestione dei segreti su Google Cloud</strong>. Uso Secret Manager e Cloud Run con credenziali cifrate per cliente. Le chiavi restano protette in ogni ambiente.</li>
+      <li><strong>Rilasci controllati</strong>. Pubblico automaticamente nell’ambiente di prova ed eseguo i test. Il passaggio in produzione richiede un rilascio esplicito.</li>
       <li><strong>Accessi separati tra prova e produzione</strong>. Confronto la configurazione di WorkOS in produzione con quella dell’ambiente di prova (staging). Definisco un piano in sei passi, con un rilascio dedicato e una breve finestra di fermo, per separare i due ambienti di autenticazione.</li>
       <li><strong>Migrazione degli utenti senza reinserimento manuale</strong>: Un comando Django legge indirizzi email e ruoli dal vecchio ambiente in sola lettura e li usa per creare gli inviti nel nuovo. La modalità anteprima mostra le azioni previste prima di applicarle. Il comando è rilanciabile e registra le operazioni eseguite.</li>
       <li><strong>OAuth 2.0 con privilegi minimi</strong>. Uso un permesso limitato al calendario creato dall’applicazione. Il token è cifrato in un archivio sicuro e i link di autorizzazione sono monouso e a scadenza.</li>
       <li><strong>Edge Functions in Deno e PostgreSQL</strong>. Separo la logica applicativa dagli accessi alla rete e al database. Verifico le procedure con test automatici che simulano i servizi esterni e provo le migrazioni ripetibili su un’istanza locale di PostgreSQL prima del rilascio.</li>
-      <li><strong>Protezione dei dati fin dalla progettazione (GDPR)</strong>. Minimizzo i dati inviati a terzi, applico nel codice i tempi di conservazione, escludo i dati personali dai log e limito gli accessi in base al ruolo. Le procedure omettono i dati personali in chiaro dai risultati.</li>
+      <li><strong>Protezione dei dati fin dalla progettazione (GDPR)</strong>. Minimizzo i dati inviati a terzi, applico nel codice i tempi di conservazione, escludo i dati personali dai log e limito gli accessi in base al ruolo. Le procedure omettono i dati personali in chiaro dai risultati. Limito i dati inviati al fornitore AI, registro chi accede ai dati reali e documento le eccezioni con una scadenza.</li>
+    </ul>
+  </article>
+  <article>
+    <h2>Gestione di progetto</h2>
+    <ul class="numeri">
+      <li><strong>Coordinamento con sviluppatori esterni</strong>. Condivido lo stato dei lavori e formulo in inglese domande tecniche e richieste precise, indicando le priorità.</li>
     </ul>
   </article>
 <div class="documento-relativi"><a href="/#contenuto">Home e progetti &rarr;</a><a href="/rilievi-drone.html">Rilievi con drone &rarr;</a><a href="https://github.com/nicolavaligi" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></div></main><footer class="piede" id="contatto"><div class="contenitore"><p><span>Nicola Valigi · Bergamo, Italia</span><a href="mailto:n.valigi@gmail.com">n.valigi@gmail.com</a></p><p><span>Nessun cookie, nessun tracciamento.</span><a href="/privacy.html">Privacy</a></p></div></footer></body></html>
