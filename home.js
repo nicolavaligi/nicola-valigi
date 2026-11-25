@@ -46,10 +46,10 @@
   }
 
   // Share the canonical URL for the current language.
-  var condividi = document.querySelector("[data-condividi]");
-  if (condividi) {
+  document.querySelectorAll("[data-gruppo-condivisione]").forEach(function (gruppo) {
+    var condividi = gruppo.querySelector("[data-condividi]");
     var url = document.querySelector('link[rel="canonical"]').href;
-    var esito = document.querySelector("[data-esito-condivisione]");
+    var esito = gruppo.querySelector("[data-esito-condivisione]");
     condividi.hidden = false;
     condividi.addEventListener("click", async function () {
       esito.textContent = "";
@@ -68,5 +68,5 @@
         esito.textContent = (english ? "Share this link: " : "Condividi questo link: ") + url;
       }
     });
-  }
+  });
 })();

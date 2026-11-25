@@ -460,3 +460,32 @@ button, .bottone { touch-action: manipulation; }
   .testata { flex-wrap: wrap; }
   .menu { width: 100%; justify-content: space-between; margin-left: 0; }
 }
+
+/* Azioni di contatto e condivisione nelle intestazioni della home */
+.testata-azioni { flex-wrap: wrap; }
+.identita-testata { display: flex; align-items: center; gap: 10px; }
+.lingua-testata {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; font-family: var(--mono); font-size: .8rem;
+}
+.barra-testata {
+  display: grid; grid-template-columns: repeat(4, auto); align-items: stretch; gap: 8px;
+  min-width: 0;
+}
+.barra-testata .bottone { min-height: 44px; padding: 6px 14px; font-size: .875rem; text-align: center; }
+.barra-testata svg { flex: 0 0 auto; }
+.barra-testata .esito-condivisione { grid-column: 1 / -1; }
+.barra-testata .esito-condivisione:empty { position: absolute; }
+.barra-testata .esito-condivisione:not(:empty) { margin-top: 0; font-size: .875rem; }
+.intro-header .barra-testata .bottone.chiaro {
+  background: transparent; color: var(--carta); border-color: var(--carta);
+}
+.intro-header .barra-testata .bottone.chiaro:hover {
+  background: var(--carta); color: var(--ink);
+}
+@media (max-width: 760px) {
+  .testata-azioni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .identita-testata { justify-content: space-between; }
+  .barra-testata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .barra-testata .bottone { padding-inline: 6px; gap: 5px; }
+}
