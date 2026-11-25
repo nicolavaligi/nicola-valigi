@@ -57,8 +57,7 @@
     <h2>Agenti AI, integrazione di sistemi e gestione del prodotto</h2>
     <p>Integro gli agenti AI nei flussi di lavoro quotidiani, con compiti definiti e controlli espliciti:</p>
     <ul class="numeri">
-      <li><strong>Report interrogabili in linguaggio naturale</strong>. Il riquadro «Chiedi ed estrai», sopra i report giornalieri di un ristorante, risponde alle domande citando il giorno da cui proviene ogni cifra e prepara tabelle da copiare.</li>
-      <li><strong>Al modello arrivano solo dati aggregati</strong>. Invio esclusivamente aggregati su incassi, coperti e prodotti. Nomi e contatti restano fuori. Il modello segnala i giorni per cui mancano dati.</li>
+      <li><strong>Domande in linguaggio naturale sui dati di vendita</strong>. Il riquadro «Chiedi ed estrai» nella pagina iniziale del cruscotto usa un modello linguistico per rispondere sulla base dei soli report aggregati del periodo selezionato. Il modello non riceve dati dei singoli clienti e il sistema limita il numero di richieste. Le risposte citano la data di ogni cifra, segnalano le giornate senza dati e possono produrre tabelle da copiare.</li>
       <li><strong>Messa in esercizio di Claude via API</strong>. Uso una chiave dedicata per ambiente, con account di servizio, ambito ristretto e scadenza. Verifico la configurazione con una chiamata di prova e programmo un promemoria di rinnovo.</li>
       <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Registrazioni e note vocali trascritte, sintetizzate con estrazione di punti d'azione e trasformate automaticamente in task assegnati su CRM aziendali e database Notion</li>
       <li><strong>Inbound WhatsApp Dispatching</strong>: Canali di ricezione via WhatsApp con parsing istantaneo delle richieste, validazione deterministica e smistamento operativo</li>
@@ -260,6 +259,7 @@
       <li><strong>Piattaforma multi-cliente</strong>. Sviluppo componenti per ciascun cliente, con dati isolati, gestione di utenti e ruoli e messaggi d’errore che indicano come procedere.</li>
       <li><strong>Marchio per cliente nelle piattaforme multi-cliente</strong>. Ogni cliente carica il proprio logo e sceglie lo sfondo che lo rende più leggibile. La piattaforma applica la scelta a tutte le pagine dell’area riservata senza richiedere modifiche al codice.</li>
       <li><strong>Elaborazione delle immagini nel browser</strong>. Ridimensiono e ridisegno le immagini su un canvas prima del salvataggio, così il file salvato è privo dei metadati originali e l’elaborazione avviene senza servizi esterni.</li>
+      <li><strong>Riordino delle interfacce</strong>. Riunisco le funzioni duplicate in un componente condiviso tra più pagine e rimuovo il codice e i testi diventati superflui.</li>
       <li><strong>Caricamento da file in caso di blocco</strong>. Quando un’integrazione si blocca, uso un import da file con le stesse regole della lettura diretta per proseguire con la demo.</li>
       <li><strong>Siti di Servizio e Brand</strong>: Interfacce veloci, prive di dipendenze pesanti, modellate mobile-first e ottimizzate per i Core Web Vitals e il posizionamento SEO tecnico</li>
       <li><strong>E-commerce Shopify</strong>: Negozi online completi, cataloghi ottimizzati, logiche di carrello e pagamenti integrate per percorsi d'acquisto semplici</li>

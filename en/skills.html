@@ -57,8 +57,7 @@
     <h2>AI agents, system integration and product management</h2>
     <p>I integrate AI agents into daily workflows, with defined tasks and explicit checks:</p>
     <ul class="numeri">
-      <li><strong>Natural-language reporting</strong>. The “Ask and extract” panel above a restaurant’s daily reports answers questions, cites the date behind each figure and produces tables ready to copy.</li>
-      <li><strong>The model receives only aggregated data</strong>. I send only aggregated takings, cover counts and product sales. Names and contact details are excluded. The model flags dates with missing data.</li>
+      <li><strong>Natural-language questions on sales data</strong>. The “Ask and extract” panel on the dashboard home page uses a language model to answer questions from the aggregated reports for the selected period. The model receives no individual customer data, and the system limits request rates. Answers cite the date behind each figure, flag dates with missing data and can produce tables ready to copy.</li>
       <li><strong>Running Claude through its API</strong>. I use a dedicated key for each environment, with a service account, limited scope and an expiry date. I verify the setup with a test call and schedule a renewal reminder.</li>
       <li><strong>Voice-to-Action (Plaud &rarr; CRM &rarr; Notion)</strong>: Voice notes recorded on the go transcribed, summarized with action point extraction, and automatically structured into CRM records and Notion operational databases</li>
       <li><strong>Inbound WhatsApp Dispatching</strong>: Automated WhatsApp channels with instant request parsing, deterministic validation, and operational routing</li>
@@ -260,6 +259,7 @@
       <li><strong>Multi-tenant platform</strong>. I build components for each client, with isolated data, user and role management, and error messages that explain what to do next.</li>
       <li><strong>Client branding in multi-tenant platforms</strong>. Each client uploads a logo and selects a background that keeps it legible. The platform applies those choices throughout the signed-in area without requiring code changes.</li>
       <li><strong>In-browser image processing</strong>. I resize and redraw images on a canvas before saving them. The saved file omits the original metadata, and processing runs without external services.</li>
+      <li><strong>Interface consolidation</strong>. I consolidate duplicated features into a shared component used across pages and remove redundant code and copy.</li>
       <li><strong>File import as a fallback</strong>. If an integration stalls, I use a file import that applies the same rules as the direct integration so the demo can continue.</li>
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
       <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
