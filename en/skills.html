@@ -254,7 +254,8 @@
     <h3>Indicators and data quality</h3>
     <ul class="numeri">
       <li><strong>Self-explaining indicators</strong>. For each dashboard percentage, I show the underlying counts, the reporting period and a breakdown by channel. A plain-language explanation says what the indicator measures and why it matters.</li>
-      <li><strong>Data quality in hospitality</strong>. I measure the share of receipts the point-of-sale system can link to a guest and identify operational steps to increase that share.</li>
+      <li><strong>Data quality in hospitality</strong>. I measure the share of receipts the point-of-sale system can link to a guest and identify operational steps to increase that share. The dashboard shows the underlying counts, reporting period and a consistent definition across pages.</li>
+      <li><strong>Analytics dashboard for hospitality</strong>. Landing page with the day&#39;s takings, comparison with the previous week, a four-week trend and key figures, computed from aggregated daily reports that hold no individual customer data.</li>
     </ul>
   </article>
 
@@ -263,7 +264,7 @@
     <p>I build lightweight, high-contrast web systems and conversion-focused e-commerce architectures:</p>
     <ul class="numeri">
       <li><strong>Multi-tenant platform</strong>. I build components for each client, with isolated data, user and role management, and error messages that explain what to do next.</li>
-      <li><strong>Client branding in multi-tenant platforms</strong>. Each client uploads a logo and selects a background that keeps it legible. The platform applies those choices throughout the signed-in area without requiring code changes.</li>
+      <li><strong>Client branding in multi-tenant platforms</strong>. Each client uploads a logo and selects a background that keeps it legible. The platform applies those choices throughout the signed-in area without requiring code changes. The logo also appears next to page titles.</li>
       <li><strong>In-browser image processing</strong>. I resize and redraw images on a canvas before saving them. The saved file omits the original metadata, and processing runs without external services.</li>
       <li><strong>Interface consolidation</strong>. I consolidate duplicated features into a shared component used across pages and remove redundant code and copy.</li>
       <li><strong>File import as a fallback</strong>. If an integration stalls, I use a file import that applies the same rules as the direct integration so the demo can continue.</li>
@@ -273,6 +274,7 @@
       <li><strong>Two-way Google Calendar sync</strong>. The booking system sends reservations to Google Calendar and imports closures and other commitments entered there. Rules define where each type of event is managed. An alert flags any changes to reservations made directly in Google Calendar.</li>
       <li><strong>Procedures that can resume after an interruption</strong>. I can rerun an interrupted procedure without repeating completed actions or sending duplicate emails. To reconcile two systems, each run compares their full state. A later run can resolve any differences after an interruption without creating duplicates.</li>
       <li><strong>One sign-in across multiple client spaces</strong>. The same user can access multiple tenant spaces with a single role. The platform manages invitations and reactivates users at first sign-in.</li>
+      <li><strong>Multi-language React interface</strong>. Reorganised tab navigation and thousands-separator number formatting across all supported languages.</li>
     </ul>
 
     <figure class="anteprima">
@@ -299,7 +301,7 @@
     <h2>Infrastructure and technologies</h2>
     <p>I set up a test environment separate from the service people use. There I check updates, test database operations and verify access permissions before release. I use Python, Django and Django REST Framework for application logic, PostgreSQL, PostGIS and Supabase for data, and React and TanStack Start for interfaces. I use WorkOS for sign-in and roles, Vercel and Google Cloud Run for deployment, and Unix/Linux and OrbStack for managing development environments, including on macOS.</p>
     <ul class="numeri">
-      <li><strong>Server-validated configuration options</strong>. The server checks each client’s branding choices against an allowlist of colours, images and file formats. Automated tests cover validation, edit permissions and the audit trail.</li>
+      <li><strong>Server-validated configuration options</strong>. The server checks each client’s branding choices against an allowlist of colours, images and file formats. Automated tests cover validation, edit permissions and the audit trail. The platform limits appearance options for components without a public page.</li>
       <li><strong>Privacy by design</strong>. I store branding assets within the platform so staff browsers can load them without making requests to third-party sites.</li>
       <li><strong>Diagnosing third-party integrations</strong>. I trace sign-in step by step and compare credential fingerprints across environments without reading the credential values.</li>
       <li><strong>Secrets management on Google Cloud</strong>. I use Secret Manager and Cloud Run with encrypted credentials for each client. Keys stay protected in every environment.</li>

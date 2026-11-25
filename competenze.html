@@ -254,7 +254,8 @@
     <h3>Indicatori e qualità dei dati</h3>
     <ul class="numeri">
       <li><strong>Indicatori che si spiegano da soli</strong>. Per ogni percentuale del cruscotto mostro i conteggi di partenza, il periodo di riferimento e la ripartizione per canale. Una breve spiegazione chiarisce che cosa misura l’indicatore e perché conta.</li>
-      <li><strong>Qualità dei dati nella ristorazione</strong>. Misuro la quota di scontrini che il sistema di cassa riesce ad associare a un cliente e individuo le azioni operative per aumentarla.</li>
+      <li><strong>Qualità dei dati nella ristorazione</strong>. Misuro la quota di scontrini che il sistema di cassa riesce ad associare a un cliente e individuo le azioni operative per aumentarla. Nel cruscotto la quota è accompagnata dai conteggi, dal periodo di riferimento e da una definizione coerente tra le pagine.</li>
+      <li><strong>Cruscotto di analisi per la ristorazione</strong>. Pagina iniziale con ricavi del giorno, confronto con la settimana precedente, andamento a quattro settimane e indicatori chiave, calcolati da report giornalieri aggregati che non contengono dati dei singoli clienti.</li>
     </ul>
   </article>
 
@@ -273,6 +274,8 @@
       <li><strong>Sincronizzazione bidirezionale con Google Calendar</strong>. Il sistema di prenotazione invia gli eventi a Google Calendar e importa le chiusure e gli impegni inseriti nel calendario. Regole esplicite stabiliscono dove si gestisce ogni tipo di evento. Un avviso segnala le modifiche alle prenotazioni effettuate direttamente in Google Calendar.</li>
       <li><strong>Procedure che si possono riprendere</strong>. Se una procedura si interrompe, posso rilanciarla senza ripetere le operazioni già completate o inviare email duplicate. Per riallineare due sistemi, confronto il loro stato completo a ogni ciclo. Così un ciclo successivo può recuperare le differenze dopo un’interruzione senza creare duplicati.</li>
       <li><strong>Un accesso per più spazi cliente</strong>. Lo stesso utente può accedere agli spazi di più clienti con un unico ruolo. Il sistema gestisce gli inviti e riattiva gli utenti al primo accesso.</li>
+      <li><strong>Interfaccia React multi-lingua</strong>. Riorganizzazione della navigazione a schede e formattazione dei numeri con separatore delle migliaia, in tutte le lingue supportate.</li>
+      <li><strong>Personalizzazione del marchio del cliente</strong>. Caricamento del logo, ridisegnato nel browser su canvas e salvato in linea, per mostrarlo accanto al titolo delle pagine senza richiamare siti esterni.</li>
     </ul>
 
     <figure class="anteprima">
@@ -299,7 +302,7 @@
     <h2>Infrastruttura e tecnologie</h2>
     <p>Preparo un ambiente di prova separato dal servizio usato dagli utenti. Lì verifico gli aggiornamenti, testo le operazioni sul database e controllo i permessi di accesso prima di pubblicare. Uso Python, Django e Django REST Framework per la logica applicativa, PostgreSQL, PostGIS e Supabase per i dati, React e TanStack Start per le interfacce. Uso WorkOS per accessi e ruoli, Vercel e Google Cloud Run per pubblicare e Unix/Linux e OrbStack per gestire gli ambienti di sviluppo, anche su macOS.</p>
     <ul class="numeri">
-      <li><strong>Configurazione con valori ammessi</strong>. Il server valida le scelte grafiche di ogni cliente in base a un elenco di colori, immagini e formati ammessi. I test automatici verificano la validazione, i permessi di modifica e la registrazione delle modifiche.</li>
+      <li><strong>Configurazione con valori ammessi</strong>. Il server valida le scelte grafiche di ogni cliente in base a un elenco di colori, immagini e formati ammessi. I test automatici verificano la validazione, i permessi di modifica e la registrazione delle modifiche. Per i componenti privi di una pagina pubblica, la piattaforma limita le opzioni di personalizzazione grafica.</li>
       <li><strong>Privacy nelle scelte tecniche</strong>. Conservo le risorse grafiche nella piattaforma. Per caricarle, il browser del personale non deve quindi inviare richieste a siti di terzi.</li>
       <li><strong>Diagnosi di integrazioni esterne</strong>. Traccio i passaggi di un accesso e confronto le impronte delle credenziali tra ambienti senza leggerne i valori.</li>
       <li><strong>Gestione dei segreti su Google Cloud</strong>. Uso Secret Manager e Cloud Run con credenziali cifrate per cliente. Le chiavi restano protette in ogni ambiente.</li>
