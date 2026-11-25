@@ -245,6 +245,8 @@
     <p>I build lightweight, high-contrast web systems and conversion-focused e-commerce architectures:</p>
     <ul class="numeri">
       <li><strong>Multi-tenant platform</strong>. I build components for each client, with isolated data, user and role management, and error messages that explain what to do next.</li>
+      <li><strong>Client branding in multi-tenant platforms</strong>. Each client uploads a logo and selects a background that keeps it legible. The platform applies those choices throughout the signed-in area without requiring code changes.</li>
+      <li><strong>In-browser image processing</strong>. I resize and redraw images on a canvas before saving them. The saved file omits the original metadata, and processing runs without external services.</li>
       <li><strong>File import as a fallback</strong>. If an integration stalls, I use a file import that applies the same rules as the direct integration so the demo can continue.</li>
       <li><strong>Brand &amp; Service Sites</strong>: Ultra-fast web experiences without heavy dependencies, engineered mobile-first and optimized for Core Web Vitals and technical SEO</li>
       <li><strong>Shopify E-commerce</strong>: Full-stack online stores with structured catalogs, clean checkout logic, and friction-free payment integrations</li>
@@ -278,6 +280,8 @@
     <h2>Infrastructure and technologies</h2>
     <p>I set up a test environment separate from the service people use. There I check updates, test database operations and verify access permissions before release. I use Python, Django and Django REST Framework for application logic, PostgreSQL, PostGIS and Supabase for data, and React and TanStack Start for interfaces. I use WorkOS for sign-in and roles, Vercel and Google Cloud Run for deployment, and Unix/Linux and OrbStack for managing development environments, including on macOS.</p>
     <ul class="numeri">
+      <li><strong>Server-validated configuration options</strong>. The server checks each client’s branding choices against an allowlist of colours, images and file formats. Automated tests cover validation, edit permissions and the audit trail.</li>
+      <li><strong>Privacy by design</strong>. I store branding assets within the platform so staff browsers can load them without making requests to third-party sites.</li>
       <li><strong>Diagnosing third-party integrations</strong>. I trace sign-in step by step and compare credential fingerprints across environments without reading the credential values.</li>
       <li><strong>Secrets management on Google Cloud</strong>. I use Secret Manager and Cloud Run with encrypted credentials for each client. Keys stay protected in every environment.</li>
       <li><strong>Controlled releases</strong>. I deploy automatically to the test environment and run tests there. Production requires an explicit release.</li>
