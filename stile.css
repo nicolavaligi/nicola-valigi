@@ -248,6 +248,8 @@ a:hover { text-decoration: none; }
   color: #a8baff; text-decoration: none;
 }
 .contatto-blocco .azioni { margin-top: 34px; }
+[data-condividi][hidden] { display: none; }
+.esito-condivisione:not(:empty) { margin-top: 12px; overflow-wrap: anywhere; }
 .contatto-blocco .bottone { background: var(--blu); color: #fff; border-color: var(--blu); }
 .contatto-blocco .bottone:hover { background: #1938C7; }
 .contatto-blocco .bottone.chiaro:hover { background: var(--carta); color: var(--ink); }

@@ -45,18 +45,28 @@
     }
   }
 
-  // ---- Copia dell'indirizzo email ----
-  var copia = document.querySelector("[data-copia]");
-  if (copia && navigator.clipboard) {
-    var etichetta = copia.textContent;
-    copia.hidden = false;
-    copia.addEventListener("click", function () {
-      navigator.clipboard.writeText(copia.dataset.copia).then(function () {
-        copia.textContent = english ? "Email copied" : "Indirizzo copiato";
-        setTimeout(function () { copia.textContent = etichetta; }, 2200);
-      }).catch(function () {
-        copia.textContent = copia.dataset.copia;
-      });
+  // Share the canonical URL for the current language.
+  var condividi = document.querySelector("[data-condividi]");
+  if (condividi) {
+    var url = document.querySelector('link[rel="canonical"]').href;
+    var esito = document.querySelector("[data-esito-condivisione]");
+    condividi.hidden = false;
+    condividi.addEventListener("click", async function () {
+      esito.textContent = "";
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: "Nicola Valigi", url: url });
+          return;
+        }
+      } catch (error) {
+        if (error && error.name === "AbortError") return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        esito.textContent = english ? "Link copied." : "Link copiato.";
+      } catch {
+        esito.textContent = (english ? "Share this link: " : "Condividi questo link: ") + url;
+      }
     });
   }
 })();
