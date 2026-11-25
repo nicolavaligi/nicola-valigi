@@ -1,0 +1,439 @@
+{
+  "name": "NicValigi · Aggiornamento quotidiano Competenze",
+  "nodes": [
+    {
+      "id": "07a933c9-91a9-46d7-95e4-a0ec789636b5",
+      "name": "Ogni giorno alle 17:15",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 15 17 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "7eb9b90d-cd64-46e1-9698-bf7d9ea01775",
+      "name": "Prova manuale",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        220
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "935d71b0-2e61-424e-9bbf-7b9d23ce1e48",
+      "name": "Configura mittente",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        230,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const sender = ''; // Inserisci l'indirizzo e-mail esatto del mittente autorizzato.\nconst publish = false; // Passa a true solo dopo la prova con Gmail e GitHub.\nconst subject = ''; // Inserisci qui l’oggetto esatto in minuscolo.\nif (!subject || !/^[\\w.+-]+@[\\w.-]+\\.[a-z]{2,}$/i.test(sender)) {\n  throw new Error('Impostare l’indirizzo del mittente autorizzato nel nodo Configura mittente.');\n}\nreturn [{json:{sender:sender.toLowerCase(),subject,publish,query:'to:n.valigi@gmail.com from:'+sender+' subject:\"'+subject+'\" newer_than:2d -in:spam -in:trash'}}];"
+      }
+    },
+    {
+      "id": "2d4741b1-ba13-418e-a043-e41918e474b1",
+      "name": "Leggi Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        0
+      ],
+      "parameters": {
+        "resource": "message",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 10,
+        "simple": false,
+        "filters": {
+          "q": "={{ $json.query }}",
+          "readStatus": "both"
+        },
+        "options": {
+          "downloadAttachments": false
+        }
+      }
+    },
+    {
+      "id": "165012e8-4988-437a-82b6-02be09e6de86",
+      "name": "Interpreta aggiornamento",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        690,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const config = $('Configura mittente').first().json;\nconst mail = $input.all().map(item => item.json)\n  .filter(item => item.subject?.trim().toLowerCase() === config.subject\n    && item.from?.value?.length === 1\n    && item.from.value[0].address?.toLowerCase() === config.sender)\n  .sort((a,b) => Date.parse(b.date) - Date.parse(a.date))[0];\nif (!mail) return [];\nconst text = mail.text || '';\nif (!text || text.length > 14000) throw new Error('L’aggiornamento non contiene un testo semplice utilizzabile.');\nconst headings = [\n  { id:'ai', it:['agenti ai','ai agents','agenti ai, integrazione di sistemi e gestione del prodotto'], en:['ai agents','ai agents, system integration and product management'] },\n  { id:'web', it:['sviluppo web','sviluppo web, e-commerce e ricerca di mercato'], en:['web development','web development, e-commerce and market research'] },\n  { id:'data', it:['dati e gis','dati e geo-intelligence: gis 3d e catasto'], en:['data and gis','geo-intelligence: 3d gis and cadastral data'] },\n  { id:'infra', it:['infrastruttura e stack','infrastruttura e tecnologie'], en:['infrastructure and stack','infrastructure and technologies'] },\n];\nconst updates = { it: [], en: [] };\nconst aliases = { italiano:'it', italian:'it', english:'en', inglese:'en' };\nlet lang, section, entry;\nfor (const raw of text.split(/\\r?\\n/)) {\n  const line = raw.trim();\n  if (!line) continue;\n  if (/^(?:--$|>)/.test(line)) throw new Error('Rimuovere firme e citazioni dal testo da pubblicare.');\n  const clean = line.replace(/^#{1,6}\\s+/, '').replace(/^[-*•]\\s+/, '').replace(/\\*\\*/g, '');\n  const key = clean.toLowerCase().replace(/:$/, '');\n  if (aliases[key]) { lang = aliases[key]; section = undefined; entry = undefined; continue; }\n  if (!lang) continue;\n  const heading = headings.find(h => h[lang].includes(key));\n  if (heading) { section = heading.id; entry = undefined; continue; }\n  const pair = clean.match(/^([^:]{4,100}):\\s+(.{15,})$/);\n  if (section && pair) {\n    entry = {section, title:pair[1].trim(), body:pair[2].trim()};\n    updates[lang].push(entry);\n  } else if (entry && !clean.includes(':')) {\n    entry.body += ' ' + clean;\n  } else {\n    throw new Error('Formato non riconosciuto. Usare sezioni per lingua e voci Titolo: descrizione.');\n  }\n}\nfor (const langKey of ['it','en']) {\n  const list = updates[langKey];\n  if (!list.length || list.length > 12) throw new Error('Sono necessarie da una a dodici voci per lingua.');\n  for (const item of list) {\n    if (item.body.length > 900 || /[<>@]|https?:|www\\.|\\b(?:password|token|api[ _-]?key)\\s*[:=]/i.test(item.title + ' ' + item.body)) {\n      throw new Error('Una voce supera i limiti o contiene dati da verificare prima della pubblicazione.');\n    }\n  }\n}\nconst order = list => list.map(item => item.section).sort().join(',');\nif (order(updates.it) !== order(updates.en)) throw new Error('Le due lingue devono coprire le stesse sezioni e lo stesso numero di voci.');\nreturn [{json:{updates}}];"
+      }
+    },
+    {
+      "id": "34585dd6-03ae-45b1-8994-a12d73f64e9d",
+      "name": "Leggi sito da GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/graphql",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({query:\"query { repository(owner:\\\"nicolavaligi\\\", name:\\\"nicola-valigi\\\") { ref(qualifiedName:\\\"refs/heads/main\\\") { target { oid } } it:object(expression:\\\"main:competenze.html\\\") { ... on Blob { text } } en:object(expression:\\\"main:en/skills.html\\\") { ... on Blob { text } } } }\"}) }}",
+        "options": {
+          "timeout": 25000
+        }
+      }
+    },
+    {
+      "id": "67b659dc-b400-428a-a863-0b030a6d1e5e",
+      "name": "Aggiorna solo le competenze",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1150,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nconst repo = response.data?.repository;\nconst head = repo?.ref?.target?.oid;\nif (response.errors?.length || !/^[a-f0-9]{40}$/.test(head || '')) throw new Error('Lettura del repository non riuscita.');\nconst updates = $('Interpreta aggiornamento').first().json.updates;\nconst headings = {\n  it:{ai:'Agenti AI, integrazione di sistemi e gestione del prodotto',web:'Sviluppo web, e-commerce e ricerca di mercato',data:'Dati e geo-intelligence: GIS 3D e catasto',infra:'Infrastruttura e tecnologie'},\n  en:{ai:'AI agents, system integration and product management',web:'Web development, e-commerce and market research',data:'Geo-intelligence: 3D GIS and cadastral data',infra:'Infrastructure and technologies'}\n};\nconst escape = value => value.replace(/[&\"'<>]/g, ch => ({'&':'&amp;','\"':'&quot;',\"'\":'&#39;','<':'&lt;','>':'&gt;'}[ch]));\nconst norm = value => value.normalize('NFKC').toLowerCase().replace(/&amp;/g,'&').replace(/&#39;|&rsquo;|’/g,\"'\").trim();\nconst additions = [], checks = {};\nfor (const lang of ['it','en']) {\n  const original = repo[lang]?.text;\n  if (!original || !original.includes('</html>')) throw new Error('Pagina delle competenze mancante o incompleta.');\n  let html = original;\n  checks[lang] = [];\n  for (const item of updates[lang]) {\n    const heading = '<h2>'+headings[lang][item.section]+'</h2>';\n    const start = html.indexOf(heading);\n    const end = html.indexOf('</article>',start);\n    if (start < 0 || end < 0 || html.indexOf(heading,start+1) >= 0) throw new Error('Sezione ambigua nella pagina.');\n    let block = html.slice(start,end);\n    const generated = '<li><strong>'+escape(item.title)+'</strong>. '+escape(item.body)+'</li>';\n    const matches = [...block.matchAll(/<li><strong>([^<]+)<\\/strong>[^\\n]*?<\\/li>/g)]\n      .filter(match => norm(match[1]) === norm(item.title));\n    if (matches.length > 1) throw new Error('Titolo duplicato nella sezione.');\n    if (matches.length === 1) {\n      const match = matches[0];\n      block = block.slice(0,match.index) + generated + block.slice(match.index+match[0].length);\n    } else {\n      const open = block.lastIndexOf('<ul class=\"numeri\">');\n      const close = block.indexOf('    </ul>',open);\n      if (open < 0 || close < 0) throw new Error('Elenco delle competenze non trovato.');\n      block = block.slice(0,close) + '      ' + generated + '\\n' + block.slice(close);\n    }\n    html = html.slice(0,start)+block+html.slice(end);\n    checks[lang].push(generated);\n  }\n  if (html !== original) {\n    additions.push({path:lang === 'it' ? 'competenze.html' : 'en/skills.html', contents:Buffer.from(html,'utf8').toString('base64')});\n  }\n}\nconst publish = $('Configura mittente').first().json.publish;\nreturn [{json:{head,additions,checks,changed:additions.length>0,publish}}];"
+      }
+    },
+    {
+      "id": "4958fa62-12a4-42ef-92c6-a01bb5829e7b",
+      "name": "Ci sono modifiche",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1380,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1de0bdce-a796-4f04-953e-6a8952b71f43",
+              "leftValue": "={{ $json.changed && $json.publish }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "957155c7-9c3f-41d6-bfb0-4a0fe38d31ae",
+      "name": "Verifica senza modifiche",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1650,
+        230
+      ],
+      "parameters": {
+        "jsCode": "const result = $input.first().json;\nif (result.changed && !result.publish) return [{json:{status:'Simulazione: nessun commit',files:result.additions.map(item=>item.path)}}];\nreturn [{json:{status:'Nessuna modifica da pubblicare'}}];"
+      }
+    },
+    {
+      "id": "4431cf13-d414-4d1d-b5eb-508394bc78a1",
+      "name": "Pubblica commit bilingue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1610,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/graphql",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {{ JSON.stringify({ query: \"mutation($input:CreateCommitOnBranchInput!) { createCommitOnBranch(input:$input) { commit { oid url } } }\", variables: {input:{branch:{repositoryNameWithOwner:\"nicolavaligi/nicola-valigi\",branchName:\"main\"},expectedHeadOid:$json.head,message:{headline:\"Aggiorna le competenze dalle novità quotidiane\"},fileChanges:{additions:$json.additions}}} }) }}",
+        "options": {
+          "timeout": 25000
+        }
+      }
+    },
+    {
+      "id": "3806e6bf-310b-49e1-98c0-0bb0771a8dcd",
+      "name": "Controlla commit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const result = $input.first().json; if (result.errors?.length || !result.data?.createCommitOnBranch?.commit?.oid) throw new Error(\"Commit non pubblicato: controllare permessi GitHub o modifiche concorrenti.\"); return [{ json: { commit: result.data.createCommitOnBranch.commit.oid } }];"
+      }
+    },
+    {
+      "id": "33021f07-b975-45cd-81af-a397dc1970de",
+      "name": "Attendi Vercel",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2070,
+        0
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 90,
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "8e34365b-8107-48a0-a63a-a59d586f5900",
+      "name": "Leggi pagina italiana",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2300,
+        0
+      ],
+      "parameters": {
+        "url": "={{ \"https://www.nicvaligi.com/competenze.html?verifica=\" + $execution.id }}",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "responseFormat": "text",
+              "outputPropertyName": "body"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "c4f953cb-36a3-4dc9-aa2a-120aebcb63c4",
+      "name": "Leggi pagina inglese",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2530,
+        0
+      ],
+      "parameters": {
+        "url": "={{ \"https://www.nicvaligi.com/en/skills.html?verifica=\" + $execution.id }}",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "responseFormat": "text",
+              "outputPropertyName": "body"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e4dcd804-5305-4ef1-a92b-1f286380bd1e",
+      "name": "Verifica pubblicazione",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2760,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const checks = $('Aggiorna solo le competenze').first().json.checks;\nfor (const [lang, node] of [['it','Leggi pagina italiana'],['en','Leggi pagina inglese']]) {\n  const html = $(node).first().json.body;\n  if (typeof html !== 'string' || !checks[lang].every(item => html.includes(item))) {\n    throw new Error('Vercel non mostra ancora tutte le competenze nella pagina '+lang+'. Controllare lo stato del deploy.');\n  }\n}\nreturn [{json:{status:'Pubblicazione verificata',pages:['https://www.nicvaligi.com/competenze.html','https://www.nicvaligi.com/en/skills.html']}}];"
+      }
+    }
+  ],
+  "connections": {
+    "Ogni giorno alle 17:15": {
+      "main": [
+        [
+          {
+            "node": "Configura mittente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prova manuale": {
+      "main": [
+        [
+          {
+            "node": "Configura mittente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configura mittente": {
+      "main": [
+        [
+          {
+            "node": "Leggi Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leggi Gmail": {
+      "main": [
+        [
+          {
+            "node": "Interpreta aggiornamento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Interpreta aggiornamento": {
+      "main": [
+        [
+          {
+            "node": "Leggi sito da GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leggi sito da GitHub": {
+      "main": [
+        [
+          {
+            "node": "Aggiorna solo le competenze",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggiorna solo le competenze": {
+      "main": [
+        [
+          {
+            "node": "Ci sono modifiche",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ci sono modifiche": {
+      "main": [
+        [
+          {
+            "node": "Pubblica commit bilingue",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica senza modifiche",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pubblica commit bilingue": {
+      "main": [
+        [
+          {
+            "node": "Controlla commit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Controlla commit": {
+      "main": [
+        [
+          {
+            "node": "Attendi Vercel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attendi Vercel": {
+      "main": [
+        [
+          {
+            "node": "Leggi pagina italiana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leggi pagina italiana": {
+      "main": [
+        [
+          {
+            "node": "Leggi pagina inglese",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leggi pagina inglese": {
+      "main": [
+        [
+          {
+            "node": "Verifica pubblicazione",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Rome",
+    "saveDataErrorExecution": "none",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false
+  },
+  "pinData": {},
+  "id": "NvSkillsDaily1715",
+  "versionId": "d5440d9b-e021-4e65-af26-9837c725f74b"
+}
