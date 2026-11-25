@@ -483,9 +483,15 @@ button, .bottone { touch-action: manipulation; }
 .intro-header .barra-testata .bottone.chiaro:hover {
   background: var(--carta); color: var(--ink);
 }
+.barra-testata .etichetta-breve { display: none; }
 @media (max-width: 760px) {
-  .testata-azioni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .testata-azioni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .identita-testata { justify-content: space-between; }
   .barra-testata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .barra-testata .bottone { padding-inline: 6px; gap: 5px; }
+  .barra-testata .bottone {
+    min-height: 48px; padding: 6px 8px; gap: 6px;
+    font-size: 1rem; line-height: 1.2;
+  }
+  .barra-testata .etichetta-estesa { display: none; }
+  .barra-testata .etichetta-breve { display: inline; }
 }
